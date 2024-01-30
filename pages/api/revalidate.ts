@@ -108,7 +108,7 @@ async function queryStaleRoutes(
     case 'settings':
       return await queryAllRoutes(client)
     case 'work':
-      return await queryStaleWorkRoutes(client, body_id)
+      return await queryStaleWorkRoutes(client, body._id)
     default:
       throw new TypeError(`Unknown type: ${body._type}`)
   }
