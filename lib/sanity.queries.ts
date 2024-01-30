@@ -40,6 +40,18 @@ export const postBySlugQuery = groq`
 }
 `
 
+export const workBySlugQuery = groq` 
+*[_type == "work" && slug.current == $slug][0]
+`
+
+export const allWorkQuery = groq`
+*[_type == "work"] order(date desc, _updatedAt desc)
+`
+
+export const workSlugsQuery = groq`
+*[_type == "work" && defined(slug.current)][].slug.current
+`
+
 export interface Author {
   name?: string
   picture?: any
@@ -55,6 +67,13 @@ export interface Post {
   author?: Author
   slug?: string
   content?: any
+}
+
+export interface Work {
+  _id: string
+  title?: string
+  slug?: string
+  mainImage?: any
 }
 
 export interface Settings {

@@ -107,6 +107,8 @@ async function queryStaleRoutes(
       return await queryStalePostRoutes(client, body._id)
     case 'settings':
       return await queryAllRoutes(client)
+    case 'work':
+      return await queryStaleWorkRoutes(client, body_id)
     default:
       throw new TypeError(`Unknown type: ${body._type}`)
   }
@@ -168,4 +170,18 @@ async function queryStalePostRoutes(
   slugs = await mergeWithMoreStories(client, slugs)
 
   return ['/', ...slugs.map((slug) => `/posts/${slug}`)]
+}
+
+async function queryStaleWorkRoutes(
+  client: SanityClient,
+  id: string,
+): Promise<StaleRoute[]> {
+  let slugs = await client.fetch(
+    groq`*[_type == "work" && _id == $id].slug.current`,
+    { id },
+  )
+
+  slugs = await mergeWithMoreStories(client, slugs)
+
+  return ['/', ...slugs.map((slug) => `/work/${slug}`)]
 }
