@@ -1,5 +1,3 @@
-import PostPage from 'components/PostPage'
-import PreviewPostPage from 'components/PreviewPostPage'
 import { readToken } from 'lib/sanity.api'
 import {
   getAllPostsSlugs,
@@ -7,13 +5,17 @@ import {
   getWorkBySlug,
   getSettings,
 } from 'lib/sanity.client'
-import { Post, Settings, Work } from 'lib/sanity.queries'
+import { Post, Settings, Work, workBySlugQuery } from 'lib/sanity.queries'
 import { GetStaticProps } from 'next'
 import type { SharedPageProps } from 'pages/_app'
+import WorkPage from 'components/Work'
+import { QueryParams } from 'next-sanity'
+import PreviewComponent from 'components/PreviewComponent'
 
 interface PageProps extends SharedPageProps {
   work: Work
   settings?: Settings
+  params: QueryParams
 }
 
 interface Query {
@@ -22,8 +24,18 @@ interface Query {
 
 export default function ProjectSlugRoute(props: PageProps) {
   const { settings, work, draftMode } = props
-  console.log(work)
-  return <div>{work.title}123</div>
+
+  if (draftMode) {
+    return (
+      <PreviewComponent
+        document={work}
+        params={props.params}
+        documentType="work"
+        query={workBySlugQuery}
+      />
+    )
+  }
+  return <WorkPage work={work} />
 }
 
 export const getStaticProps: GetStaticProps<PageProps, Query> = async (ctx) => {
@@ -44,7 +56,7 @@ export const getStaticProps: GetStaticProps<PageProps, Query> = async (ctx) => {
   return {
     props: {
       work,
-
+      params,
       settings,
       draftMode,
       token: draftMode ? readToken : '',

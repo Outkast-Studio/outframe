@@ -67,7 +67,7 @@ export default async function revalidate(
   }
 }
 
-type StaleRoute = '/' | `/posts/${string}`
+type StaleRoute = '/' | `/posts/${string}` | `/work/${string}`
 
 async function queryStaleRoutes(
   body: Pick<

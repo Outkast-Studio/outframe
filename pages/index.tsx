@@ -1,6 +1,3 @@
-import IndexPage from 'components/IndexPage'
-import PreviewIndexPage from 'components/PreviewIndexPage'
-import { readToken } from 'lib/sanity.api'
 import { getAllPosts, getClient, getSettings } from 'lib/sanity.client'
 import { Post, Settings } from 'lib/sanity.queries'
 import { GetStaticProps } from 'next'
@@ -16,30 +13,26 @@ interface Query {
 }
 
 export default function Page(props: PageProps) {
-  const { posts, settings, draftMode } = props
-
-  if (draftMode) {
-    return <PreviewIndexPage posts={posts} settings={settings} />
-  }
-
-  return <IndexPage posts={posts} settings={settings} />
+  return <></>
 }
 
-export const getStaticProps: GetStaticProps<PageProps, Query> = async (ctx) => {
-  const { draftMode = false } = ctx
-  const client = getClient(draftMode ? { token: readToken } : undefined)
+//Uncomment if you need SSG on home page
 
-  const [settings, posts = []] = await Promise.all([
-    getSettings(client),
-    getAllPosts(client),
-  ])
+// export const getStaticProps: GetStaticProps<PageProps, Query> = async (ctx) => {
+//   const { draftMode = false } = ctx
+//   const client = getClient(draftMode ? { token: readToken } : undefined)
 
-  return {
-    props: {
-      posts,
-      settings,
-      draftMode,
-      token: draftMode ? readToken : '',
-    },
-  }
-}
+//   const [settings, posts = []] = await Promise.all([
+//     getSettings(client),
+//     getAllPosts(client),
+//   ])
+
+//   return {
+//     props: {
+//       posts,
+//       settings,
+//       draftMode,
+//       token: draftMode ? readToken : '',
+//     },
+//   }
+// }
