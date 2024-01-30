@@ -23,7 +23,7 @@ interface Query {
 export default function ProjectSlugRoute(props: PageProps) {
   const { settings, work, draftMode } = props
   console.log(work)
-  return <div>{work.title}</div>
+  return <div>{work.title}123</div>
 }
 
 export const getStaticProps: GetStaticProps<PageProps, Query> = async (ctx) => {
