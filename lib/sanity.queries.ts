@@ -77,7 +77,9 @@ export interface Post {
 export interface Work {
   _id: string
   title?: string
-  slug?: string
+  slug?: {
+    current?: string
+  }
   mainImage?: any
 }
 

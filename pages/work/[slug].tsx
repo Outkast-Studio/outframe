@@ -24,11 +24,8 @@ interface Query {
 }
 
 export default function ProjectSlugRoute(props: PageProps) {
-  const [data] = useLiveQuery<Work>(props.work, workBySlugQuery, {
-    //@ts-ignore
-    slug: props.work.slug.current,
-  })
-  const { settings, work, draftMode } = props
+  const [data] = useLiveQuery<Work>(props.work, workBySlugQuery, props.params)
+
   // if (draftMode) {
   //   return (
   //     <PreviewComponent
