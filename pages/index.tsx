@@ -13,26 +13,25 @@ interface Query {
   [key: string]: string
 }
 
-export default function Page(props: PageProps) {
-  const { posts, settings, draftMode } = props
+export default function Page() {
   return <div>hi</div>
 }
 
-export const getStaticProps: GetStaticProps<PageProps, Query> = async (ctx) => {
-  const { draftMode = false } = ctx
-  const client = getClient(draftMode ? { token: readToken } : undefined)
+// export const getStaticProps: GetStaticProps<PageProps, Query> = async (ctx) => {
+//   const { draftMode = false } = ctx
+//   const client = getClient(draftMode ? { token: readToken } : undefined)
 
-  const [settings, posts = []] = await Promise.all([
-    getSettings(client),
-    getAllPosts(client),
-  ])
+//   const [settings, posts = []] = await Promise.all([
+//     getSettings(client),
+//     getAllPosts(client),
+//   ])
 
-  return {
-    props: {
-      posts,
-      settings,
-      draftMode,
-      token: draftMode ? readToken : '',
-    },
-  }
-}
+//   return {
+//     props: {
+//       posts,
+//       settings,
+//       draftMode,
+//       token: draftMode ? readToken : '',
+//     },
+//   }
+// }
