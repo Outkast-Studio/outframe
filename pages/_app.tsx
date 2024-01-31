@@ -9,7 +9,7 @@ export interface SharedPageProps {
 }
 
 const PreviewProvider = lazy(() => import('components/PreviewProvider'))
-const VisualEditing = lazy(() => import('components/VisualEditing'))
+// const VisualEditing = lazy(() => import('components/VisualEditing'))
 
 export default function App({
   Component,
@@ -25,11 +25,12 @@ export default function App({
       ) : (
         <Component {...pageProps} />
       )}
-      {draftMode && (
+      {/* Presentation Layer logic */}
+      {/* {draftMode && (
         <Suspense>
           <VisualEditing />
         </Suspense>
-      )}
+      )} */}
     </>
   )
 }

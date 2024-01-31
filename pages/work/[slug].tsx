@@ -11,6 +11,7 @@ import type { SharedPageProps } from 'pages/_app'
 import WorkPage from 'components/Work'
 import { QueryParams } from 'next-sanity'
 import PreviewComponent from 'components/PreviewComponent'
+import { useLiveQuery } from 'next-sanity/preview'
 
 interface PageProps extends SharedPageProps {
   work: Work
@@ -23,19 +24,22 @@ interface Query {
 }
 
 export default function ProjectSlugRoute(props: PageProps) {
+  const [data] = useLiveQuery<Work>(props.work, workBySlugQuery, {
+    //@ts-ignore
+    slug: props.work.slug.current,
+  })
   const { settings, work, draftMode } = props
-
-  if (draftMode) {
-    return (
-      <PreviewComponent
-        document={work}
-        params={props.params}
-        documentType="work"
-        query={workBySlugQuery}
-      />
-    )
-  }
-  return <WorkPage work={work} />
+  // if (draftMode) {
+  //   return (
+  //     <PreviewComponent
+  //       document={work}
+  //       params={props.params}
+  //       documentType="work"
+  //       query={workBySlugQuery}
+  //     />
+  //   )
+  // }
+  return <WorkPage work={data} />
 }
 
 export const getStaticProps: GetStaticProps<PageProps, Query> = async (ctx) => {

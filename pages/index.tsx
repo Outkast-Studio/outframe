@@ -6,6 +6,7 @@ import { GetStaticProps } from 'next'
 import { draftMode } from 'next/headers'
 import { QueryParams, SanityDocument } from 'next-sanity'
 import type { SharedPageProps } from 'pages/_app'
+import { useLiveQuery } from 'next-sanity/preview'
 import IndexPage from 'components/IndexPage'
 interface PageProps extends SharedPageProps {
   work: Work[]
@@ -17,18 +18,21 @@ interface Query {
 }
 
 export default function Page(props: PageProps) {
+  const [data] = useLiveQuery<Work[]>(props.work, allWorkQuery)
   const { work, draftMode } = props
-  if (draftMode) {
-    return (
-      <PreviewComponent
-        document={work}
-        params={props.params}
-        documentType="index"
-        query={allWorkQuery}
-      />
-    )
-  }
-  return <IndexPage work={work} />
+  //Presentation laye when stable.
+  // if (draftMode) {
+  //   return (
+  //     <PreviewComponent
+  //       document={work}
+  //       params={props.params}
+  //       documentType="index"
+  //       query={allWorkQuery}
+  //     />
+  //   )
+  // }
+
+  return <IndexPage work={data} />
 }
 
 export const getStaticProps: GetStaticProps<PageProps, Query> = async (ctx) => {

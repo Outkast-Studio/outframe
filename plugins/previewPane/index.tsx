@@ -22,6 +22,10 @@ const iframeOptions = {
           return (document as any)?.slug?.current
             ? `/posts/${(document as any).slug.current}`
             : new Error('Missing slug')
+        case 'work':
+          return (document as any)?.slug?.current
+            ? `/work/${(document as any).slug.current}`
+            : new Error('Missing slug')
         default:
           return new Error(`Unknown document type: ${document?._type}`)
       }
@@ -34,6 +38,12 @@ const iframeOptions = {
 export const previewDocumentNode = (): DefaultDocumentNodeResolver => {
   return (S, { schemaType }) => {
     switch (schemaType) {
+      case postType.name:
+        return S.document().views([
+          S.view.form(),
+          S.view.component(Iframe).options(iframeOptions).title('Preview'),
+        ])
+      case 'work':
       case postType.name:
         return S.document().views([
           S.view.form(),

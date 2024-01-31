@@ -39,14 +39,14 @@ export default defineConfig({
       // `defaultDocumentNode` is responsible for adding a “Preview” tab to the document pane
       defaultDocumentNode: previewDocumentNode(),
     }),
-    presentationTool({
-      locate,
-      previewUrl: {
-        draftMode: {
-          enable: DRAFT_MODE_ROUTE,
-        },
-      },
-    }),
+    // presentationTool({
+    //   locate,
+    //   previewUrl: {
+    //     draftMode: {
+    //       enable: DRAFT_MODE_ROUTE,
+    //     },
+    //   },
+    // }),
     // Configures the global "new document" button, and document actions, to suit the Settings document singleton
     settingsPlugin({ type: settingsType.name }),
     // Add an image asset source for Unsplash

@@ -2,6 +2,7 @@ import { QueryParams, SanityDocument } from 'next-sanity'
 import { useLiveQuery } from 'next-sanity/preview'
 import Work from './Work'
 import IndexPage from './IndexPage'
+import Alert from './AlertBanner'
 
 export default function PreviewComponent({
   document,
@@ -14,14 +15,23 @@ export default function PreviewComponent({
   query: string
   documentType: string
 }) {
-  const [data] = useLiveQuery<SanityDocument>(document, query, params)
-
-  //This should be updated for every new page.
+  const [data] = useLiveQuery(document, query, params)
+  //This is for the presentation layer.
   switch (documentType) {
     case 'work':
-      return <Work work={data} />
+      return (
+        <>
+          <Alert />
+          <Work work={data} />
+        </>
+      )
     case 'index':
-      return <IndexPage work={data} />
+      return (
+        <>
+          <Alert />
+          <IndexPage work={data} />
+        </>
+      )
     default:
       return <></>
   }
