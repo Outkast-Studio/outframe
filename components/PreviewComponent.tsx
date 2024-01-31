@@ -1,6 +1,7 @@
 import { QueryParams, SanityDocument } from 'next-sanity'
 import { useLiveQuery } from 'next-sanity/preview'
 import Work from './Work'
+import IndexPage from './IndexPage'
 
 export default function PreviewComponent({
   document,
@@ -19,6 +20,8 @@ export default function PreviewComponent({
   switch (documentType) {
     case 'work':
       return <Work work={data} />
+    case 'index':
+      return <IndexPage work={data} />
     default:
       return <></>
   }

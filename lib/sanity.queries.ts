@@ -45,7 +45,12 @@ export const workBySlugQuery = groq`
 `
 
 export const allWorkQuery = groq`
-*[_type == "work"] order(date desc, _updatedAt desc)
+*[_type == "work"] {
+  _id,
+  title,
+  slug,
+  mainImage
+} | order(date desc, _updatedAt desc)
 `
 
 export const workSlugsQuery = groq`
