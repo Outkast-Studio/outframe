@@ -8,6 +8,13 @@ export interface SharedPageProps {
   token: string
 }
 
+export interface Seo {
+  title: string
+  description: string
+  image: string
+  keywords: string
+}
+
 const PreviewProvider = lazy(() => import('components/PreviewProvider'))
 // const VisualEditing = lazy(() => import('components/VisualEditing'))
 
