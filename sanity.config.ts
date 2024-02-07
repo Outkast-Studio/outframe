@@ -20,6 +20,7 @@ import authorType from 'schemas/author'
 import postType from 'schemas/post'
 import settingsType from 'schemas/settings'
 import workType from 'schemas/work'
+import { schema } from 'schemas'
 
 const title =
   process.env.NEXT_PUBLIC_SANITY_PROJECT_TITLE || 'Next.js Blog with Sanity.io'
@@ -29,10 +30,7 @@ export default defineConfig({
   projectId,
   dataset,
   title,
-  schema: {
-    // If you want more content types, you can add them to this array
-    types: [settingsType, workType],
-  },
+  schema,
   plugins: [
     deskTool({
       structure: settingsStructure(settingsType),
