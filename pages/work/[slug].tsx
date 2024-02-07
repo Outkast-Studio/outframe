@@ -37,7 +37,6 @@ export default function ProjectSlugRoute(props: PageProps) {
   //     />
   //   )
   // }
-  console.log(props.seo)
   return (
     <Layout seo={props.seo}>
       <WorkPage work={data} />

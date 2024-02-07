@@ -7,6 +7,7 @@ import { urlForImage } from 'lib/sanity.image'
 //Ensure NODE_ENV is set to development during the build.
 //Switch to production on Go live.
 
+//Use Favicon.io to generate all required favicon files
 export function CustomHead({
   title,
   description,
@@ -54,8 +55,7 @@ export function CustomHead({
         />
 
         {/* START FAVICON */}
-        {/* <link rel="manifest" href="/site.webmanifest" /> */}
-        {/* <link
+        <link
           rel="apple-touch-icon"
           sizes="180x180"
           href="/apple-touch-icon.png"
@@ -64,19 +64,16 @@ export function CustomHead({
           rel="icon"
           type="image/png"
           sizes="32x32"
-          href="https://cdn.sanity.io/images/frpb2l40/production/96c800cdea22638095809b56ab463de6f95b360a-224x206.png"
+          href="/favicon/favicon-32x32.png"
         />
         <link
           rel="icon"
           type="image/png"
           sizes="16x16"
-          href="https://cdn.sanity.io/images/frpb2l40/production/96c800cdea22638095809b56ab463de6f95b360a-224x206.png"
-        /> */}
-        {/* <link rel="manifest" href="/site.webmanifest" /> */}
-        {/* <link
-          rel="icon"
-          href="https://cdn.sanity.io/images/frpb2l40/production/96c800cdea22638095809b56ab463de6f95b360a-224x206.png"
-        /> */}
+          href="/favicon/favicon-16x16.png"
+        />
+        <link rel="manifest" href="/favicon/site.webmanifest" />
+        <link rel="icon" href="/favicon/favicon-32x32.png" />
         {/* END FAVICON */}
 
         <title>{title}</title>
