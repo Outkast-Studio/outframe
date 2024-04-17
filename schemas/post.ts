@@ -21,11 +21,23 @@ export default defineType({
   title: 'Post',
   icon: BookIcon,
   type: 'document',
+  groups: [
+    { title: 'Content', name: 'content' },
+    { title: 'SEO', name: 'seo' },
+  ],
   fields: [
     defineField({
       name: 'title',
       title: 'Title',
       type: 'string',
+      description: 'The title of the post.',
+      validation: (rule) => rule.required(),
+    }),
+    defineField({
+      name: 'subtitle',
+      title: 'Subtitle',
+      type: 'string',
+      description: 'The subtitle of the post.',
       validation: (rule) => rule.required(),
     }),
     defineField({
@@ -40,45 +52,31 @@ export default defineType({
       validation: (rule) => rule.required(),
     }),
     defineField({
-      name: 'content',
-      title: 'Content',
-      type: 'array',
-      of: [
-        { type: 'block' },
-        {
-          type: 'image',
-          options: {
-            hotspot: true,
-          },
-          fields: [
-            {
-              name: 'caption',
-              type: 'string',
-              title: 'Image caption',
-              description: 'Caption displayed below the image.',
-            },
-            {
-              name: 'alt',
-              type: 'string',
-              title: 'Alternative text',
-              description: 'Important for SEO and accessiblity.',
-            },
-          ],
-        },
-      ],
-    }),
-    defineField({
-      name: 'excerpt',
-      title: 'Excerpt',
-      type: 'text',
+      name: 'readTime',
+      title: 'Read Time',
+      type: 'number',
+      description: 'Estimated read time in minutes.',
     }),
     defineField({
       name: 'coverImage',
       title: 'Cover Image',
+      description:
+        'Image to be used on article listing page and top of individual article.',
       type: 'image',
+      validation: (rule) => rule.required(),
       options: {
         hotspot: true,
       },
+      fields: [
+        {
+          name: 'alt',
+          type: 'string',
+          title: 'Alternative Text',
+          description:
+            "Describe what's in the image for screen readers and search engines.",
+          validation: (Rule: any) => Rule.required(),
+        },
+      ],
     }),
     defineField({
       name: 'date',
@@ -91,6 +89,58 @@ export default defineType({
       title: 'Author',
       type: 'reference',
       to: [{ type: authorType.name }],
+    }),
+    defineField({
+      name: 'content',
+      title: 'Content',
+      type: 'blockContent',
+      validation: (rule) => rule.required(),
+    }),
+
+    defineField({
+      name: 'metaTitle',
+      title: 'Meta Title',
+      type: 'string',
+      group: 'seo',
+      description:
+        'SEO title for the page. If left blank the title will be  "Outframe | [Post title]"',
+    }),
+    defineField({
+      name: 'metaKeywords',
+      title: 'Meta Keywords',
+      type: 'array',
+      of: [{ type: 'string' }],
+      group: 'seo',
+      description: 'SEO Keywords for the page.',
+    }),
+    defineField({
+      name: 'metaDescription',
+      title: 'Meta Description',
+      type: 'text',
+      group: 'seo',
+      description:
+        'SEO description for the page. If left blank the default site description will be used.',
+    }),
+    defineField({
+      name: 'postOGImage',
+      title: 'Open Graph Image',
+      type: 'image',
+      group: 'seo',
+      description:
+        'Image used for social sharing. If left blank, the default site OG image will be used.',
+      options: {
+        hotspot: true,
+      },
+      fields: [
+        {
+          name: 'alt',
+          type: 'string',
+          title: 'Alternative Text',
+          description:
+            "Describe what's in the image for screen readers and search engines.",
+          validation: (Rule: any) => Rule.required(),
+        },
+      ],
     }),
   ],
   preview: {

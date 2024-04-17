@@ -1,10 +1,11 @@
 import { defineField, defineType } from 'sanity'
 
 export default defineType({
-  name: 'work',
-  title: 'Work',
+  name: 'caseStudy',
+  title: 'Case Study',
   type: 'document',
   groups: [
+    { name: 'card', title: 'Landing page card' },
     { name: 'content', title: 'Content' },
     { name: 'seo', title: 'SEO' },
   ],
@@ -17,6 +18,15 @@ export default defineType({
       validation: (Rule: any) => Rule.required(),
     }),
     defineField({
+      name: 'subtitle',
+      title: 'Subtitle',
+      type: 'string',
+      group: 'content',
+      description: 'The subtitle of the case study.',
+      validation: (Rule: any) => Rule.required(),
+    }),
+
+    defineField({
       name: 'slug',
       title: 'Slug',
       type: 'slug',
@@ -27,10 +37,11 @@ export default defineType({
       },
     }),
     defineField({
-      name: 'mainImage',
-      title: 'Main image',
+      name: 'thumbnailImage',
+      title: 'Thumbnail Image',
+      description: 'Image for the card on the home page.',
       type: 'image',
-      group: 'content',
+      group: 'card',
       options: {
         hotspot: true,
       },
@@ -45,6 +56,23 @@ export default defineType({
         },
       ],
     }),
+    defineField({
+      name: 'linkTitle',
+      title: 'Link Title',
+      type: 'string',
+      group: 'card',
+      description: 'Home page card link label.',
+      validation: (Rule: any) => Rule.required(),
+    }),
+    defineField({
+      name: 'caseStudyType',
+      title: 'Case Study Type',
+      type: 'string',
+      group: 'card',
+      description:
+        'The type of case study. The label below the link will use this text.',
+    }),
+
     defineField({
       name: 'metaDescription',
       title: 'Meta Description',

@@ -5,7 +5,8 @@ import author from './author'
 import post from './post'
 import settings from './settings'
 import work from './work'
+import homepageSettings from './homepageSettings'
 
 export const schema: { types: SchemaTypeDefinition[] } = {
-  types: [blockContent, author, post, settings, work],
+  types: [blockContent, author, post, settings, work, homepageSettings],
 }

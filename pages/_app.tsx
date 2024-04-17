@@ -1,8 +1,8 @@
-import 'tailwindcss/tailwind.css'
-
+import '../styles/global.css'
 import { AppProps } from 'next/app'
 import { lazy, Suspense } from 'react'
-
+import { useRouter } from 'next/router'
+import Header from 'components/Header'
 export interface SharedPageProps {
   draftMode: boolean
   token: string
@@ -23,8 +23,11 @@ export default function App({
   pageProps,
 }: AppProps<SharedPageProps>) {
   const { draftMode, token } = pageProps
+  const router = useRouter()
+
   return (
     <>
+      {router.pathname !== '/studio' && <Header />}
       {draftMode ? (
         <PreviewProvider token={token}>
           <Component {...pageProps} />
