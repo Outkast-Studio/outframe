@@ -77,6 +77,9 @@ export const homepageQuery = groq`*[_type == 'homepageSettings'][0]{
       _type,
     },
   },
+  testimonials[]-> {
+    ...,
+  }
 }
 `
 

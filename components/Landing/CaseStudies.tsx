@@ -8,11 +8,7 @@ import { Work } from 'lib/sanity.queries'
 import { PortableText } from '@portabletext/react'
 import { myPortableTextComponents } from 'pages/_app'
 
-const CaseStudies = ({
-  caseStudies,
-}: {
-  caseStudies: (Work | Testimonial)[]
-}) => {
+const CaseStudies = ({ caseStudies }: { caseStudies: any[] }) => {
   console.log(caseStudies)
   return (
     <section
@@ -141,6 +137,7 @@ function TestimonialCard({ name, role, content, image }: Testimonial) {
           alt={String(image.alt)}
           width={28}
           height={28}
+          className="rounded-[2px]"
         />
         <div
           className={clsx(

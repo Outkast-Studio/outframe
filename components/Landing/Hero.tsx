@@ -17,7 +17,7 @@ const Hero = ({ images }: Props) => {
   const position = 'CTO, Howsy'
 
   return (
-    <section className={clsx('pt-[246px] px-gutter geist', 'lg:pt-[300px]')}>
+    <section className={clsx('pt-[183px] px-gutter geist', 'lg:pt-[180px]')}>
       <div
         className={clsx(
           'md:flex gap-x-[56px]',

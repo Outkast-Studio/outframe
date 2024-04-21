@@ -32,11 +32,12 @@ module.exports = {
       screens: {
         md: '819px',
         lg: '1024px',
+        ml: '1350px',
         xl: '1600px',
       },
       fontFamily: {
-        monoRegular: ['Diatype-Semi-Mono', 'monospace'],
-        monoMedium: ['Diatype-Semi-Mono-Medium', 'monospace'],
+        monoRegular: ['Semi-Mono', 'monospace'],
+        monoMedium: ['Semi-Mono-Medium', 'monospace'],
         sansMedium: ['Geist-Medium', 'sans-serif'],
         sansRegular: ['Geist', 'sans-serif'],
       },

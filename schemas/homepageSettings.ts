@@ -67,5 +67,17 @@ export default defineType({
         },
       ],
     }),
+    defineField({
+      name: 'testimonials',
+      title: 'Testimonials',
+      type: 'array',
+      description: 'Select the testimonials to display on the homepage.',
+      of: [
+        {
+          type: 'reference',
+          to: [{ type: 'testimonial' }],
+        },
+      ],
+    }),
   ],
 })
