@@ -1,0 +1,55 @@
+@font-face {
+  font-family: 'Geist-Medium';
+  src:
+    url('/fonts/Geist-Medium.woff2') format('woff2'),
+    url('/fonts/Geist-Medium.woff') format('woff');
+  font-weight: normal;
+  font-style: 500;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Geist';
+  src:
+    url('/fonts/Geist-Regular.woff2') format('woff2'),
+    url('/fonts/Geiest-Regular.woff') format('woff');
+  font-weight: normal;
+  font-style: 500;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Semi-Mono';
+  src:
+    url('/fonts/ABCDiatypeSemi-Mono-Regular.woff2') format('woff2'),
+    url('/fonts/ABCDiatypeSemi-Mono-Regular.woff') format('woff');
+  font-weight: normal;
+  font-style: 400;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Semi-Mono-Medium';
+  src:
+    url('/fonts/ABCDiatypeSemi-Mono-Medium.woff2') format('woff2'),
+    url('/fonts/ABCDiatypeSemi-Mono-Medium.woff') format('woff');
+  font-weight: normal;
+  font-style: 500;
+  font-display: swap;
+}
+
+.mono {
+  font-family: 'Semi-Mono', monospace;
+}
+
+.monoMedium {
+  font-family: 'Semi-Mono-Medium', monospace;
+}
+
+.geist {
+  font-family: 'Geist', sans-serif;
+}
+
+.geistMedium {
+  font-family: 'Geist-Medium', sans-serif;
+}

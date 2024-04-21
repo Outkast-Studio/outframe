@@ -11,6 +11,7 @@ module.exports = {
       colors: {
         mainText: '#292626',
         secondaryText: '#615D5C',
+        tertiaryText: '#7D7A79',
         accent: '#FF4800',
         background: '#F7F7F7',
         dividers: '#D9D5D3',
@@ -32,6 +33,12 @@ module.exports = {
         md: '819px',
         lg: '1024px',
         xl: '1600px',
+      },
+      fontFamily: {
+        monoRegular: ['Diatype-Semi-Mono', 'monospace'],
+        monoMedium: ['Diatype-Semi-Mono-Medium', 'monospace'],
+        sansMedium: ['Geist-Medium', 'sans-serif'],
+        sansRegular: ['Geist', 'sans-serif'],
       },
       fontSize: {
         '5xl': '2.5rem',

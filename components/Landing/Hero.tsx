@@ -2,14 +2,22 @@ import React from 'react'
 import { clsx } from 'clsx'
 import Image from 'next/image'
 import Link from 'next/link'
-const Hero = () => {
+import { ImageAsset } from 'sanity'
+import { urlForImage } from 'lib/sanity.image'
+
+type Props = {
+  images: ImageAsset[]
+}
+
+const Hero = ({ images }: Props) => {
+  console.log(images)
   const testimonialText =
     'They are accomplished, efficient and creative designers. Not only that, but their process extends to the overall business strategy, making helpful suggestions on the feature set and product roadmap.'
   const testimonialName = 'Marc Harris'
   const position = 'CTO, Howsy'
 
   return (
-    <section className={clsx('pt-[246px] px-gutter', 'lg:pt-[300px]')}>
+    <section className={clsx('pt-[246px] px-gutter geist', 'lg:pt-[300px]')}>
       <div
         className={clsx(
           'md:flex gap-x-[56px]',
@@ -18,10 +26,10 @@ const Hero = () => {
       >
         <h1
           className={clsx(
-            'text-[36px] leading-[43.2px] uppercase tracking-[-2%] font-[500] semiMono',
+            'text-[36px] leading-[43.2px] uppercase tracking-[-0.2px] monoMedium',
             'md:w-[120%]',
-            'lg:text-[45px] lg:leading-[54px] lg:tracking-[-4%]',
-            'xl:text-[76px] xl:leading-[91.2px] xl:col-span-6 xl:w-full',
+            'lg:text-[45px] lg:leading-[54px] l',
+            'xl:text-[76px] xl:leading-[91.2px] xl:col-span-6 xl:w-full xl:tracking-[-0.4px]',
           )}
         >
           Product Design Partner, On Demand
@@ -29,7 +37,7 @@ const Hero = () => {
         <div className={clsx('md:w-full', 'xl:col-start-8 col-end-[11]')}>
           <p
             className={clsx(
-              'bodyCopy text-[16px] leading-[24px] text-secondaryText mt-[28px]',
+              'geist text-[16px] leading-[24px] text-secondaryText mt-[28px]',
               'md:mt-[0px]',
             )}
           >
@@ -43,14 +51,14 @@ const Hero = () => {
           <div className={clsx('flex mt-[28px] gap-x-[16px]', 'md:mt-[19px]')}>
             <button
               className={clsx(
-                'rounded-[4px] bg-accent text-background semiMono px-[18px] py-[12px] text-[14px] leading-[16.8px] tracking-[-2%]',
+                'rounded-[4px] bg-accent text-background monoMedium px-[18px] py-[12px] text-[14px] leading-[16.8px] tracking-[-0.2px]',
               )}
             >
               View plans
             </button>
             <button
               className={clsx(
-                'rounded-[4px] bg-background text-mainText semiMono px-[18px] py-[12px] text-[14px] leading-[16.8px] tracking-[-2%] border-[1px] border-dividers',
+                'rounded-[4px] bg-background text-mainText monoMedium px-[18px] py-[12px] text-[14px] leading-[16.8px] tracking-[-0.2px] border-[1px] border-dividers',
               )}
             >
               Book a Call
@@ -68,16 +76,23 @@ const Hero = () => {
           className={clsx(
             'mt-[64px] w-full',
             'md:mt-[0px] md:w-[120%]',
-            'xl:col-span-6 md:w-[100%]',
+            'xl:col-span-6 xl:w-[100%]',
           )}
         >
-          <div
+          {/* <div
             className={clsx(
               'h-[229px] bg-dividers',
               'md:h-[381px]',
               'xl:h-[550px]',
             )}
-          ></div>
+          ></div> */}
+          <Image
+            src={urlForImage(images[0].asset).url()}
+            alt={String(images[0].alt)}
+            width={2440}
+            height={1080}
+            className={clsx('object-cover')}
+          />
           {/* This is the Image component */}
         </div>
         <div
@@ -108,7 +123,7 @@ const Hero = () => {
               )}
             >
               <span>{testimonialName}</span>
-              <span className={clsx('text-secondaryText')}>{position}</span>
+              <span className={clsx('text-tertiaryText')}>{position}</span>
             </div>
           </div>
         </div>

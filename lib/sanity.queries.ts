@@ -1,4 +1,6 @@
 import { groq } from 'next-sanity'
+import { ImageAsset } from 'sanity'
+import type { PortableTextBlock } from '@portabletext/types'
 
 const postFields = groq`
   _id,
@@ -52,6 +54,32 @@ export const workSlugsQuery = groq`
 *[_type == "work" && defined(slug.current)][].slug.current
 `
 
+export const homepageQuery = groq`*[_type == 'homepageSettings'][0]{
+  ...,
+  logoCloud[] {
+    asset,
+    alt,
+    "dimensions": asset->metadata.dimensions
+  },
+  caseStudies[]-> {
+    _type == 'caseStudy' => {
+      _id,
+    title,
+    slug,
+    subtitle,
+    thumbnailImage,
+    linkTitle,
+    caseStudyType,
+    _type,
+    },
+    _type == 'testimonial' => {
+      ...,
+      _type,
+    },
+  },
+}
+`
+
 export interface Author {
   name?: string
   picture?: any
@@ -69,13 +97,26 @@ export interface Post {
   content?: any
 }
 
+export type HomepageCaseStudies = (Work | Testimonial)[]
+
+export interface HomepageSettings {
+  logoCloud: ImageAsset[]
+  heroCarousel: ImageAsset[]
+  caseStudies: HomepageCaseStudies
+  testimonials: Testimonial[]
+}
+
 export interface Work {
   _id: string
   title?: string
   slug?: {
     current?: string
   }
-  mainImage?: any
+  _type: string
+  subtitle?: string
+  thumbnailImage?: ImageAsset
+  linkTitle?: string
+  caseStudyType?: string
 }
 
 export interface Settings {
@@ -84,4 +125,12 @@ export interface Settings {
   ogImage?: {
     title?: string
   }
+}
+
+export interface Testimonial {
+  name: string
+  role: string
+  content: PortableTextBlock
+  image: ImageAsset
+  _type: string
 }

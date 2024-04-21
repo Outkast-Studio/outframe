@@ -1,9 +1,11 @@
 import { defineField, defineType } from 'sanity'
+import { CaseIcon } from '@sanity/icons'
 
 export default defineType({
   name: 'caseStudy',
   title: 'Case Study',
   type: 'document',
+  icon: CaseIcon,
   groups: [
     { name: 'card', title: 'Landing page card' },
     { name: 'content', title: 'Content' },
@@ -106,7 +108,7 @@ export default defineType({
   preview: {
     select: {
       title: 'title',
-      media: 'mainImage',
+      media: 'thumbnailImage',
     },
     prepare(selection) {
       return { ...selection }

@@ -21,6 +21,7 @@ import postType from 'schemas/post'
 import settingsType from 'schemas/settings'
 import workType from 'schemas/work'
 import { schema } from 'schemas'
+import { media } from 'sanity-plugin-media'
 
 const title =
   process.env.NEXT_PUBLIC_SANITY_PROJECT_TITLE || 'Next.js Blog with Sanity.io'
@@ -37,6 +38,7 @@ export default defineConfig({
       // `defaultDocumentNode` is responsible for adding a “Preview” tab to the document pane
       defaultDocumentNode: previewDocumentNode(),
     }),
+    media(),
     // presentationTool({
     //   locate,
     //   previewUrl: {

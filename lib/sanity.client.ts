@@ -15,6 +15,7 @@ import {
   allWorkQuery,
   workSlugsQuery,
   type Settings,
+  homepageQuery,
   settingsQuery,
 } from 'lib/sanity.queries'
 import { createClient, type SanityClient } from 'next-sanity'
@@ -85,4 +86,8 @@ export async function getAllWorkSlugs() {
   const client = getClient()
   const slugs = (await client.fetch<string[]>(workSlugsQuery)) || []
   return slugs.map((slug) => ({ slug }))
+}
+
+export async function getHomepageSettings(client: SanityClient) {
+  return (await client.fetch(homepageQuery)) || {}
 }

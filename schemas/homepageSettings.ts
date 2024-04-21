@@ -2,14 +2,14 @@ import { HomeIcon } from '@sanity/icons'
 import { defineField, defineType } from 'sanity'
 
 export default defineType({
-  name: 'homepagSettings',
+  name: 'homepageSettings',
   title: 'Homepage Settings',
   icon: HomeIcon,
   type: 'document',
   fields: [
     defineField({
-      name: 'logoCloud',
-      title: 'Logo Cloud',
+      name: 'heroCarousel',
+      title: 'Hero Carousel',
       type: 'array',
       of: [
         {
@@ -24,6 +24,46 @@ export default defineType({
               validation: (Rule: any) => Rule.required(),
             },
           ],
+        },
+      ],
+    }),
+    defineField({
+      name: 'logoCloud',
+      title: 'Logo Cloud',
+      type: 'array',
+      of: [
+        {
+          type: 'image',
+          fields: [
+            {
+              type: 'string',
+              name: 'alt',
+              title: 'Alternative Text',
+              description:
+                "Describe what's in the image for screen readers and search engines.",
+              validation: (Rule: any) => Rule.required(),
+            },
+          ],
+        },
+      ],
+    }),
+    defineField({
+      name: 'caseStudies',
+      title: 'Case Studies Grid',
+      type: 'array',
+      description: 'Select the case studies to display on the homepage.',
+      of: [
+        {
+          name: 'caseStudy',
+          title: 'Case Study',
+          type: 'reference',
+          to: [{ type: 'caseStudy' }],
+        },
+        {
+          name: 'testimonial',
+          title: 'Testimonial',
+          type: 'reference',
+          to: [{ type: 'testimonial' }],
         },
       ],
     }),

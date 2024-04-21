@@ -15,6 +15,10 @@ export interface Seo {
   keywords: string
 }
 
+export const myPortableTextComponents = {
+  types: {},
+}
+
 const PreviewProvider = lazy(() => import('components/PreviewProvider'))
 // const VisualEditing = lazy(() => import('components/VisualEditing'))
 

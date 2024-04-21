@@ -4,6 +4,7 @@
 
 import { definePlugin, type DocumentDefinition } from 'sanity'
 import { type StructureResolver } from 'sanity/desk'
+import homepageSettings from 'schemas/homepageSettings'
 
 export const settingsPlugin = definePlugin<{ type: string }>(({ type }) => {
   return {
@@ -36,6 +37,8 @@ export const settingsStructure = (
   typeDef: DocumentDefinition,
 ): StructureResolver => {
   return (S) => {
+    const individualTypes = ['homepageSettings', 'settings']
+
     // The `Settings` root list item
     const settingsListItem = // A singleton not using `documentListItem`, eg no built-in preview
       S.listItem()
@@ -48,13 +51,29 @@ export const settingsStructure = (
             .documentId(typeDef.name),
         )
 
+    const homepageSettingsListItem = // A singleton not using `documentListItem`, eg no built-in preview
+      S.listItem()
+        .title(homepageSettings.title)
+        .icon(homepageSettings.icon)
+        .child(
+          S.editor()
+            .title(homepageSettings.title)
+            .id(homepageSettings.name)
+            .schemaType(homepageSettings.name)
+            .documentId(homepageSettings.name),
+        )
+
     // The default root list items (except custom ones)
     const defaultListItems = S.documentTypeListItems().filter(
-      (listItem) => listItem.getId() !== typeDef.name,
+      (listItem) => !individualTypes.includes(listItem.getId()),
     )
-
     return S.list()
       .title('Content')
-      .items([settingsListItem, S.divider(), ...defaultListItems])
+      .items([
+        settingsListItem,
+        homepageSettingsListItem,
+        S.divider(),
+        ...defaultListItems,
+      ])
   }
 }
