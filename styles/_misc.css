@@ -1,0 +1,111 @@
+.AccordionContent[data-state='open'] {
+  animation: slideDown 600ms cubic-bezier(0.62, 0.05, 0.01, 0.99);
+}
+.AccordionContent[data-state='closed'] {
+  animation: slideUp 600ms cubic-bezier(0.62, 0.05, 0.01, 0.99);
+}
+@keyframes slideDown {
+  from {
+    height: 0;
+  }
+  to {
+    height: var(--radix-accordion-content-height);
+  }
+}
+
+@keyframes slideUp {
+  from {
+    height: var(--radix-accordion-content-height);
+  }
+  to {
+    height: 0;
+  }
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes fadeOut {
+  from {
+    opacity: 1;
+  }
+  to {
+    opacity: 0;
+  }
+}
+
+.AccordionContentDesktop[data-state='open'] {
+  animation: slideHorizontal 600ms cubic-bezier(0.62, 0.05, 0.01, 0.99);
+}
+.AccordionContentDesktop[data-state='closed'] {
+  animation: slideBack 600ms cubic-bezier(0.62, 0.05, 0.01, 0.99);
+}
+
+.AccordionContentDesktop[data-state='closed'] .theContent {
+  animation: fadeOut 300ms;
+}
+.AccordionContentDesktop[data-state='open'] .theContent {
+  animation: fadeIn 330ms linear 650ms;
+}
+
+@keyframes slideHorizontal {
+  from {
+    width: 0;
+  }
+  to {
+    width: 307px;
+  }
+}
+
+@keyframes slideBack {
+  from {
+    width: 307px;
+  }
+  to {
+    width: 0;
+  }
+}
+
+.AccordionContent,
+.AccordionContentDesktop {
+  overflow: hidden;
+}
+
+.accordionButton .lowerLine {
+  transition: transform 0.6s cubic-bezier(0.62, 0.05, 0.01, 0.99);
+}
+
+.accordionButton[data-state='open'] .lowerLine {
+  transform: rotate(0deg) translateY(-50%) translateX(-50%) !important;
+}
+
+.accordionButton[data-state='open'] .content {
+  opacity: 0;
+}
+
+.accordionButton[data-state='open'] .sides {
+  opacity: 1;
+}
+
+.accordionItem[data-state='open'] {
+  border-radius: 2px;
+}
+
+.verticalText {
+  writing-mode: vertical-rl;
+  transform: rotate(180deg);
+}
+
+.accordionButton[data-state='open'] .content {
+  opacity: 0;
+}
+
+.accordionButton[data-state='open'] .sides {
+  opacity: 1;
+}

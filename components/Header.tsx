@@ -39,7 +39,7 @@ const Header = () => {
   return (
     <header
       className={clsx(
-        'flex px-gutter bg-background pt-[24px] pb-[16px] justify-between sticky top-0 left-0 w-full items-center',
+        'flex px-gutter bg-background pt-[24px] pb-[16px] justify-between sticky top-0 left-0 w-full items-center z-[100]',
         'md:mt-[40px] pb-[20px]',
         'xl:grid grid-cols-12 xl:gap-x-columnGap ',
       )}

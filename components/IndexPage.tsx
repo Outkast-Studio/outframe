@@ -8,6 +8,9 @@ import OurStudio from './Landing/OurStudio'
 import Benefits from './Landing/Benefits'
 import Testimonial from 'schemas/testimonial'
 import Testimoninals from './Landing/Testimonials'
+import Process from './Landing/Process'
+import Services from './Landing/Services'
+import Pricing from './Landing/Pricing'
 
 export default function Post({
   work,
@@ -24,6 +27,9 @@ export default function Post({
       <OurStudio />
       <Benefits />
       <Testimoninals testimonials={homepageSettings.testimonials} />
+      <Process />
+      <Services />
+      <Pricing />
     </main>
   )
 }
