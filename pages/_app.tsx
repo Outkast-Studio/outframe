@@ -3,6 +3,7 @@ import { AppProps } from 'next/app'
 import { lazy, Suspense } from 'react'
 import { useRouter } from 'next/router'
 import Header from 'components/Header'
+import { clsx } from 'clsx'
 export interface SharedPageProps {
   draftMode: boolean
   token: string
@@ -30,7 +31,7 @@ export default function App({
   const router = useRouter()
 
   return (
-    <>
+    <div className={clsx('bg-background')}>
       {router.pathname !== '/studio' && <Header />}
       {draftMode ? (
         <PreviewProvider token={token}>
@@ -45,6 +46,6 @@ export default function App({
           <VisualEditing />
         </Suspense>
       )} */}
-    </>
+    </div>
   )
 }

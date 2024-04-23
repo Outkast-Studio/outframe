@@ -11,6 +11,7 @@ import Testimoninals from './Landing/Testimonials'
 import Process from './Landing/Process'
 import Services from './Landing/Services'
 import Pricing from './Landing/Pricing'
+import Footer from './Footer'
 
 export default function Post({
   work,
@@ -19,9 +20,13 @@ export default function Post({
   work: Work[]
   homepageSettings: HomepageSettings
 }) {
+  console.log(homepageSettings)
   return (
     <main className={clsx('bg-background')}>
-      <Hero images={homepageSettings.heroCarousel} />
+      <Hero
+        images={homepageSettings.heroCarousel}
+        testimonial={homepageSettings.heroTestimonial}
+      />
       <LogoCloud images={homepageSettings.logoCloud} />
       <CaseStudies caseStudies={homepageSettings.caseStudies} />
       <OurStudio />
@@ -30,6 +35,7 @@ export default function Post({
       <Process />
       <Services />
       <Pricing />
+      <Footer />
     </main>
   )
 }

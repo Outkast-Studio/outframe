@@ -17,6 +17,7 @@ import {
   type Settings,
   homepageQuery,
   settingsQuery,
+  allPostQuery,
 } from 'lib/sanity.queries'
 import { createClient, type SanityClient } from 'next-sanity'
 
@@ -80,6 +81,10 @@ export async function getWorkBySlug(client: SanityClient, slug: string) {
 
 export async function getAllWork(client: SanityClient) {
   return (await client.fetch(allWorkQuery)) || []
+}
+
+export async function getAllBlogPosts(client: SanityClient) {
+  return (await client.fetch(allPostQuery)) || []
 }
 
 export async function getAllWorkSlugs() {

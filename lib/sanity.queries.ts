@@ -50,6 +50,10 @@ export const allWorkQuery = groq`
 *[_type == "caseStudy"]  | order(date desc, _updatedAt desc)
 `
 
+export const allPostQuery = groq`
+*[_type == "post"] | order(date desc, _updatedAt desc)
+`
+
 export const workSlugsQuery = groq`
 *[_type == "work" && defined(slug.current)][].slug.current
 `
@@ -60,6 +64,10 @@ export const homepageQuery = groq`*[_type == 'homepageSettings'][0]{
     asset,
     alt,
     "dimensions": asset->metadata.dimensions
+  },
+  heroTestimonial->{
+    ...,
+    _type,
   },
   caseStudies[]-> {
     _type == 'caseStudy' => {
@@ -96,8 +104,12 @@ export interface Post {
   _updatedAt?: string
   excerpt?: string
   author?: Author
-  slug?: string
+  slug?: {
+    current: string
+  }
   content?: any
+  subtitle?: string
+  cardSubtitle?: string
 }
 
 export type HomepageCaseStudies = (Work | Testimonial)[]
@@ -107,6 +119,7 @@ export interface HomepageSettings {
   heroCarousel: ImageAsset[]
   caseStudies: HomepageCaseStudies
   testimonials: Testimonial[]
+  heroTestimonial: Testimonial
 }
 
 export interface Work {

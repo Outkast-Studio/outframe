@@ -27,6 +27,13 @@ export default defineType({
         },
       ],
     }),
+
+    defineField({
+      name: 'heroTestimonial',
+      title: 'Hero Testimonial',
+      type: 'reference',
+      to: [{ type: 'testimonial' }],
+    }),
     defineField({
       name: 'logoCloud',
       title: 'Logo Cloud',

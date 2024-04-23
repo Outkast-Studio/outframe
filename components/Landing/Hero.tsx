@@ -4,17 +4,19 @@ import Image from 'next/image'
 import Link from 'next/link'
 import { ImageAsset } from 'sanity'
 import { urlForImage } from 'lib/sanity.image'
+import { PortableText } from '@portabletext/react'
+import { Testimonial } from 'lib/sanity.queries'
 
 type Props = {
   images: ImageAsset[]
+  testimonial: Testimonial
 }
 
-const Hero = ({ images }: Props) => {
-  console.log(images)
-  const testimonialText =
-    'They are accomplished, efficient and creative designers. Not only that, but their process extends to the overall business strategy, making helpful suggestions on the feature set and product roadmap.'
-  const testimonialName = 'Marc Harris'
-  const position = 'CTO, Howsy'
+const Hero = ({ images, testimonial }: Props) => {
+  console.log(testimonial)
+  const testimonialText = testimonial.content
+  const testimonialName = testimonial.name
+  const position = testimonial.role
 
   return (
     <section className={clsx('pt-[183px] px-gutter geist', 'lg:pt-[180px]')}>
@@ -102,21 +104,27 @@ const Hero = ({ images }: Props) => {
             'xl:col-start-8 xl:col-end-[11]',
           )}
         >
-          <p
+          <div
             className={clsx(
               'text-[16px] leading-[24px] text-center text-secondaryText',
               'md:text-left md:text-[14px] md:leading-[21px]',
             )}
           >
-            "{testimonialText}"
-          </p>
+            <PortableText value={testimonialText} />
+          </div>
           <div
             className={clsx(
               'flex justify-center items-center gap-x-[12px]',
               'md:justify-start md:mb-[9px]',
             )}
           >
-            {/* <Image src={'#'} height={28} width={28} alt={'#'} /> */}
+            <Image
+              src={urlForImage(testimonial.image.asset).url()}
+              height={28}
+              width={28}
+              alt={String(testimonial.image.alt)}
+              className={clsx('rounded-[2px]')}
+            />
             <div
               className={clsx(
                 'flex gap-x-[6px] text-[14px] leading-[16.8px] text-mainText',

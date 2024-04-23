@@ -41,6 +41,13 @@ export default defineType({
       validation: (rule) => rule.required(),
     }),
     defineField({
+      name: 'cardSubtitle',
+      title: 'Card Subtitle',
+      type: 'string',
+      description: 'The subtitle of the post that appears on the card.',
+      validation: (rule) => rule.required(),
+    }),
+    defineField({
       name: 'slug',
       title: 'Slug',
       type: 'slug',
