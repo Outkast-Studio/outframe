@@ -4,6 +4,9 @@ import { lazy, Suspense } from 'react'
 import { useRouter } from 'next/router'
 import Header from 'components/Header'
 import { clsx } from 'clsx'
+import { ImageAsset } from 'sanity'
+import Image from 'next/image'
+import { urlForImage } from 'lib/sanity.image'
 export interface SharedPageProps {
   draftMode: boolean
   token: string
@@ -17,7 +20,17 @@ export interface Seo {
 }
 
 export const myPortableTextComponents = {
-  types: {},
+  types: {
+    image: ({ value }) => (
+      <Image
+        src={urlForImage(value).quality(80).width(2440).url()}
+        alt={String(value.alt)}
+        width={2440}
+        height={2440}
+        className={clsx('my-[22px]')}
+      />
+    ),
+  },
 }
 
 const PreviewProvider = lazy(() => import('components/PreviewProvider'))

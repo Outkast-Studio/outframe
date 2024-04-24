@@ -22,13 +22,7 @@ interface Query {
 
 export default function Page(props: PageProps) {
   const [data] = useLiveQuery<Post[]>(props.posts, allPostQuery)
-  console.log(data)
 
-  const formattedDate = (date: string) =>
-    new Date(date).toLocaleDateString('en-US', {
-      month: 'long',
-      year: 'numeric',
-    })
   return (
     <Layout>
       <main className={clsx('px-gutter bg-background text-mainText')}>
@@ -62,54 +56,7 @@ export default function Page(props: PageProps) {
           )}
         >
           {data.map((post) => (
-            <Link
-              href={`/blog/${post.slug.current}`}
-              key={post._id}
-              className={clsx(
-                'md:w-[calc(50%-20px)]',
-                'lg:w-[calc(33%-24px)]',
-                'xl:w-[calc(33%-50px)]',
-              )}
-            >
-              <article
-                key={post._id}
-                className={clsx(
-                  'pb-[12px] border-b-[1px] border-b-dividers',
-                  'lg:pb-[16px]',
-                )}
-              >
-                <Image
-                  src={urlForImage(post.coverImage).url()}
-                  alt={String(post.coverImage.alt)}
-                  width={1200}
-                  height={1200}
-                />
-                <div
-                  className={clsx(
-                    'flex gap-x-[30px] leading-[27px] text-[18px] mt-[12px] font-sansMedium justify-between',
-                    'lg:mt-[16px] lg:text-[20px] lg:leading-[26px]',
-                  )}
-                >
-                  <h6 className={clsx('lg:max-w-[404px]')}>{post.title}</h6>
-                  <span
-                    className={clsx(
-                      'whitespace-nowrap font-monoRegular text-accent text-[14px] leading-[25px] tracking-[-0.2px]',
-                      'lg:text-[16px] leading-[24px]',
-                    )}
-                  >
-                    {formattedDate(post.date)}
-                  </span>
-                </div>
-                <p
-                  className={clsx(
-                    'text-secondaryText font-sansRegular text-[16px] leading-[24px] mt-[12px]',
-                    'lg:mt-[16px] lg:text-[16px] leading-[26px]',
-                  )}
-                >
-                  {post.cardSubtitle}
-                </p>
-              </article>
-            </Link>
+            <BlogCard post={post} key={post._id} />
           ))}
         </section>
       </main>
@@ -131,4 +78,70 @@ export const getStaticProps: GetStaticProps<PageProps, Query> = async (ctx) => {
       token: draftMode ? readToken : '',
     },
   }
+}
+
+export function BlogCard({
+  post,
+  isIndividualBlog = false,
+}: {
+  post: Post
+  isIndividualBlog?: boolean
+}) {
+  const formattedDate = (date: string) =>
+    new Date(date).toLocaleDateString('en-US', {
+      month: 'long',
+      year: 'numeric',
+    })
+  return (
+    <Link
+      href={`/blog/${post.slug.current}`}
+      key={post._id}
+      className={clsx(
+        'md:w-[calc(50%-20px)]',
+
+        'lg:w-[calc(33%-24px)]',
+        'xl:w-[calc(33%-50px)]',
+        isIndividualBlog && 'md:w-full lg:w-[33%] xl:w-[33%]',
+      )}
+    >
+      <article
+        key={post._id}
+        className={clsx(
+          'pb-[12px] border-b-[1px] border-b-dividers',
+          'lg:pb-[16px]',
+        )}
+      >
+        <Image
+          src={urlForImage(post.coverImage).url()}
+          alt={String(post.coverImage.alt)}
+          width={1200}
+          height={1200}
+        />
+        <div
+          className={clsx(
+            'flex gap-x-[30px] leading-[27px] text-[18px] mt-[12px] font-sansMedium justify-between',
+            'lg:mt-[16px] lg:text-[20px] lg:leading-[26px]',
+          )}
+        >
+          <h6 className={clsx('lg:max-w-[404px]')}>{post.title}</h6>
+          <span
+            className={clsx(
+              'whitespace-nowrap font-monoRegular text-accent text-[14px] leading-[25px] tracking-[-0.2px]',
+              'lg:text-[16px] leading-[24px]',
+            )}
+          >
+            {formattedDate(post.date)}
+          </span>
+        </div>
+        <p
+          className={clsx(
+            'text-secondaryText font-sansRegular text-[16px] leading-[24px] mt-[12px]',
+            'lg:mt-[16px] lg:text-[16px] leading-[26px]',
+          )}
+        >
+          {post.cardSubtitle}
+        </p>
+      </article>
+    </Link>
+  )
 }

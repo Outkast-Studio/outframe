@@ -105,6 +105,14 @@ export default defineType({
     }),
 
     defineField({
+      name: 'suggestedArticles',
+      title: 'Suggested Articles',
+      type: 'array',
+      of: [{ type: 'reference', to: [{ type: 'post' }] }],
+      description: 'Articles to suggest at the end of the post.',
+      validation: (rule) => rule.max(3),
+    }),
+    defineField({
       name: 'metaTitle',
       title: 'Meta Title',
       type: 'string',

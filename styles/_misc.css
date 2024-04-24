@@ -109,3 +109,53 @@
 .accordionButton[data-state='open'] .sides {
   opacity: 1;
 }
+
+/* --------------------  Portable Text */
+
+.portableText h2 {
+  line-height: 42px;
+  font-size: 36px;
+  font-family: 'Semi-Mono-Medium', monospace;
+  margin-bottom: 32px;
+}
+
+.portableText p {
+  font-size: 18px;
+  line-height: 25.2px;
+  font-family: 'Geist', sans-serif;
+}
+
+.portableText ul {
+  font-size: 18px;
+  line-height: 25.2px;
+  font-family: 'Geist', sans-serif;
+}
+
+.portableText li {
+  list-style-type: disc;
+  margin-left: 20px;
+}
+
+.portableText h3 {
+  color: #ff4800;
+  font-size: 18px;
+  line-height: 27px;
+  font-family: Geist-Medium;
+  margin-bottom: 12px;
+}
+
+@media (min-width: 1024px) {
+  .portableText p,
+  .portableText ul {
+    font-size: 20px;
+    line-height: 36px;
+  }
+  .portableText li {
+    font-family: Geist-Medium;
+  }
+  .portableText h3 {
+    font-size: 20px;
+    line-height: 28px;
+    margin-bottom: 16px;
+  }
+}

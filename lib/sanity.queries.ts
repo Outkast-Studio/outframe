@@ -11,13 +11,14 @@ const postFields = groq`
   coverImage,
   "slug": slug.current,
   "author": author->{name, picture},
+
 `
 
 export const settingsQuery = groq`*[_type == "settings"][0]`
 
 export const indexQuery = groq`
 *[_type == "post"] | order(date desc, _updatedAt desc) {
-  ${postFields}
+ ${postFields}
 }`
 
 export const postAndMoreStoriesQuery = groq`
@@ -38,6 +39,13 @@ export const postSlugsQuery = groq`
 
 export const postBySlugQuery = groq`
 *[_type == "post" && slug.current == $slug][0] {
+  ...,
+  'toc':content[style == 'h2']{
+    'text': children[0].text,
+  },
+  suggestedArticles[]->{
+    ...,
+  },
   ${postFields}
 }
 `
@@ -110,6 +118,15 @@ export interface Post {
   content?: any
   subtitle?: string
   cardSubtitle?: string
+  metaDescription?: string
+  metaTitle?: string
+  metaKeywords?: string[]
+  workOgImage?: ImageAsset
+  readTime?: number
+  toc?: {
+    text: string
+  }[]
+  suggestedArticles: Post[]
 }
 
 export type HomepageCaseStudies = (Work | Testimonial)[]
