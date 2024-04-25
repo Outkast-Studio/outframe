@@ -7,6 +7,12 @@ import settings from './settings'
 import work from './work'
 import homepageSettings from './homepageSettings'
 import testimonial from './testimonial'
+import {
+  singleImage,
+  textBlock,
+  twoColumnImage,
+  testimonialBlock,
+} from './work'
 
 export const schema: { types: SchemaTypeDefinition[] } = {
   types: [
@@ -17,5 +23,9 @@ export const schema: { types: SchemaTypeDefinition[] } = {
     work,
     homepageSettings,
     testimonial,
+    singleImage,
+    textBlock,
+    twoColumnImage,
+    testimonialBlock,
   ],
 }

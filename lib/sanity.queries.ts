@@ -51,7 +51,12 @@ export const postBySlugQuery = groq`
 `
 
 export const workBySlugQuery = groq` 
-*[_type == "work" && slug.current == $slug][0]
+*[_type == "caseStudy" && slug.current == $slug][0]{
+  ...,
+  nextProject->{
+    ...,
+  }
+}
 `
 
 export const allWorkQuery = groq`
@@ -63,7 +68,7 @@ export const allPostQuery = groq`
 `
 
 export const workSlugsQuery = groq`
-*[_type == "work" && defined(slug.current)][].slug.current
+*[_type == "caseStudy" && defined(slug.current)][].slug.current
 `
 
 export const homepageQuery = groq`*[_type == 'homepageSettings'][0]{
@@ -139,6 +144,21 @@ export interface HomepageSettings {
   heroTestimonial: Testimonial
 }
 
+export type SingleImage = {
+  image: ImageAsset
+}
+
+export type TwoColumnImage = {
+  leftImage: ImageAsset
+  rightImage: ImageAsset
+}
+
+export type TextBlock = {
+  content: PortableTextBlock
+  title: string
+}
+
+type Module = SingleImage | TwoColumnImage | TextBlock
 export interface Work {
   _id: string
   title?: string
@@ -150,6 +170,14 @@ export interface Work {
   thumbnailImage?: ImageAsset
   linkTitle?: string
   caseStudyType?: string
+  type?: string
+  roles?: string[]
+  year?: number
+  modules?: Module[]
+  nextProject?: Work
+  metaDescription?: string
+  metaTitle?: string
+  metaKeywords?: string[]
 }
 
 export interface Settings {

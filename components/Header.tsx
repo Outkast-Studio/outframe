@@ -44,7 +44,9 @@ const Header = () => {
         'xl:grid grid-cols-12 xl:gap-x-columnGap ',
       )}
     >
-      <Logo />
+      <Link href="/">
+        <Logo />
+      </Link>
       <nav
         className={clsx('hidden', 'md:block', 'xl:col-start-8 xl:col-end-13')}
       >
