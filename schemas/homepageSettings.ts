@@ -86,5 +86,34 @@ export default defineType({
         },
       ],
     }),
+    defineField({
+      name: 'dayRate',
+      title: 'Day Rate',
+      type: 'number',
+      description:
+        'The day rate for the service. Powers the "All plans have a rate of $XXX/day" text. ',
+      validation: (Rule: any) => Rule.required(),
+    }),
+    defineField({
+      name: 'flexPricing',
+      title: 'Flex Pricing',
+      type: 'number',
+      description: 'The price for the Flex plan',
+      validation: (Rule: any) => Rule.required(),
+    }),
+    defineField({
+      name: 'partTimePricing',
+      title: 'Part-time Pricing',
+      type: 'number',
+      description: 'The price for the Part-time plan',
+      validation: (Rule: any) => Rule.required(),
+    }),
+    defineField({
+      name: 'dedicatedPricing',
+      title: 'Dedicated Pricing',
+      type: 'number',
+      description: 'The price for the Dedicated plan',
+      validation: (Rule: any) => Rule.required(),
+    }),
   ],
 })

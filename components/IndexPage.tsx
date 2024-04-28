@@ -34,7 +34,7 @@ export default function Post({
       <Testimoninals testimonials={homepageSettings.testimonials} />
       <Process />
       <Services />
-      <Pricing />
+      <Pricing settings={homepageSettings} />
       <Footer />
     </main>
   )

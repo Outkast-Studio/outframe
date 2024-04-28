@@ -49,10 +49,7 @@ export function CustomHead({
         <meta name="twitter:creator" content="@**Business" />
         <meta name="twitter:title" content={title || '**Business'} />
         <meta name="twitter:description" content={description || ''} />
-        <meta
-          name="twitter:image"
-          content={image ? urlForImage(image).url() : defaultOGImage}
-        />
+        <meta name="twitter:image" content={image ? image : defaultOGImage} />
 
         {/* START FAVICON */}
         <link
@@ -88,7 +85,7 @@ export function CustomHead({
           locale: 'en_US',
           images: [
             {
-              url: image ? urlForImage(image).url() : defaultOGImage,
+              url: image ? image : defaultOGImage,
               width: 1200,
               height: 630,
               alt: title,

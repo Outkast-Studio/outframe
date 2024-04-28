@@ -17,7 +17,7 @@ import {
 import { GetStaticProps } from 'next'
 import { draftMode } from 'next/headers'
 import { QueryParams, SanityDocument } from 'next-sanity'
-import type { SharedPageProps } from 'pages/_app'
+import type { Seo, SharedPageProps } from 'pages/_app'
 import { useLiveQuery } from 'next-sanity/preview'
 import IndexPage from 'components/IndexPage'
 import { Layout } from 'components/layouts/Layout'
@@ -25,6 +25,7 @@ interface PageProps extends SharedPageProps {
   work: Work[]
   params: QueryParams
   homepageSettings: HomepageSettings
+  seo: Seo
 }
 
 interface Query {
@@ -39,22 +40,8 @@ export default function Page(props: PageProps) {
   )
   const { work, draftMode } = props
 
-  //Need to grab settings here.
-
-  //Presentation laye when stable.
-  // if (draftMode) {
-  //   return (
-  //     <PreviewComponent
-  //       document={work}
-  //       params={props.params}
-  //       documentType="index"
-  //       query={allWorkQuery}
-  //     />
-  //   )
-  // }
-
   return (
-    <Layout>
+    <Layout seo={props.seo}>
       <IndexPage work={data} homepageSettings={homepageSettings} />
     </Layout>
   )
@@ -65,12 +52,20 @@ export const getStaticProps: GetStaticProps<PageProps, Query> = async (ctx) => {
   const client = getClient(draftMode ? { token: readToken } : undefined)
   const work = await getAllWork(client)
   const homepageSettings = await getHomepageSettings(client)
+  const seo = {
+    title: 'Outframe | Product Design Partner, On Demand.',
+    description: '',
+    image: '',
+    keywords: [],
+  }
+
   return {
     props: {
       work,
       homepageSettings,
       params,
       draftMode,
+      seo,
       token: draftMode ? readToken : '',
     },
   }

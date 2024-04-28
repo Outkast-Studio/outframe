@@ -13,6 +13,7 @@ import PreviewComponent from 'components/PreviewComponent'
 import { useLiveQuery } from 'next-sanity/preview'
 import { Layout } from 'components/layouts/Layout'
 import BlogPage from 'components/BlogPage'
+import { urlForImage } from 'lib/sanity.image'
 
 interface PageProps extends SharedPageProps {
   post: Post
@@ -26,18 +27,7 @@ interface Query {
 
 export default function ProjectSlugRoute(props: PageProps) {
   const [data] = useLiveQuery<Post>(props.post, postBySlugQuery, props.params)
-  console.log(data)
 
-  // if (draftMode) {
-  //   return (
-  //     <PreviewComponent
-  //       document={work}
-  //       params={props.params}
-  //       documentType="work"
-  //       query={workBySlugQuery}
-  //     />
-  //   )
-  // }
   return (
     <Layout seo={props.seo}>
       <BlogPage post={data} />
@@ -51,10 +41,10 @@ export const getStaticProps: GetStaticProps<PageProps, Query> = async (ctx) => {
   const post = await getPostBySlug(client, params.slug)
 
   const seo = {
-    title: post?.title || '',
-    description: post?.metaDescription || '',
-    image: '',
-    keywords: '',
+    title: post.metaTitle ? post.metaTitle : `Outframe | ${post.title}`,
+    description: post.metaDescription || '',
+    image: post.postOGImage ? urlForImage(post.postOGImage).url() : '',
+    keywords: post.metaKeywords || [],
   }
 
   if (!post) {

@@ -11,6 +11,7 @@ import { useLenis } from '@studio-freight/react-lenis'
 import { BlogCard } from '../pages/blog'
 
 const BlogPage = ({ post }: { post: Post }) => {
+  console.log(post)
   const formattedDate = (date: string) =>
     new Date(date).toLocaleDateString('en-US', {
       day: 'numeric',

@@ -126,7 +126,7 @@ export interface Post {
   metaDescription?: string
   metaTitle?: string
   metaKeywords?: string[]
-  workOgImage?: ImageAsset
+  postOGImage?: ImageAsset
   readTime?: number
   toc?: {
     text: string
@@ -142,6 +142,10 @@ export interface HomepageSettings {
   caseStudies: HomepageCaseStudies
   testimonials: Testimonial[]
   heroTestimonial: Testimonial
+  dayRate: number
+  flexPricing: number
+  partTimePricing: number
+  dedicatedPricing: number
 }
 
 export type SingleImage = {
@@ -178,6 +182,7 @@ export interface Work {
   metaDescription?: string
   metaTitle?: string
   metaKeywords?: string[]
+  ogImage?: string
 }
 
 export interface Settings {

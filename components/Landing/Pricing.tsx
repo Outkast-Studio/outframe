@@ -1,26 +1,35 @@
 import React from 'react'
 import { clsx } from 'clsx'
 import Image from 'next/image'
+import { HomepageSettings } from 'lib/sanity.queries'
 
-const Pricing = () => {
+const Pricing = ({ settings }: { settings: HomepageSettings }) => {
+  const formatCurrency = (number: number) => {
+    return new Intl.NumberFormat('en-US', {
+      style: 'currency',
+      currency: 'USD',
+      maximumFractionDigits: 0,
+    }).format(number)
+  }
+
   const pricing = [
     {
       title: 'Flex',
       daysPerWeek: '1 day / week',
       description: 'Flexible plan for shorter projects, or just to start',
-      price: '2,400',
+      price: formatCurrency(settings.flexPricing),
     },
     {
       title: 'Part-time',
       daysPerWeek: '2 days / week',
       description: 'Flexible plan for shorter projects, or just to start',
-      price: '4,800',
+      price: formatCurrency(settings.partTimePricing),
     },
     {
       title: 'Dedicated',
       daysPerWeek: '3 days / week',
       description: 'Flexible plan for shorter projects, or just to start',
-      price: '7,200',
+      price: formatCurrency(settings.dedicatedPricing),
     },
   ]
   return (
@@ -197,7 +206,7 @@ function PricingCard({
           </h6>
         </div>
         <h6 className={clsx('text-[18px] leading-[27px]', 'lg:hidden')}>
-          ${price}/m
+          {price}/m
         </h6>
       </div>
       <Image
@@ -209,7 +218,7 @@ function PricingCard({
       />
       <div
         className={clsx(
-          'p-[24px] flex gap-x-[11px]',
+          'p-[24px] flex gap-x-[11px] justify-between',
           'lg:pt-[26px] lg:px-[32px] lg:pb-[38px]',
         )}
       >
@@ -236,7 +245,7 @@ function PricingCard({
           'xl:text-[32px] xl:leading-[48px]',
         )}
       >
-        ${price}/m
+        {price}/m
       </h6>
       <Image
         src={'/icons/dashed.svg'}

@@ -23,8 +23,15 @@ interface Query {
 export default function Page(props: PageProps) {
   const [data] = useLiveQuery<Post[]>(props.posts, allPostQuery)
 
+  const seo = {
+    title: 'Outframe | Blog',
+    description: '',
+    image: '',
+    keywords: [],
+  }
+
   return (
-    <Layout>
+    <Layout seo={seo}>
       <main className={clsx('px-gutter bg-background text-mainText')}>
         <div className={clsx('pt-[191px]', 'lg:grid lg:grid-cols-12  ')}>
           <h1

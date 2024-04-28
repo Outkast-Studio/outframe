@@ -123,7 +123,22 @@ export default defineType({
       description:
         'The type of case study. The label below the link will use this text.',
     }),
-
+    defineField({
+      name: 'metaTitle',
+      title: 'Meta Title',
+      type: 'string',
+      group: 'seo',
+      description:
+        'SEO title for the page. If left blank the title will be  "Outframe | [Case Study Title]"',
+    }),
+    defineField({
+      name: 'metaKeywords',
+      title: 'Meta Keywords',
+      type: 'array',
+      of: [{ type: 'string' }],
+      group: 'seo',
+      description: 'SEO Keywords for the page.',
+    }),
     defineField({
       name: 'metaDescription',
       title: 'Meta Description',

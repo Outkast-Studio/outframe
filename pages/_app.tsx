@@ -16,7 +16,7 @@ export interface Seo {
   title: string
   description: string
   image: string
-  keywords: string
+  keywords: string[]
 }
 
 export const myPortableTextComponents = {

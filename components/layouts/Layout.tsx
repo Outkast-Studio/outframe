@@ -7,7 +7,7 @@ export function Layout({
     title: '',
     description: '',
     image: '',
-    keywords: '',
+    keywords: [],
   },
 }) {
   return (

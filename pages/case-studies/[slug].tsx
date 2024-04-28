@@ -13,6 +13,7 @@ import { QueryParams } from 'next-sanity'
 import PreviewComponent from 'components/PreviewComponent'
 import { useLiveQuery } from 'next-sanity/preview'
 import { Layout } from 'components/layouts/Layout'
+import { urlForImage } from 'lib/sanity.image'
 interface PageProps extends SharedPageProps {
   work: Work
   settings?: Settings
@@ -27,16 +28,6 @@ interface Query {
 export default function ProjectSlugRoute(props: PageProps) {
   const [data] = useLiveQuery<Work>(props.work, workBySlugQuery, props.params)
 
-  // if (draftMode) {
-  //   return (
-  //     <PreviewComponent
-  //       document={work}
-  //       params={props.params}
-  //       documentType="work"
-  //       query={workBySlugQuery}
-  //     />
-  //   )
-  // }
   return (
     <Layout seo={props.seo}>
       <WorkPage work={data} />
@@ -58,10 +49,10 @@ export const getStaticProps: GetStaticProps<PageProps, Query> = async (ctx) => {
   ])
 
   const seo = {
-    title: work?.title || '',
-    description: work?.metaDescription || '',
-    image: work?.mainImage || '',
-    keywords: work?.keywords || '',
+    title: work.metaTitle ? work.metaTitle : `Outframe | ${work.title}`,
+    description: work.metaDescription || '',
+    image: work.ogImage ? urlForImage(work.ogImage).url() : '',
+    keywords: work.metaKeywords || [],
   }
 
   if (!work) {
