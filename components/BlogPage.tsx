@@ -174,23 +174,26 @@ const BlogPage = ({ post }: { post: Post }) => {
               )}
             >
               <div className={clsx('flex gap-x-[12px] items-center')}>
-                <Image
-                  src={urlForImage(post.author.picture).url()}
-                  alt={post.author.name}
-                  width={28}
-                  height={28}
-                  className={clsx(
-                    'rounded-[2px] w-[22px] h-[22px]',
-                    'lg:w-[28px] lg:h-[28px]',
-                  )}
-                />
+                {post.author && (
+                  <Image
+                    src={urlForImage(post.author.picture).url()}
+                    alt={post.author.name}
+                    width={28}
+                    height={28}
+                    className={clsx(
+                      'rounded-[2px] w-[22px] h-[22px]',
+                      'lg:w-[28px] lg:h-[28px]',
+                    )}
+                  />
+                )}
+
                 <h6
                   className={clsx(
                     'text-[14px] font-sansRegular leading-[16.8px]',
                     'lg:text-[16px] lg:leading-[24px]',
                   )}
                 >
-                  {post.author.name && post.author.name}
+                  {post.author && post.author.name && post.author.name}
                 </h6>
               </div>
               <div className={clsx('flex gap-x-[8px] h-fit')}>
@@ -271,22 +274,24 @@ const BlogPage = ({ post }: { post: Post }) => {
               </Accordion.Trigger>
               <Accordion.Content className={clsx('AccordionContent px-[16px]')}>
                 <ul className={clsx('pb-[32px] flex flex-col gap-y-[16px]')}>
-                  {toc.map((toc, index) => (
-                    <li
-                      key={toc.text}
-                      className={clsx(
-                        'font-sansMedium text-[16px] leading-[24px] list-none text-secondaryText transition-colors duration-500',
-                      )}
-                    >
-                      <button
-                        onClick={() =>
-                          handleScrollTo('#' + getIdFromText(toc.text))
-                        }
+                  {toc &&
+                    toc.length > 0 &&
+                    toc.map((toc, index) => (
+                      <li
+                        key={toc.text}
+                        className={clsx(
+                          'font-sansMedium text-[16px] leading-[24px] list-none text-secondaryText transition-colors duration-500',
+                        )}
                       >
-                        {toc.text}
-                      </button>
-                    </li>
-                  ))}
+                        <button
+                          onClick={() =>
+                            handleScrollTo('#' + getIdFromText(toc.text))
+                          }
+                        >
+                          {toc.text}
+                        </button>
+                      </li>
+                    ))}
                 </ul>
               </Accordion.Content>
             </Accordion.Item>
@@ -322,7 +327,7 @@ const BlogPage = ({ post }: { post: Post }) => {
           >
             {post.suggestedArticles.map((post, index) => (
               <BlogCard
-                key={String(post._id + index)}
+                key={String(post.title + index)}
                 post={post}
                 isIndividualBlog={true}
               />

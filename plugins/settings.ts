@@ -5,6 +5,8 @@
 import { definePlugin, type DocumentDefinition } from 'sanity'
 import { type StructureResolver } from 'sanity/desk'
 import homepageSettings from 'schemas/homepageSettings'
+import { Iframe } from 'sanity-plugin-iframe-pane'
+import { iframeOptions } from 'plugins/previewPane'
 
 export const settingsPlugin = definePlugin<{ type: string }>(({ type }) => {
   return {
@@ -40,17 +42,6 @@ export const settingsStructure = (
     const individualTypes = ['homepageSettings', 'settings']
 
     // The `Settings` root list item
-    const settingsListItem = // A singleton not using `documentListItem`, eg no built-in preview
-      S.listItem()
-        .title(typeDef.title)
-        .icon(typeDef.icon)
-        .child(
-          S.editor()
-            .id(typeDef.name)
-            .schemaType(typeDef.name)
-            .documentId(typeDef.name),
-        )
-
     const homepageSettingsListItem = // A singleton not using `documentListItem`, eg no built-in preview
       S.listItem()
         .title(homepageSettings.title)
@@ -60,7 +51,11 @@ export const settingsStructure = (
             .title(homepageSettings.title)
             .id(homepageSettings.name)
             .schemaType(homepageSettings.name)
-            .documentId(homepageSettings.name),
+            .documentId(homepageSettings.name)
+            .views([
+              S.view.form(),
+              S.view.component(Iframe).options(iframeOptions).title('Preview'),
+            ]),
         )
 
     // The default root list items (except custom ones)
@@ -69,11 +64,6 @@ export const settingsStructure = (
     )
     return S.list()
       .title('Content')
-      .items([
-        settingsListItem,
-        homepageSettingsListItem,
-        S.divider(),
-        ...defaultListItems,
-      ])
+      .items([homepageSettingsListItem, S.divider(), ...defaultListItems])
   }
 }

@@ -7,7 +7,6 @@ import Footer from './Footer'
 import Link from 'next/link'
 
 export default function Post({ work }: { work: Work }) {
-  console.log(work)
   return (
     <>
       <main className={clsx('px-gutter text-mainText')}>
@@ -54,7 +53,7 @@ export default function Post({ work }: { work: Work }) {
                   <div
                     key={`role-${role}`}
                     className={clsx(
-                      'py-[4px] px-[10px] font-semiMono uppercase text text-[12px] leading-[14.4px] tracking-[-0.2px] bg-[#EBE7E3] rounded-full',
+                      'py-[4px] px-[10px] font-semiMono uppercase text text-[12px] leading-[14.4px] tracking-[-0.2px] bg-[#EBE7E3] rounded-full whitespace-nowrap',
                     )}
                   >
                     {role}

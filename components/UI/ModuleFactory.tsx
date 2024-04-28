@@ -9,12 +9,14 @@ import { myPortableTextComponents } from 'pages/_app'
 export const SingleImageComponent = ({ image }) => {
   return (
     <div className={clsx('w-full mb-[64px]', 'lg:mb-[128px]')}>
-      <Image
-        src={urlForImage(image).url()}
-        alt={image.alt}
-        width={2440}
-        height={1080}
-      />
+      {image && (
+        <Image
+          src={urlForImage(image).url()}
+          alt={image.alt}
+          width={2440}
+          height={1080}
+        />
+      )}
     </div>
   )
 }
@@ -28,22 +30,26 @@ export const TwoColumnImageComponent = ({ leftImage, rightImage }) => {
       )}
     >
       <div className={clsx('w-full', 'lg:h-full')}>
-        <Image
-          src={urlForImage(leftImage).url()}
-          alt={leftImage.alt}
-          width={2440}
-          height={1080}
-          className={clsx('lg:h-full')}
-        />
+        {leftImage && (
+          <Image
+            src={urlForImage(leftImage).url()}
+            alt={leftImage.alt}
+            width={2440}
+            height={1080}
+            className={clsx('lg:h-full')}
+          />
+        )}
       </div>
       <div className={clsx('w-full', 'lg:h-full')}>
-        <Image
-          src={urlForImage(rightImage).url()}
-          alt={rightImage.alt}
-          width={2440}
-          height={1080}
-          className={clsx('lg:h-full')}
-        />
+        {rightImage && (
+          <Image
+            src={urlForImage(rightImage).url()}
+            alt={rightImage.alt}
+            width={2440}
+            height={1080}
+            className={clsx('lg:h-full')}
+          />
+        )}
       </div>
     </div>
   )
@@ -63,7 +69,7 @@ export const TextBlockComponent = ({ textBlock }: { textBlock: TextBlock }) => {
           'lg:text-[24px] lg:leading-[33.6px] lg:normal-case lg:col-span-5',
         )}
       >
-        {textBlock.title}
+        {textBlock && textBlock.title && textBlock.title}
       </h6>
       <div
         className={clsx(
@@ -100,21 +106,26 @@ function TestimonialBlock({ testimonialBlock }) {
         />
       </div>
       <div className={clsx('flex gap-x-[12px] mt-[16px]')}>
-        <Image
-          src={urlForImage(testimonialBlock.image.asset).url()}
-          alt={String(testimonialBlock.image.alt)}
-          width={28}
-          height={28}
-          className="rounded-[2px] w-[22px] h-[22px] lg:w-[28px] lg:h-[28px]"
-        />
+        {testimonialBlock && testimonialBlock.image && (
+          <Image
+            src={urlForImage(testimonialBlock.image.asset).url()}
+            alt={String(testimonialBlock.image.alt)}
+            width={28}
+            height={28}
+            className="rounded-[2px] w-[22px] h-[22px] lg:w-[28px] lg:h-[28px]"
+          />
+        )}
+
         <div
           className={clsx(
             'text-[14px] leading-[16.8px] flex gap-x-[6px] items-center',
           )}
         >
-          <h6 className={clsx('text-mainText')}>{testimonialBlock.name}</h6>
+          <h6 className={clsx('text-mainText')}>
+            {testimonialBlock.name && testimonialBlock.name}
+          </h6>
           <h6 className={clsx('text-secondaryText')}>
-            {testimonialBlock.role}
+            {testimonialBlock.role && testimonialBlock.role}
           </h6>
         </div>
       </div>

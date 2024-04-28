@@ -9,8 +9,9 @@ import { DefaultDocumentNodeResolver } from 'sanity/desk'
 import { Iframe, IframeOptions } from 'sanity-plugin-iframe-pane'
 import authorType from 'schemas/author'
 import postType from 'schemas/post'
+import caseStudyType from 'schemas/work'
 
-const iframeOptions = {
+export const iframeOptions = {
   url: {
     origin: 'same-origin',
     preview: (document) => {
@@ -20,12 +21,14 @@ const iframeOptions = {
       switch (document._type) {
         case 'post':
           return (document as any)?.slug?.current
-            ? `/posts/${(document as any).slug.current}`
+            ? `/blog/${(document as any).slug.current}`
             : new Error('Missing slug')
-        case 'work':
+        case 'caseStudy':
           return (document as any)?.slug?.current
-            ? `/work/${(document as any).slug.current}`
+            ? `/case-studies/${(document as any).slug.current}`
             : new Error('Missing slug')
+        case 'homepageSettings':
+          return '/'
         default:
           return new Error(`Unknown document type: ${document?._type}`)
       }
@@ -43,8 +46,7 @@ export const previewDocumentNode = (): DefaultDocumentNodeResolver => {
           S.view.form(),
           S.view.component(Iframe).options(iframeOptions).title('Preview'),
         ])
-      case 'work':
-      case postType.name:
+      case caseStudyType.name:
         return S.document().views([
           S.view.form(),
           S.view.component(Iframe).options(iframeOptions).title('Preview'),
