@@ -11,7 +11,8 @@ export interface SharedPageProps {
   draftMode: boolean
   token: string
 }
-0.22, 0.61, 0.36, 1
+//0.22, 0.61, 0.36, 1 ----------- Ease Out, CONTENT COMING IN USES THIS.
+//0.34, 0, 0.36, 1 -------- EASE IN OUT,
 export interface Seo {
   title: string
   description: string
@@ -27,7 +28,7 @@ export const myPortableTextComponents = {
         alt={String(value.alt)}
         width={2440}
         height={2440}
-        className={clsx('my-[22px]')}
+        className={clsx('my-[22px] ')}
       />
     ),
   },

@@ -9,9 +9,9 @@ import { PortableText } from '@portabletext/react'
 import { myPortableTextComponents } from 'pages/_app'
 
 const CaseStudies = ({ caseStudies }: { caseStudies: any[] }) => {
-  console.log(caseStudies)
   return (
     <section
+      id={'case-studies'}
       className={clsx(
         'mx-gutter border-t-[1px] pt-[20px] border-dividers mt-[144px]',
         'md:pt-[0px]',

@@ -48,6 +48,7 @@ const Services = () => {
   ]
   return (
     <section
+      id={'services'}
       className={clsx(
         'mt-[128px] mx-gutter geist text-mainTextborder-t-dividers border-t-[1px] ',
         'md:flex',

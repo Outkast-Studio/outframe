@@ -5,7 +5,8 @@ import { useThemeStore } from 'stores/themeStore'
 
 const Logo = () => {
   const { scrollY } = useScroll()
-  const [hideLogoText, setHideLogoText] = useState(false)
+  const [hideLogoText, setHideLogoText] = useState(true)
+  const introVisible = useThemeStore((state) => state.introVisible)
 
   useMotionValueEvent(scrollY, 'change', (latest) => {
     if (latest > 100 && hideLogoText === false) {
@@ -16,9 +17,30 @@ const Logo = () => {
     }
   })
 
+  const fadeInVariants = {
+    initial: {
+      opacity: 0,
+    },
+    animate: {
+      opacity: 1,
+      transition: {
+        duration: 0.3,
+      },
+    },
+  }
 
+  useEffect(() => {
+    if (introVisible === false) {
+      setTimeout(() => {
+        setHideLogoText(false)
+      }, 900)
+    }
+  }, [introVisible])
   return (
-    <div
+    <motion.div
+      variants={fadeInVariants}
+      initial="initial"
+      animate={introVisible ? 'initial' : 'animate'}
       className={clsx(
         'min-w-[200px] col-span-5 flex overflow-hidden items-center',
       )}
@@ -31,8 +53,8 @@ const Logo = () => {
         xmlns="http://www.w3.org/2000/svg"
         className={clsx(
           'flex-shrink-0 bg-[#000000] relative z-[10]',
-          'transition-transform duration-[0.35s] ease-in-out-expo',
-          hideLogoText && '!rotate-[-90deg]',
+          'transition-transform duration-[0.5s] ease-in-out-expo',
+          hideLogoText && '!rotate-[-270deg]',
         )}
       >
         <path
@@ -85,7 +107,7 @@ const Logo = () => {
           fill="#F7F7F7"
         />
       </motion.svg>
-    </div>
+    </motion.div>
   )
 }
 

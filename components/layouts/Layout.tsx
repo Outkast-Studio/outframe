@@ -18,7 +18,7 @@ export function Layout({
         layout="fill"
         objectFit="cover"
         alt={'bgImage'}
-        className={clsx('fixed')}
+        className={clsx('fixed z-[-1]')}
       />
       <ReactLenis
         root

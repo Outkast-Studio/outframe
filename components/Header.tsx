@@ -6,43 +6,51 @@ import { motion } from 'framer-motion'
 import { useRouter } from 'next/router'
 import Image from 'next/image'
 import { useThemeStore } from 'stores/themeStore'
+import { useLenis } from '@studio-freight/react-lenis'
+import useScrambleText from 'hooks/useScrambleText'
 
 const Header = () => {
   const menuOpen = useThemeStore((state) => state.menuOpen)
   const setMenuOpen = useThemeStore((state) => state.setMenuOpen)
-
+  const lenis = useLenis()
   const router = useRouter()
 
   const menuItems = [
     {
-      title: 'Case studies',
-      link: '/case-studies',
-      isHomePage: false,
+      title: useScrambleText({ title: 'Case Studies', animationDelay: 3900 }),
+      link: '#case-studies',
+      isHomePage: true,
+      width: 101,
     },
     {
-      title: 'About',
+      title: useScrambleText({ title: 'About', animationDelay: 4200 }),
       link: '#about',
       isHomePage: true,
+      width: 45,
     },
     {
-      title: 'Services',
+      title: useScrambleText({ title: 'Services', animationDelay: 4500 }),
       link: '#services',
       isHomePage: true,
+      width: 67.6,
     },
     {
-      title: 'Pricing',
+      title: useScrambleText({ title: 'Pricing', animationDelay: 4800 }),
       link: '#pricing',
       isHomePage: true,
+      width: 57.8,
     },
     {
-      title: 'Recent Work',
+      title: useScrambleText({ title: 'Recent Work', animationDelay: 5100 }),
       link: '/recent-work',
       isHomePage: false,
+      width: 96.24,
     },
     {
-      title: 'Blog',
+      title: useScrambleText({ title: 'Blog', animationDelay: 5400 }),
       link: '/blog',
       isHomePage: false,
+      width: 35.46,
     },
   ]
 
@@ -86,14 +94,29 @@ const Header = () => {
         >
           <ul
             className={clsx(
-              'flex gap-x-[32px] uppercase text-[12px] leading-[14.4px] monoMedium text-[#998F8C]',
+              'flex gap-x-[32px] uppercase text-[12px] leading-[14.4px] font-monoRegular text-[#998F8C]',
               'lg:text-[14px] lg:leading-[16.8px]',
             )}
           >
             {menuItems.map((item, index) => (
               <li key={index} className={clsx('')}>
                 {item.isHomePage ? (
-                  <a href={item.link}>{item.title}</a>
+                  <button
+                    className={clsx('uppercase')}
+                    onClick={() => {
+                      lenis.scrollTo(item.link, {
+                        duration: 1.2,
+                        offset: -69,
+                        easing: (x) => {
+                          return x < 0.5
+                            ? 4 * x * x * x
+                            : 1 - Math.pow(-2 * x + 2, 3) / 2
+                        },
+                      })
+                    }}
+                  >
+                    {item.title}
+                  </button>
                 ) : (
                   <Link href={item.link}>{item.title}</Link>
                 )}
@@ -141,7 +164,7 @@ const Header = () => {
                 <li
                   key={index}
                   className={clsx(
-                    'text-[18px] leading-[21.6px] tracking-[-0.2px] font-monoMedium text-mainText uppercase',
+                    'text-[18px] leading-[21.6px] tracking-[-0.2px] font-monoMedium text-mainText uppercase overflow-x-hidden',
                   )}
                 >
                   {item.isHomePage ? (

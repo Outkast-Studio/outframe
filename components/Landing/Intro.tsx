@@ -20,6 +20,7 @@ const Intro = () => {
     },
   }
   const setIntroVisible = useThemeStore((state) => state.setIntroVisible)
+  const introVisible = useThemeStore((state) => state.introVisible)
   const lenis = useLenis()
   useEffect(() => {
     if (lenis) {
@@ -31,11 +32,11 @@ const Intro = () => {
           force: true,
         })
         lenis.start()
-      }, '4000')
+      }, '3900')
     }
   }, [lenis])
 
-  return (
+  return introVisible ? (
     <div
       className={clsx(
         'fixed top-0 left-0 bg-background w-screen h-screen flex items-center justify-center z-[999] pointer-events-none',
@@ -43,6 +44,8 @@ const Intro = () => {
     >
       <Lottie options={defaultOptions} height={400} width={400} />
     </div>
+  ) : (
+    <></>
   )
 }
 

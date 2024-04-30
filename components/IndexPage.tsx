@@ -24,16 +24,16 @@ export default function Post({
 }) {
   const introVisible = useThemeStore((state) => state.introVisible)
   return (
-    <main className={clsx('bg-background')}>
-      {introVisible ? (
-        <Intro />
-      ) : (
-        <Hero
-          images={homepageSettings.heroCarousel}
-          testimonial={homepageSettings.heroTestimonial}
-        />
-      )}
-
+    <main className={clsx('bg-background overflow-x-hidden')}>
+      <Intro />
+      <Hero
+        images={homepageSettings.heroCarousel}
+        testimonial={homepageSettings.heroTestimonial}
+      />
+      {/* <Hero
+        images={homepageSettings.heroCarousel}
+        testimonial={homepageSettings.heroTestimonial}
+      /> */}
       <LogoCloud images={homepageSettings.logoCloud} />
       <CaseStudies caseStudies={homepageSettings.caseStudies} />
       <OurStudio />

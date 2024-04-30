@@ -34,6 +34,7 @@ const Pricing = ({ settings }: { settings: HomepageSettings }) => {
   ]
   return (
     <section
+      id={'pricing'}
       className={clsx(
         'mt-[128px] mx-gutter geist text-mainText border-t-[1px] border-t-dividers',
         'md:flex',
