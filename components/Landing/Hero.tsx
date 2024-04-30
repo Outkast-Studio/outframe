@@ -34,7 +34,7 @@ const Hero = ({ images, testimonial }: Props) => {
             'xl:text-[76px] xl:leading-[91.2px] xl:col-span-6 xl:w-full xl:tracking-[-0.4px]',
           )}
         >
-          Product Design Partner, On Demand
+          SR. Product Design Partner, On Demand.
         </h1>
         <div className={clsx('md:w-full', 'xl:col-start-8 col-end-[11]')}>
           <p

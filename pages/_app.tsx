@@ -11,7 +11,7 @@ export interface SharedPageProps {
   draftMode: boolean
   token: string
 }
-
+0.22, 0.61, 0.36, 1
 export interface Seo {
   title: string
   description: string

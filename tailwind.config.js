@@ -16,6 +16,11 @@ module.exports = {
         background: '#F7F7F7',
         dividers: '#D9D5D3',
       },
+      transitionTimingFunction: {
+        'in-expo': 'cubic-bezier(0.95, 0.05, 0.795, 0.035)',
+        'out-expo': 'cubic-bezier(0.22, 0.61, 0.36, 1)',
+        'in-out-expo': 'cubic-bezier(0.34, 0, 0.36, 1)',
+      },
       spacing: {
         28: '7rem',
       },

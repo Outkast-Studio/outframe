@@ -97,6 +97,23 @@
   border-radius: 2px;
 }
 
+.accordionItem .contentOverlay {
+  transition: opacity 0.2s;
+}
+
+.accordionItem[data-state='open'] .contentOverlay {
+  opacity: 1;
+  transition-delay: 300ms;
+}
+
+.accordionItem[data-state='closed'] .contentOverlay {
+  opacity: 0;
+  transition-delay: 0ms;
+}
+
+.accordionItem[data-state='open'] .triggerLabel {
+  opacity: 0;
+}
 .verticalText {
   writing-mode: vertical-rl;
   transform: rotate(180deg);

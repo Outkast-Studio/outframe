@@ -12,6 +12,8 @@ import Process from './Landing/Process'
 import Services from './Landing/Services'
 import Pricing from './Landing/Pricing'
 import Footer from './Footer'
+import Intro from './Landing/Intro'
+import { useThemeStore } from 'stores/themeStore'
 
 export default function Post({
   work,
@@ -20,13 +22,18 @@ export default function Post({
   work: Work[]
   homepageSettings: HomepageSettings
 }) {
-  console.log(homepageSettings)
+  const introVisible = useThemeStore((state) => state.introVisible)
   return (
     <main className={clsx('bg-background')}>
-      <Hero
-        images={homepageSettings.heroCarousel}
-        testimonial={homepageSettings.heroTestimonial}
-      />
+      {introVisible ? (
+        <Intro />
+      ) : (
+        <Hero
+          images={homepageSettings.heroCarousel}
+          testimonial={homepageSettings.heroTestimonial}
+        />
+      )}
+
       <LogoCloud images={homepageSettings.logoCloud} />
       <CaseStudies caseStudies={homepageSettings.caseStudies} />
       <OurStudio />

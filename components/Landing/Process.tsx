@@ -1,6 +1,8 @@
-import React from 'react'
+import React, { useRef, useEffect } from 'react'
 import { clsx } from 'clsx'
 import * as Accordion from '@radix-ui/react-accordion'
+import { useWindowSize } from 'hooks/useWindowSize'
+import { useThemeStore } from 'stores/themeStore'
 
 const Process = () => {
   const processItems = [
@@ -74,7 +76,7 @@ const Process = () => {
         className={clsx(
           'mt-[64px]',
           'md:w-full md:mt-[40px]',
-          'lg:col-start-5 lg:col-end-13 ml:hidden',
+          'lg:col-start-5 lg:col-end-13 ml:hidden lg:overflow-x-hidden',
         )}
       >
         {processItems.map((processItem, index) => (
@@ -223,6 +225,25 @@ function ProcessDesktopItem({
   image: string
   index: number
 }) {
+  const triggerRef = useRef(null)
+  const contentRef = useRef(null)
+  const overlayRef = useRef(null)
+  const { width } = useWindowSize()
+  const setProcessWidth = useThemeStore((state) => state.setProcessWidth)
+  const processWidth = useThemeStore((state) => state.processWidth)
+  useEffect(() => {
+    if (
+      triggerRef.current &&
+      contentRef.current &&
+      index == 0 &&
+      processWidth == 0
+    ) {
+      setProcessWidth(
+        triggerRef.current.offsetWidth + contentRef.current.offsetWidth,
+      )
+    }
+  }, [width])
+
   return (
     <Accordion.Item
       value={name}
@@ -232,9 +253,52 @@ function ProcessDesktopItem({
         index == 0 && 'border-l-[1px] border-l-dividers',
       )}
     >
-      <Accordion.Trigger
+      <div
+        style={{ width: processWidth ? processWidth : '100%' }}
         className={clsx(
-          'h-[408px] flex justify-between relative font-sansMedium flex-col items-center pr-[16px] pl-[32px] accordionButton py-[16px]',
+          'w-full h-full absolute opacity-0 contentOverlay overflow-hidden',
+        )}
+      >
+        <div
+          className={clsx(
+            ' px-[24px] py-[16px] h-full  flex flex-col justify-between border-t-dividers border-t-[1px] border-b-dividers border-b-[1px] rounded-[2px]',
+          )}
+        >
+          <div className={clsx('flex justify-between')}>
+            <h6
+              className={clsx(
+                'font-monoRegular text-[12px] leading-[14.4px] bg-[#EBE7E3] rounded-full w-fit px-[10px] py-[4px] h-fit text-accent',
+              )}
+            >
+              STEP {index + 1}
+            </h6>
+            <div
+              className={clsx('w-[24px] h-[24px] bg-[#D9D5D3] rounded-[3px]')}
+            ></div>
+          </div>
+          <div
+            className={clsx(
+              'text-secondaryText text-[16px] leading-[24px] tracking-[-0.1px]',
+            )}
+          >
+            <h6
+              className={clsx(
+                'text-sansMedium text-[19px] leading-[26.6px] tracking-[-0.1px] text-mainText mb-[24px]',
+              )}
+            >
+              {name}
+            </h6>
+            <p>{description}</p>
+          </div>
+
+          <div></div>
+        </div>
+      </div>
+
+      <Accordion.Trigger
+        ref={triggerRef}
+        className={clsx(
+          'h-[408px] flex processTrigger justify-between relative font-sansMedium flex-col items-center pr-[16px] pl-[32px] accordionButton py-[16px]',
         )}
       >
         <div
@@ -249,7 +313,7 @@ function ProcessDesktopItem({
         ></div>
         <h6
           className={clsx(
-            'text-[18px] whitespace-nowrap verticalText  transition-opacity duration-300',
+            'text-[18px] whitespace-nowrap verticalText  transition-opacity duration-300 triggerLabel',
           )}
         >
           {name}
@@ -268,17 +332,20 @@ function ProcessDesktopItem({
           ></span>
         </div>
       </Accordion.Trigger>
-      <Accordion.Content className={clsx('AccordionContentDesktop')}>
+      <Accordion.Content
+        className={clsx('AccordionContentDesktop')}
+        ref={contentRef}
+      >
         <div className={clsx('w-[307px] h-full')}>
           <div
             className={clsx(
               ' px-[24px] py-[16px] h-full  flex flex-col justify-between border-t-dividers border-t-[1px] border-b-dividers border-b-[1px] rounded-[2px]',
             )}
           >
-            <div className={clsx('flex justify-between')}>
+            <div className={clsx('flex justify-between opacity-0')}>
               <h6
                 className={clsx(
-                  'font-monoRegular text-[12px] leading-[14.4px] bg-[#EBE7E3] rounded-full w-fit px-[10px] py-[4px]',
+                  'font-monoRegular text-[12px] leading-[14.4px] bg-[#EBE7E3] rounded-full w-fit px-[10px] py-[4px] h-fit text-accent',
                 )}
               >
                 STEP {index + 1}
@@ -287,7 +354,7 @@ function ProcessDesktopItem({
                 className={clsx('w-[24px] h-[24px] bg-[#D9D5D3] rounded-[3px]')}
               ></div>
             </div>
-            <div className={clsx('')}>
+            <div className={clsx('opacity-0')}>
               <p>{description}</p>
             </div>
 
