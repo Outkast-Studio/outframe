@@ -11,7 +11,6 @@ type Props = {
 }
 
 const Testimoninals = ({ testimonials }: Props) => {
-  console.log(testimonials)
   return (
     <section
       className={clsx(

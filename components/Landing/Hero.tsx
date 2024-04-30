@@ -8,6 +8,7 @@ import { PortableText } from '@portabletext/react'
 import { Testimonial } from 'lib/sanity.queries'
 import { motion } from 'framer-motion'
 import { useThemeStore } from 'stores/themeStore'
+import { useLenis } from '@studio-freight/react-lenis'
 
 type Props = {
   images: ImageAsset[]
@@ -15,6 +16,7 @@ type Props = {
 }
 
 const Hero = ({ images, testimonial }: Props) => {
+  console.log(images)
   const [position, setPosition] = useState({ x: 0, y: 0 })
   const [isVisible, setIsVisible] = useState(false)
   const [hoverActive, setHoverActive] = useState(false)
@@ -23,6 +25,7 @@ const Hero = ({ images, testimonial }: Props) => {
   const testimonialName = testimonial.name
   const role = testimonial.role
   const introVisible = useThemeStore((state) => state.introVisible)
+  const lenis = useLenis()
 
   const h1Variants = {
     initial: {},
@@ -182,6 +185,17 @@ const Hero = ({ images, testimonial }: Props) => {
           </p>
           <div className={clsx('flex mt-[28px] gap-x-[16px]', 'md:mt-[19px]')}>
             <button
+              onClick={() => {
+                lenis.scrollTo('#pricing', {
+                  duration: 1.2,
+                  offset: -69,
+                  easing: (x) => {
+                    return x < 0.5
+                      ? 4 * x * x * x
+                      : 1 - Math.pow(-2 * x + 2, 3) / 2
+                  },
+                })
+              }}
               className={clsx(
                 'rounded-[4px] bg-accent text-background monoMedium px-[18px] py-[12px] text-[14px] leading-[16.8px] tracking-[-0.2px]',
               )}
@@ -221,7 +235,7 @@ const Hero = ({ images, testimonial }: Props) => {
           <Link href={'/recent-work'}>
             <div
               className={clsx(
-                'message text-white ease-[cubic-bezier(0.34, 0, 0.36, 1)] whitespace-nowrap z-[5] hidden',
+                'message text-white ease-[cubic-bezier(0.34, 0, 0.36, 1)] whitespace-nowrap z-[5] hidden origin-left',
                 'lg:flex lg:gap-x-[4px] bg-accent lg:px-[16px] lg:py-[10px] lg:rounded-[2px]',
                 isVisible && 'isHovering',
               )}
@@ -231,7 +245,7 @@ const Hero = ({ images, testimonial }: Props) => {
                 userSelect: 'none',
                 top: position.y + 15,
                 left: position.x + 15,
-                clipPath: 'inset(0 100% 0 0)',
+                clipPath: 'inset(100% 100% 100% 100%)',
                 transition: 'clip-path 0.35s',
               }}
             >
@@ -246,8 +260,8 @@ const Hero = ({ images, testimonial }: Props) => {
             <Image
               src={urlForImage(images[0].asset).url()}
               alt={String(images[0].alt)}
-              width={2440}
-              height={1080}
+              width={1200}
+              height={1200}
               className={clsx('object-cover ')}
               priority
             />

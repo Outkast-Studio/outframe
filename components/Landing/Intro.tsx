@@ -8,7 +8,6 @@ import { useLenis } from '@studio-freight/react-lenis'
 import { useThemeStore } from 'stores/themeStore'
 
 const Intro = () => {
-  console.log(lottieData)
   const Lottie = dynamic(() => import('react-lottie'), { ssr: false })
   const defaultOptions = {
     loop: true,

@@ -11,7 +11,6 @@ import { useLenis } from '@studio-freight/react-lenis'
 import { BlogCard } from '../pages/blog'
 
 const BlogPage = ({ post }: { post: Post }) => {
-  console.log(post)
   const formattedDate = (date: string) =>
     new Date(date).toLocaleDateString('en-US', {
       day: 'numeric',
@@ -85,10 +84,6 @@ const BlogPage = ({ post }: { post: Post }) => {
       headings.forEach((heading) => observer.unobserve(heading))
     }
   }, [])
-
-  useEffect(() => {
-    console.log(activeId)
-  }, [activeId])
 
   function handleScrollTo(id: string) {
     lenis.scrollTo(id, { offset: -200, duration: 1.5 })

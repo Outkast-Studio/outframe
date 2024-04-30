@@ -68,7 +68,10 @@ const Benefits = () => {
         )}
       >
         {benefits.map((benefit, index) => (
-          <article className={clsx('lg:w-[calc(50%-32px)]', 'ml:w-[30%]')}>
+          <article
+            className={clsx('lg:w-[calc(50%-32px)]', 'ml:w-[30%]')}
+            key={'benefit' + index}
+          >
             <div
               className={clsx(
                 'flex justify-between items-center',

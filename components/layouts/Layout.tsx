@@ -12,23 +12,14 @@ export function Layout({
   },
 }) {
   return (
-    <div className={"bg-[url('/images/bgLines.png')]"}>
-      <Image
-        src={'/images/bgLines.png'}
-        layout="fill"
-        objectFit="cover"
-        alt={'bgImage'}
-        className={clsx('fixed z-[-1]')}
-      />
-      <ReactLenis
-        root
-        options={{
-          duration: 0.6,
-        }}
-      >
-        <CustomHead {...seo} />
-        {children}
-      </ReactLenis>
-    </div>
+    <ReactLenis
+      root
+      options={{
+        duration: 0.6,
+      }}
+    >
+      <CustomHead {...seo} />
+      {children}
+    </ReactLenis>
   )
 }
