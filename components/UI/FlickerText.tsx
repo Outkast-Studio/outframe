@@ -5,9 +5,10 @@ type Props = {
   title: string
   animationDelay: number
   play: boolean
+  hover?: boolean
 }
 
-const FlickerText = ({ title, animationDelay, play }: Props) => {
+const FlickerText = ({ title, animationDelay, play, hover }: Props) => {
   const [visible, setVisible] = useState(false)
 
   function randomIntFromInterval(min, max) {
@@ -19,6 +20,7 @@ const FlickerText = ({ title, animationDelay, play }: Props) => {
     letter,
     delay: randomIntFromInterval(1, 6),
   }))
+
   useEffect(() => {
     if (play) {
       setVisible(true)
@@ -26,14 +28,19 @@ const FlickerText = ({ title, animationDelay, play }: Props) => {
   }, [play])
 
   return (
-    <span>
+    <span className={clsx('hoverParent')}>
       {letters.map((letter, index) => (
         <span
           key={index}
           style={{
             transitionDelay: `${animationDelay + letter.delay * 0.07}s`,
+            animationDelay: `${letter.delay * 0.07}s`,
           }}
-          className={clsx('animateFlicker', visible && 'opacity-100')}
+          className={clsx(
+            'animateFlicker',
+            visible && 'opacity-100',
+            hover && 'hoverInteraction',
+          )}
         >
           {letter.letter}
         </span>

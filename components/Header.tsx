@@ -23,6 +23,7 @@ const Header = () => {
           title="Case Studies"
           animationDelay={1}
           play={!introVisible}
+          hover={true}
         />
       ),
       // title: 'Case Studies',
@@ -33,7 +34,12 @@ const Header = () => {
     {
       // title: useScrambleText({ title: 'About', animationDelay: 4200 }),
       title: (
-        <FlickerText title="About" animationDelay={1} play={!introVisible} />
+        <FlickerText
+          title="About"
+          animationDelay={1}
+          play={!introVisible}
+          hover={true}
+        />
       ),
       link: '#about',
       isHomePage: true,
@@ -42,7 +48,12 @@ const Header = () => {
     {
       // title: useScrambleText({ title: 'Services', animationDelay: 4500 }),
       title: (
-        <FlickerText title="Services" animationDelay={1} play={!introVisible} />
+        <FlickerText
+          title="Services"
+          animationDelay={1}
+          play={!introVisible}
+          hover={true}
+        />
       ),
       link: '#services',
       isHomePage: true,
@@ -51,7 +62,12 @@ const Header = () => {
     {
       // title: useScrambleText({ title: 'Pricing', animationDelay: 4800 }),
       title: (
-        <FlickerText title="Pricing" animationDelay={1} play={!introVisible} />
+        <FlickerText
+          title="Pricing"
+          animationDelay={1}
+          play={!introVisible}
+          hover={true}
+        />
       ),
       link: '#pricing',
       isHomePage: true,
@@ -60,7 +76,12 @@ const Header = () => {
     {
       // title: useScrambleText({ title: 'Recent Work', animationDelay: 5100 }),
       title: (
-        <FlickerText title="Pricing" animationDelay={1} play={!introVisible} />
+        <FlickerText
+          title="Pricing"
+          animationDelay={1}
+          play={!introVisible}
+          hover={true}
+        />
       ),
       link: '/recent-work',
       isHomePage: false,
@@ -69,7 +90,12 @@ const Header = () => {
     {
       // title: useScrambleText({ title: 'Blog', animationDelay: 5400 }),
       title: (
-        <FlickerText title="Blog" animationDelay={1} play={!introVisible} />
+        <FlickerText
+          title="Blog"
+          animationDelay={1}
+          play={!introVisible}
+          hover={true}
+        />
       ),
       link: '/blog',
       isHomePage: false,
