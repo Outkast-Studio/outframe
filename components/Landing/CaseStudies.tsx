@@ -306,7 +306,7 @@ function TestimonialCard({ name, role, content, image, index }: Testimonial) {
           <span
             className={clsx(
               'text-tertiaryText relative z-[1] translate-x-[-100%] delay-[0.5s] duration-[0.35s] transition-transform ease-[cubic-bezier(0.34, 0, 0.36, 1)]',
-              isInView && 'translate-x-0',
+              isInView && '!translate-x-0',
             )}
           >
             {role}
