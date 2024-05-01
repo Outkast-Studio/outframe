@@ -9,10 +9,26 @@ import { PortableText } from '@portabletext/react'
 import { myPortableTextComponents } from 'pages/_app'
 import { motion } from 'framer-motion'
 import { useThemeStore } from 'stores/themeStore'
+import FlickerText from 'components/UI/FlickerText'
+import { useInView } from 'react-intersection-observer'
 
 const CaseStudies = ({ caseStudies }: { caseStudies: any[] }) => {
+  const { ref, inView } = useInView({
+    triggerOnce: true,
+    threshold: 0.05,
+  })
+
+  const [isInView, setIsInView] = useState(false)
+
+  useEffect(() => {
+    if (inView) {
+      setIsInView(true)
+    }
+  }, [inView])
+
   return (
     <section
+      ref={ref}
       id={'case-studies'}
       className={clsx(
         'mx-gutter border-t-[1px] pt-[20px] border-dividers mt-[144px]',
@@ -26,7 +42,13 @@ const CaseStudies = ({ caseStudies }: { caseStudies: any[] }) => {
           'lg:justify-start gap-x-[12px] md:hidden',
         )}
       >
-        <h2 className={clsx('')}>Case Studies</h2>
+        <h2 className={clsx('')}>
+          <FlickerText
+            title="Case Studies"
+            animationDelay={0.5}
+            play={isInView}
+          />
+        </h2>
         <span className={clsx('hidden text-tertiaryText', 'lg:block')}>/</span>
         <Link
           href="/recent-work"
@@ -58,9 +80,15 @@ const CaseStudies = ({ caseStudies }: { caseStudies: any[] }) => {
             'md:justify-start gap-x-[12px] md:flex md:h-fit',
           )}
         >
-          <h2 className={clsx('')}>Case Studies</h2>
+          <h2 className={clsx('')}>
+            <FlickerText
+              title="Case Studies"
+              animationDelay={0.5}
+              play={isInView}
+            />
+          </h2>
           <span className={clsx('hidden text-tertiaryText', 'md:block')}>
-            /
+            <FlickerText title="/" animationDelay={1} play={isInView} />
           </span>
           <Link
             href="/recent-work"
@@ -69,13 +97,27 @@ const CaseStudies = ({ caseStudies }: { caseStudies: any[] }) => {
               'lg:items-end lg:gap-x-[6px]',
             )}
           >
-            <span className={clsx('text-tertiaryText')}>Recent work</span>
+            <span
+              className={clsx(
+                'text-tertiaryText bg-background inline-block relative z-[2]',
+              )}
+            >
+              {' '}
+              <FlickerText
+                title="Recent Work"
+                animationDelay={0.5}
+                play={isInView}
+              />
+            </span>
             <Image
               src={'/icons/recentWorkArrow.svg'}
               height={11}
               width={10}
               alt={'arrow'}
-              className={clsx('lg:pb-[4px]')}
+              className={clsx(
+                'lg:pb-[4px] translate-x-[-20px] relative z-[1] delay-[1s] duration-[0.35s] transition-transform ease-[cubic-bezier(0.34, 0, 0.36, 1)]',
+                isInView && '!translate-x-0',
+              )}
             />
           </Link>
         </div>
@@ -220,8 +262,22 @@ type Testimonial = {
 }
 
 function TestimonialCard({ name, role, content, image, index }: Testimonial) {
+  const { ref, inView } = useInView({
+    triggerOnce: true,
+    threshold: 1,
+  })
+
+  const [isInView, setIsInView] = useState(false)
+
+  useEffect(() => {
+    if (inView) {
+      setIsInView(true)
+    }
+  }, [inView])
+
   return (
     <article
+      ref={ref}
       className={clsx('self-end', 'md:max-w-[378px]', 'xl:max-w-[560px]')}
     >
       <div
@@ -246,8 +302,15 @@ function TestimonialCard({ name, role, content, image, index }: Testimonial) {
             'xl:text-[14px] xl:leading-[16.8px]',
           )}
         >
-          <h6 className={clsx('text-mainText')}>{name}</h6>
-          <h6 className={clsx('text-secondaryText')}>{role}</h6>
+          <span className={clsx('bg-background relative z-[2]')}>{name}</span>
+          <span
+            className={clsx(
+              'text-tertiaryText relative z-[1] translate-x-[-100%] delay-[0.5s] duration-[0.35s] transition-transform ease-[cubic-bezier(0.34, 0, 0.36, 1)]',
+              isInView && 'translate-x-0',
+            )}
+          >
+            {role}
+          </span>
         </div>
       </div>
     </article>

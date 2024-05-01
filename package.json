@@ -36,6 +36,7 @@
     "next-seo": "^6.4.0",
     "react": "18.2.0",
     "react-dom": "18.2.0",
+    "react-intersection-observer": "^9.10.1",
     "react-lottie": "^1.2.4",
     "sanity": "3.26.0",
     "sanity-plugin-asset-source-unsplash": "1.1.2",

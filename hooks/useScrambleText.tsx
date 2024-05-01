@@ -1,13 +1,5 @@
-import { useState, useEffect } from 'react'
-import { useRouter } from 'next/router'
-
-type Props = {
-  title: string
-  animationDelay: number
-  delay?: number // Optional delay before starting
-  paused?: boolean
-  cb?: () => void
-}
+import { useEffect, useState } from 'react'
+// Include a CSS file with the animation keyframes
 
 const ScrambleText = ({
   title,
@@ -15,16 +7,35 @@ const ScrambleText = ({
   paused,
   delay = 0,
   cb = () => {},
-}: Props) => {
-  // Initialize letters with non-breaking spaces
+}) => {
   const [letters, setLetters] = useState(title.split(''))
+
   useEffect(() => {
     if (paused) return
-  }, [paused])
+
+    // Trigger the function after the specified delay
+    const timer = setTimeout(() => {
+      setLetters(title.split(''))
+      cb() // Callback function if needed
+    }, delay * 1000) // delay is in seconds, convert to milliseconds
+
+    return () => clearTimeout(timer) // Clean up timer if component unmounts
+  }, [paused, delay])
+
+  const getRandomDelay = (index) => {
+    return Math.random() * index + animationDelay + 's'
+  }
+
   return (
     <span>
       {letters.map((letter, index) => (
-        <span key={index}>{letter}</span>
+        <span
+          key={index}
+          className="letter"
+          style={{ animationDelay: getRandomDelay(index) }}
+        >
+          {letter}
+        </span>
       ))}
     </span>
   )

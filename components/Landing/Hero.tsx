@@ -285,11 +285,21 @@ const Hero = ({ images, testimonial }: Props) => {
                 'flex gap-x-[6px] text-[14px] leading-[16.8px] text-mainText',
               )}
             >
-              <span>{testimonialName}</span>
-              <span className={clsx('text-tertiaryText')}>{role}</span>
+              <span className={clsx('bg-background relative z-[2]')}>
+                {testimonialName}
+              </span>
+              <span
+                className={clsx(
+                  'text-tertiaryText relative z-[1] translate-x-[-100%] delay-[1.5s] duration-[0.35s] transition-transform ease-[cubic-bezier(0.34, 0, 0.36, 1)]',
+                  !introVisible && 'translate-x-0',
+                )}
+              >
+                {role}
+              </span>
             </div>
           </div>
         </motion.div>
+         
       </div>
     </section>
   )

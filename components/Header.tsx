@@ -7,17 +7,24 @@ import { useRouter } from 'next/router'
 import Image from 'next/image'
 import { useThemeStore } from 'stores/themeStore'
 import { useLenis } from '@studio-freight/react-lenis'
-import ScrambleText from 'hooks/useScrambleText'
+import FlickerText from 'components/UI/FlickerText'
 
 const Header = () => {
   const menuOpen = useThemeStore((state) => state.menuOpen)
   const setMenuOpen = useThemeStore((state) => state.setMenuOpen)
   const lenis = useLenis()
   const router = useRouter()
+  const introVisible = useThemeStore((state) => state.introVisible)
 
   const menuItems = [
     {
-      title: <ScrambleText title="Case Studies" animationDelay={3900} />,
+      title: (
+        <FlickerText
+          title="Case Studies"
+          animationDelay={1}
+          play={!introVisible}
+        />
+      ),
       // title: 'Case Studies',
       link: '#case-studies',
       isHomePage: true,
@@ -25,35 +32,45 @@ const Header = () => {
     },
     {
       // title: useScrambleText({ title: 'About', animationDelay: 4200 }),
-      title: 'About',
+      title: (
+        <FlickerText title="About" animationDelay={1} play={!introVisible} />
+      ),
       link: '#about',
       isHomePage: true,
       width: 45,
     },
     {
       // title: useScrambleText({ title: 'Services', animationDelay: 4500 }),
-      title: 'Services',
+      title: (
+        <FlickerText title="Services" animationDelay={1} play={!introVisible} />
+      ),
       link: '#services',
       isHomePage: true,
       width: 67.6,
     },
     {
       // title: useScrambleText({ title: 'Pricing', animationDelay: 4800 }),
-      title: 'Pricing',
+      title: (
+        <FlickerText title="Pricing" animationDelay={1} play={!introVisible} />
+      ),
       link: '#pricing',
       isHomePage: true,
       width: 57.8,
     },
     {
       // title: useScrambleText({ title: 'Recent Work', animationDelay: 5100 }),
-      title: 'Recent Work',
+      title: (
+        <FlickerText title="Pricing" animationDelay={1} play={!introVisible} />
+      ),
       link: '/recent-work',
       isHomePage: false,
       width: 96.24,
     },
     {
       // title: useScrambleText({ title: 'Blog', animationDelay: 5400 }),
-      title: 'Blog',
+      title: (
+        <FlickerText title="Blog" animationDelay={1} play={!introVisible} />
+      ),
       link: '/blog',
       isHomePage: false,
       width: 35.46,

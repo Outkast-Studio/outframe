@@ -186,3 +186,7 @@
 .arrowTransition {
   transition: transform 0.35s cubic-bezier(0.34, 0, 0.36, 1) 0.3s;
 }
+.animateFlicker {
+  opacity: 0;
+  transition: opacity 0.15s;
+}
