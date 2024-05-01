@@ -7,7 +7,7 @@ import { useRouter } from 'next/router'
 import Image from 'next/image'
 import { useThemeStore } from 'stores/themeStore'
 import { useLenis } from '@studio-freight/react-lenis'
-import useScrambleText from 'hooks/useScrambleText'
+import ScrambleText from 'hooks/useScrambleText'
 
 const Header = () => {
   const menuOpen = useThemeStore((state) => state.menuOpen)
@@ -17,8 +17,8 @@ const Header = () => {
 
   const menuItems = [
     {
-      // title: useScrambleText({ title: 'Case Studies', animationDelay: 3900 }),
-      title: 'Case Studies',
+      title: <ScrambleText title="Case Studies" animationDelay={3900} />,
+      // title: 'Case Studies',
       link: '#case-studies',
       isHomePage: true,
       width: 101,

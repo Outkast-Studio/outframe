@@ -9,6 +9,7 @@ import { Testimonial } from 'lib/sanity.queries'
 import { motion } from 'framer-motion'
 import { useThemeStore } from 'stores/themeStore'
 import { useLenis } from '@studio-freight/react-lenis'
+import HeroImage from 'components/UI/HeroImage'
 
 type Props = {
   images: ImageAsset[]
@@ -19,12 +20,15 @@ const Hero = ({ images, testimonial }: Props) => {
   console.log(images)
   const [position, setPosition] = useState({ x: 0, y: 0 })
   const [isVisible, setIsVisible] = useState(false)
-  const [hoverActive, setHoverActive] = useState(false)
   const trackingDivRef = useRef<HTMLDivElement>(null)
   const testimonialText = testimonial.content
   const testimonialName = testimonial.name
   const role = testimonial.role
   const introVisible = useThemeStore((state) => state.introVisible)
+  const setIsHoveringHeroImage = useThemeStore(
+    (state) => state.setIsHoveringHeroImage,
+  )
+
   const lenis = useLenis()
 
   const h1Variants = {
@@ -87,13 +91,11 @@ const Hero = ({ images, testimonial }: Props) => {
   }
 
   const handleMouseEnter = () => {
-    setIsVisible(true)
-    setHoverActive(true)
+    setIsHoveringHeroImage(true)
   }
 
   const handleMouseLeave = () => {
-    setIsVisible(false)
-    setHoverActive(false)
+    setIsHoveringHeroImage(false)
   }
 
   return (
@@ -115,7 +117,9 @@ const Hero = ({ images, testimonial }: Props) => {
             'xl:text-[76px] xl:leading-[91.2px] xl:col-span-6 xl:w-full xl:tracking-[-0.4px]',
           )}
         >
-          <span className={clsx('overflow-y-hidden inline-block h-[70px]')}>
+          <span
+            className={clsx('overflow-y-hidden inline-block', ' lg:h-[70px]')}
+          >
             <motion.span
               variants={h1ChildrenVariants}
               className={clsx('inline-block')}
@@ -123,7 +127,7 @@ const Hero = ({ images, testimonial }: Props) => {
               SR.&nbsp;
             </motion.span>
           </span>
-          <span className={clsx('overflow-hidden inline-block h-[70px]')}>
+          <span className={clsx('overflow-hidden inline-block', 'lg:h-[70px]')}>
             <motion.span
               variants={h1ChildrenVariants}
               className={clsx('inline-block')}
@@ -131,7 +135,12 @@ const Hero = ({ images, testimonial }: Props) => {
               Product&nbsp;
             </motion.span>
           </span>
-          <span className={clsx('overflow-hidden inline-block h-[70px]')}>
+          <span
+            className={clsx(
+              'overflow-hidden inline-block h-[70px]',
+              'lg:h-[70px]',
+            )}
+          >
             <motion.span
               variants={h1ChildrenVariants}
               className={clsx('inline-block')}
@@ -139,7 +148,9 @@ const Hero = ({ images, testimonial }: Props) => {
               Design&nbsp;
             </motion.span>
           </span>
-          <span className={clsx('overflow-hidden inline-block h-[70px]')}>
+          <span
+            className={clsx('overflow-hidden inline-block ', 'lg:h-[70px]')}
+          >
             <motion.span
               variants={h1ChildrenVariants}
               className={clsx('inline-block')}
@@ -147,7 +158,7 @@ const Hero = ({ images, testimonial }: Props) => {
               Partner&nbsp;
             </motion.span>
           </span>
-          <span className={clsx('overflow-hidden inline-block h-[70px]')}>
+          <span className={clsx('overflow-hidden inline-block', 'lg:h-[70px]')}>
             <motion.span
               variants={h1ChildrenVariants}
               className={clsx('inline-block')}
@@ -155,7 +166,9 @@ const Hero = ({ images, testimonial }: Props) => {
               On&nbsp;
             </motion.span>
           </span>
-          <span className={clsx('overflow-hidden inline-block h-[70px]')}>
+          <span
+            className={clsx('overflow-hidden inline-block ', 'lg:h-[70px]')}
+          >
             <motion.span
               variants={h1ChildrenVariants}
               className={clsx('inline-block')}
@@ -221,50 +234,18 @@ const Hero = ({ images, testimonial }: Props) => {
         <motion.div
           ref={trackingDivRef}
           variants={imageVariants}
-          onMouseMove={handleMouseMove}
           onMouseEnter={handleMouseEnter}
           onMouseLeave={handleMouseLeave}
           initial="initial"
           animate={introVisible ? 'initial' : 'animate'}
           className={clsx(
             'mt-[64px] w-full relative',
-            'md:mt-[0px] md:w-[120%]',
+            'md:mt-[0px] md:w-[120%] h-fit',
             'xl:col-span-6 xl:w-[100%]',
           )}
         >
           <Link href={'/recent-work'}>
-            <div
-              className={clsx(
-                'message text-white ease-[cubic-bezier(0.34, 0, 0.36, 1)] whitespace-nowrap z-[5] hidden origin-left',
-                'lg:flex lg:gap-x-[4px] bg-accent lg:px-[16px] lg:py-[10px] lg:rounded-[2px]',
-                isVisible && 'isHovering',
-              )}
-              style={{
-                position: 'absolute',
-                pointerEvents: 'none',
-                userSelect: 'none',
-                top: position.y + 15,
-                left: position.x + 15,
-                clipPath: 'inset(100% 100% 100% 100%)',
-                transition: 'clip-path 0.35s',
-              }}
-            >
-              <span>Recent work</span>
-              <Image
-                src={'/icons/recentWorkArrowWhite.svg'}
-                width={12}
-                height={12}
-                alt={'arrow'}
-              />
-            </div>
-            <Image
-              src={urlForImage(images[0].asset).url()}
-              alt={String(images[0].alt)}
-              width={1200}
-              height={1200}
-              className={clsx('object-cover ')}
-              priority
-            />
+            <HeroImage images={images} />
           </Link>
           {/* This is the Image component */}
         </motion.div>

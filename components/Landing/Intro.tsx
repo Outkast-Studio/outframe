@@ -21,16 +21,21 @@ const Intro = () => {
   const setIntroVisible = useThemeStore((state) => state.setIntroVisible)
   const introVisible = useThemeStore((state) => state.introVisible)
   const lenis = useLenis()
+
   useEffect(() => {
+    const introHasRun = sessionStorage.getItem('introHasRun')
+
     if (lenis) {
       // // lenis.stop()
       setTimeout(() => {
         setIntroVisible(false)
+        if (introHasRun) return
         lenis.scrollTo(0, {
           immediate: true,
           force: true,
         })
         lenis.start()
+        sessionStorage.setItem('introHasRun', 'true')
       }, '3900')
     }
   }, [lenis])

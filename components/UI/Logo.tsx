@@ -7,13 +7,16 @@ const Logo = () => {
   const { scrollY } = useScroll()
   const [hideLogoText, setHideLogoText] = useState(true)
   const introVisible = useThemeStore((state) => state.introVisible)
+  const [atTop, setAtTop] = useState(true)
 
   useMotionValueEvent(scrollY, 'change', (latest) => {
     if (latest > 100 && hideLogoText === false) {
       setHideLogoText(true)
+      setAtTop(false)
     }
     if (latest <= 100 && hideLogoText === true) {
       setHideLogoText(false)
+      setAtTop(true)
     }
   })
 
@@ -41,6 +44,16 @@ const Logo = () => {
       variants={fadeInVariants}
       initial="initial"
       animate={introVisible ? 'initial' : 'animate'}
+      onMouseOver={() => {
+        if (!atTop) {
+          setHideLogoText(false)
+        }
+      }}
+      onMouseOut={() => {
+        if (!atTop) {
+          setHideLogoText(true)
+        }
+      }}
       className={clsx(
         'min-w-[200px] col-span-5 flex overflow-hidden items-center',
       )}

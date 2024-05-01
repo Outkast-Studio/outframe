@@ -14,6 +14,7 @@ import Pricing from './Landing/Pricing'
 import Footer from './Footer'
 import Intro from './Landing/Intro'
 import { useThemeStore } from 'stores/themeStore'
+import Cursor from './UI/Cursor'
 
 export default function Post({
   work,
@@ -25,15 +26,12 @@ export default function Post({
   const introVisible = useThemeStore((state) => state.introVisible)
   return (
     <main className={clsx('bg-background overflow-x-hidden')}>
+      <Cursor />
       <Intro />
       <Hero
         images={homepageSettings.heroCarousel}
         testimonial={homepageSettings.heroTestimonial}
       />
-      {/* <Hero
-        images={homepageSettings.heroCarousel}
-        testimonial={homepageSettings.heroTestimonial}
-      /> */}
       <LogoCloud images={homepageSettings.logoCloud} />
       <CaseStudies caseStudies={homepageSettings.caseStudies} />
       <OurStudio />

@@ -1,26 +1,30 @@
-import React, { useRef } from 'react'
+import React, { useRef, useEffect } from 'react'
 import Image from 'next/image'
 import { urlForImage } from 'lib/sanity.image'
 import { clsx } from 'clsx'
-import { motion } from 'framer-motion'
+import { motion, useAnimationControls } from 'framer-motion'
 import { useWindowSize } from 'hooks/useWindowSize'
+import { useGSAP } from '@gsap/react'
+import { horizontalLoop } from 'utils'
 
 const LogoCloud = ({ images }) => {
   const { width } = useWindowSize()
   const ref = useRef(null)
-  const marqueeVariants = {
-    animate: {
-      x: [0, ref.current?.offsetWidth * 2 * -1],
-      transition: {
-        x: {
-          repeat: Infinity,
-          repeatType: 'loop',
-          duration: 45,
-          ease: 'linear',
-        },
-      },
-    },
-  }
+  const controls = useAnimationControls()
+  const tlRef = useRef(null)
+  const marqueeWidth = 100 // Width of the marquee content in viewport width units (vw)
+
+  useEffect(() => {
+    const marquee = ref.current
+    setTimeout(() => {
+      tlRef.current = horizontalLoop(marquee.children, {
+        draggable: false,
+        repeat: -1,
+        speed: 0.4,
+        paused: false,
+      })
+    }, 1800)
+  }, [])
 
   return (
     <section
@@ -28,16 +32,37 @@ const LogoCloud = ({ images }) => {
         'mt-[88px] flex flex-wrap px-gutter gap-x-[24px] gap-y-[65px] items-center justify-center',
         'md:gap-x-[30px]',
         'lg:mt-[98px] lg:py-[22.5px] lg:flex-nowrap lg:gap-x-[96px]',
-        'xl:mt-[130px] xl:py-[36px] xl:justify-between',
+        'xl:mt-[130px] xl:py-[36px] xl:justify-between ',
       )}
     >
       <motion.div
         ref={ref}
-        variants={marqueeVariants}
-        animate="animate"
-        className={'flex lg:flex-nowrap lg:gap-x-[96px] items-center'}
+        animate={controls}
+        className={
+          'flex lg:flex-nowrap lg:gap-x-[96px] items-center lg:w-[120vw] translate-x-[-10vw]'
+        }
       >
-        {[...images, ...images].map((image, index) => (
+        {[...images].map((image, index) => (
+          <Image
+            src={urlForImage(image.asset).format('png').url()}
+            alt={image.alt}
+            width={image.dimensions.width}
+            height={image.dimensions.height}
+            key={index}
+            style={{
+              width:
+                width > 1024
+                  ? image.dimensions.width
+                  : image.dimensions.width * 0.75,
+              height:
+                width > 1024
+                  ? image.dimensions.height
+                  : image.dimensions.height * 0.75,
+            }}
+          />
+        ))}
+
+        {[...images].map((image, index) => (
           <Image
             src={urlForImage(image.asset).format('png').url()}
             alt={image.alt}

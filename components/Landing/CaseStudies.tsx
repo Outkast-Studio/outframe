@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState, useRef, useEffect } from 'react'
 import { clsx } from 'clsx'
 import Link from 'next/link'
 import Image from 'next/image'
@@ -7,6 +7,8 @@ import { urlForImage } from 'lib/sanity.image'
 import { Work } from 'lib/sanity.queries'
 import { PortableText } from '@portabletext/react'
 import { myPortableTextComponents } from 'pages/_app'
+import { motion } from 'framer-motion'
+import { useThemeStore } from 'stores/themeStore'
 
 const CaseStudies = ({ caseStudies }: { caseStudies: any[] }) => {
   return (
@@ -126,6 +128,21 @@ function CaseStudyCard({
   caseStudyType,
   index,
 }: Card) {
+  const [isVisible, setIsVisible] = useState(false)
+  const setIsHoveringCaseStudy = useThemeStore(
+    (state) => state.setIsHoveringCaseStudy,
+  )
+
+  const handleMouseEnter = () => {
+    setIsHoveringCaseStudy(true)
+    setIsVisible(true)
+  }
+
+  const handleMouseLeave = () => {
+    setIsHoveringCaseStudy(false)
+    setIsVisible(false)
+  }
+
   return (
     <Link
       href={`/case-studies/${slug}`}
@@ -141,12 +158,29 @@ function CaseStudyCard({
           index == 4 && 'md:mt-[-32px] lg:mt-[-256px]',
         )}
       >
-        <Image
-          src={urlForImage(thumbnail.asset).url()}
-          alt={String(thumbnail.alt)}
-          width={1920}
-          height={1920}
-        />
+        <div
+          className={clsx('relative overflow-hidden')}
+          onMouseEnter={handleMouseEnter}
+          onMouseLeave={handleMouseLeave}
+        >
+          <div
+            className={clsx(
+              'absolute z-[2] bg-black opacity-[0] w-full h-full transition-opacity duration-[0.3s]',
+              isVisible && '!opacity-[0.15]',
+            )}
+          ></div>
+
+          <Image
+            src={urlForImage(thumbnail.asset).url()}
+            alt={String(thumbnail.alt)}
+            width={1920}
+            height={1920}
+            className={clsx(
+              'ease-[cubic-bezier(0.34, 0, 0.36, 1)] scale-1 duration-[0.3s] transition-transform',
+              isVisible && 'scale-[1.04]',
+            )}
+          />
+        </div>
         <div
           className={clsx(
             'lg:flex lg:border-b-[1px] lg:border-b-dividers lg:mt-[16px] lg:pb-[16px] lg:gap-x-[33px] lg:justify-between',
