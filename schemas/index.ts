@@ -7,6 +7,7 @@ import settings from './settings'
 import work from './work'
 import homepageSettings from './homepageSettings'
 import testimonial from './testimonial'
+import recentWork from './recentWork'
 import {
   singleImage,
   textBlock,
@@ -27,5 +28,6 @@ export const schema: { types: SchemaTypeDefinition[] } = {
     textBlock,
     twoColumnImage,
     testimonialBlock,
+    recentWork,
   ],
 }

@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { clsx } from 'clsx'
 import Logo from 'components/UI/Logo'
 import Link from 'next/link'
@@ -8,6 +8,7 @@ import Image from 'next/image'
 import { useThemeStore } from 'stores/themeStore'
 import { useLenis } from '@studio-freight/react-lenis'
 import FlickerText from 'components/UI/FlickerText'
+import { useWindowSize } from 'hooks/useWindowSize'
 
 const Header = () => {
   const menuOpen = useThemeStore((state) => state.menuOpen)
@@ -15,14 +16,15 @@ const Header = () => {
   const lenis = useLenis()
   const router = useRouter()
   const introVisible = useThemeStore((state) => state.introVisible)
+  const { width } = useWindowSize()
 
   const menuItems = [
     {
       title: (
         <FlickerText
           title="Case Studies"
-          animationDelay={1}
-          play={!introVisible}
+          animationDelay={width > 1024 ? 1 : 0}
+          play={router.pathname == '/' ? !introVisible : true}
           hover={true}
         />
       ),
@@ -36,8 +38,8 @@ const Header = () => {
       title: (
         <FlickerText
           title="About"
-          animationDelay={1}
-          play={!introVisible}
+          animationDelay={width > 1024 ? 1 : 0}
+          play={router.pathname == '/' ? !introVisible : true}
           hover={true}
         />
       ),
@@ -50,8 +52,8 @@ const Header = () => {
       title: (
         <FlickerText
           title="Services"
-          animationDelay={1}
-          play={!introVisible}
+          animationDelay={width > 1024 ? 1 : 0}
+          play={router.pathname == '/' ? !introVisible : true}
           hover={true}
         />
       ),
@@ -64,8 +66,8 @@ const Header = () => {
       title: (
         <FlickerText
           title="Pricing"
-          animationDelay={1}
-          play={!introVisible}
+          animationDelay={width > 1024 ? 1 : 0}
+          play={router.pathname == '/' ? !introVisible : true}
           hover={true}
         />
       ),
@@ -77,9 +79,9 @@ const Header = () => {
       // title: useScrambleText({ title: 'Recent Work', animationDelay: 5100 }),
       title: (
         <FlickerText
-          title="Pricing"
-          animationDelay={1}
-          play={!introVisible}
+          title="Recent Work"
+          animationDelay={width > 1024 ? 1 : 0}
+          play={router.pathname == '/' ? !introVisible : true}
           hover={true}
         />
       ),
@@ -92,8 +94,8 @@ const Header = () => {
       title: (
         <FlickerText
           title="Blog"
-          animationDelay={1}
-          play={!introVisible}
+          animationDelay={width > 1024 ? 1 : 0}
+          play={router.pathname == '/' ? !introVisible : true}
           hover={true}
         />
       ),
@@ -125,6 +127,15 @@ const Header = () => {
       },
     },
   }
+
+  useEffect(() => {
+    if (!lenis) return
+    if (menuOpen) {
+      lenis.stop()
+    } else {
+      lenis.start()
+    }
+  }, [menuOpen])
 
   return (
     <>
@@ -180,8 +191,8 @@ const Header = () => {
           <span
             className={clsx('w-[16px] flex flex-col items-end gap-y-[4px]')}
           >
-            <span className={clsx('block w-full h-[2px] bg-mainText')}></span>
-            <span className={clsx('block w-[12px] h-[2px] bg-mainText')}></span>
+            <span className={clsx('block w-full h-[2px] bg-[#fff]')}></span>
+            <span className={clsx('block w-[12px] h-[2px] bg-[#fff]')}></span>
           </span>
           <span
             className={clsx(
@@ -193,7 +204,9 @@ const Header = () => {
               initial="initial"
               animate={menuOpen ? 'animate' : 'initial'}
               variants={menuButtonVariants}
-              className={clsx('flex flex-col gap-x-[8px] items-end ')}
+              className={clsx(
+                'flex flex-col gap-x-[8px] items-end text-[#fff]',
+              )}
             >
               <span>MENU</span>
               <span>Close</span>
@@ -204,7 +217,7 @@ const Header = () => {
       {menuOpen && (
         <div
           className={clsx(
-            'fixed h-[calc(100svh-69px)] px-gutter w-full bg-background top-[69px] pt-[60px] flex flex-col justify-between',
+            'fixed h-[calc(100svh)] px-gutter w-full bg-background top-[0px] pt-[129px] flex flex-col justify-between z-[99]',
           )}
         >
           <nav>
@@ -213,14 +226,17 @@ const Header = () => {
                 <li
                   key={index}
                   className={clsx(
-                    'text-[18px] leading-[21.6px] tracking-[-0.2px] font-monoMedium text-mainText uppercase overflow-x-hidden',
+                    'text-[18px] leading-[21.6px] tracking-[-0.2px] font-monoMedium text-mainText uppercase overflow-hidden',
                   )}
                 >
                   {item.isHomePage ? (
-                    <a href={item.link}>{item.title}</a>
+                    <a href={item.link} onClick={() => setMenuOpen(false)}>
+                      {item.title}
+                    </a>
                   ) : (
                     <Link
                       href={item.link}
+                      onClick={() => setMenuOpen(false)}
                       className={clsx(
                         router.pathname.toLowerCase() === item.link &&
                           'text-accent',

@@ -104,6 +104,17 @@ export const homepageQuery = groq`*[_type == 'homepageSettings'][0]{
 }
 `
 
+export const recentWorkQuery = groq`
+*[_type == "recentWork"] | order(date desc, _updatedAt desc)
+`
+
+export interface RecentWork {
+  title?: string
+  image?: ImageAsset
+  columns?: number
+  year?: number
+}
+
 export interface Author {
   name?: string
   picture?: any

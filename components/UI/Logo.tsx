@@ -2,12 +2,15 @@ import React, { useEffect, useState } from 'react'
 import { clsx } from 'clsx'
 import { useScroll, motion, useMotionValueEvent } from 'framer-motion'
 import { useThemeStore } from 'stores/themeStore'
+import { useRouter } from 'next/router'
 
 const Logo = () => {
   const { scrollY } = useScroll()
   const [hideLogoText, setHideLogoText] = useState(true)
   const introVisible = useThemeStore((state) => state.introVisible)
   const [atTop, setAtTop] = useState(true)
+
+  const router = useRouter()
 
   useMotionValueEvent(scrollY, 'change', (latest) => {
     if (latest > 100 && hideLogoText === false) {
@@ -38,12 +41,15 @@ const Logo = () => {
         setHideLogoText(false)
       }, 900)
     }
+    if (router.pathname !== '/') {
+      setHideLogoText(false)
+    }
   }, [introVisible])
   return (
     <motion.div
       variants={fadeInVariants}
       initial="initial"
-      animate={introVisible ? 'initial' : 'animate'}
+      animate={introVisible && router.pathname == '/' ? 'initial' : 'animate'}
       onMouseOver={() => {
         if (!atTop) {
           setHideLogoText(false)
@@ -55,7 +61,8 @@ const Logo = () => {
         }
       }}
       className={clsx(
-        'min-w-[200px] col-span-5 flex overflow-hidden items-center',
+        'min-w-[180px] col-span-5 flex overflow-hidden items-center ',
+        'lg:min-w-[200px]',
       )}
     >
       <svg
@@ -65,7 +72,7 @@ const Logo = () => {
         fill="none"
         xmlns="http://www.w3.org/2000/svg"
         className={clsx(
-          'flex-shrink-0 bg-[#000000] relative z-[10]',
+          'flex-shrink-0 bg-[#000000] relative z-[10] ',
           'transition-transform duration-[0.5s] ease-in-out-expo',
           hideLogoText && '!rotate-[-270deg]',
         )}
