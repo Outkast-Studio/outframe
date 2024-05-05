@@ -2,11 +2,26 @@ import React from 'react'
 import { clsx } from 'clsx'
 import { motion } from 'framer-motion'
 import { useState, useEffect } from 'react'
+import { useThemeStore } from 'stores/themeStore'
 
 const Background = () => {
+  const introVisible = useThemeStore((state) => state.introVisible)
+
+  const background = {
+    initial: {
+      opacity: 0,
+    },
+    animate: {
+      opacity: 1,
+    },
+  }
+
   return (
     <>
-      <div
+      <motion.div
+        variants={background}
+        initial="initial"
+        animate={introVisible ? 'initial' : 'animate'}
         className={clsx(
           'absolute z-[1] w-full h-[120vh] bg-background top-0 left-0',
         )}
@@ -108,7 +123,7 @@ const Background = () => {
             )}
           ></div>
         </div>
-      </div>
+      </motion.div>
     </>
   )
 }
@@ -158,7 +173,7 @@ function RotatingNumber({ index, char }) {
   }, [])
 
   return (
-    <span className={clsx('h-[10px] overflow-hidden mt-[2px]')}>
+    <span className={clsx('h-[10px] overflow-hidden mt-[2.5px]')}>
       <motion.span
         initial={{ y: 0 }}
         animate={{ y: -10 * currentIndex }}
