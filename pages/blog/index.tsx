@@ -11,6 +11,9 @@ import Image from 'next/image'
 import { urlForImage } from 'lib/sanity.image'
 import Link from 'next/link'
 import Footer from 'components/Footer'
+import Cursor from 'components/UI/Cursor'
+import { useThemeStore } from 'stores/themeStore'
+
 interface PageProps extends SharedPageProps {
   posts: Post[]
   params: QueryParams
@@ -32,6 +35,7 @@ export default function Page(props: PageProps) {
 
   return (
     <Layout seo={seo}>
+      <Cursor />
       <main className={clsx('px-gutter bg-background text-mainText')}>
         <div className={clsx('pt-[191px]', 'lg:grid lg:grid-cols-12  ')}>
           <h1
@@ -99,8 +103,21 @@ export function BlogCard({
       month: 'long',
       year: 'numeric',
     })
+
+  const setIsHoveringBlog = useThemeStore((state) => state.setIsHoveringBlog)
+
+  const handleMouseEnter = () => {
+    setIsHoveringBlog(true)
+  }
+
+  const handleMouseLeave = () => {
+    setIsHoveringBlog(false)
+  }
+
   return (
     <Link
+      onMouseEnter={handleMouseEnter}
+      onMouseLeave={handleMouseLeave}
       href={`/blog/${post.slug.current}`}
       key={post._id}
       className={clsx(

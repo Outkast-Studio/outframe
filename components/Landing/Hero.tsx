@@ -288,12 +288,7 @@ const Hero = ({ images, testimonial }: Props) => {
               <span className={clsx('bg-background relative z-[2]')}>
                 {testimonialName}
               </span>
-              <span
-                className={clsx(
-                  'text-tertiaryText relative z-[1] translate-x-[-100%] delay-[1.5s] duration-[0.35s] transition-transform ease-[cubic-bezier(0.34, 0, 0.36, 1)]',
-                  !introVisible && '!translate-x-0',
-                )}
-              >
+              <span className={clsx('text-tertiaryText relative z-[1]')}>
                 {role}
               </span>
             </div>

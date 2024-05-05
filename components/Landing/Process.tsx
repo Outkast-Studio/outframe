@@ -3,7 +3,7 @@ import { clsx } from 'clsx'
 import * as Accordion from '@radix-ui/react-accordion'
 import { useWindowSize } from 'hooks/useWindowSize'
 import { useThemeStore } from 'stores/themeStore'
-
+import SectionHeading from 'components/UI/Sectionheading'
 const Process = () => {
   const processItems = [
     {
@@ -66,7 +66,7 @@ const Process = () => {
           'xl:text-[24px] xl:leading-[33.6px]',
         )}
       >
-        PROCESS
+        <SectionHeading text={'Process'} />
       </h6>
       <Accordion.Root
         orientation="vertical"

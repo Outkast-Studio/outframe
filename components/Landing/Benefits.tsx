@@ -1,6 +1,5 @@
-import React from 'react'
 import { clsx } from 'clsx'
-
+import SectionHeading from 'components/UI/Sectionheading'
 const Benefits = () => {
   const benefits = [
     {
@@ -57,7 +56,7 @@ const Benefits = () => {
           'xl:text-[24px] xl:leading-[33.6px]',
         )}
       >
-        BENEFITS
+        <SectionHeading text={'Benefits'} />
       </h6>
       <div
         className={clsx(

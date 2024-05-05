@@ -11,21 +11,19 @@ import { motion } from 'framer-motion'
 import { useThemeStore } from 'stores/themeStore'
 import FlickerText from 'components/UI/FlickerText'
 import { useInView } from 'react-intersection-observer'
+import SectionHeading from 'components/UI/Sectionheading'
 
 const CaseStudies = ({ caseStudies }: { caseStudies: any[] }) => {
   const { ref, inView } = useInView({
     triggerOnce: true,
     threshold: 0.05,
   })
-
   const [isInView, setIsInView] = useState(false)
-
   useEffect(() => {
     if (inView) {
       setIsInView(true)
     }
   }, [inView])
-
   return (
     <section
       ref={ref}
@@ -43,11 +41,7 @@ const CaseStudies = ({ caseStudies }: { caseStudies: any[] }) => {
         )}
       >
         <h2 className={clsx('')}>
-          <FlickerText
-            title="Case Studies"
-            animationDelay={0.5}
-            play={isInView}
-          />
+          <SectionHeading text={'Case Studies'} />
         </h2>
         <span className={clsx('hidden text-tertiaryText', 'lg:block')}>/</span>
         <Link
@@ -81,14 +75,10 @@ const CaseStudies = ({ caseStudies }: { caseStudies: any[] }) => {
           )}
         >
           <h2 className={clsx('')}>
-            <FlickerText
-              title="Case Studies"
-              animationDelay={0.5}
-              play={isInView}
-            />
+            <SectionHeading text={'Case Studies'} />
           </h2>
           <span className={clsx('hidden text-tertiaryText', 'md:block')}>
-            <FlickerText title="/" animationDelay={1} play={isInView} />
+            <SectionHeading text={'/'} />
           </span>
           <Link
             href="/recent-work"
@@ -103,12 +93,7 @@ const CaseStudies = ({ caseStudies }: { caseStudies: any[] }) => {
               )}
             >
               {' '}
-              <FlickerText
-                title="Recent Work"
-                animationDelay={0.5}
-                play={isInView}
-                hover={true}
-              />
+              <SectionHeading text={'Recent Work'} hover={true} />
             </span>
             <Image
               src={'/icons/recentWorkArrow.svg'}
@@ -199,28 +184,6 @@ function CaseStudyCard({
     }
   }, [inView])
 
-  const titleVariants = {
-    // initial: {},
-    // animate: {
-    //   transition: {
-    //     staggerChildren: 0.07,
-    //   },
-    // },
-  }
-
-  const childrenTitleELements = {
-    // initial: {
-    //   y: 20,
-    // },
-    // animate: {
-    //   y: 0,
-    //   transition: {
-    //     duration: 0.35,
-    //     ease: [0.22, 0.61, 0.36, 1],
-    //   },
-    // },
-  }
-
   return (
     <Link
       ref={ref}
@@ -262,30 +225,17 @@ function CaseStudyCard({
         </div>
         <div
           className={clsx(
-            'lg:flex lg:border-b-[1px] lg:border-b-dividers lg:mt-[16px] lg:pb-[16px] lg:gap-x-[33px] lg:justify-between',
+            'lg:flex s lg:mt-[16px] lg:pb-[16px] lg:gap-x-[33px] lg:justify-between',
           )}
         >
-          <motion.h3
-            variants={titleVariants}
-            initial="initial"
-            animate={isInView ? 'animate' : 'initial'}
+          <h3
             className={clsx(
               'mt-[16px] medium-body text-[18px] leading-[27px] text-mainText mb-[16px] font-sansMedium',
               'lg:my-0 lg:leading-[25.2px] lg:max-w-[464px]',
             )}
           >
-            {title.split(' ').map((word) => (
-              <span className={clsx('h-[22px] inline-block overflow-hidden')}>
-                <motion.span
-                  key={word}
-                  variants={childrenTitleELements}
-                  className="inline-block"
-                >
-                  {word}&nbsp;
-                </motion.span>
-              </span>
-            ))}
-          </motion.h3>
+            {title}
+          </h3>
 
           <h6
             className={clsx(

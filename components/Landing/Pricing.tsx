@@ -2,6 +2,7 @@ import React from 'react'
 import { clsx } from 'clsx'
 import Image from 'next/image'
 import { HomepageSettings } from 'lib/sanity.queries'
+import SectionHeading from 'components/UI/Sectionheading'
 
 const Pricing = ({ settings }: { settings: HomepageSettings }) => {
   const formatCurrency = (number: number) => {
@@ -49,7 +50,7 @@ const Pricing = ({ settings }: { settings: HomepageSettings }) => {
           'xl:text-[24px] xl:leading-[33.6px]',
         )}
       >
-        PRICING
+        <SectionHeading text={'Pricing'} />
       </h6>
       <div className={clsx('lg:col-start-5 lg:col-end-13', 'xl:col-start-6')}>
         <div

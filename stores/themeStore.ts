@@ -11,6 +11,8 @@ type ThemeStore = {
   setIsHoveringCaseStudy: (isHoveringCaseStudy: boolean) => void
   isHoveringHeroImage: boolean
   setIsHoveringHeroImage: (isHoveringHeroImage: boolean) => void
+  isHoveringBlog: boolean
+  setIsHoveringBlog: (isHoveringBlog: boolean) => void
 }
 
 export const useThemeStore = create<ThemeStore>((set) => ({
@@ -24,4 +26,6 @@ export const useThemeStore = create<ThemeStore>((set) => ({
   setIsHoveringCaseStudy: (isHoveringCaseStudy) => set({ isHoveringCaseStudy }),
   isHoveringHeroImage: false,
   setIsHoveringHeroImage: (isHoveringHeroImage) => set({ isHoveringHeroImage }),
+  isHoveringBlog: false,
+  setIsHoveringBlog: (isHoveringBlog) => set({ isHoveringBlog }),
 }))

@@ -11,6 +11,8 @@ const Cursor = () => {
     (state) => state.isHoveringHeroImage,
   )
 
+  const isHoveringBlog = useThemeStore((state) => state.isHoveringBlog)
+
   const [isVisible, setIsVisible] = useState(false)
   const [position, setPosition] = useState({ x: 0, y: 0 })
 
@@ -34,7 +36,7 @@ const Cursor = () => {
       <div
         className={clsx(
           'message text-white ease-[cubic-bezier(0.34, 0, 0.36, 1)] whitespace-nowrap z-[5] hidden origin-center',
-          'lg:flex lg:gap-x-[4px] bg-accent lg:px-[16px] lg:py-[10px] lg:rounded-[2px]',
+          'lg:flex lg:gap-x-[4px] bg-[#76777D] lg:px-[16px] lg:py-[10px] lg:rounded-[2px]',
           isHoveringCaseStudy && 'isHovering',
         )}
         style={{
@@ -49,7 +51,7 @@ const Cursor = () => {
       >
         <span
           className={clsx(
-            'bg-accent translate-x-[10px] relative z-[2] arrowTransition',
+            'bg-[#76777D] translate-x-[10px] relative z-[2] arrowTransition',
             isHoveringCaseStudy && 'showArrow !translate-x-0',
           )}
         >
@@ -69,7 +71,7 @@ const Cursor = () => {
       <div
         className={clsx(
           'message text-white ease-[cubic-bezier(0.34, 0, 0.36, 1)] whitespace-nowrap z-[5] hidden origin-center',
-          'lg:flex lg:gap-x-[4px] bg-accent lg:px-[16px] lg:py-[10px] lg:rounded-[2px]',
+          'lg:flex lg:gap-x-[4px] bg-[#76777D] lg:px-[16px] lg:py-[10px] lg:rounded-[2px]',
           isHoveringHeroImage && 'isHovering',
         )}
         style={{
@@ -84,7 +86,7 @@ const Cursor = () => {
       >
         <span
           className={clsx(
-            'bg-accent translate-x-[10px] relative z-[2] arrowTransition',
+            'bg-[#76777D] translate-x-[10px] relative z-[2] arrowTransition',
             isHoveringHeroImage && 'showArrow !translate-x-0',
           )}
         >
@@ -98,6 +100,41 @@ const Cursor = () => {
           className={clsx(
             'relative z-[1] translate-x-[-10px] arrowTransition',
             isHoveringHeroImage && 'showArrow !translate-x-0',
+          )}
+        />
+      </div>
+      <div
+        className={clsx(
+          'message text-white ease-[cubic-bezier(0.34, 0, 0.36, 1)] whitespace-nowrap z-[5] hidden origin-center',
+          'lg:flex lg:gap-x-[4px] bg-[#76777D] lg:px-[16px] lg:py-[10px] lg:rounded-[2px]',
+          isHoveringBlog && 'isHovering',
+        )}
+        style={{
+          position: 'fixed',
+          pointerEvents: 'none',
+          userSelect: 'none',
+          top: position.y + 15,
+          left: position.x + 15,
+          scale: 0,
+          transition: 'scale 0.35s',
+        }}
+      >
+        <span
+          className={clsx(
+            'bg-[#76777D] translate-x-[10px] relative z-[2] arrowTransition',
+            isHoveringBlog && 'showArrow !translate-x-0',
+          )}
+        >
+          Read
+        </span>
+        <Image
+          src={'/icons/recentWorkArrowWhite.svg'}
+          width={12}
+          height={12}
+          alt={'arrow'}
+          className={clsx(
+            'relative z-[1] translate-x-[-10px] arrowTransition',
+            isHoveringBlog && 'showArrow !translate-x-0',
           )}
         />
       </div>

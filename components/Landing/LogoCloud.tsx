@@ -4,7 +4,6 @@ import { urlForImage } from 'lib/sanity.image'
 import { clsx } from 'clsx'
 import { motion, useAnimationControls } from 'framer-motion'
 import { useWindowSize } from 'hooks/useWindowSize'
-import { useGSAP } from '@gsap/react'
 import { horizontalLoop } from 'utils'
 
 const LogoCloud = ({ images }) => {
@@ -14,17 +13,17 @@ const LogoCloud = ({ images }) => {
   const tlRef = useRef(null)
   const marqueeWidth = 100 // Width of the marquee content in viewport width units (vw)
 
-  useEffect(() => {
-    const marquee = ref.current
-    setTimeout(() => {
-      tlRef.current = horizontalLoop(marquee.children, {
-        draggable: false,
-        repeat: -1,
-        speed: 0.4,
-        paused: false,
-      })
-    }, 1800)
-  }, [])
+  // useEffect(() => {
+  //   const marquee = ref.current
+  //   setTimeout(() => {
+  //     tlRef.current = horizontalLoop(marquee.children, {
+  //       draggable: false,
+  //       repeat: -1,
+  //       speed: 0.4,
+  //       paused: false,
+  //     })
+  //   }, 1800)
+  // }, [])
 
   return (
     <section
@@ -39,30 +38,10 @@ const LogoCloud = ({ images }) => {
         ref={ref}
         animate={controls}
         className={
-          'flex lg:flex-nowrap lg:gap-x-[96px] items-center lg:w-[120vw] translate-x-[-10vw]'
+          'flex lg:flex-nowrap lg:gap-x-[96px] items-center justify-betwee'
         }
       >
-        {[...images].map((image, index) => (
-          <Image
-            src={urlForImage(image.asset).format('png').url()}
-            alt={image.alt}
-            width={image.dimensions.width}
-            height={image.dimensions.height}
-            key={index}
-            style={{
-              width:
-                width > 1024
-                  ? image.dimensions.width
-                  : image.dimensions.width * 0.75,
-              height:
-                width > 1024
-                  ? image.dimensions.height
-                  : image.dimensions.height * 0.75,
-            }}
-          />
-        ))}
-
-        {[...images].map((image, index) => (
+        {images.map((image, index) => (
           <Image
             src={urlForImage(image.asset).format('png').url()}
             alt={image.alt}

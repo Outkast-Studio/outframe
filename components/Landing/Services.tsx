@@ -1,6 +1,7 @@
 import React from 'react'
 import { clsx } from 'clsx'
 import * as Accordion from '@radix-ui/react-accordion'
+import SectionHeading from 'components/UI/Sectionheading'
 const Services = () => {
   const services = [
     {
@@ -63,7 +64,7 @@ const Services = () => {
           'xl:text-[24px] xl:leading-[33.6px]',
         )}
       >
-        Services
+        <SectionHeading text={'Services'} />
       </h6>
       <Accordion.Root
         orientation="vertical"

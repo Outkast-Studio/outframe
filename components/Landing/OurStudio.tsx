@@ -1,28 +1,11 @@
-import React, { useState, useEffect } from 'react'
+import React from 'react'
 import { clsx } from 'clsx'
 import Image from 'next/image'
-import FlickerText from 'components/UI/FlickerText'
-import { useInView } from 'react-intersection-observer'
+import SectionHeading from 'components/UI/Sectionheading'
 
 const OurStudio = () => {
-  const { ref, inView } = useInView({
-    triggerOnce: true,
-    threshold: 0.25,
-  })
-
-  const [isInView, setIsInView] = useState(false)
-
-  useEffect(() => {
-    if (inView) {
-      setIsInView(true)
-    }
-  }, [inView])
-
   return (
-    <section
-      ref={ref}
-      className={clsx('mt-[118px] px-gutter geist text-mainText')}
-    >
+    <section className={clsx('mt-[118px] px-gutter geist text-mainText')}>
       <h6
         className={clsx(
           'w-full pt-[20px] border-t-[1px] border-t-dividers monoMedium tracking-[-0.2px] uppercase text-[20px] leading-[24px]',
@@ -30,7 +13,7 @@ const OurStudio = () => {
           'xl:text-[24px] xl:leading-[33.6px]',
         )}
       >
-        <FlickerText title="Our Studio" animationDelay={0} play={isInView} />
+        <SectionHeading text={'Our Studio'} />
       </h6>
       <div
         className={clsx(

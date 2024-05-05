@@ -1,10 +1,10 @@
-import React from 'react'
 import { clsx } from 'clsx'
 import { Testimonial } from 'lib/sanity.queries'
 import { PortableText } from '@portabletext/react'
 import Image from 'next/image'
 import { myPortableTextComponents } from 'pages/_app'
 import { urlForImage } from 'lib/sanity.image'
+import SectionHeading from 'components/UI/Sectionheading'
 
 type Props = {
   testimonials: Testimonial[]
@@ -27,7 +27,7 @@ const Testimoninals = ({ testimonials }: Props) => {
           'xl:text-[24px] xl:leading-[33.6px]',
         )}
       >
-        TESTIMONIALS
+        <SectionHeading text={'Testimonials'} />
       </h6>
       <div
         className={clsx(
