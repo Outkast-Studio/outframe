@@ -205,3 +205,14 @@
     opacity: 1;
   }
 }
+
+.hoverButton:hover .hoverArrowButton {
+  transform: translateX(2px);
+}
+
+.hoverButton:hover .hoverButtonText {
+  transform: translateX(-4px);
+}
+.buttonTransiton {
+  transition: transform 0.35s cubic-bezier(0.34, 0, 0.36, 1);
+}

@@ -46,7 +46,7 @@ export default function App({
   const router = useRouter()
 
   return (
-    <div className={clsx('bg-background')}>
+    <div className={clsx('bg-background  relative')}>
       {router.pathname !== '/studio' && <Header />}
       {draftMode ? (
         <PreviewProvider token={token}>

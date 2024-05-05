@@ -19,6 +19,7 @@ import { useThemeStore } from 'stores/themeStore'
 import { useRouter } from 'next/router'
 import Cursor from './UI/Cursor'
 import { useSearchParams } from 'next/navigation'
+import Background from './UI/Background'
 
 export default function Post({
   work,
@@ -44,23 +45,27 @@ export default function Post({
       router.push('/', undefined, { shallow: true })
     }
   }, [lenis])
+
   return (
-    <main className={clsx('bg-background overflow-x-hidden')}>
-      <Cursor />
-      <Intro />
-      <Hero
-        images={homepageSettings.heroCarousel}
-        testimonial={homepageSettings.heroTestimonial}
-      />
-      <LogoCloud images={homepageSettings.logoCloud} />
-      <CaseStudies caseStudies={homepageSettings.caseStudies} />
-      <OurStudio />
-      <Benefits />
-      <Testimoninals testimonials={homepageSettings.testimonials} />
-      <Process />
-      <Services />
-      <Pricing settings={homepageSettings} />
-      <Footer />
-    </main>
+    <div className={clsx('overflow-x-hidden w-full')}>
+      <Background />
+      <main className={clsx('relative z-[2] overflow-x-hidden')}>
+        <Cursor />
+        <Intro />
+        <Hero
+          images={homepageSettings.heroCarousel}
+          testimonial={homepageSettings.heroTestimonial}
+        />
+        <LogoCloud images={homepageSettings.logoCloud} />
+        <CaseStudies caseStudies={homepageSettings.caseStudies} />
+        <OurStudio />
+        <Benefits />
+        <Testimoninals testimonials={homepageSettings.testimonials} />
+        <Process />
+        <Services />
+        <Pricing settings={homepageSettings} />
+        <Footer />
+      </main>
+    </div>
   )
 }

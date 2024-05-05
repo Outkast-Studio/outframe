@@ -3,6 +3,7 @@ import { clsx } from 'clsx'
 import Image from 'next/image'
 import { HomepageSettings } from 'lib/sanity.queries'
 import SectionHeading from 'components/UI/Sectionheading'
+import Button from '../UI/Button'
 
 const Pricing = ({ settings }: { settings: HomepageSettings }) => {
   const formatCurrency = (number: number) => {
@@ -120,14 +121,22 @@ const Pricing = ({ settings }: { settings: HomepageSettings }) => {
               Try us for 1 week for $650 or get a free UX/UI audit
             </p>
           </div>
-          <button
+          {/* <button
             className={clsx(
               'border-dividers hidden border rounded-[4px] px-[18px] py-[12px] text-[14px] leading-[16.8px] font-monoMedium',
               'lg:block lg:h-fit',
             )}
           >
             Contact Us
-          </button>
+          </button> */}
+          <Button
+            text={'Contact Us'}
+            cb={() => {}}
+            className={clsx(
+              'border-dividers hidden border rounded-[4px] px-[18px] py-[12px] text-[14px] leading-[16.8px] font-monoMedium',
+              'lg:flex lg:h-fit',
+            )}
+          />
         </div>
         <div
           className={clsx(
@@ -256,7 +265,7 @@ function PricingCard({
         height={1}
         className={clsx('hidden', 'lg:block')}
       />
-      <button
+      {/* <button
         className={clsx(
           'text-[12px] whitespace-nowrap hidden leading-[14.4px] tracking-[-0.2px] bg-accent font-monoMedium text-[#F7F7F7] px-[16px] py-[12px] rounded-[4px] h-fit mt-[32px] ml-[32px]',
           'lg:block ',
@@ -264,7 +273,17 @@ function PricingCard({
         )}
       >
         Book a Call
-      </button>
+      </button> */}
+      <Button
+        text={'Book a Call'}
+        cb={() => {}}
+        accent
+        className={clsx(
+          'text-[12px] whitespace-nowrap hidden leading-[14.4px] tracking-[-0.2px] bg-accent font-monoMedium text-[#F7F7F7] px-[16px] py-[12px] rounded-[4px] h-fit mt-[32px] ml-[32px]',
+          'lg:flex',
+          'xl:text-[14px] xl:leading-[16.8px]',
+        )}
+      />
     </article>
   )
 }

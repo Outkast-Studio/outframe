@@ -1,6 +1,7 @@
 import React from 'react'
 import { clsx } from 'clsx'
 import Image from 'next/image'
+import Button from './UI/Button'
 
 const Footer = () => {
   const socials = [
@@ -56,7 +57,7 @@ const Footer = () => {
               'xl:mb-[92px]',
             )}
           >
-            <button
+            {/* <button
               className={clsx(
                 'text-[14px] leading-[16.8px] whitespace-nowrap tracking-[-0.2px] bg-accent font-monoMedium text-[#F7F7F7] px-[18px] py-[12px] rounded-[4px] h-fit',
                 'lg:text-[12px] lg:leading-[14.4px]',
@@ -64,8 +65,18 @@ const Footer = () => {
               )}
             >
               Book a Call
-            </button>
-            <button
+            </button> */}
+            <Button
+              text={'Book a Call'}
+              cb={() => {}}
+              accent
+              className={clsx(
+                'text-[14px] leading-[16.8px] whitespace-nowrap tracking-[-0.2px] bg-[#000] border- font-monoMedium text-[#F7F7F7] px-[18px] py-[12px] rounded-[4px] h-fit !border-[#3B3633]',
+                'lg:text-[12px] lg:leading-[14.4px]',
+                'xl:text-[14px] xl:leading-[16.8px]',
+              )}
+            />
+            {/* <button
               className={clsx(
                 'text-[14px] leading-[16.8px] whitespace-nowrap tracking-[-0.2px] bg-none border- font-monoMedium text-[#F7F7F7] px-[18px] py-[12px] rounded-[4px] h-fit border-[#3B3633] border-[1px]',
                 'lg:text-[12px] lg:leading-[14.4px]',
@@ -73,7 +84,17 @@ const Footer = () => {
               )}
             >
               Contact Us
-            </button>
+            </button> */}
+            <Button
+              text={'Contact Us'}
+              cb={() => {}}
+              footer
+              className={clsx(
+                'text-[14px] leading-[16.8px] whitespace-nowrap tracking-[-0.2px] bg-[#000] border- font-monoMedium text-[#F7F7F7] px-[18px] py-[12px] rounded-[4px] h-fit !border-[#3B3633]',
+                'lg:text-[12px] lg:leading-[14.4px]',
+                'xl:text-[14px] xl:leading-[16.8px]',
+              )}
+            />
           </div>
           <div
             className={clsx(

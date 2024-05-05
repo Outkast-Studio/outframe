@@ -10,6 +10,7 @@ import { motion } from 'framer-motion'
 import { useThemeStore } from 'stores/themeStore'
 import { useLenis } from '@studio-freight/react-lenis'
 import HeroImage from 'components/UI/HeroImage'
+import Button from 'components/UI/Button'
 
 type Props = {
   images: ImageAsset[]
@@ -197,8 +198,9 @@ const Hero = ({ images, testimonial }: Props) => {
             product’s UX.
           </p>
           <div className={clsx('flex mt-[28px] gap-x-[16px]', 'md:mt-[19px]')}>
-            <button
-              onClick={() => {
+            <Button
+              text={'View plans'}
+              cb={() =>
                 lenis.scrollTo('#pricing', {
                   duration: 1.2,
                   offset: -69,
@@ -208,20 +210,10 @@ const Hero = ({ images, testimonial }: Props) => {
                       : 1 - Math.pow(-2 * x + 2, 3) / 2
                   },
                 })
-              }}
-              className={clsx(
-                'rounded-[4px] bg-accent text-background monoMedium px-[18px] py-[12px] text-[14px] leading-[16.8px] tracking-[-0.2px]',
-              )}
-            >
-              View plans
-            </button>
-            <button
-              className={clsx(
-                'rounded-[4px] bg-background text-mainText monoMedium px-[18px] py-[12px] text-[14px] leading-[16.8px] tracking-[-0.2px] border-[1px] border-dividers',
-              )}
-            >
-              Book a Call
-            </button>
+              }
+              accent
+            />
+            <Button text={'Book a call'} cb={() => {}} />
           </div>
         </motion.div>
       </div>
