@@ -2,6 +2,8 @@ import { CustomHead } from './CustomHead'
 import { clsx } from 'clsx'
 import { ReactLenis } from '@studio-freight/react-lenis'
 import Image from 'next/image'
+import { motion } from 'framer-motion'
+import { useRouter } from 'next/router'
 export function Layout({
   children,
   seo = {
@@ -11,6 +13,12 @@ export function Layout({
     keywords: [],
   },
 }) {
+  const variants = {
+    initial: { opacity: 0 },
+    animate: { opacity: 1 },
+    exit: { opacity: 0 },
+  }
+  const router = useRouter()
   return (
     <ReactLenis
       root
@@ -18,8 +26,15 @@ export function Layout({
         duration: 0.6,
       }}
     >
-      <CustomHead {...seo} />
-      {children}
+      <motion.div
+        variants={variants}
+        initial="initial"
+        animate="animate"
+        exit="exit"
+      >
+        <CustomHead {...seo} />
+        {children}
+      </motion.div>
     </ReactLenis>
   )
 }

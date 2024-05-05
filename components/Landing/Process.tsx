@@ -93,7 +93,7 @@ const Process = () => {
       <Accordion.Root
         orientation="horizontal"
         type={'single'}
-        collapsible
+        collapsible={false}
         defaultValue="Discovery call"
         id="processAccordionDesktop"
         className={clsx(
@@ -192,6 +192,7 @@ export function ProcessItem({
           <h6
             className={clsx(
               'text-[16px] leading-[24px] font-sansMedium text-mainText content transition-opacity duration-300',
+              'lg:text-[18px] lg:leading-[27px]',
             )}
           >
             {name}
@@ -298,7 +299,8 @@ function ProcessDesktopItem({
       <Accordion.Trigger
         ref={triggerRef}
         className={clsx(
-          'h-[408px] flex processTrigger justify-between relative font-sansMedium flex-col items-center pr-[16px] pl-[32px] accordionButton py-[16px]',
+          'h-[408px] flex processTrigger justify-between relative font-sansMedium flex-col items-center pr-[32px] pl-[32px] accordionButton py-[16px]',
+          'lg:mx-auto',
         )}
       >
         <div
@@ -314,6 +316,7 @@ function ProcessDesktopItem({
         <h6
           className={clsx(
             'text-[18px] whitespace-nowrap verticalText  transition-opacity duration-300 triggerLabel',
+            'lg:text-[18px] lg:leading-[27px]',
           )}
         >
           {name}

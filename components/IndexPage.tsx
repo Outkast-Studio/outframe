@@ -1,5 +1,7 @@
 import { HomepageSettings, Work } from 'lib/sanity.queries'
 import Link from 'next/link'
+import { useLenis } from '@studio-freight/react-lenis'
+import { useEffect } from 'react'
 import { clsx } from 'clsx'
 import Hero from 'components/Landing/Hero'
 import CaseStudies from './Landing/CaseStudies'
@@ -14,7 +16,9 @@ import Pricing from './Landing/Pricing'
 import Footer from './Footer'
 import Intro from './Landing/Intro'
 import { useThemeStore } from 'stores/themeStore'
+import { useRouter } from 'next/router'
 import Cursor from './UI/Cursor'
+import { useSearchParams } from 'next/navigation'
 
 export default function Post({
   work,
@@ -23,7 +27,23 @@ export default function Post({
   work: Work[]
   homepageSettings: HomepageSettings
 }) {
-  const introVisible = useThemeStore((state) => state.introVisible)
+  const router = useRouter()
+  const searchParams = useSearchParams()
+  const scroll = searchParams.get('scroll')
+  const lenis = useLenis()
+
+  useEffect(() => {
+    if (scroll && lenis) {
+      lenis.scrollTo(scroll, {
+        duration: 1.2,
+        offset: -69,
+        easing: (x) => {
+          return x < 0.5 ? 4 * x * x * x : 1 - Math.pow(-2 * x + 2, 3) / 2
+        },
+      })
+      router.push('/', undefined, { shallow: true })
+    }
+  }, [lenis])
   return (
     <main className={clsx('bg-background overflow-x-hidden')}>
       <Cursor />

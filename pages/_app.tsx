@@ -7,6 +7,7 @@ import { clsx } from 'clsx'
 import { ImageAsset } from 'sanity'
 import Image from 'next/image'
 import { urlForImage } from 'lib/sanity.image'
+import { AnimatePresence } from 'framer-motion'
 export interface SharedPageProps {
   draftMode: boolean
   token: string
@@ -52,7 +53,9 @@ export default function App({
           <Component {...pageProps} />
         </PreviewProvider>
       ) : (
-        <Component {...pageProps} />
+        <AnimatePresence mode="wait">
+          <Component {...pageProps} key={router.pathname} />
+        </AnimatePresence>
       )}
       {/* Presentation Layer logic */}
       {/* {draftMode && (

@@ -137,6 +137,17 @@ const Header = () => {
     }
   }, [menuOpen])
 
+  function handleHomepageLink(link: string) {
+    lenis.scrollTo(link, {
+      duration: 1.2,
+      offset: -69,
+      force: true,
+      easing: (x) => {
+        return x < 0.5 ? 4 * x * x * x : 1 - Math.pow(-2 * x + 2, 3) / 2
+      },
+    })
+  }
+
   return (
     <>
       <header
@@ -161,22 +172,17 @@ const Header = () => {
             {menuItems.map((item, index) => (
               <li key={index} className={clsx('')}>
                 {item.isHomePage ? (
-                  <button
-                    className={clsx('uppercase')}
-                    onClick={() => {
-                      lenis.scrollTo(item.link, {
-                        duration: 1.2,
-                        offset: -69,
-                        easing: (x) => {
-                          return x < 0.5
-                            ? 4 * x * x * x
-                            : 1 - Math.pow(-2 * x + 2, 3) / 2
-                        },
-                      })
+                  <Link
+                    href={{
+                      pathname: '/',
+                      query:
+                        router.pathname !== '/' ? { scroll: item.link } : {},
                     }}
+                    className={clsx('uppercase')}
+                    onClick={() => handleHomepageLink(item.link)}
                   >
                     {item.title}
-                  </button>
+                  </Link>
                 ) : (
                   <Link href={item.link}>{item.title}</Link>
                 )}
@@ -229,21 +235,36 @@ const Header = () => {
                     'text-[18px] leading-[21.6px] tracking-[-0.2px] font-monoMedium text-mainText uppercase overflow-hidden',
                   )}
                 >
-                  {item.isHomePage ? (
-                    <a href={item.link} onClick={() => setMenuOpen(false)}>
-                      {item.title}
-                    </a>
-                  ) : (
+                  {!item.isHomePage ? (
                     <Link
-                      href={item.link}
-                      onClick={() => setMenuOpen(false)}
+                      href={{
+                        pathname: '/',
+                        query:
+                          router.pathname !== '/' ? { scroll: item.link } : {},
+                      }}
+                      className={clsx('uppercase')}
+                      onClick={() => {
+                        setMenuOpen(false)
+                      }}
+                    >
+                      {item.title}
+                    </Link>
+                  ) : (
+                    <button
+                      onClick={() => {
+                        setMenuOpen(false)
+                        setTimeout(() => {
+                          handleHomepageLink(item.link)
+                        }, 500)
+                      }}
                       className={clsx(
+                        'uppercase',
                         router.pathname.toLowerCase() === item.link &&
                           'text-accent',
                       )}
                     >
                       {item.title}
-                    </Link>
+                    </button>
                   )}
                 </li>
               ))}
