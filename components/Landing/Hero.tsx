@@ -31,7 +31,6 @@ const Hero = ({ images, testimonial }: Props) => {
   )
 
   const lenis = useLenis()
-
   const h1Variants = {
     initial: {},
     animate: {

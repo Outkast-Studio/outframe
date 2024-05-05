@@ -1,6 +1,7 @@
 import React from 'react'
 import { clsx } from 'clsx'
 import { motion } from 'framer-motion'
+import { useState, useEffect } from 'react'
 
 const Background = () => {
   return (
@@ -13,11 +14,17 @@ const Background = () => {
         <div
           className={clsx('relative h-full w-full text-[10px] overflow-hidden')}
         >
+          <div className={clsx('absolute top-[17%] right-[5.5%]')}>
+            <ScrollingText coords="44º •" title="" />
+          </div>
           <div className={clsx('absolute top-[10%] left-[25.5%]')}>
             <ScrollingText coords="3°19′N 262°31′S" title="Toronto, Canada" />
           </div>
-          <div className={clsx('absolute top-[40%] right-[25.5%]')}>
-            <ScrollingText coords="3°19′N 262°31′S" title="Toronto, Canada" />
+          <div className={clsx('absolute top-[40%] right-[22.5%]')}>
+            <ScrollingText
+              coords="2°59′S 104°45′E S"
+              title="Palembang, Indonesia"
+            />
           </div>
           <motion.svg
             initial={{ rotate: 0 }}
@@ -109,19 +116,68 @@ const Background = () => {
 export default Background
 
 function ScrollingText({ coords, title }) {
+  const isNumber = (str: string): boolean => {
+    return !isNaN(Number(str))
+  }
+
   return (
-    <div className={clsx('text-[#cbcaca] font-sansRegular flex gap-x-[6px]')}>
+    <div
+      className={clsx(
+        'text-[#cbcaca] font-sansRegular flex gap-x-[6px] text-[10px]',
+      )}
+    >
       <span>•</span>
       <div className={clsx('flex gap-x-[4px]')}>
-        <p>
-          {coords.split('').map((char, index) => (
-            <span key={index} className={clsx('text-[#cbcaca]')}>
-              {char}
-            </span>
-          ))}
+        <p className={clsx('flex')}>
+          {coords.split('').map((char, index) =>
+            isNumber(char) ? (
+              <RotatingNumber key={index} index={index} char={char} />
+            ) : (
+              <span key={index} className={clsx('text-[#cbcaca]')}>
+                {char}
+              </span>
+            ),
+          )}
         </p>
         <p>{title}</p>
       </div>
     </div>
+  )
+}
+
+function RotatingNumber({ index, char }) {
+  const [currentIndex, setCurrentIndex] = useState(0)
+  useEffect(() => {
+    const interval = setInterval(
+      () => {
+        setCurrentIndex((currentIndex) => (currentIndex + 1) % Number(char))
+      },
+      Math.random() * 1000 + 6000,
+    )
+    return () => clearInterval(interval)
+  }, [])
+
+  return (
+    <span className={clsx('h-[10px] overflow-hidden mt-[2px]')}>
+      <motion.span
+        initial={{ y: 0 }}
+        animate={{ y: -10 * currentIndex }}
+        transition={{
+          duration: 1,
+          ease: 'linear',
+        }}
+        className={clsx('flex flex-col gap-y-[0px] leading-none')}
+      >
+        <span>{char}</span>
+        {Array.from({ length: 9 - Number(char) }, (_, i) => (
+          <span
+            key={index + i + 1}
+            className={clsx('text-[#cbcaca] leading-none')}
+          >
+            {Number(char) + i + 1}
+          </span>
+        ))}
+      </motion.span>
+    </span>
   )
 }
