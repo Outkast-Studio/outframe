@@ -66,7 +66,10 @@ export default function App({
           <Component {...pageProps} />
         </PreviewProvider>
       ) : (
-        <AnimatePresence mode="wait">
+        <AnimatePresence
+          mode="wait"
+          onExitComplete={() => window.scrollTo(0, 0)}
+        >
           <Component {...pageProps} key={router.pathname} />
         </AnimatePresence>
       )}

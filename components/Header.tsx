@@ -154,25 +154,25 @@ const Header = () => {
   useEffect(() => {
     if (router.pathname === '/recent-work') {
       setIsRecentWork(true)
-      setTimeout(() => {
-        navRef.current.style.display = 'none'
-      }, 500)
     } else {
-      navRef.current.style.display = 'block'
-      setTimeout(() => {
-        setIsRecentWork(false)
-      }, 500)
+      setIsRecentWork(false)
     }
   }, [router.pathname, width])
 
   const navMenuVariants = {
     initial: {
-      opacity: 1,
+      opacity: 0,
     },
     animate: {
-      opacity: 0,
+      opacity: 1,
       transition: {
         duration: 0.3,
+      },
+      exit: {
+        opacity: 0,
+        transition: {
+          duration: 0.3,
+        },
       },
     },
   }
@@ -197,6 +197,7 @@ const Header = () => {
 
   return (
     <>
+      {' '}
       <div className={clsx('md:h-[40px]')}></div>
       <header
         className={clsx(
@@ -208,40 +209,54 @@ const Header = () => {
         <Link href="/">
           <Logo />
         </Link>
-        <motion.nav
-          ref={navRef}
-          initial="initial"
-          animate={isRecentWork ? 'animate' : 'initial'}
-          variants={navMenuVariants}
-          className={clsx('hidden', 'md:block', 'xl:col-start-9 xl:col-end-13')}
-        >
-          <ul
-            className={clsx(
-              'flex gap-x-[32px] uppercase text-[12px] leading-[14.4px] font-monoRegular text-[#998F8C]',
-              'lg:text-[14px] lg:leading-[16.8px]',
-            )}
-          >
-            {menuItems.map((item, index) => (
-              <li key={index} className={clsx('')}>
-                {item.isHomePage ? (
-                  <Link
-                    href={{
-                      pathname: '/',
-                      query:
-                        router.pathname !== '/' ? { scroll: item.link } : {},
-                    }}
-                    className={clsx('uppercase')}
-                    onClick={() => handleHomepageLink(item.link)}
-                  >
-                    {item.title}
-                  </Link>
-                ) : (
-                  <Link href={item.link}>{item.title}</Link>
+        <AnimatePresence mode={'wait'}>
+          {!isRecentWork && (
+            <motion.nav
+              ref={navRef}
+              initial="initial"
+              animate={'animate'}
+              exit={'exit'}
+              key={'nav-bar'}
+              variants={navMenuVariants}
+              className={clsx(
+                'hidden',
+                'md:block',
+                'xl:col-start-9 xl:col-end-13',
+              )}
+            >
+              <ul
+                className={clsx(
+                  'flex gap-x-[32px] uppercase text-[12px] leading-[14.4px] font-monoRegular text-[#998F8C]',
+                  'lg:text-[14px] lg:leading-[16.8px]',
                 )}
-              </li>
-            ))}
-          </ul>
-        </motion.nav>
+              >
+                {menuItems.map((item, index) => (
+                  <li key={index} className={clsx('')}>
+                    {item.isHomePage ? (
+                      <Link
+                        href={{
+                          pathname: '/',
+                          query:
+                            router.pathname !== '/'
+                              ? { scroll: item.link }
+                              : {},
+                        }}
+                        className={clsx('uppercase')}
+                        onClick={() => handleHomepageLink(item.link)}
+                      >
+                        {item.title}
+                      </Link>
+                    ) : (
+                      <Link href={item.link} scroll={false}>
+                        {item.title}
+                      </Link>
+                    )}
+                  </li>
+                ))}
+              </ul>
+            </motion.nav>
+          )}
+        </AnimatePresence>
         <button
           className={clsx('flex items-center gap-x-[8px]', 'md:hidden')}
           onClick={() => setMenuOpen(!menuOpen)}
@@ -272,39 +287,48 @@ const Header = () => {
           </span>
         </button>
       </header>
-      {/* <motion.div
-        initial="initial"
-        animate={isRecentWork ? 'animate' : 'initial'}
-        className={clsx(
-          'hidden text-secondaryText font-monoMedium text-[14px] leading-[19.6px] self-center justify-self-center h-fit absolute left-[50%] translate-x-[-50%]',
-          'lg:block ',
+      <AnimatePresence mode={'wait'}>
+        {isRecentWork && (
+          <>
+            <motion.div
+              initial="initial"
+              animate="animate"
+              exit="exit"
+              variants={closeButtonVariants}
+              key={'recent-work-title'}
+              className={clsx(
+                'hidden text-secondaryText font-monoMedium text-[14px] leading-[19.6px] self-center justify-self-center h-fit absolute left-[50%] top-[72px] translate-x-[-50%] z-[101]',
+                'lg:block ',
+              )}
+            >
+              <FlickerText
+                title="RECENT WORK"
+                animationDelay={1.5}
+                play={isRecentWork}
+              />
+            </motion.div>
+            <motion.button
+              initial="initial"
+              animate="animate"
+              exit="exit"
+              variants={closeButtonVariants}
+              key={'close-button'}
+              className={clsx(
+                'font-monoMedium text-[14px] leading-[17px] hidden col-span-4 gap-x-[8px] items-center border-[1px] border-[#D9D5D3] text absolute right-[64px] top-[57px] text-mainText px-[20px] py-[15px] rounded-[4px] z-[101]',
+                'lg:flex lg:col-start-8 lg:col-end-13 justify-self-end',
+              )}
+            >
+              <Image
+                src={'/icons/closeRecent.svg'}
+                alt={'close icon'}
+                width={11}
+                height={11}
+              />
+              <span>Close</span>
+            </motion.button>
+          </>
         )}
-      >
-        <FlickerText
-          title="RECENT WORK"
-          animationDelay={0.55}
-          play={isRecentWork}
-        />
-      </motion.div>
-
-      <motion.button
-        initial="initial"
-        animate="animate"
-        exit="exit"
-        variants={closeButtonVariants}
-        className={clsx(
-          'text-[white] font-monoMedium text-[14px] leading-[17px] hidden col-span-4 gap-x-[8px] items-center border-[1px] border-[#D9D5D3] text',
-          'lg:flex lg:col-start-8 lg:col-end-13 justify-self-end',
-        )}
-      >
-        <Image
-          src={'/icons/closeRecent.svg'}
-          alt={'close icon'}
-          width={11}
-          height={11}
-        />
-        <span>Close</span>
-      </motion.button> */}
+      </AnimatePresence>
       {menuOpen && (
         <MobileMenu
           socials={socials}
