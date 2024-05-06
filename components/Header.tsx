@@ -10,6 +10,7 @@ import { useLenis } from '@studio-freight/react-lenis'
 import FlickerText from 'components/UI/FlickerText'
 import { useWindowSize } from 'hooks/useWindowSize'
 import MobileMenu from './UI/MobileMenu'
+import { useSearchParams } from 'next/navigation'
 
 const Header = () => {
   const menuOpen = useThemeStore((state) => state.menuOpen)
@@ -19,6 +20,9 @@ const Header = () => {
   const introVisible = useThemeStore((state) => state.introVisible)
   const { width } = useWindowSize()
   const [isRecentWork, setIsRecentWork] = useState(false)
+  const searchParams = useSearchParams()
+  const prev = searchParams.get('recent-work')
+
   const menuItems = [
     {
       title: (
@@ -247,7 +251,10 @@ const Header = () => {
                         {item.title}
                       </Link>
                     ) : (
-                      <Link href={item.link} scroll={false}>
+                      <Link
+                        href={`${item.link}?recent-work=${router.pathname}`}
+                        scroll={false}
+                      >
                         {item.title}
                       </Link>
                     )}
@@ -307,25 +314,27 @@ const Header = () => {
                 play={isRecentWork}
               />
             </motion.div>
-            <motion.button
-              initial="initial"
-              animate="animate"
-              exit="exit"
-              variants={closeButtonVariants}
-              key={'close-button'}
-              className={clsx(
-                'font-monoMedium text-[14px] leading-[17px] hidden col-span-4 gap-x-[8px] items-center border-[1px] border-[#D9D5D3] text absolute right-[64px] top-[57px] text-mainText px-[20px] py-[15px] rounded-[4px] z-[101]',
-                'lg:flex lg:col-start-8 lg:col-end-13 justify-self-end',
-              )}
-            >
-              <Image
-                src={'/icons/closeRecent.svg'}
-                alt={'close icon'}
-                width={11}
-                height={11}
-              />
-              <span>Close</span>
-            </motion.button>
+            <Link href={prev ? prev : '/'}>
+              <motion.button
+                initial="initial"
+                animate="animate"
+                exit="exit"
+                variants={closeButtonVariants}
+                key={'close-button'}
+                className={clsx(
+                  'font-monoMedium text-[14px] leading-[17px] hidden col-span-4 gap-x-[8px] items-center border-[1px] border-[#D9D5D3] text absolute right-[64px] top-[57px] text-mainText px-[20px] py-[15px] rounded-[4px] z-[101] transition-colors duration-[0.3s]',
+                  'lg:flex lg:col-start-8 lg:col-end-13 justify-self-end hover:border-mainText',
+                )}
+              >
+                <Image
+                  src={'/icons/closeRecent.svg'}
+                  alt={'close icon'}
+                  width={11}
+                  height={11}
+                />
+                <span>Close</span>
+              </motion.button>
+            </Link>
           </>
         )}
       </AnimatePresence>

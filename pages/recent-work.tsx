@@ -12,6 +12,7 @@ import { urlForImage } from 'lib/sanity.image'
 import Link from 'next/link'
 import Footer from 'components/Footer'
 import HorizontalScroll from 'components/UI/HorizontalScroll'
+import { useSearchParams } from 'next/navigation'
 
 interface PageProps extends SharedPageProps {
   recentWork: RecentWork[]
