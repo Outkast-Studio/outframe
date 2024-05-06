@@ -27,6 +27,7 @@ const MobileMenu = ({ menuItems, socials, handleHomepageLink }) => {
             >
               {!item.isHomePage ? (
                 <Link
+                  scroll={false}
                   href={item.link}
                   className={clsx('uppercase')}
                   onClick={() => {

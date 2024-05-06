@@ -233,7 +233,7 @@ const Hero = ({ images, testimonial }: Props) => {
             'xl:col-span-7 xl:w-[100%]',
           )}
         >
-          <Link href={'/recent-work'}>
+          <Link href={'/recent-work'} scroll={false}>
             <HeroImage images={images} />
           </Link>
           {/* This is the Image component */}

@@ -210,7 +210,7 @@ const Header = () => {
           'xl:grid grid-cols-12 xl:gap-x-columnGap',
         )}
       >
-        <Link href="/">
+        <Link href="/" scroll={false}>
           <Logo />
         </Link>
         <AnimatePresence mode={'wait'}>
@@ -245,6 +245,7 @@ const Header = () => {
                               ? { scroll: item.link }
                               : {},
                         }}
+                        scroll={false}
                         className={clsx('uppercase')}
                         onClick={() => handleHomepageLink(item.link)}
                       >
@@ -314,7 +315,7 @@ const Header = () => {
                 play={isRecentWork}
               />
             </motion.div>
-            <Link href={prev ? prev : '/'}>
+            <Link href={prev ? prev : '/'} scroll={false}>
               <motion.button
                 initial="initial"
                 animate="animate"

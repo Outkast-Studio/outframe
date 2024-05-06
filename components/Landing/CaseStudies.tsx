@@ -46,6 +46,7 @@ const CaseStudies = ({ caseStudies }: { caseStudies: any[] }) => {
         </h2>
         <span className={clsx('hidden text-tertiaryText', 'lg:block')}>/</span>
         <Link
+          scroll={false}
           href="/recent-work"
           className={clsx(
             'flex gap-x-[12px] items-center justify-between',
@@ -82,6 +83,7 @@ const CaseStudies = ({ caseStudies }: { caseStudies: any[] }) => {
             <SectionHeading text={'/'} />
           </span>
           <Link
+            scroll={false}
             href="/recent-work"
             className={clsx(
               'flex gap-x-[12px] items-center justify-between',
@@ -187,6 +189,7 @@ function CaseStudyCard({
 
   return (
     <Link
+      scroll={false}
       ref={ref}
       href={`/case-studies/${slug}`}
       className={clsx(

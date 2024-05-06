@@ -13,6 +13,7 @@ export default function Post({ work }: { work: Work }) {
       <main className={clsx('px-gutter text-mainText relative z-[2]')}>
         <Link
           href={'/'}
+          scroll={false}
           className={clsx(
             'flex mt-[16px] items-center gap-x-[12px] py-[12px] px-[18px] border-dividers rounded-[4px] border-[1px] font-monoMedium w-fit',
             'lg:mt-[175px]',
@@ -126,6 +127,7 @@ export default function Post({ work }: { work: Work }) {
           </h6>
           {work.nextProject && (
             <Link
+              scroll={false}
               href={work.nextProject.slug.current}
               className={clsx('lg:col-span-6 lg:col-start-7')}
             >
