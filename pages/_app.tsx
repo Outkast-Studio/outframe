@@ -50,6 +50,7 @@ export default function App({
     if (router.pathname !== '/' && introVisible) {
       useThemeStore.getState().setIntroVisible(false)
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [router.pathname])
 
   return (

@@ -115,16 +115,16 @@ const OurStudio = () => {
               'lg:max-w-[644px] lg:text-[20px] lg:leading-[30px]',
             )}
           >
-            Hi there, I’m Vytas, creator of Outframe.
+            Hi there, I&apos;m Vytas, creator of Outframe.
             <br />
             <br /> I started this studio to tackle a widespread issue in the B2B
             sector: poor design and a shortage of specialised designers. <br />
             <br /> Its purpose is to deliver affordable, beautiful and
             incredibly intuitive product designs. <br />
-            <br /> With over eight years of experience, I've helped more than 50
-            companies use design to achieve product-market fit and fuel their
-            growth. While I have a few talented designers working with me, I
-            handle most of the work myself, ensuring quality and exceptional
+            <br /> With over eight years of experience, I&apos;ve helped more
+            than 50 companies use design to achieve product-market fit and fuel
+            their growth. While I have a few talented designers working with me,
+            I handle most of the work myself, ensuring quality and exceptional
             craftsmanship for all. <br />
             <br /> Having experienced the startup rollercoaster multiple times,
             I bring more than just attractive design to the table. I also offer
