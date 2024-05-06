@@ -1,14 +1,15 @@
-import React, { useEffect, useState } from 'react'
+import React, { useEffect, useState, useRef } from 'react'
 import { clsx } from 'clsx'
 import Logo from 'components/UI/Logo'
 import Link from 'next/link'
-import { motion } from 'framer-motion'
+import { AnimatePresence, animate, motion } from 'framer-motion'
 import { useRouter } from 'next/router'
 import Image from 'next/image'
 import { useThemeStore } from 'stores/themeStore'
 import { useLenis } from '@studio-freight/react-lenis'
 import FlickerText from 'components/UI/FlickerText'
 import { useWindowSize } from 'hooks/useWindowSize'
+import MobileMenu from './UI/MobileMenu'
 
 const Header = () => {
   const menuOpen = useThemeStore((state) => state.menuOpen)
@@ -17,7 +18,7 @@ const Header = () => {
   const router = useRouter()
   const introVisible = useThemeStore((state) => state.introVisible)
   const { width } = useWindowSize()
-
+  const [isRecentWork, setIsRecentWork] = useState(false)
   const menuItems = [
     {
       title: (
@@ -149,6 +150,51 @@ const Header = () => {
     })
   }
 
+  const navRef = useRef(null)
+  useEffect(() => {
+    if (router.pathname === '/recent-work') {
+      setIsRecentWork(true)
+      setTimeout(() => {
+        navRef.current.style.display = 'none'
+      }, 500)
+    } else {
+      navRef.current.style.display = 'block'
+      setTimeout(() => {
+        setIsRecentWork(false)
+      }, 500)
+    }
+  }, [router.pathname, width])
+
+  const navMenuVariants = {
+    initial: {
+      opacity: 1,
+    },
+    animate: {
+      opacity: 0,
+      transition: {
+        duration: 0.3,
+      },
+    },
+  }
+
+  const closeButtonVariants = {
+    initial: {
+      opacity: 0,
+    },
+    animate: {
+      opacity: 1,
+      transition: {
+        duration: 0.3,
+      },
+    },
+    exit: {
+      opacity: 0,
+      transition: {
+        duration: 0.3,
+      },
+    },
+  }
+
   return (
     <>
       <div className={clsx('md:h-[40px]')}></div>
@@ -156,13 +202,17 @@ const Header = () => {
         className={clsx(
           'flex px-gutter mix-blend-difference pt-[24px] pb-[16px] justify-between sticky top-0 left-0 w-full items-center z-[100]',
           'md:mt-[0px] pb-[20px]',
-          'xl:grid grid-cols-12 xl:gap-x-columnGap ',
+          'xl:grid grid-cols-12 xl:gap-x-columnGap',
         )}
       >
         <Link href="/">
           <Logo />
         </Link>
-        <nav
+        <motion.nav
+          ref={navRef}
+          initial="initial"
+          animate={isRecentWork ? 'animate' : 'initial'}
+          variants={navMenuVariants}
           className={clsx('hidden', 'md:block', 'xl:col-start-9 xl:col-end-13')}
         >
           <ul
@@ -191,7 +241,7 @@ const Header = () => {
               </li>
             ))}
           </ul>
-        </nav>
+        </motion.nav>
         <button
           className={clsx('flex items-center gap-x-[8px]', 'md:hidden')}
           onClick={() => setMenuOpen(!menuOpen)}
@@ -222,103 +272,45 @@ const Header = () => {
           </span>
         </button>
       </header>
+      {/* <motion.div
+        initial="initial"
+        animate={isRecentWork ? 'animate' : 'initial'}
+        className={clsx(
+          'hidden text-secondaryText font-monoMedium text-[14px] leading-[19.6px] self-center justify-self-center h-fit absolute left-[50%] translate-x-[-50%]',
+          'lg:block ',
+        )}
+      >
+        <FlickerText
+          title="RECENT WORK"
+          animationDelay={0.55}
+          play={isRecentWork}
+        />
+      </motion.div>
+
+      <motion.button
+        initial="initial"
+        animate="animate"
+        exit="exit"
+        variants={closeButtonVariants}
+        className={clsx(
+          'text-[white] font-monoMedium text-[14px] leading-[17px] hidden col-span-4 gap-x-[8px] items-center border-[1px] border-[#D9D5D3] text',
+          'lg:flex lg:col-start-8 lg:col-end-13 justify-self-end',
+        )}
+      >
+        <Image
+          src={'/icons/closeRecent.svg'}
+          alt={'close icon'}
+          width={11}
+          height={11}
+        />
+        <span>Close</span>
+      </motion.button> */}
       {menuOpen && (
-        <div
-          className={clsx(
-            'fixed h-[calc(100svh)] px-gutter w-full bg-background top-[0px] pt-[129px] flex flex-col justify-between z-[99]',
-          )}
-        >
-          <nav>
-            <ul className={clsx('flex flex-col gap-y-[32px]')}>
-              {menuItems.map((item, index) => (
-                <li
-                  key={index}
-                  className={clsx(
-                    'text-[18px] leading-[21.6px] tracking-[-0.2px] font-monoMedium text-mainText uppercase overflow-hidden',
-                  )}
-                >
-                  {!item.isHomePage ? (
-                    <Link
-                      href={{
-                        pathname: '/',
-                        query:
-                          router.pathname !== '/' ? { scroll: item.link } : {},
-                      }}
-                      className={clsx('uppercase')}
-                      onClick={() => {
-                        setMenuOpen(false)
-                      }}
-                    >
-                      {item.title}
-                    </Link>
-                  ) : (
-                    <button
-                      onClick={() => {
-                        setMenuOpen(false)
-                        setTimeout(() => {
-                          handleHomepageLink(item.link)
-                        }, 500)
-                      }}
-                      className={clsx(
-                        'uppercase',
-                        router.pathname.toLowerCase() === item.link &&
-                          'text-accent',
-                      )}
-                    >
-                      {item.title}
-                    </button>
-                  )}
-                </li>
-              ))}
-            </ul>
-          </nav>
-          <div>
-            <div className={clsx('flex gap-x-[16px] mb-[32px]')}>
-              <button
-                className={clsx(
-                  'rounded-[4px] bg-accent text-background monoMedium px-[18px] py-[12px] text-[14px] leading-[16.8px] tracking-[-0.2px]',
-                )}
-              >
-                View plans
-              </button>
-              <button
-                className={clsx(
-                  'rounded-[4px] bg-background text-mainText monoMedium px-[18px] py-[12px] text-[14px] leading-[16.8px] tracking-[-0.2px] border-[1px] border-dividers',
-                )}
-              >
-                Book a Call
-              </button>
-            </div>
-            <nav>
-              <ul
-                className={clsx(
-                  'flex justify-between pb-[24px] pt-[21px] border-t-[1px] border-t-dividers',
-                )}
-              >
-                {socials.map((item, index) => (
-                  <li key={item.name}>
-                    <a
-                      href={item.url}
-                      rel="norefferer"
-                      target="_blank"
-                      className={clsx(
-                        'flex gap-x-[4px] items-center text-[14px] leading-[16.8px] text-tertiaryText',
-                      )}
-                    >
-                      <span>{item.name}</span>
-                      <Image
-                        src={'icons/footerSocialIcon.svg'}
-                        alt={'arrow icon'}
-                        width={12}
-                        height={12}
-                      />
-                    </a>
-                  </li>
-                ))}
-              </ul>
-            </nav>
-          </div>
-        </div>
+        <MobileMenu
+          socials={socials}
+          menuItems={menuItems}
+          handleHomepageLink={handleHomepageLink}
+        />
       )}
     </>
   )

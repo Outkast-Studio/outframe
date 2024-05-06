@@ -27,6 +27,9 @@ export function Layout({
       root
       options={{
         duration: 0.6,
+        // orientation:
+        //   router.pathname === '/recent-work' ? 'horizontal' : 'vertical',
+        // infinite: router.pathname === '/recent-work',
       }}
     >
       <motion.div
@@ -36,7 +39,8 @@ export function Layout({
         exit="exit"
         className={clsx('')}
       >
-        <Background />
+        {router.pathname !== '/recent-work' && <Background />}
+
         <CustomHead {...seo} />
         {children}
       </motion.div>

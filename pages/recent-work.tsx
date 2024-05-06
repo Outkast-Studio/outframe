@@ -11,6 +11,7 @@ import Image from 'next/image'
 import { urlForImage } from 'lib/sanity.image'
 import Link from 'next/link'
 import Footer from 'components/Footer'
+import HorizontalScroll from 'components/UI/HorizontalScroll'
 
 interface PageProps extends SharedPageProps {
   recentWork: RecentWork[]
@@ -32,66 +33,86 @@ export default function Page(props: PageProps) {
   }
 
   return (
-    <Layout seo={seo}>
-      <main
-        className={clsx('px-gutter bg-background text-mainText relative z-[2]')}
-      >
-        <div className={clsx('pt-[191px]', 'lg:grid lg:grid-cols-12 ')}>
-          <h1
+    <div className={clsx('')}>
+      <Layout seo={seo}>
+        <main
+          className={clsx(
+            'px-gutter bg-background text-mainText relative z-[2]',
+          )}
+        >
+          <div
             className={clsx(
-              ' uppercase text-[36px] leading-[43.2px] tracking-[-0.2px] font-monoMedium text-mainText',
-              'lg:text-[76px] lg:leading-[91.2px] lg:col-span-4',
+              'pt-[191px]',
+              'lg:grid lg:grid-cols-12',
+              'lg:hidden',
             )}
           >
-            Recent
-            <br /> Work
-          </h1>
-          <p
+            <h1
+              className={clsx(
+                ' uppercase text-[36px] leading-[43.2px] tracking-[-0.2px] font-monoMedium text-mainText',
+                'lg:text-[76px] lg:leading-[91.2px] lg:col-span-4',
+              )}
+            >
+              Recent
+              <br /> Work
+            </h1>
+            <p
+              className={clsx(
+                'text-[16px] leading-[24px] text-secondaryText font-sansRegular mt-[32px]',
+                'lg:mt-[0px] lg:text-[20px] lg:leading-[30px] lg:max-w-[560px] lg:col-start-8 lg:col-end-13',
+              )}
+            >
+              <span className={clsx('text-mainText')}>Recent Work.</span> Here
+              you will find some designs from our most recent projects, as well
+              as visual experiments. Feel free to check our case studies for
+              more in-depth work.
+            </p>
+          </div>
+          <section
             className={clsx(
-              'text-[16px] leading-[24px] text-secondaryText font-sansRegular mt-[32px]',
-              'lg:mt-[0px] lg:text-[20px] lg:leading-[30px] lg:max-w-[560px] lg:col-start-8 lg:col-end-13',
+              'mt-[72px] flex flex-col gap-y-[65px]',
+              'lg:hidden',
             )}
           >
-            <span className={clsx('text-mainText')}>Recent Work.</span> Here you
-            will find some designs from our most recent projects, as well as
-            visual experiments. Feel free to check our case studies for more
-            in-depth work.
-          </p>
+            {data.length > 0 &&
+              data.map((work, index) => (
+                <article key={work.title + index}>
+                  <Image
+                    src={urlForImage(work.image).url()}
+                    alt={String(work.image.alt)}
+                    width={1200}
+                    height={1200}
+                  />
+                  <div
+                    className={clsx(
+                      'flex mt-[8px] items-center justify-between',
+                    )}
+                  >
+                    <h6
+                      className={clsx(
+                        'text-[16px] leading-[24px] text-secondaryText font-sansRegular',
+                      )}
+                    >
+                      {work.title}
+                    </h6>
+                    <span
+                      className={clsx(
+                        'text-accent font-monoRegular text-[14px] leading-[25.2px] tracking-[-0.2px]',
+                      )}
+                    >
+                      {work.year}
+                    </span>
+                  </div>
+                </article>
+              ))}
+          </section>
+        </main>
+        <div className={clsx('lg:hidden')}>
+          <Footer />
         </div>
-        <section className={clsx('mt-[72px] flex flex-col gap-y-[65px]')}>
-          {data.length > 0 &&
-            data.map((work, index) => (
-              <article key={work.title + index}>
-                <Image
-                  src={urlForImage(work.image).url()}
-                  alt={String(work.image.alt)}
-                  width={1200}
-                  height={1200}
-                />
-                <div
-                  className={clsx('flex mt-[8px] items-center justify-between')}
-                >
-                  <h6
-                    className={clsx(
-                      'text-[16px] leading-[24px] text-secondaryText font-sansRegular',
-                    )}
-                  >
-                    {work.title}
-                  </h6>
-                  <span
-                    className={clsx(
-                      'text-accent font-monoRegular text-[14px] leading-[25.2px] tracking-[-0.2px]',
-                    )}
-                  >
-                    {work.year}
-                  </span>
-                </div>
-              </article>
-            ))}
-        </section>
-      </main>
-      <Footer />
-    </Layout>
+        <HorizontalScroll recentWork={data} />
+      </Layout>
+    </div>
   )
 }
 

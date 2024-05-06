@@ -9,6 +9,11 @@ import Image from 'next/image'
 import { urlForImage } from 'lib/sanity.image'
 import { AnimatePresence } from 'framer-motion'
 import { useThemeStore } from 'stores/themeStore'
+import { gsap } from 'gsap'
+import { ScrollTrigger } from 'gsap/dist/ScrollTrigger'
+import { Observer } from 'gsap/dist/Observer'
+
+gsap.registerPlugin(ScrollTrigger, Observer)
 export interface SharedPageProps {
   draftMode: boolean
   token: string
@@ -54,7 +59,7 @@ export default function App({
   }, [router.pathname])
 
   return (
-    <div className={clsx('bg-background  relative')}>
+    <div className={clsx('bg-background')}>
       {router.pathname !== '/studio' && <Header />}
       {draftMode ? (
         <PreviewProvider token={token}>
