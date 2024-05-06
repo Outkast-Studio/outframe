@@ -163,7 +163,7 @@ const Header = () => {
           <Logo />
         </Link>
         <nav
-          className={clsx('hidden', 'md:block', 'xl:col-start-8 xl:col-end-13')}
+          className={clsx('hidden', 'md:block', 'xl:col-start-9 xl:col-end-13')}
         >
           <ul
             className={clsx(

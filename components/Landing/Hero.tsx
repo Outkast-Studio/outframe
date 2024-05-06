@@ -114,7 +114,7 @@ const Hero = ({ images, testimonial }: Props) => {
             'text-[36px] leading-[43.2px] uppercase tracking-[-0.2px] monoMedium',
             'md:w-[120%]',
             'lg:text-[45px] lg:leading-[54px] l',
-            'xl:text-[76px] xl:leading-[91.2px] xl:col-span-6 xl:w-full xl:tracking-[-0.4px]',
+            'xl:text-[76px] xl:leading-[91.2px] xl:col-span-7 xl:w-full xl:tracking-[-0.4px]',
           )}
         >
           <span
@@ -124,7 +124,7 @@ const Hero = ({ images, testimonial }: Props) => {
               variants={h1ChildrenVariants}
               className={clsx('inline-block')}
             >
-              SR.&nbsp;
+              product&nbsp;
             </motion.span>
           </span>
           <span className={clsx('overflow-hidden inline-block', 'lg:h-[70px]')}>
@@ -132,7 +132,7 @@ const Hero = ({ images, testimonial }: Props) => {
               variants={h1ChildrenVariants}
               className={clsx('inline-block')}
             >
-              Product&nbsp;
+              Design&nbsp;
             </motion.span>
           </span>
           <span
@@ -145,7 +145,7 @@ const Hero = ({ images, testimonial }: Props) => {
               variants={h1ChildrenVariants}
               className={clsx('inline-block')}
             >
-              Design&nbsp;
+              Patner&nbsp;
             </motion.span>
           </span>
           <span
@@ -155,7 +155,7 @@ const Hero = ({ images, testimonial }: Props) => {
               variants={h1ChildrenVariants}
               className={clsx('inline-block')}
             >
-              Partner&nbsp;
+              For&nbsp;
             </motion.span>
           </span>
           <span className={clsx('overflow-hidden inline-block', 'lg:h-[70px]')}>
@@ -163,7 +163,7 @@ const Hero = ({ images, testimonial }: Props) => {
               variants={h1ChildrenVariants}
               className={clsx('inline-block')}
             >
-              On&nbsp;
+              SAAS,&nbsp;
             </motion.span>
           </span>
           <span
@@ -173,7 +173,7 @@ const Hero = ({ images, testimonial }: Props) => {
               variants={h1ChildrenVariants}
               className={clsx('inline-block')}
             >
-              Demand.
+              ON-Demand
             </motion.span>
           </span>
         </motion.h1>
@@ -181,7 +181,7 @@ const Hero = ({ images, testimonial }: Props) => {
           variants={fadeInVariants}
           initial="initial"
           animate={introVisible ? 'initial' : 'animate'}
-          className={clsx('md:w-full', 'xl:col-start-8 col-end-[11]')}
+          className={clsx('md:w-full', 'xl:col-start-9 col-end-[12]')}
         >
           <p
             className={clsx(
@@ -189,12 +189,10 @@ const Hero = ({ images, testimonial }: Props) => {
               'md:mt-[0px]',
             )}
           >
-            <span className={clsx('text-mainText')}>
-              This is Outframe Studio.
-            </span>{' '}
-            We create impactful, scalable and future-proof design plans. Start
-            with a free trial or a comprehensive UX/UI audit. Elevate your
-            product’s UX.
+            <span className={clsx('text-mainText')}>Outframe</span> is an
+            independent studio practice of Vytas Bu, and the perfect design
+            partner for startups and B2B companies. Part of your team, all
+            without the overheads of an agency.
           </p>
           <div className={clsx('flex mt-[28px] gap-x-[16px]', 'md:mt-[19px]')}>
             <Button
@@ -232,7 +230,7 @@ const Hero = ({ images, testimonial }: Props) => {
           className={clsx(
             'mt-[64px] w-full relative',
             'md:mt-[0px] md:w-[120%] h-[100%]',
-            'xl:col-span-6 xl:w-[100%]',
+            'xl:col-span-7 xl:w-[100%]',
           )}
         >
           <Link href={'/recent-work'}>
@@ -247,7 +245,7 @@ const Hero = ({ images, testimonial }: Props) => {
           className={clsx(
             'mt-[76px] flex flex-col gap-y-[16px] w-full',
             'md:mt-[0px]',
-            'xl:col-start-8 xl:col-end-[11]',
+            'xl:col-start-9 xl:col-end-[12]',
           )}
         >
           <div

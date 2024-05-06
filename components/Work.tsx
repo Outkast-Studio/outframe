@@ -5,11 +5,12 @@ import { urlForImage } from 'lib/sanity.image'
 import { ModuleFactory } from './UI/ModuleFactory'
 import Footer from './Footer'
 import Link from 'next/link'
+import Background from './UI/Background'
 
 export default function Post({ work }: { work: Work }) {
   return (
     <>
-      <main className={clsx('px-gutter text-mainText')}>
+      <main className={clsx('px-gutter text-mainText relative z-[2]')}>
         <Link
           href={'/'}
           className={clsx(

@@ -12,6 +12,7 @@ import { useThemeStore } from 'stores/themeStore'
 import FlickerText from 'components/UI/FlickerText'
 import { useInView } from 'react-intersection-observer'
 import SectionHeading from 'components/UI/SectionHeading'
+import Background from 'components/UI/Background'
 
 const CaseStudies = ({ caseStudies }: { caseStudies: any[] }) => {
   const { ref, inView } = useInView({
@@ -29,7 +30,7 @@ const CaseStudies = ({ caseStudies }: { caseStudies: any[] }) => {
       ref={ref}
       id={'case-studies'}
       className={clsx(
-        'mx-gutter border-t-[1px] pt-[20px] border-dividers mt-[144px]',
+        'mx-gutter border-t-[1px] pt-[20px] border-dividers mt-[144px] relative',
         'md:pt-[0px]',
         'lg:mt-[97px]',
       )}

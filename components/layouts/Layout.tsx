@@ -4,6 +4,8 @@ import { ReactLenis } from '@studio-freight/react-lenis'
 import Image from 'next/image'
 import { motion } from 'framer-motion'
 import { useRouter } from 'next/router'
+import Background from '../UI/Background'
+
 export function Layout({
   children,
   seo = {
@@ -19,6 +21,7 @@ export function Layout({
     exit: { opacity: 0 },
   }
   const router = useRouter()
+
   return (
     <ReactLenis
       root
@@ -31,7 +34,9 @@ export function Layout({
         initial="initial"
         animate="animate"
         exit="exit"
+        className={clsx('')}
       >
+        <Background />
         <CustomHead {...seo} />
         {children}
       </motion.div>

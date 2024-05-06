@@ -33,7 +33,9 @@ export default function Page(props: PageProps) {
 
   return (
     <Layout seo={seo}>
-      <main className={clsx('px-gutter bg-background text-mainText')}>
+      <main
+        className={clsx('px-gutter bg-background text-mainText relative z-[2]')}
+      >
         <div className={clsx('pt-[191px]', 'lg:grid lg:grid-cols-12 ')}>
           <h1
             className={clsx(

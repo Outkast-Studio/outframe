@@ -94,7 +94,7 @@ const BlogPage = ({ post }: { post: Post }) => {
     <>
       <main
         className={clsx(
-          'px-gutter mt-[191px] text-mainText',
+          'px-gutter mt-[191px] text-mainText relative z-[2]',
           'lg:flex lg:gap-x-[64px] xl:mt-[256px]',
         )}
       >

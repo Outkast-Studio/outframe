@@ -3,50 +3,51 @@ import { clsx } from 'clsx'
 import * as Accordion from '@radix-ui/react-accordion'
 import { useWindowSize } from 'hooks/useWindowSize'
 import { useThemeStore } from 'stores/themeStore'
+import Image from 'next/image'
 import SectionHeading from 'components/UI/SectionHeading'
 const Process = () => {
   const processItems = [
     {
-      name: 'Discovery call',
+      name: 'Discovery Call',
       description:
-        'We start with a kick-off call to understand your product, goals, and preferences.',
-      image: '',
+        'Book a free consultation call to explore potential collaboration. If there’s a fit, expect a quick pitch or UX/UI audit to demonstrate our capabilities.',
+      image: '/icons/Discovery.svg',
     },
     {
-      name: 'Choose Scope',
+      name: 'Choose Starting Package',
       description:
-        'We design a few screens and iterate on them until you’re happy with the direction.',
-      image: '',
+        'Based on your needs, options include starting with a full UX design followed by visual design, a small test project, or developing an overall visual identity. The right package will be recommended after our initial call.',
+      image: '/icons/scope.svg',
     },
     {
-      name: 'Audit & research',
+      name: 'Audit & Research',
       description:
-        'We deliver the final designs in Figma, ready for handoff to your developers.',
-      image: '',
+        'This optional step varies by the chosen scope. It may include a comprehensive audit of your existing platform and various user research to deeply understand customer challenges.',
+      image: '/icons/audit.svg',
     },
     {
       name: 'UX Design',
       description:
-        'We hand off the designs to your developers and provide support during implementation.',
-      image: '',
+        'The scope of UX design will depend on the selected package and the complexity of your solution. Options range from creating detailed user flows and wireframes to quick, low-fidelity wireframes as a precursor to visual design.',
+      image: '/icons/ux.svg',
     },
     {
       name: 'Design System',
       description:
-        'We’re here to help you with any design-related questions or tasks you might have.',
-      image: '',
+        'A comprehensive Design System is often needed for companies we work with. We are experts in Design Systems, and a system will be tailored to be as detailed or as simple as depending on the stage of your business.',
+      image: '/icons/dsystem.svg',
     },
     {
       name: 'Visual Design',
       description:
-        'We’re here to help you with any design-related questions or tasks you might have.',
-      image: '',
+        'This is where we focus on the final result: the visual design of your solution. We use work and insights from our previous steps to ensure the design is beautiful and helps your sales team close deals faster.',
+      image: 'visual.svg',
     },
     {
       name: 'Handoff',
       description:
-        'We’re here to help you with any design-related questions or tasks you might have.',
-      image: '',
+        'Ensuring smooth transition, designs are prepared for easy handoff. Collaboration with the development team ensures that the designs are easy to implement and look as good in reality as they do in Figma.',
+      image: 'handoff.svg',
     },
   ]
 
@@ -94,7 +95,7 @@ const Process = () => {
         orientation="horizontal"
         type={'single'}
         collapsible={false}
-        defaultValue="Discovery call"
+        defaultValue="Discovery Call"
         id="processAccordionDesktop"
         className={clsx(
           'mt-[64px]',
@@ -152,10 +153,10 @@ export function ProcessItem({
             >
               STEP {index + 1}
             </h6>
-            <div
+            {/* <div
               className={clsx('h-[18px] w-[18px] bg-dividers rounded-[4px]')}
-            ></div>
-            {/* <Image src={"#"} /> */}
+            ></div> */}
+            <Image src={image} alt={name + 'icon'} width={28} height={28} />
           </div>
           <h6
             className={clsx(
@@ -274,9 +275,10 @@ function ProcessDesktopItem({
             >
               STEP {index + 1}
             </h6>
-            <div
+            {/* <div
               className={clsx('w-[24px] h-[24px] bg-[#D9D5D3] rounded-[3px]')}
-            ></div>
+            ></div> */}
+            <Image src={image} alt={name + 'icon'} width={28} height={28} />
           </div>
           <div
             className={clsx(
@@ -354,9 +356,10 @@ function ProcessDesktopItem({
               >
                 STEP {index + 1}
               </h6>
-              <div
+              {/* <div
                 className={clsx('w-[24px] h-[24px] bg-[#D9D5D3] rounded-[3px]')}
-              ></div>
+              ></div> */}
+              <Image src={image} alt={name + 'icon'} width={28} height={28} />
             </div>
             <div className={clsx('opacity-0')}>
               <p>{description}</p>

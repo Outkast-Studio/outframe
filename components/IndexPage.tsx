@@ -49,7 +49,6 @@ export default function Post({
 
   return (
     <div className={clsx('overflow-x-hidden w-full')}>
-      <Background />
       <main className={clsx('relative z-[2] overflow-x-hidden')}>
         <Cursor />
         <Intro />

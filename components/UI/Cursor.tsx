@@ -49,12 +49,7 @@ const Cursor = () => {
           transition: 'scale 0.35s',
         }}
       >
-        <span
-          className={clsx(
-            'bg-[#76777D] translate-x-[10px] relative z-[2] arrowTransition',
-            isHoveringCaseStudy && 'showArrow !translate-x-0',
-          )}
-        >
+        <span className={clsx('bg-[#76777D] relative z-[2] arrowTransition')}>
           Open
         </span>
         <Image
@@ -62,10 +57,7 @@ const Cursor = () => {
           width={12}
           height={12}
           alt={'arrow'}
-          className={clsx(
-            'relative z-[1] translate-x-[-10px] arrowTransition',
-            isHoveringCaseStudy && 'showArrow !translate-x-0',
-          )}
+          className={clsx('relative z-[1]  arrowTransition')}
         />
       </div>
       <div
@@ -84,12 +76,7 @@ const Cursor = () => {
           transition: 'scale 0.35s',
         }}
       >
-        <span
-          className={clsx(
-            'bg-[#76777D] translate-x-[10px] relative z-[2] arrowTransition',
-            isHoveringHeroImage && 'showArrow !translate-x-0',
-          )}
-        >
+        <span className={clsx('bg-[#76777D] relative z-[2] arrowTransition')}>
           Recent Work
         </span>
         <Image
@@ -97,10 +84,7 @@ const Cursor = () => {
           width={12}
           height={12}
           alt={'arrow'}
-          className={clsx(
-            'relative z-[1] translate-x-[-10px] arrowTransition',
-            isHoveringHeroImage && 'showArrow !translate-x-0',
-          )}
+          className={clsx('relative z-[1]  arrowTransition')}
         />
       </div>
       <div
@@ -119,12 +103,7 @@ const Cursor = () => {
           transition: 'scale 0.35s',
         }}
       >
-        <span
-          className={clsx(
-            'bg-[#76777D] translate-x-[10px] relative z-[2] arrowTransition',
-            isHoveringBlog && 'showArrow !translate-x-0',
-          )}
-        >
+        <span className={clsx('bg-[#76777D]  relative z-[2] arrowTransition')}>
           Read
         </span>
         <Image
@@ -132,10 +111,7 @@ const Cursor = () => {
           width={12}
           height={12}
           alt={'arrow'}
-          className={clsx(
-            'relative z-[1] translate-x-[-10px] arrowTransition',
-            isHoveringBlog && 'showArrow !translate-x-0',
-          )}
+          className={clsx('relative z-[1] arrowTransition')}
         />
       </div>
     </>

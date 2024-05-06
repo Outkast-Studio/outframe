@@ -1,6 +1,6 @@
 import '../styles/global.css'
 import { AppProps } from 'next/app'
-import { lazy, Suspense } from 'react'
+import { lazy, Suspense, useEffect } from 'react'
 import { useRouter } from 'next/router'
 import Header from 'components/Header'
 import { clsx } from 'clsx'
@@ -8,6 +8,7 @@ import { ImageAsset } from 'sanity'
 import Image from 'next/image'
 import { urlForImage } from 'lib/sanity.image'
 import { AnimatePresence } from 'framer-motion'
+import { useThemeStore } from 'stores/themeStore'
 export interface SharedPageProps {
   draftMode: boolean
   token: string
@@ -44,6 +45,12 @@ export default function App({
 }: AppProps<SharedPageProps>) {
   const { draftMode, token } = pageProps
   const router = useRouter()
+  const introVisible = useThemeStore((state) => state.introVisible)
+  useEffect(() => {
+    if (router.pathname !== '/' && introVisible) {
+      useThemeStore.getState().setIntroVisible(false)
+    }
+  }, [router.pathname])
 
   return (
     <div className={clsx('bg-background  relative')}>

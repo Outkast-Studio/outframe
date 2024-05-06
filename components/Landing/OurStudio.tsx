@@ -63,18 +63,18 @@ const OurStudio = () => {
                 <h6
                   className={clsx(
                     'monoMedium text-[18px] leading-[21.6px] tracking-[-0.2px] ',
-                    'md:text-[40px] md:leading-[52px] md:trakcing-[-0.4px]  md:font-monoRegular',
+                    'md:text-[40px] md:leading-[52px] md:trakcing-[-0.4px] md:font-monoRegular',
                     'lg:text-[44px] lg:leading-[57.2px]',
                   )}
                 >
-                  $1B+
+                  50+
                 </h6>
                 <span
                   className={clsx(
-                    'text-[16px] leading-[24px] text-secondaryText',
+                    'text-[16px] leading-[24px] text-secondaryText text-sansRegular',
                   )}
                 >
-                  Raised
+                  SaaS Projects
                 </span>
               </div>
               <div
@@ -86,18 +86,18 @@ const OurStudio = () => {
                 <h6
                   className={clsx(
                     'monoMedium text-[18px] leading-[21.6px] tracking-[-0.2px] ',
-                    'md:text-[40px] md:leading-[52px] md:trakcing-[-0.4px] md:font-monoRegular',
+                    'md:text-[40px] md:leading-[52px] md:trakcing-[-0.4px]  md:font-monoRegular',
                     'lg:text-[44px] lg:leading-[57.2px]',
                   )}
                 >
-                  100+
+                  $500M+
                 </h6>
                 <span
                   className={clsx(
                     'text-[16px] leading-[24px] text-secondaryText',
                   )}
                 >
-                  SaaS Projects
+                  Raised
                 </span>
               </div>
             </div>
@@ -115,13 +115,20 @@ const OurStudio = () => {
               'lg:max-w-[644px] lg:text-[20px] lg:leading-[30px]',
             )}
           >
-            Database backup and recovery are essential skills that every senior
-            developer must master. <br />
-            <br /> Firstly, backup frequency is an important consideration in
-            database backup. Generally, the more critical the data, the higher
-            the backup frequency should be. For critical data, daily backups are
-            recommended, combined with incremental and differential backup
-            strategies to minimize the impact on database performance.
+            Hi there, I’m Vytas, creator of Outframe.
+            <br />
+            <br /> I started this studio to tackle a widespread issue in the B2B
+            sector: poor design and a shortage of specialised designers. <br />
+            <br /> Its purpose is to deliver affordable, beautiful and
+            incredibly intuitive product designs. <br />
+            <br /> With over eight years of experience, I've helped more than 50
+            companies use design to achieve product-market fit and fuel their
+            growth. While I have a few talented designers working with me, I
+            handle most of the work myself, ensuring quality and exceptional
+            craftsmanship for all. <br />
+            <br /> Having experienced the startup rollercoaster multiple times,
+            I bring more than just attractive design to the table. I also offer
+            practical advice on growth tactics, product strategy, and vision.
           </p>
           <div className={clsx('flex gap-x-[12px] mt-[20px]', 'md:mt-[32px]')}>
             <Image
