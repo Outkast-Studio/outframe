@@ -37,7 +37,7 @@ const Footer = () => {
               'xl:text-[60px] xl:leading-[79.56px] xl:max-w-[800px]',
             )}
           >
-            Let's Build an Amazing product, Together
+            Let&apos;s Build an Amazing product, Together
           </h6>
           <p
             className={clsx(

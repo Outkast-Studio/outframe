@@ -218,7 +218,7 @@ const Hero = ({ images, testimonial }: Props) => {
       </div>
       <div
         className={clsx(
-          'md:flex gap-x-[56px] md:mt-[102px] items-end',
+          'lg:flex gap-x-[56px] md:mt-[102px] items-end ',
           'xl:grid xl:grid-cols-12 xl:gap-x-columnGap xl:mt-[108px]',
         )}
       >
@@ -231,7 +231,7 @@ const Hero = ({ images, testimonial }: Props) => {
           animate={introVisible ? 'initial' : 'animate'}
           className={clsx(
             'mt-[64px] w-full relative',
-            'md:mt-[0px] md:w-[120%] h-fit',
+            'md:mt-[0px] md:w-[120%] h-[100%]',
             'xl:col-span-6 xl:w-[100%]',
           )}
         >

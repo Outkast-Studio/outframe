@@ -1,7 +1,7 @@
 import React from 'react'
 import { clsx } from 'clsx'
 import * as Accordion from '@radix-ui/react-accordion'
-import SectionHeading from 'components/UI/Sectionheading'
+import SectionHeading from 'components/UI/SectionHeading'
 const Services = () => {
   const services = [
     {

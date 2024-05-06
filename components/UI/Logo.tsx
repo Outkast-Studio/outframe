@@ -44,6 +44,7 @@ const Logo = () => {
     if (router.pathname !== '/') {
       setHideLogoText(false)
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [introVisible])
   return (
     <motion.div

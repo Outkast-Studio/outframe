@@ -83,6 +83,7 @@ const BlogPage = ({ post }: { post: Post }) => {
     return () => {
       headings.forEach((heading) => observer.unobserve(heading))
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
 
   function handleScrollTo(id: string) {

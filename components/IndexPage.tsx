@@ -44,6 +44,7 @@ export default function Post({
       })
       router.push('/', undefined, { shallow: true })
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [lenis])
 
   return (

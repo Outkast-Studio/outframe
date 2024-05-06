@@ -1,4 +1,3 @@
-import PreviewComponent from 'components/PreviewComponent'
 import { readToken } from 'lib/sanity.api'
 import {
   getAllWork,

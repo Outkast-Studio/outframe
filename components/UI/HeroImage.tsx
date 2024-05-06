@@ -36,7 +36,7 @@ const HeroImage = ({ images }: Props) => {
             alt={String(images[currentImageIndex].alt)}
             width={1200}
             height={1200}
-            className={clsx('object-cover h-[600px]')}
+            className={clsx('object-cover')}
           />
         </motion.div>
 
@@ -53,7 +53,7 @@ const HeroImage = ({ images }: Props) => {
             alt={String(images[nextImageIndex].alt)}
             width={1200}
             height={1200}
-            className={clsx('object-cover h-[600px]')}
+            className={clsx('object-cover ')}
           />
         </motion.div>
       </AnimatePresence>

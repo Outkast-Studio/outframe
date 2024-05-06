@@ -38,6 +38,7 @@ const Intro = () => {
         sessionStorage.setItem('introHasRun', 'true')
       }, '3900')
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [lenis])
 
   return introVisible ? (

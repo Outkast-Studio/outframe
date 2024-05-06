@@ -4,7 +4,7 @@ import { PortableText } from '@portabletext/react'
 import Image from 'next/image'
 import { myPortableTextComponents } from 'pages/_app'
 import { urlForImage } from 'lib/sanity.image'
-import SectionHeading from 'components/UI/Sectionheading'
+import SectionHeading from 'components/UI/SectionHeading'
 
 type Props = {
   testimonials: Testimonial[]

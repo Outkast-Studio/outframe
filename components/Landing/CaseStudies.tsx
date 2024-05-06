@@ -11,7 +11,7 @@ import { motion } from 'framer-motion'
 import { useThemeStore } from 'stores/themeStore'
 import FlickerText from 'components/UI/FlickerText'
 import { useInView } from 'react-intersection-observer'
-import SectionHeading from 'components/UI/Sectionheading'
+import SectionHeading from 'components/UI/SectionHeading'
 
 const CaseStudies = ({ caseStudies }: { caseStudies: any[] }) => {
   const { ref, inView } = useInView({

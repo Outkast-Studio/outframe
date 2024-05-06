@@ -2,7 +2,7 @@ import React from 'react'
 import { clsx } from 'clsx'
 import Image from 'next/image'
 import { HomepageSettings } from 'lib/sanity.queries'
-import SectionHeading from 'components/UI/Sectionheading'
+import SectionHeading from 'components/UI/SectionHeading'
 import Button from '../UI/Button'
 
 const Pricing = ({ settings }: { settings: HomepageSettings }) => {

@@ -1,5 +1,5 @@
 import { clsx } from 'clsx'
-import SectionHeading from 'components/UI/Sectionheading'
+import SectionHeading from 'components/UI/SectionHeading'
 const Benefits = () => {
   const benefits = [
     {

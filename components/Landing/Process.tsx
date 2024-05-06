@@ -3,7 +3,7 @@ import { clsx } from 'clsx'
 import * as Accordion from '@radix-ui/react-accordion'
 import { useWindowSize } from 'hooks/useWindowSize'
 import { useThemeStore } from 'stores/themeStore'
-import SectionHeading from 'components/UI/Sectionheading'
+import SectionHeading from 'components/UI/SectionHeading'
 const Process = () => {
   const processItems = [
     {
@@ -243,6 +243,7 @@ function ProcessDesktopItem({
         triggerRef.current.offsetWidth + contentRef.current.offsetWidth,
       )
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [width])
 
   return (

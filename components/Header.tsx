@@ -135,6 +135,7 @@ const Header = () => {
     } else {
       lenis.start()
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [menuOpen])
 
   function handleHomepageLink(link: string) {
@@ -295,7 +296,7 @@ const Header = () => {
                 )}
               >
                 {socials.map((item, index) => (
-                  <li>
+                  <li key={item.name}>
                     <a
                       href={item.url}
                       rel="norefferer"

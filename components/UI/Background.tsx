@@ -61,7 +61,7 @@ const Background = () => {
               stroke="#EAEAEA"
               stroke-linecap="round"
               stroke-dasharray="1 2 4 1"
-              stroke-width="0.2"
+              stroke-width="0.3"
             />
           </motion.svg>
           <motion.svg
@@ -170,6 +170,7 @@ function RotatingNumber({ index, char }) {
       Math.random() * 1000 + 6000,
     )
     return () => clearInterval(interval)
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
 
   return (
