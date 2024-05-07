@@ -14,6 +14,7 @@ const HorizontalScroll = ({ recentWork }: { recentWork: RecentWork[] }) => {
   const tlRef = useRef(null)
   const slowRef = useRef(null)
 
+  console.log(recentWork)
   useEffect(() => {
     const ctx = gsap.context(() => {
       const slider = sliderRef.current
@@ -47,13 +48,27 @@ const HorizontalScroll = ({ recentWork }: { recentWork: RecentWork[] }) => {
   //
 
   return (
-    <div ref={container} className={clsx('container pt-[113px]')}>
+    <div
+      ref={container}
+      className={clsx(
+        'container h-[calc(100vh-113px)] flex items-center justify-center',
+      )}
+    >
       <section ref={sliderRef} className={clsx('flex')}>
         {recentWork.length > 0 &&
           [...recentWork, ...recentWork].map((work, index) => (
             <article
               key={work.title + index}
-              className={clsx('flex-shrink-0 item px-[64px]')}
+              className={clsx('flex-shrink-0 item px-[4vh]')}
+              style={{
+                width: `${work.columns * 25}vh`,
+                alignSelf:
+                  work.alignment === 'top'
+                    ? 'start'
+                    : work.alignment === 'center'
+                      ? 'center'
+                      : 'end',
+              }}
             >
               <Image
                 src={urlForImage(work.image).url()}
@@ -62,7 +77,9 @@ const HorizontalScroll = ({ recentWork }: { recentWork: RecentWork[] }) => {
                 height={1200}
               />
               <div
-                className={clsx('flex mt-[8px] items-center justify-between')}
+                className={clsx(
+                  'flex mt-[8px] items-start justify-between gap-x-[16px]',
+                )}
               >
                 <h6
                   className={clsx(

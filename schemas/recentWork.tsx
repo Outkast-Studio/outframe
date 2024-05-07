@@ -50,6 +50,20 @@ export default defineType({
       },
       validation: (rule) => rule.required(),
     }),
+    defineField({
+      name: 'alignment',
+      title: 'Alignment',
+      type: 'string',
+      description: 'The alignment of the image in the grid',
+      options: {
+        list: [
+          { value: 'top', title: 'Top' },
+          { value: 'center', title: 'Center' },
+          { value: 'bottom', title: 'Bottom' },
+        ],
+      },
+      validation: (rule) => rule.required(),
+    }),
   ],
   preview: {
     select: {

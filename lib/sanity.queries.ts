@@ -113,6 +113,7 @@ export interface RecentWork {
   image?: ImageAsset
   columns?: number
   year?: number
+  alignment?: string
 }
 
 export interface Author {
