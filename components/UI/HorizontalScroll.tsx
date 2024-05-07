@@ -70,12 +70,21 @@ const HorizontalScroll = ({ recentWork }: { recentWork: RecentWork[] }) => {
                       : 'end',
               }}
             >
-              <Image
-                src={urlForImage(work.image).url()}
-                alt={String(work.image.alt)}
-                width={1200}
-                height={1200}
-              />
+              <div className={clsx('relative')}>
+                <div className="absolute bg-dividers w-full h-full top-0 left-0 z-[1]"></div>
+                <Image
+                  src={urlForImage(work.image).url()}
+                  alt={String(work.image.alt)}
+                  width={1200}
+                  height={1200}
+                  className={clsx(
+                    'relative z-[2] opacity-0 transition-opacity duration-300',
+                  )}
+                  onLoadingComplete={(image) =>
+                    image.classList.remove('opacity-0')
+                  }
+                />
+              </div>
               <div
                 className={clsx(
                   'flex mt-[8px] items-start justify-between gap-x-[16px]',
