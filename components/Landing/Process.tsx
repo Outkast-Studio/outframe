@@ -41,13 +41,13 @@ const Process = () => {
       name: 'Visual Design',
       description:
         'This is where we focus on the final result: the visual design of your solution. We use work and insights from our previous steps to ensure the design is beautiful and helps your sales team close deals faster.',
-      image: 'visual.svg',
+      image: '/icons/visual.svg',
     },
     {
       name: 'Handoff',
       description:
         'Ensuring smooth transition, designs are prepared for easy handoff. Collaboration with the development team ensures that the designs are easy to implement and look as good in reality as they do in Figma.',
-      image: 'handoff.svg',
+      image: '/icons/handoff.svg',
     },
   ]
 

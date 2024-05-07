@@ -113,12 +113,16 @@ const Hero = ({ images, testimonial }: Props) => {
           className={clsx(
             'text-[36px] leading-[43.2px] uppercase tracking-[-0.2px] monoMedium',
             'md:w-[120%]',
-            'lg:text-[45px] lg:leading-[54px] l',
+            'lg:text-[45px] lg:leading-[45px]',
             'xl:text-[76px] xl:leading-[91.2px] xl:col-span-7 xl:w-full xl:tracking-[-0.4px]',
           )}
         >
           <span
-            className={clsx('overflow-y-hidden inline-block', ' lg:h-[70px]')}
+            className={clsx(
+              'overflow-y-hidden inline-block h-[33px]',
+              'lg:h-[45px]',
+              ' xl:h-[70px]',
+            )}
           >
             <motion.span
               variants={h1ChildrenVariants}
@@ -127,7 +131,13 @@ const Hero = ({ images, testimonial }: Props) => {
               product&nbsp;
             </motion.span>
           </span>
-          <span className={clsx('overflow-hidden inline-block', 'lg:h-[70px]')}>
+          <span
+            className={clsx(
+              'overflow-hidden inline-block h-[33px]',
+              'lg:h-[45px]',
+              ' xl:h-[70px]',
+            )}
+          >
             <motion.span
               variants={h1ChildrenVariants}
               className={clsx('inline-block')}
@@ -137,8 +147,9 @@ const Hero = ({ images, testimonial }: Props) => {
           </span>
           <span
             className={clsx(
-              'overflow-hidden inline-block h-[70px]',
-              'lg:h-[70px]',
+              'overflow-hidden inline-block h-[33px]',
+              'lg:h-[45px]',
+              ' xl:h-[70px]',
             )}
           >
             <motion.span
@@ -149,7 +160,11 @@ const Hero = ({ images, testimonial }: Props) => {
             </motion.span>
           </span>
           <span
-            className={clsx('overflow-hidden inline-block ', 'lg:h-[70px]')}
+            className={clsx(
+              'overflow-hidden inline-block h-[33px]',
+              'lg:h-[45px]',
+              ' xl:h-[70px]',
+            )}
           >
             <motion.span
               variants={h1ChildrenVariants}
@@ -158,7 +173,13 @@ const Hero = ({ images, testimonial }: Props) => {
               For&nbsp;
             </motion.span>
           </span>
-          <span className={clsx('overflow-hidden inline-block', 'lg:h-[70px]')}>
+          <span
+            className={clsx(
+              'overflow-hidden inline-block h-[33px]',
+              'lg:h-[45px]',
+              ' xl:h-[70px]',
+            )}
+          >
             <motion.span
               variants={h1ChildrenVariants}
               className={clsx('inline-block')}
@@ -167,7 +188,11 @@ const Hero = ({ images, testimonial }: Props) => {
             </motion.span>
           </span>
           <span
-            className={clsx('overflow-hidden inline-block ', 'lg:h-[70px]')}
+            className={clsx(
+              'overflow-hidden inline-block h-[33px]',
+              'lg:h-[45px]',
+              ' xl:h-[70px]',
+            )}
           >
             <motion.span
               variants={h1ChildrenVariants}
@@ -216,7 +241,7 @@ const Hero = ({ images, testimonial }: Props) => {
       </div>
       <div
         className={clsx(
-          'lg:flex gap-x-[56px] md:mt-[102px] items-end ',
+          'lg:flex gap-x-[56px] md:mt-[102px] items-end justify-between w-full',
           'xl:grid xl:grid-cols-12 xl:gap-x-columnGap xl:mt-[108px]',
         )}
       >
@@ -229,8 +254,9 @@ const Hero = ({ images, testimonial }: Props) => {
           animate={introVisible ? 'initial' : 'animate'}
           className={clsx(
             'mt-[64px] w-full relative',
-            'md:mt-[0px] md:w-[120%] h-[100%]',
-            'xl:col-span-7 xl:w-[100%]',
+            'md:mt-[0px] md:w-[100%] h-[100%]',
+            'lg:w-[120%]',
+            'xl:col-span-7 xl:w-[70vh]',
           )}
         >
           <Link href={'/recent-work'} scroll={false}>
@@ -244,14 +270,14 @@ const Hero = ({ images, testimonial }: Props) => {
           animate={introVisible ? 'initial' : 'animate'}
           className={clsx(
             'mt-[76px] flex flex-col gap-y-[16px] w-full',
-            'md:mt-[0px]',
+            'lg:mt-[0px] lg:w-full',
             'xl:col-start-9 xl:col-end-[12]',
           )}
         >
           <div
             className={clsx(
               'text-[16px] leading-[24px] text-center text-secondaryText',
-              'md:text-left md:text-[14px] md:leading-[21px]',
+              'lg:text-left lg:text-[14px] lg:leading-[21px]',
             )}
           >
             <PortableText value={testimonialText} />
@@ -259,7 +285,7 @@ const Hero = ({ images, testimonial }: Props) => {
           <div
             className={clsx(
               'flex justify-center items-center gap-x-[12px]',
-              'md:justify-start md:mb-[9px]',
+              'lg:justify-start lg:mb-[9px]',
             )}
           >
             <Image
@@ -283,7 +309,6 @@ const Hero = ({ images, testimonial }: Props) => {
             </div>
           </div>
         </motion.div>
-         
       </div>
     </section>
   )

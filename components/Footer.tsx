@@ -177,7 +177,8 @@ const Footer = () => {
                 key={index}
                 href={social.url}
                 className={clsx(
-                  'text-[14px] leading-[16.8px] text-[#979590] font-sansRegular flex gap-x-[4px]',
+                  'text-[14px] leading-[16.8px] text-[white] opacity-[0.65] font-sansRegular flex gap-x-[4px] transition-opacity duration-200',
+                  'hover:opacity-100',
                 )}
               >
                 <span>{social.name}</span>

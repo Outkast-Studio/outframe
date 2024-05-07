@@ -51,7 +51,8 @@ const HorizontalScroll = ({ recentWork }: { recentWork: RecentWork[] }) => {
     <div
       ref={container}
       className={clsx(
-        'container h-[calc(100vh-113px)] flex items-center justify-center',
+        'container h-[calc(100vh-113px)] items-center justify-center hidden',
+        'lg:flex',
       )}
     >
       <section ref={sliderRef} className={clsx('flex')}>
@@ -75,10 +76,10 @@ const HorizontalScroll = ({ recentWork }: { recentWork: RecentWork[] }) => {
                 <Image
                   src={urlForImage(work.image).url()}
                   alt={String(work.image.alt)}
-                  width={1200}
-                  height={1200}
+                  width={1920}
+                  height={1920}
                   className={clsx(
-                    'relative z-[2] opacity-0 transition-opacity duration-300',
+                    'relative z-[2] opacity-0 transition-opacity duration-300 w-full object-cover',
                   )}
                   onLoadingComplete={(image) =>
                     image.classList.remove('opacity-0')

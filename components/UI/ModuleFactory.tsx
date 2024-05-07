@@ -15,6 +15,8 @@ export const SingleImageComponent = ({ image }) => {
           alt={image.alt}
           width={2440}
           height={1080}
+          className={'opacity-0 transition-opacity duration-300'}
+          onLoadingComplete={(image) => image.classList.remove('opacity-0')}
         />
       )}
     </div>
@@ -36,7 +38,8 @@ export const TwoColumnImageComponent = ({ leftImage, rightImage }) => {
             alt={leftImage.alt}
             width={2440}
             height={1080}
-            className={clsx('lg:h-full')}
+            className={' lg:h-full opacity-0 transition-opacity duration-300'}
+            onLoadingComplete={(image) => image.classList.remove('opacity-0')}
           />
         )}
       </div>
@@ -47,7 +50,8 @@ export const TwoColumnImageComponent = ({ leftImage, rightImage }) => {
             alt={rightImage.alt}
             width={2440}
             height={1080}
-            className={clsx('lg:h-full')}
+            className={' lg:h-full opacity-0 transition-opacity duration-300'}
+            onLoadingComplete={(image) => image.classList.remove('opacity-0')}
           />
         )}
       </div>
@@ -112,7 +116,8 @@ function TestimonialBlock({ testimonialBlock }) {
             alt={String(testimonialBlock.image.alt)}
             width={28}
             height={28}
-            className="rounded-[2px] w-[22px] h-[22px] lg:w-[28px] lg:h-[28px]"
+            className="rounded-[2px] w-[22px] h-[22px] lg:w-[28px] lg:h-[28px] opacity-0 transition-opacity duration-300"
+            onLoadingComplete={(image) => image.classList.remove('opacity-0')}
           />
         )}
 

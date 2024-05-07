@@ -38,20 +38,20 @@ const Header = () => {
       isHomePage: true,
       width: 101,
     },
-    {
-      // title: useScrambleText({ title: 'About', animationDelay: 4200 }),
-      title: (
-        <FlickerText
-          title="About"
-          animationDelay={width > 1024 ? 1 : 0}
-          play={router.pathname == '/' ? !introVisible : true}
-          hover={true}
-        />
-      ),
-      link: '#about',
-      isHomePage: true,
-      width: 45,
-    },
+    // {
+    //   // title: useScrambleText({ title: 'About', animationDelay: 4200 }),
+    //   title: (
+    //     <FlickerText
+    //       title="About"
+    //       animationDelay={width > 1024 ? 1 : 0}
+    //       play={router.pathname == '/' ? !introVisible : true}
+    //       hover={true}
+    //     />
+    //   ),
+    //   link: '#about',
+    //   isHomePage: true,
+    //   width: 45,
+    // },
     {
       // title: useScrambleText({ title: 'Services', animationDelay: 4500 }),
       title: (
@@ -120,14 +120,14 @@ const Header = () => {
     initial: {
       y: 0,
       transition: {
-        duration: 1,
+        duration: 0.35,
         ease: [0.62, 0.05, 0.01, 0.99],
       },
     },
     animate: {
-      y: -17,
+      y: -16,
       transition: {
-        duration: 1,
+        duration: 0.35,
         ease: [0.62, 0.05, 0.01, 0.99],
       },
     },
@@ -273,8 +273,18 @@ const Header = () => {
           <span
             className={clsx('w-[16px] flex flex-col items-end gap-y-[4px]')}
           >
-            <span className={clsx('block w-full h-[2px] bg-[#fff]')}></span>
-            <span className={clsx('block w-[12px] h-[2px] bg-[#fff]')}></span>
+            <span
+              className={clsx(
+                'block w-full h-[2px] bg-[#fff] topLine transition-transform duration-300 ease-in-out',
+                menuOpen && 'open',
+              )}
+            ></span>
+            <span
+              className={clsx(
+                'block w-[12px] h-[2px] bg-[#fff] bottomLine transition-all duration-300 ease-in-out',
+                menuOpen && 'open',
+              )}
+            ></span>
           </span>
           <span
             className={clsx(
@@ -340,13 +350,15 @@ const Header = () => {
           </>
         )}
       </AnimatePresence>
-      {menuOpen && (
-        <MobileMenu
-          socials={socials}
-          menuItems={menuItems}
-          handleHomepageLink={handleHomepageLink}
-        />
-      )}
+      <AnimatePresence mode={'wait'}>
+        {menuOpen && (
+          <MobileMenu
+            socials={socials}
+            menuItems={menuItems}
+            handleHomepageLink={handleHomepageLink}
+          />
+        )}
+      </AnimatePresence>
     </>
   )
 }

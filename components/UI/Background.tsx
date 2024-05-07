@@ -157,7 +157,9 @@ function BackgroundComponent({ index }: { index: number }) {
             width="50vw"
             height="50vw"
             viewBox="0 0 155 155"
-            className={clsx('absolute top-[-25%] left-[-25%]')}
+            className={clsx(
+              'absolute left-[-10%] top-[-10%] lg:top-[-25%] lg:left-[-25%]',
+            )}
             fill="none"
             xmlns="http://www.w3.org/2000/svg"
           >
@@ -167,6 +169,7 @@ function BackgroundComponent({ index }: { index: number }) {
               stroke-linecap="round"
               stroke-dasharray="1 2 4 1"
               stroke-width="0.3"
+              className={clsx('stroke-[0.6] lg:stroke-[0.3]')}
             />
           </motion.svg>
           <motion.svg

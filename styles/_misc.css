@@ -231,3 +231,16 @@ html {
 html {
   overflow-x: hidden;
 }
+
+.topLine.open {
+  transform: translateY(4px) rotate(-45deg);
+}
+
+.bottomLine.open {
+  width: 100%;
+  transform: translateY(-2px) rotate(45deg);
+}
+
+.backContainer:hover .backHover {
+  transform: translateX(-20px);
+}

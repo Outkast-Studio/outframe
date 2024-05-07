@@ -4,14 +4,38 @@ import Link from 'next/link'
 import Image from 'next/image'
 import { useThemeStore } from 'stores/themeStore'
 import { useRouter } from 'next/router'
+import { motion } from 'framer-motion'
 
 const MobileMenu = ({ menuItems, socials, handleHomepageLink }) => {
   const menuOpen = useThemeStore((state) => state.menuOpen)
   const setMenuOpen = useThemeStore((state) => state.setMenuOpen)
   const router = useRouter()
 
+  const variants = {
+    initial: {
+      opacity: 0,
+    },
+    animate: {
+      opacity: 1,
+      transition: {
+        duration: 0.35,
+      },
+    },
+    exit: {
+      opacity: 0,
+      transition: {
+        duration: 0.35,
+      },
+    },
+  }
+
   return (
-    <div
+    <motion.div
+      variants={variants}
+      initial="initial"
+      animate="animate"
+      exit="exit"
+      key={'mobile-menu'}
       className={clsx(
         'fixed h-[calc(100svh)] px-gutter w-full bg-background top-[0px] pt-[129px] flex flex-col justify-between z-[99]',
       )}
@@ -37,12 +61,14 @@ const MobileMenu = ({ menuItems, socials, handleHomepageLink }) => {
                   {item.title}
                 </Link>
               ) : (
-                <button
+                <Link
+                  href={{
+                    pathname: '/',
+                    query: router.pathname !== '/' ? { scroll: item.link } : {},
+                  }}
                   onClick={() => {
+                    handleHomepageLink(item.link)
                     setMenuOpen(false)
-                    setTimeout(() => {
-                      handleHomepageLink(item.link)
-                    }, 500)
                   }}
                   className={clsx(
                     'uppercase',
@@ -51,7 +77,7 @@ const MobileMenu = ({ menuItems, socials, handleHomepageLink }) => {
                   )}
                 >
                   {item.title}
-                </button>
+                </Link>
               )}
             </li>
           ))}
@@ -103,7 +129,7 @@ const MobileMenu = ({ menuItems, socials, handleHomepageLink }) => {
           </ul>
         </nav>
       </div>
-    </div>
+    </motion.div>
   )
 }
 

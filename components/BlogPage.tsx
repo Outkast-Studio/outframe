@@ -105,8 +105,10 @@ const BlogPage = ({ post }: { post: Post }) => {
             <Image
               src={urlForImage(post.coverImage).url()}
               alt={post.title}
-              width={1200}
-              height={1200}
+              width={1920}
+              height={1920}
+              className={clsx('opacity-0 transition-opacity duration-300')}
+              onLoadingComplete={(image) => image.classList.remove('opacity-0')}
             />
           )}
           {toc && toc.length > 0 && (

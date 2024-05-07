@@ -1,5 +1,6 @@
 import { clsx } from 'clsx'
 import { Work } from 'lib/sanity.queries'
+import { useEffect } from 'react'
 import Image from 'next/image'
 import { urlForImage } from 'lib/sanity.image'
 import { ModuleFactory } from './UI/ModuleFactory'
@@ -16,6 +17,10 @@ export default function Post({ work }: { work: Work }) {
   )
 
   const [isVisible, setIsVisible] = useState(false)
+
+  useEffect(() => {
+    setIsHoveringCaseStudy(false)
+  }, [])
 
   const handleMouseEnter = () => {
     setIsHoveringCaseStudy(true)
@@ -35,16 +40,31 @@ export default function Post({ work }: { work: Work }) {
           href={'/'}
           scroll={false}
           className={clsx(
-            'flex mt-[16px] items-center gap-x-[12px] py-[12px] px-[18px] border-dividers rounded-[4px] border-[1px] font-monoMedium w-fit',
+            'flex mt-[16px] items-center gap-x-[12px] py-[12px] px-[18px] border-dividers rounded-[4px] border-[1px] font-monoMedium w-fit backContainer hover:border-mainText tranisiton-[border-color] duration-300',
             'lg:mt-[175px]',
           )}
         >
-          <Image
-            src={'/icons/arrow.svg'}
-            width={12}
-            height={12}
-            alt={'arrow'}
-          />
+          <span className={clsx('w-[12px] overflow-hidden')}>
+            <span
+              className={clsx(
+                'flex gap-[8px] transition-transform duration-[0.35s] ease-in-out backHover',
+              )}
+            >
+              <Image
+                src={'/icons/arrow.svg'}
+                width={12}
+                height={12}
+                alt={'arrow'}
+              />
+              <Image
+                src={'/icons/arrow.svg'}
+                width={12}
+                height={12}
+                alt={'arrow'}
+              />
+            </span>
+          </span>
+
           <span>Back</span>
         </Link>
         <div
@@ -122,7 +142,12 @@ export default function Post({ work }: { work: Work }) {
             width={2440}
             height={1080}
             alt={String(work.thumbnailImage.alt)}
-            className={clsx('mt-[32px]', 'lg:mt-[148px]')}
+            className={clsx(
+              'mt-[32px]',
+              'lg:mt-[148px] opacity-0 transition-opacity duration-300',
+            )}
+            priority
+            onLoadingComplete={(image) => image.classList.remove('opacity-0')}
           />
         )}
         <section className={clsx('mt-[64px]', 'lg:mt-[127px]', 'xl:px-[64px]')}>
@@ -166,9 +191,12 @@ export default function Post({ work }: { work: Work }) {
                   height={1080}
                   alt={String(work.nextProject.thumbnailImage.alt)}
                   className={clsx(
-                    'ease-[cubic-bezier(0.34, 0, 0.36, 1)] scale-1 duration-[0.3s] transition-transform',
+                    'ease-[cubic-bezier(0.34, 0, 0.36, 1)] scale-1 duration-[0.3s] transition-[transform, opacity] opacity-0',
                     isVisible && 'scale-[1.04]',
                   )}
+                  onLoadingComplete={(image) =>
+                    image.classList.remove('opacity-0')
+                  }
                 />
               </div>
               <div className={clsx('lg:flex lg:pt-[16px] lg:justify-between')}>

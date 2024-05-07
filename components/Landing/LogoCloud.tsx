@@ -38,7 +38,7 @@ const LogoCloud = ({ images }) => {
         ref={ref}
         animate={controls}
         className={
-          'flex lg:flex-nowrap lg:gap-x-[96px] items-center justify-betwee'
+          'flex flex-wrap gap-x-[30px] gap-y-[64px] lg:flex-nowrap lg:gap-x-[96px] items-center justify-center'
         }
       >
         {images.map((image, index) => (

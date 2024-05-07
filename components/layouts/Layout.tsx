@@ -37,7 +37,7 @@ export function Layout({
         initial="initial"
         animate="animate"
         exit="exit"
-        className={clsx('')}
+        className={clsx('overflow-x-hidden w-full relative')}
       >
         {router.pathname !== '/recent-work' && <Background />}
 
