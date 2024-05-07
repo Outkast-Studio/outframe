@@ -9,6 +9,7 @@ import { myPortableTextComponents } from 'pages/_app'
 import * as Accordion from '@radix-ui/react-accordion'
 import { useLenis } from '@studio-freight/react-lenis'
 import { BlogCard } from '../pages/blog'
+import Cursor from './UI/Cursor'
 
 const BlogPage = ({ post }: { post: Post }) => {
   const formattedDate = (date: string) =>
@@ -92,6 +93,7 @@ const BlogPage = ({ post }: { post: Post }) => {
 
   return (
     <>
+      <Cursor />
       <main
         className={clsx(
           'px-gutter mt-[191px] text-mainText relative z-[2]',

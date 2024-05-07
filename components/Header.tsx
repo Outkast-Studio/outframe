@@ -156,6 +156,7 @@ const Header = () => {
 
   const navRef = useRef(null)
   useEffect(() => {
+    console.log(router)
     if (router.pathname === '/recent-work') {
       setIsRecentWork(true)
     } else {
@@ -253,7 +254,7 @@ const Header = () => {
                       </Link>
                     ) : (
                       <Link
-                        href={`${item.link}?recent-work=${router.pathname}`}
+                        href={`${item.link}?recent-work=${router.asPath}`}
                         scroll={false}
                       >
                         {item.title}

@@ -6,10 +6,30 @@ import { ModuleFactory } from './UI/ModuleFactory'
 import Footer from './Footer'
 import Link from 'next/link'
 import Background from './UI/Background'
+import { useThemeStore } from 'stores/themeStore'
+import { useState } from 'react'
+import Cursor from './UI/Cursor'
 
 export default function Post({ work }: { work: Work }) {
+  const setIsHoveringCaseStudy = useThemeStore(
+    (state) => state.setIsHoveringCaseStudy,
+  )
+
+  const [isVisible, setIsVisible] = useState(false)
+
+  const handleMouseEnter = () => {
+    setIsHoveringCaseStudy(true)
+    setIsVisible(true)
+  }
+
+  const handleMouseLeave = () => {
+    setIsHoveringCaseStudy(false)
+    setIsVisible(false)
+  }
+
   return (
     <>
+      <Cursor />
       <main className={clsx('px-gutter text-mainText relative z-[2]')}>
         <Link
           href={'/'}
@@ -130,13 +150,27 @@ export default function Post({ work }: { work: Work }) {
               scroll={false}
               href={work.nextProject.slug.current}
               className={clsx('lg:col-span-6 lg:col-start-7')}
+              onMouseEnter={handleMouseEnter}
+              onMouseLeave={handleMouseLeave}
             >
-              <Image
-                src={urlForImage(work.nextProject.thumbnailImage).url()}
-                width={2440}
-                height={1080}
-                alt={String(work.nextProject.thumbnailImage.alt)}
-              />
+              <div className={clsx('relative overflow-hidden')}>
+                <div
+                  className={clsx(
+                    'absolute z-[2] bg-black opacity-[0] w-full h-full transition-opacity duration-[0.3s]',
+                    isVisible && '!opacity-[0.15]',
+                  )}
+                ></div>
+                <Image
+                  src={urlForImage(work.nextProject.thumbnailImage).url()}
+                  width={2440}
+                  height={1080}
+                  alt={String(work.nextProject.thumbnailImage.alt)}
+                  className={clsx(
+                    'ease-[cubic-bezier(0.34, 0, 0.36, 1)] scale-1 duration-[0.3s] transition-transform',
+                    isVisible && 'scale-[1.04]',
+                  )}
+                />
+              </div>
               <div className={clsx('lg:flex lg:pt-[16px] lg:justify-between')}>
                 <h6
                   className={clsx(
