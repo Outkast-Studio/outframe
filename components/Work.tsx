@@ -20,6 +20,7 @@ export default function Post({ work }: { work: Work }) {
 
   useEffect(() => {
     setIsHoveringCaseStudy(false)
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
 
   const handleMouseEnter = () => {
