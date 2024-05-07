@@ -1,4 +1,4 @@
-import { getAllPosts, getClient } from 'lib/sanity.client'
+import { getAllPosts, getClient, getAllWork } from 'lib/sanity.client'
 
 type SitemapLocation = {
   url: string
@@ -18,7 +18,16 @@ type SitemapLocation = {
 const defaultUrls: SitemapLocation[] = [
   {
     url: '/',
-    changefreq: 'daily',
+    priority: 1,
+    lastmod: new Date(), // or custom date: '2023-06-12T00:00:00.000Z',
+  },
+  {
+    url: '/blog',
+    priority: 1,
+    lastmod: new Date(), // or custom date: '2023-06-12T00:00:00.000Z',
+  },
+  {
+    url: '/recent-work',
     priority: 1,
     lastmod: new Date(), // or custom date: '2023-06-12T00:00:00.000Z',
   },
@@ -60,7 +69,18 @@ export async function getServerSideProps({ res }) {
     .filter(({ slug = '' }) => slug)
     .map((post) => {
       return {
-        url: `/posts/${post.slug}`,
+        url: `/posts/${post.slug.current}`,
+        priority: 0.5,
+        lastmod: new Date(post._updatedAt),
+      }
+    })
+
+  const [work = []] = await Promise.all([getAllWork(client)])
+  const workUrls: SitemapLocation[] = work
+    .filter(({ slug = '' }) => slug)
+    .map((post) => {
+      return {
+        url: `/case-studies/${post.slug}`,
         priority: 0.5,
         lastmod: new Date(post._updatedAt),
       }
@@ -69,7 +89,7 @@ export async function getServerSideProps({ res }) {
   // ... get more routes here
 
   // Return the default urls, combined with dynamic urls above
-  const locations = [...defaultUrls, ...postUrls]
+  const locations = [...defaultUrls, ...postUrls, ...workUrls]
 
   // Set response to XML
   res.setHeader('Content-Type', 'text/xml')
