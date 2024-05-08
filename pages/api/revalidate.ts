@@ -115,6 +115,8 @@ async function queryStaleRoutes(
       return ['/']
     case 'recentWorkSettings':
       return ['/recent-work']
+    case 'recentWork':
+      return ['/recent-work']
     case 'caseStudy':
       return await queryStaleWorkRoutes(client, body._id)
     default:
