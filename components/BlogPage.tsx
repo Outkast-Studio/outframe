@@ -10,6 +10,7 @@ import * as Accordion from '@radix-ui/react-accordion'
 import { useLenis } from '@studio-freight/react-lenis'
 import { BlogCard } from '../pages/blog'
 import Cursor from './UI/Cursor'
+import { useThemeStore } from 'stores/themeStore'
 
 const BlogPage = ({ post }: { post: Post }) => {
   const formattedDate = (date: string) =>
@@ -26,6 +27,14 @@ const BlogPage = ({ post }: { post: Post }) => {
   function getIdFromText(text: string) {
     return text.toLowerCase().replace(/\s/g, '-')
   }
+
+  const setIsHoveringBlog = useThemeStore((state) => state.setIsHoveringBlog)
+
+  useEffect(() => {
+    setIsHoveringBlog(false)
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [])
+
   useEffect(() => {
     let visibleSections = []
 

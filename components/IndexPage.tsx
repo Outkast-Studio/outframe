@@ -32,7 +32,12 @@ export default function Post({
   const searchParams = useSearchParams()
   const scroll = searchParams.get('scroll')
   const lenis = useLenis()
-
+  const setIsHoveringHeroImage = useThemeStore(
+    (state) => state.setIsHoveringHeroImage,
+  )
+  useEffect(() => {
+    setIsHoveringHeroImage(false)
+  }, [])
   useEffect(() => {
     if (scroll && lenis) {
       lenis.scrollTo(scroll, {
