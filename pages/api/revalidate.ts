@@ -66,7 +66,12 @@ export default async function revalidate(
   }
 }
 
-type StaleRoute = '/' | `/blog/${string}` | `/case-studies/${string}`
+type StaleRoute =
+  | '/'
+  | `/blog/${string}`
+  | `/case-studies/${string}`
+  | '/recent-work'
+  | '/blog'
 
 async function queryStaleRoutes(
   body: Pick<
@@ -108,6 +113,8 @@ async function queryStaleRoutes(
       return await queryStalePostRoutes(client, body._id)
     case 'homepageSettings':
       return ['/']
+    case 'recentWorkSettings':
+      return ['/recent-work']
     case 'caseStudy':
       return await queryStaleWorkRoutes(client, body._id)
     default:
@@ -170,7 +177,7 @@ async function queryStalePostRoutes(
 
   slugs = await mergeWithMoreStories(client, slugs)
 
-  return ['/', ...slugs.map((slug) => `/blog/${slug}`)]
+  return ['/', ...slugs.map((slug) => `/blog/${slug}`), '/blog']
 }
 
 async function queryStaleWorkRoutes(

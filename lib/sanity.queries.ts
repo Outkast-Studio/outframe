@@ -108,12 +108,24 @@ export const recentWorkQuery = groq`
 *[_type == "recentWork"] | order(date desc, _updatedAt desc)
 `
 
+export const recentWorkSettingsQuery = groq`
+*[_type == 'recentWorkSettings'][0]{
+  recentWork[]->{
+  ...,
+  }
+}
+`
+
 export interface RecentWork {
   title?: string
   image?: ImageAsset
   columns?: number
   year?: number
-  alignment?: string
+  alignment?: number
+}
+
+export interface RecentWorkSettings {
+  recentWork: RecentWork[]
 }
 
 export interface Author {

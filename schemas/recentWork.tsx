@@ -53,13 +53,13 @@ export default defineType({
     defineField({
       name: 'alignment',
       title: 'Alignment',
-      type: 'string',
+      type: 'number',
       description: 'The alignment of the image in the grid',
       options: {
         list: [
-          { value: 'top', title: 'Top' },
-          { value: 'center', title: 'Center' },
-          { value: 'bottom', title: 'Bottom' },
+          { value: 1, title: 'Top' },
+          { value: 2, title: 'Center' },
+          { value: 3, title: 'Bottom' },
         ],
       },
       validation: (rule) => rule.required(),

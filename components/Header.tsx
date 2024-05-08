@@ -310,7 +310,7 @@ const Header = () => {
       <AnimatePresence mode={'wait'}>
         {isRecentWork && (
           <>
-            <motion.div
+            <motion.h6
               initial="initial"
               animate="animate"
               exit="exit"
@@ -321,12 +321,13 @@ const Header = () => {
                 'lg:block ',
               )}
             >
-              <FlickerText
-                title="RECENT WORK"
+              RECENT WORK
+              {/* <FlickerText
+                title="
                 animationDelay={1.5}
                 play={isRecentWork}
-              />
-            </motion.div>
+              /> */}
+            </motion.h6>
             <Link href={prev ? prev : '/'} scroll={false}>
               <motion.button
                 initial="initial"

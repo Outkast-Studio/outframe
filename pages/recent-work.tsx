@@ -1,6 +1,6 @@
 import { readToken } from 'lib/sanity.api'
 import { getAllRecentWork, getClient } from 'lib/sanity.client'
-import { RecentWork, recentWorkQuery } from 'lib/sanity.queries'
+import { RecentWorkSettings, recentWorkSettingsQuery } from 'lib/sanity.queries'
 import { GetStaticProps } from 'next'
 import { QueryParams, SanityDocument } from 'next-sanity'
 import type { SharedPageProps } from 'pages/_app'
@@ -15,7 +15,7 @@ import HorizontalScroll from 'components/UI/HorizontalScroll'
 import { useSearchParams } from 'next/navigation'
 
 interface PageProps extends SharedPageProps {
-  recentWork: RecentWork[]
+  recentWork: RecentWorkSettings
   params: QueryParams
 }
 
@@ -24,7 +24,12 @@ interface Query {
 }
 
 export default function Page(props: PageProps) {
-  const [data] = useLiveQuery<RecentWork[]>(props.recentWork, recentWorkQuery)
+  const [data] = useLiveQuery<RecentWorkSettings>(
+    props.recentWork,
+    recentWorkSettingsQuery,
+  )
+
+  console.log(data)
 
   const seo = {
     title: 'Outframe | Recent Work',
@@ -75,8 +80,8 @@ export default function Page(props: PageProps) {
               'lg:hidden',
             )}
           >
-            {data.length > 0 &&
-              data.map((work, index) => (
+            {data.recentWork.length > 0 &&
+              data.recentWork.map((work, index) => (
                 <article key={work.title + index}>
                   <Image
                     src={urlForImage(work.image).url()}
@@ -111,7 +116,7 @@ export default function Page(props: PageProps) {
         <div className={clsx('lg:hidden')}>
           <Footer />
         </div>
-        <HorizontalScroll recentWork={data} />
+        <HorizontalScroll recentWork={data.recentWork} />
       </Layout>
     </div>
   )

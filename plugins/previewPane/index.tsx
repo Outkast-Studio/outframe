@@ -29,6 +29,8 @@ export const iframeOptions = {
             : new Error('Missing slug')
         case 'homepageSettings':
           return '/'
+        case 'recentWorkSettings':
+          return '/recent-work'
         default:
           return new Error(`Unknown document type: ${document?._type}`)
       }
