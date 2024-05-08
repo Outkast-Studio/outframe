@@ -31,15 +31,16 @@ const LogoCloud = ({ images }) => {
         'mt-[88px] flex flex-wrap px-gutter gap-x-[24px] gap-y-[65px] items-center justify-center',
         'md:gap-x-[30px]',
         'lg:mt-[98px] lg:py-[22.5px] lg:flex-nowrap lg:gap-x-[96px]',
-        'xl:mt-[130px] xl:py-[36px] xl:justify-between ',
+        'xl:mt-[130px] xl:py-[36px] xl:justify-between xl:w-full',
       )}
     >
       <motion.div
         ref={ref}
         animate={controls}
-        className={
-          'flex flex-wrap gap-x-[30px] gap-y-[64px] lg:flex-nowrap lg:gap-x-[96px] items-center justify-center'
-        }
+        className={clsx(
+          'flex flex-wrap gap-x-[30px] gap-y-[64px] lg:flex-nowrap lg:gap-x-[96px] items-center justify-center',
+          'xl:justify-between xl:w-full',
+        )}
       >
         {images.map((image, index) => (
           <Image
