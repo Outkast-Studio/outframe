@@ -204,10 +204,10 @@ const Header = () => {
   return (
     <>
       {' '}
-      <div className={clsx('md:h-[40px]')}></div>
+      <div className={clsx('md:h-[40px] bg-transparent')}></div>
       <header
         className={clsx(
-          'flex px-gutter mix-blend-difference pt-[24px] pb-[16px] justify-between sticky top-0 left-0 w-full items-center z-[100]',
+          'flex px-gutter mix-blend-difference pt-[24px] pb-[16px] justify-between sticky top-0 left-0 w-full items-center z-[100] bg-transparent',
           'md:mt-[0px] pb-[20px]',
           'xl:grid grid-cols-12 xl:gap-x-columnGap',
         )}
@@ -267,8 +267,14 @@ const Header = () => {
             </motion.nav>
           )}
         </AnimatePresence>
-        <button
-          className={clsx('flex items-center gap-x-[8px]', 'md:hidden')}
+        <motion.button
+          variants={closeButtonVariants}
+          initial="initial"
+          animate={introVisible ? 'initial' : 'animate'}
+          className={clsx(
+            'flex items-center gap-x-[8px] relative',
+            'md:hidden',
+          )}
           onClick={() => setMenuOpen(!menuOpen)}
         >
           <span
@@ -305,7 +311,7 @@ const Header = () => {
               <span>Close</span>
             </motion.span>
           </span>
-        </button>
+        </motion.button>
       </header>
       <AnimatePresence mode={'wait'}>
         {isRecentWork && (

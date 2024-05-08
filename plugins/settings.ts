@@ -45,6 +45,8 @@ export const settingsStructure = (
       'settings',
       'recentWorkSettings',
       'recentWork',
+      'media.tag',
+      'author',
     ]
 
     // The `Settings` root list item
