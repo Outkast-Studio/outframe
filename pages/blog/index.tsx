@@ -114,6 +114,17 @@ export function BlogCard({
     setIsHoveringBlog(false)
   }
 
+  if (
+    !post ||
+    !post.title ||
+    !post.slug ||
+    !post.date ||
+    !post.cardSubtitle ||
+    !post.coverImage
+  ) {
+    return <></>
+  }
+
   return (
     <Link
       scroll={false}

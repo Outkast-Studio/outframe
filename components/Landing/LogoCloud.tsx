@@ -38,8 +38,8 @@ const LogoCloud = ({ images }) => {
         ref={ref}
         animate={controls}
         className={clsx(
-          'flex flex-wrap gap-x-[30px] gap-y-[64px] lg:flex-nowrap lg:gap-x-[96px] items-center justify-center',
-          'xl:justify-between xl:w-full',
+          'flex flex-wrap gap-x-[30px] gap-y-[64px] lg:gap-x-[96px] items-center justify-center',
+          'xl:justify-between xl:w-full  xl:flex-nowrap ',
         )}
       >
         {images.map((image, index) => (

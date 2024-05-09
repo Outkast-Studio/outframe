@@ -14,7 +14,6 @@ const HorizontalScroll = ({ recentWork }: { recentWork: RecentWork[] }) => {
   const tlRef = useRef(null)
   const slowRef = useRef(null)
 
-  console.log(recentWork)
   useEffect(() => {
     const ctx = gsap.context(() => {
       const slider = sliderRef.current
@@ -58,7 +57,9 @@ const HorizontalScroll = ({ recentWork }: { recentWork: RecentWork[] }) => {
       <section ref={sliderRef} className={clsx('flex')}>
         {recentWork.length > 0 &&
           [...recentWork, ...recentWork].map((work, index) => {
-            console.log(work.alignment)
+            if (!work || !work.title || !work.year || !work.image) {
+              return <></>
+            }
             return (
               <article
                 key={work.title + index}

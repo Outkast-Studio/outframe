@@ -156,7 +156,6 @@ const Header = () => {
 
   const navRef = useRef(null)
   useEffect(() => {
-    console.log(router)
     if (router.pathname === '/recent-work') {
       setIsRecentWork(true)
     } else {

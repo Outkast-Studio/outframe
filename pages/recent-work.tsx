@@ -29,8 +29,6 @@ export default function Page(props: PageProps) {
     recentWorkSettingsQuery,
   )
 
-  console.log(data)
-
   const seo = {
     title: 'Outframe | Recent Work',
     description: '',
@@ -81,36 +79,41 @@ export default function Page(props: PageProps) {
             )}
           >
             {data.recentWork.length > 0 &&
-              data.recentWork.map((work, index) => (
-                <article key={work.title + index}>
-                  <Image
-                    src={urlForImage(work.image).url()}
-                    alt={String(work.image.alt)}
-                    width={1200}
-                    height={1200}
-                  />
-                  <div
-                    className={clsx(
-                      'flex mt-[8px] items-center justify-between',
-                    )}
-                  >
-                    <h6
+              data.recentWork.map((work, index) => {
+                if (!work || !work.title || !work.year || !work.image) {
+                  return <></>
+                }
+                return (
+                  <article key={work.title + index}>
+                    <Image
+                      src={urlForImage(work.image).url()}
+                      alt={String(work.image.alt)}
+                      width={1200}
+                      height={1200}
+                    />
+                    <div
                       className={clsx(
-                        'text-[16px] leading-[24px] text-secondaryText font-sansRegular',
+                        'flex mt-[8px] items-center justify-between',
                       )}
                     >
-                      {work.title}
-                    </h6>
-                    <span
-                      className={clsx(
-                        'text-accent font-monoRegular text-[14px] leading-[25.2px] tracking-[-0.2px]',
-                      )}
-                    >
-                      {work.year}
-                    </span>
-                  </div>
-                </article>
-              ))}
+                      <h6
+                        className={clsx(
+                          'text-[16px] leading-[24px] text-secondaryText font-sansRegular',
+                        )}
+                      >
+                        {work.title}
+                      </h6>
+                      <span
+                        className={clsx(
+                          'text-accent font-monoRegular text-[14px] leading-[25.2px] tracking-[-0.2px]',
+                        )}
+                      >
+                        {work.year}
+                      </span>
+                    </div>
+                  </article>
+                )
+              })}
           </section>
         </main>
         <div className={clsx('lg:hidden')}>

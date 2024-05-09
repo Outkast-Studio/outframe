@@ -37,7 +37,7 @@ const Testimoninals = ({ testimonials }: Props) => {
           'xl:col-start-6',
         )}
       >
-        {testimonials.map((testimonial, index) => (
+        {testimonials.slice(0, 4).map((testimonial, index) => (
           <TestimonialCard
             key={index}
             index={index}
@@ -58,6 +58,15 @@ function TestimonialCard({
   testimonial: Testimonial
   index: number
 }) {
+  if (
+    !testimonial ||
+    !testimonial.content ||
+    !testimonial.image.asset ||
+    !testimonial.name ||
+    !testimonial.role
+  ) {
+    return <></>
+  }
   return (
     <article
       className={clsx(

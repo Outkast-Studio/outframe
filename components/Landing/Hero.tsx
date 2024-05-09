@@ -18,13 +18,12 @@ type Props = {
 }
 
 const Hero = ({ images, testimonial }: Props) => {
-  console.log(images)
   const [position, setPosition] = useState({ x: 0, y: 0 })
   const [isVisible, setIsVisible] = useState(false)
   const trackingDivRef = useRef<HTMLDivElement>(null)
-  const testimonialText = testimonial.content
-  const testimonialName = testimonial.name
-  const role = testimonial.role
+  const testimonialText = (testimonial && testimonial.content) || ''
+  const testimonialName = (testimonial && testimonial.name) || ''
+  const role = (testimonial && testimonial.role) || ''
   const introVisible = useThemeStore((state) => state.introVisible)
   const setIsHoveringHeroImage = useThemeStore(
     (state) => state.setIsHoveringHeroImage,
@@ -260,7 +259,7 @@ const Hero = ({ images, testimonial }: Props) => {
           )}
         >
           <Link href={'/recent-work'} scroll={false}>
-            <HeroImage images={images} />
+            {images && images.length > 0 && <HeroImage images={images} />}
           </Link>
           {/* This is the Image component */}
         </motion.div>
@@ -280,7 +279,7 @@ const Hero = ({ images, testimonial }: Props) => {
               'lg:text-left lg:text-[14px] lg:leading-[21px]',
             )}
           >
-            <PortableText value={testimonialText} />
+            {testimonialText !== '' && <PortableText value={testimonialText} />}
           </div>
           <div
             className={clsx(
@@ -288,13 +287,15 @@ const Hero = ({ images, testimonial }: Props) => {
               'lg:justify-start lg:mb-[9px]',
             )}
           >
-            <Image
-              src={urlForImage(testimonial.image.asset).url()}
-              height={28}
-              width={28}
-              alt={String(testimonial.image.alt)}
-              className={clsx('rounded-[2px]')}
-            />
+            {testimonial && testimonial.image && testimonial.image.asset && (
+              <Image
+                src={urlForImage(testimonial.image.asset).url()}
+                height={28}
+                width={28}
+                alt={String(testimonial.image.alt)}
+                className={clsx('rounded-[2px]')}
+              />
+            )}
             <div
               className={clsx(
                 'flex gap-x-[6px] text-[14px] leading-[16.8px] text-mainText',

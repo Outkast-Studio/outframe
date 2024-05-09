@@ -25,7 +25,10 @@ const BlogPage = ({ post }: { post: Post }) => {
   const [activeId, setActiveId] = useState('')
 
   function getIdFromText(text: string) {
-    return text.toLowerCase().replace(/\s/g, '-')
+    return text
+      .toLowerCase()
+      .replaceAll(/\s/g, '')
+      .replace(/[\u200B-\u200D\uFEFF]/g, '')
   }
 
   const setIsHoveringBlog = useThemeStore((state) => state.setIsHoveringBlog)
@@ -37,9 +40,7 @@ const BlogPage = ({ post }: { post: Post }) => {
 
   useEffect(() => {
     let visibleSections = []
-
     const headings = Array.from(document.querySelectorAll('h2'))
-
     const callback = (entries) => {
       entries.forEach((entry) => {
         const id = entry.target.id
@@ -81,12 +82,20 @@ const BlogPage = ({ post }: { post: Post }) => {
     })
 
     headings.forEach((heading) => {
-      const text = heading.textContent?.toLowerCase().replace(/\s/g, '-')
+      const text = heading.textContent?.toLowerCase().replace(/\s/g, '')
+      const re = new RegExp('\u2028|\u2029')
+      const newText = text.replace(/[\u200B-\u200D\uFEFF]/g, '')
+
       const matchingToc = toc.find(
-        (item) => item.text.toLowerCase() === heading.textContent.toLowerCase(),
+        (item) =>
+          item.text
+            .toLowerCase()
+            .replaceAll(/\s/g, '')
+            .replace(/[\u200B-\u200D\uFEFF]/g, '') === newText,
       )
+
       if (matchingToc) {
-        heading.id = text
+        heading.id = newText
       }
       observer.observe(heading)
     })
@@ -332,12 +341,15 @@ const BlogPage = ({ post }: { post: Post }) => {
           <div
             className={clsx(
               'flex flex-col gap-[88px] px-gutter',
-              'lg:flex-row  lg:gap-x-[32px] lg:justify-between',
+              'lg:flex-row  lg:gap-x-[32px]',
+              post.suggestedArticles &&
+                post.suggestedArticles.length > 2 &&
+                'lg:justify-between',
             )}
           >
             {post.suggestedArticles.map((post, index) => (
               <BlogCard
-                key={String(post.title + index)}
+                key={String(index + 'Suggested Article')}
                 post={post}
                 isIndividualBlog={true}
               />

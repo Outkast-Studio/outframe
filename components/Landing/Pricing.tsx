@@ -76,7 +76,7 @@ const Pricing = ({ settings }: { settings: HomepageSettings }) => {
               'xl:text-[16px] xl:leading-[24px]',
             )}
           >
-            All plans have a rate of $650/day.
+            All plans have a rate of ${settings.dayRate}/day.
           </p>
         </div>
 
