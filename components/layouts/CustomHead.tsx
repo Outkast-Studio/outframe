@@ -9,14 +9,19 @@ import { urlForImage } from 'lib/sanity.image'
 
 //Use Favicon.io to generate all required favicon files
 export function CustomHead({
-  title,
+  title = 'Outframe – Product Design Studio',
   description,
   image,
   keywords,
-  twitter = { handle: '@**Business' },
+  twitter = { handle: '@VytasBu' },
 }) {
   //Replace with the default OG image
-  const defaultOGImage = ''
+  const defaultTitle = 'Outframe – Product Design Studio'
+  const defaultOGImage =
+    'https://cdn.sanity.io/images/5m5oz66p/production/ad69848f7ee3e62e9beabc506fca27344688b867-2400x1260.png'
+  const defaultDescription =
+    'Outframe is a European digital product design studio with a focus on B2B SaaS design. Save time and money by working with senior design partners who will deliver more, for less.'
+
   return (
     <>
       <NextHead>
@@ -42,12 +47,12 @@ export function CustomHead({
           name="keywords"
           content={keywords && keywords.length ? keywords.join(',') : keywords}
         />
-        <meta name="author" content="**Business" />
+        <meta name="author" content="Outframe" />
         <meta name="referrer" content="no-referrer" />
         <meta name="format-detection" content="telephone=no" />
         <meta name="geo.region" content="US" />
-        <meta name="twitter:creator" content="@**Business" />
-        <meta name="twitter:title" content={title || '**Business'} />
+        <meta name="twitter:creator" content="@VytasBu" />
+        <meta name="twitter:title" content={title ? title : defaultTitle} />
         <meta name="twitter:description" content={description || ''} />
         <meta name="twitter:image" content={image ? image : defaultOGImage} />
 
@@ -73,14 +78,14 @@ export function CustomHead({
         <link rel="icon" href="/favicon/favicon-32x32.png" />
         {/* END FAVICON */}
 
-        <title>{title}</title>
+        <title>{title ? title : defaultTitle}</title>
       </NextHead>
       <NextSeo
-        title={title}
-        description={description || ''}
+        title={title ? title : defaultTitle}
+        description={description ? description : defaultDescription}
         openGraph={{
-          title,
-          description: description || '',
+          title: title ? title : defaultTitle,
+          description: description ? description : defaultDescription,
           type: 'website',
           locale: 'en_US',
           images: [
@@ -98,7 +103,7 @@ export function CustomHead({
         twitter={{
           handle: twitter.handle,
           cardType: 'summary_large_image',
-          site: '**Business URL',
+          site: 'https://outframe.co/',
         }}
       />
     </>

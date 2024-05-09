@@ -129,14 +129,20 @@ const Pricing = ({ settings }: { settings: HomepageSettings }) => {
           >
             Contact Us
           </button> */}
-          <Button
-            text={'Contact Us'}
-            cb={() => {}}
-            className={clsx(
-              'border-dividers hidden border rounded-[4px] px-[18px] py-[12px] text-[14px] leading-[16.8px] font-monoMedium',
-              'lg:flex lg:h-fit',
-            )}
-          />
+          <a
+            href={'https://cal.com/outframe/intro'}
+            target="_blank"
+            rel={'noreferrer'}
+          >
+            <Button
+              text={'Contact Us'}
+              cb={() => {}}
+              className={clsx(
+                'border-dividers hidden border rounded-[4px] px-[18px] py-[12px] text-[14px] leading-[16.8px] font-monoMedium',
+                'lg:flex lg:h-fit',
+              )}
+            />
+          </a>
         </div>
         <div
           className={clsx(
@@ -156,14 +162,17 @@ const Pricing = ({ settings }: { settings: HomepageSettings }) => {
             If you’re not fully satisfied after the first month, we’ll give you
             a full refund.
           </p>
-          <button
+          <a
+            href={'https://cal.com/outframe/intro'}
+            target="_blank"
+            rel={'noreferrer'}
             className={clsx(
               'border-dividers border rounded-[4px] px-[18px] py-[12px] mt-[24px] text-[14px] leading-[16.8px] font-monoMedium',
               'lg:hidden',
             )}
           >
             Contact Us
-          </button>
+          </a>
         </div>
       </div>
     </section>
@@ -274,16 +283,23 @@ function PricingCard({
       >
         Book a Call
       </button> */}
-      <Button
-        text={'Book a Call'}
-        cb={() => {}}
-        accent
-        className={clsx(
-          'text-[12px] whitespace-nowrap hidden leading-[14.4px] tracking-[-0.2px] bg-accent font-monoMedium text-[#F7F7F7] px-[16px] py-[12px] rounded-[4px] h-fit mt-[32px] ml-[32px]',
-          'lg:flex',
-          'xl:text-[14px] xl:leading-[16.8px]',
-        )}
-      />
+
+      <a
+        href={'https://cal.com/outframe/intro'}
+        target="_blank"
+        rel={'noreferrer'}
+      >
+        <Button
+          text={'Book a Call'}
+          cb={() => {}}
+          accent
+          className={clsx(
+            'text-[12px] whitespace-nowrap hidden leading-[14.4px] tracking-[-0.2px] bg-accent font-monoMedium text-[#F7F7F7] px-[16px] py-[12px] rounded-[4px] h-fit mt-[32px] ml-[32px]',
+            'lg:flex',
+            'xl:text-[14px] xl:leading-[16.8px]',
+          )}
+        />
+      </a>
     </article>
   )
 }

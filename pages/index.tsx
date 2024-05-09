@@ -52,8 +52,9 @@ export const getStaticProps: GetStaticProps<PageProps, Query> = async (ctx) => {
   const work = await getAllWork(client)
   const homepageSettings = await getHomepageSettings(client)
   const seo = {
-    title: 'Outframe | Product Design Partner, On Demand.',
-    description: '',
+    title: 'Outframe – Product Design Studio',
+    description:
+      'Outframe is a European digital product design studio with a focus on B2B SaaS design. Save time and money by working with senior design partners who will deliver more, for less.',
     image: '',
     keywords: [],
   }

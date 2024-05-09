@@ -234,7 +234,13 @@ const Hero = ({ images, testimonial }: Props) => {
               }
               accent
             />
-            <Button text={'Book a call'} cb={() => {}} />
+            <a
+              href={'https://cal.com/outframe/intro'}
+              target="_blank"
+              rel={'noreferrer'}
+            >
+              <Button text={'Book a call'} cb={() => {}} />
+            </a>
           </div>
         </motion.div>
       </div>

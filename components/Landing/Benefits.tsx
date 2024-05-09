@@ -1,42 +1,43 @@
 import { clsx } from 'clsx'
 import SectionHeading from 'components/UI/SectionHeading'
+import Image from 'next/image'
 const Benefits = () => {
   const benefits = [
     {
       name: 'Easier than in-house',
       description:
         'Just recruiting a product designer will take you months and cost you at least $20,000.',
-      image: '',
+      image: '/icons/easier.svg',
     },
     {
       name: 'Cheaper than agencies',
       description:
         'At least 50% cheaper than most agencies or talent marketplaces with huge markups.',
-      image: '',
+      image: '/icons/cheap.svg',
     },
     {
       name: 'Safer than freelance',
       description:
         'Freelancers come and go, but we’re always here for you, rain or shine.',
-      image: '',
+      image: '/icons/saferThanFreelancer.svg',
     },
     {
       name: 'Faster than others',
       description:
         'Subscribe, hop on a kick-off call and receive your first designs in just a few days.',
-      image: '',
+      image: '/icons/faster.svg',
     },
     {
       name: 'Better UX/UI skills',
       description:
         'You work directly with a vetted sr. UX/UI designer who can design a top-notch interface.',
-      image: '',
+      image: '/icons/better.svg',
     },
     {
       name: 'Part of your team',
       description:
         'We work closely with our clients as an extension of their team.',
-      image: '',
+      image: '/icons/part.svg',
     },
   ]
 
@@ -73,13 +74,13 @@ const Benefits = () => {
           >
             <div
               className={clsx(
-                'flex justify-between items-center',
+                'flex justify-between items-center mb-[16px]',
                 'lg:mb-[48px] ',
               )}
             >
               <div
                 className={clsx(
-                  'flex gap-x-[8px] items-center mb-[16px]',
+                  'flex gap-x-[8px] items-center',
                   'lg:gap-x-[12px] lg:mb-0',
                 )}
               >
@@ -99,13 +100,19 @@ const Benefits = () => {
                   {benefit.name}
                 </h6>
               </div>
-              <div
+              {/* <div
                 className={clsx(
                   'h-[10px] w-[10px] bg-dividers',
                   'lg:hidden',
                   'xl:block',
                 )}
-              ></div>
+              ></div> */}
+              <Image
+                src={benefit.image}
+                alt={benefit.name + ' icon'}
+                width={24}
+                height={24}
+              />
             </div>
             <p
               className={clsx(
