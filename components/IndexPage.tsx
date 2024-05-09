@@ -37,6 +37,7 @@ export default function Post({
   )
   useEffect(() => {
     setIsHoveringHeroImage(false)
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
   useEffect(() => {
     if (scroll && lenis) {
