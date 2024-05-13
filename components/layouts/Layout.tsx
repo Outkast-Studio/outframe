@@ -42,7 +42,7 @@ export function Layout({
           router.asPath.includes('/blog') && 'lg:!overflow-x-visible',
         )}
       >
-        {router.pathname !== '/recent-work' && <Background />}
+        {/* {router.pathname !== '/recent-work' && <Background />} */}
 
         <CustomHead {...seo} />
         {children}

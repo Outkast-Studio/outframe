@@ -22,6 +22,7 @@ import settingsType from 'schemas/settings'
 import workType from 'schemas/work'
 import { schema } from 'schemas'
 import { media } from 'sanity-plugin-media'
+import { inlineSvgInput } from '@focus-reactive/sanity-plugin-inline-svg-input'
 
 const title =
   process.env.NEXT_PUBLIC_SANITY_PROJECT_TITLE || 'Next.js Blog with Sanity.io'
@@ -33,6 +34,7 @@ export default defineConfig({
   title,
   schema,
   plugins: [
+    inlineSvgInput(),
     deskTool({
       structure: settingsStructure(settingsType),
       // `defaultDocumentNode` is responsible for adding a “Preview” tab to the document pane

@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import { clsx } from 'clsx'
 import Image from 'next/image'
 import { HomepageSettings } from 'lib/sanity.queries'
@@ -14,24 +14,47 @@ const Pricing = ({ settings }: { settings: HomepageSettings }) => {
     }).format(number)
   }
 
+  const [region, setRegion] = useState('')
+
+  useEffect(() => {
+    async function fetchUserLocation() {
+      try {
+        const response = await fetch('/api/pricing')
+        const data = await response.json()
+        return data.country
+      } catch (error) {
+        console.error(error)
+      }
+      // Adjust according to the data structure returned by your API
+    }
+
+    // async function determinePricingByRegion() {
+    //   const userRegion = await fetchUserLocation()
+    //   console.log(userRegion)
+    //   setRegion(userRegion)
+    // }
+
+    fetchUserLocation()
+  }, [])
+
   const pricing = [
     {
       title: 'Flex',
       daysPerWeek: '1 day / week',
       description: 'Flexible plan for shorter projects, or just to start',
-      price: formatCurrency(settings.flexPricing),
+      price: settings.flexPricing,
     },
     {
       title: 'Part-time',
       daysPerWeek: '2 days / week',
       description: 'Flexible plan for shorter projects, or just to start',
-      price: formatCurrency(settings.partTimePricing),
+      price: settings.partTimePricing,
     },
     {
       title: 'Dedicated',
       daysPerWeek: '3 days / week',
       description: 'Flexible plan for shorter projects, or just to start',
-      price: formatCurrency(settings.dedicatedPricing),
+      price: settings.dedicatedPricing,
     },
   ]
   return (
@@ -138,7 +161,7 @@ const Pricing = ({ settings }: { settings: HomepageSettings }) => {
               text={'Contact Us'}
               cb={() => {}}
               className={clsx(
-                'border-dividers hidden border rounded-[4px] px-[18px] py-[12px] text-[14px] leading-[16.8px] font-monoMedium',
+                'border-dividers hidden border rounded-[4px] px-[18px] py-[12px] text-[14px] leading-[16.8px] font-monoMedium ',
                 'lg:flex lg:h-fit',
               )}
             />
@@ -167,7 +190,7 @@ const Pricing = ({ settings }: { settings: HomepageSettings }) => {
             target="_blank"
             rel={'noreferrer'}
             className={clsx(
-              'border-dividers border rounded-[4px] px-[18px] py-[12px] mt-[24px] text-[14px] leading-[16.8px] font-monoMedium',
+              'border-dividers border rounded-[4px] px-[18px] py-[12px] mt-[24px] text-[14px] leading-[16.8px] font-monoMedium block w-fit',
               'lg:hidden',
             )}
           >
@@ -194,7 +217,10 @@ function PricingCard({
 }) {
   return (
     <article
-      className={clsx('border-[1px] border-dividers pb-[24px]', 'lg:pb-[32px]')}
+      className={clsx(
+        'border-[1px] border-dividers pb-[24px] bg-background',
+        'lg:pb-[32px]',
+      )}
     >
       <div
         className={clsx(
@@ -219,14 +245,14 @@ function PricingCard({
           </h6>
           <h6
             className={clsx(
-              'font-monoRegular text-[12px] leading-[14.4px] h-fit tracking-[-0.2px] px-[10px] py-[4px] bg-[#EBE7E3] rounded-full uppercase',
+              'font-monoRegular text-[12px] leading-[14.4px] h-fit tracking-[-0.2px] px-[10px] pt-[4px] pb-[3px] bg-[#EBE7E3] rounded-full uppercase',
             )}
           >
             {daysPerWeek}
           </h6>
         </div>
         <h6 className={clsx('text-[18px] leading-[27px]', 'lg:hidden')}>
-          {price}/m
+          {price}
         </h6>
       </div>
       <Image
@@ -265,7 +291,7 @@ function PricingCard({
           'xl:text-[32px] xl:leading-[48px]',
         )}
       >
-        {price}/m
+        {price}
       </h6>
       <Image
         src={'/icons/dashed.svg'}

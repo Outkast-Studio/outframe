@@ -112,7 +112,7 @@ const OurStudio = () => {
           <p
             className={clsx(
               'mt-[32px] text-[16px] leading-[24px]',
-              'lg:max-w-[644px] lg:text-[20px] lg:leading-[30px]',
+              'lg:max-w-[718px] lg:text-[16px] lg:leading-[24px] lg:tracking-[-0.1px]',
             )}
           >
             Hi there, I&apos;m Vytas, creator of Outframe.

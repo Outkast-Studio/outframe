@@ -14,7 +14,9 @@ html {
   scrollbar-width: none;
 }
 /* For Firefox */
-
+:root {
+  background: #f7f7f7 !important;
+}
 @keyframes slideDown {
   from {
     height: 0;
@@ -243,4 +245,9 @@ html {
 
 .backContainer:hover .backHover {
   transform: translateX(-20px);
+}
+
+html,
+body {
+  background: #f7f7f7 !important;
 }

@@ -40,20 +40,13 @@ export default defineType({
       type: 'array',
       of: [
         {
-          type: 'image',
-          fields: [
-            {
-              type: 'string',
-              name: 'alt',
-              title: 'Alternative Text',
-              description:
-                "Describe what's in the image for screen readers and search engines.",
-              validation: (Rule: any) => Rule.required(),
-            },
-          ],
+          name: 'svgIcon',
+          title: 'SVG Icon',
+          type: 'inlineSvg',
         },
       ],
     }),
+
     defineField({
       name: 'caseStudies',
       title: 'Case Studies Grid',
@@ -97,21 +90,21 @@ export default defineType({
     defineField({
       name: 'flexPricing',
       title: 'Flex Pricing',
-      type: 'number',
+      type: 'string',
       description: 'The price for the Flex plan',
       validation: (Rule: any) => Rule.required(),
     }),
     defineField({
       name: 'partTimePricing',
       title: 'Part-time Pricing',
-      type: 'number',
+      type: 'string',
       description: 'The price for the Part-time plan',
       validation: (Rule: any) => Rule.required(),
     }),
     defineField({
       name: 'dedicatedPricing',
       title: 'Dedicated Pricing',
-      type: 'number',
+      type: 'string',
       description: 'The price for the Dedicated plan',
       validation: (Rule: any) => Rule.required(),
     }),

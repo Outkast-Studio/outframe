@@ -52,6 +52,7 @@ export function CustomHead({
         <meta name="format-detection" content="telephone=no" />
         <meta name="geo.region" content="US" />
         <meta name="twitter:creator" content="@VytasBu" />
+        <meta name="theme-color" content="#F7F7F7" />
         <meta name="twitter:title" content={title ? title : defaultTitle} />
         <meta name="twitter:description" content={description || ''} />
         <meta name="twitter:image" content={image ? image : defaultOGImage} />

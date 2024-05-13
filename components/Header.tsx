@@ -133,15 +133,15 @@ const Header = () => {
     },
   }
 
-  useEffect(() => {
-    if (!lenis) return
-    if (menuOpen) {
-      lenis.stop()
-    } else {
-      lenis.start()
-    }
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [menuOpen])
+  // useEffect(() => {
+  //   if (!lenis) return
+  //   if (menuOpen) {
+  //     lenis.stop()
+  //   } else {
+  //     lenis.start()
+  //   }
+  //   // eslint-disable-next-line react-hooks/exhaustive-deps
+  // }, [menuOpen])
 
   function handleHomepageLink(link: string) {
     lenis.scrollTo(link, {

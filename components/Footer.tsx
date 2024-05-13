@@ -13,13 +13,13 @@ const Footer = () => {
     <footer
       className={clsx(
         'px-gutter mt-[111px] pb-[29px] relative overflow-hidden ',
-        'lg:pb-[64px]',
+        'lg:pb-gutter',
       )}
     >
       <div
         className={clsx(
           'bg-[#000] py-[40px] px-[32px] rounded-[5px] relative overflow-hidden z-[2]',
-          'lg:grid lg:grid-cols-12 lg:pt-[99px] lg:px-0 lg:gap-x-columnGap lg:pb-[32px]',
+          'lg:grid lg:grid-cols-12 lg:pt-[99px] lg:gap-x-columnGap lg:pb-[32px] lg:px-[32px]',
           'xl:pt-[163px] ',
         )}
       >
@@ -132,7 +132,7 @@ const Footer = () => {
         <div
           className={clsx(
             'absolute bottom-[-320px] right-[-480px] w-[650px] h-[650px]',
-            'lg:right-[unset] lg:left-[-390px] lg:w-[745px] lg:h-[745px] lg:bottom-[unset] lg:top-[50px] lg:rotate-[270deg]',
+            'lg:right-[unset] lg:left-[-440px] lg:w-[900px] lg:h-[900px] lg:bottom-[unset] lg:top-[50px] lg:rotate-[270deg]',
             'xl:w-[1000px] xl:h-[1000px] xl:top-[75px]',
           )}
         >
@@ -146,7 +146,7 @@ const Footer = () => {
         <div
           className={clsx(
             'hidden border-t-[#979590] border-t-[1px] border-opacity-[0.3] pt-[32px] font-sansRegula',
-            'lg:col-span-12 lg:flex  justify-between relative z-[2] mx-[32px]',
+            'lg:col-span-12 lg:flex  justify-between relative z-[2] px-[0px]',
             'xl:grid xl:grid-cols-12 xl:gap-x-columnGap',
           )}
         >
@@ -193,7 +193,7 @@ const Footer = () => {
           </div>
         </div>
       </div>
-      <div className={clsx('absolute bottom-[-400px] left-0 w-screen')}>
+      {/* <div className={clsx('absolute bottom-[-400px] left-0 w-screen')}>
         <Image
           src={'/images/footerText.png'}
           alt={'footer wave'}
@@ -201,7 +201,7 @@ const Footer = () => {
           height={100}
           className="w-full"
         />
-      </div>
+      </div> */}
     </footer>
   )
 }

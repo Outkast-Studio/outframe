@@ -148,10 +148,10 @@ export function ProcessItem({
           <div className={clsx('flex justify-between')}>
             <h6
               className={clsx(
-                'bg-[#EBE7E3] w-fit uppercase text-accent px-[10px] py-[4px] rounded-full text-[12px] leading-[14.4px] tracking-[-0.2px] font-monoRegular',
+                'bg-[#EBE7E3] w-fit uppercase text-accent px-[10px] h-[22px] flex items-center rounded-full text-[12px] leading-[14.4px] tracking-[-0.2px] font-monoRegular',
               )}
             >
-              STEP {index + 1}
+              <span>STEP {index + 1}</span>
             </h6>
             {/* <div
               className={clsx('h-[18px] w-[18px] bg-dividers rounded-[4px]')}

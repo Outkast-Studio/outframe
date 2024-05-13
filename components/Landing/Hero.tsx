@@ -98,7 +98,13 @@ const Hero = ({ images, testimonial }: Props) => {
   }
 
   return (
-    <section className={clsx('pt-[183px] px-gutter geist', 'lg:pt-[180px]')}>
+    <section
+      className={clsx(
+        'pt-[183px] px-gutter geist',
+        'lg:pt-[180px]',
+        'xl:pt-[20vh]',
+      )}
+    >
       <div
         className={clsx(
           'md:flex gap-x-[56px]',
@@ -261,7 +267,7 @@ const Hero = ({ images, testimonial }: Props) => {
             'mt-[64px] w-full relative',
             'md:mt-[0px] md:w-[100%] h-[100%]',
             'lg:w-[120%]',
-            'xl:col-span-7 xl:w-[70vh]',
+            'xl:col-span-7 xl:w-full',
           )}
         >
           <Link href={'/recent-work'} scroll={false}>

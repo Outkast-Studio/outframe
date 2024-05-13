@@ -11,11 +11,10 @@ const HeroImage = ({ images }: Props) => {
   const [currentImageIndex, setCurrentImageIndex] = useState(0)
 
   useEffect(() => {
-    const interval = setInterval(() => {
-      setCurrentImageIndex((prevIndex) => (prevIndex + 1) % images.length)
-    }, 4000)
-
-    return () => clearInterval(interval)
+    // const interval = setInterval(() => {
+    //   setCurrentImageIndex((prevIndex) => (prevIndex + 1) % images.length)
+    // }, 4000)
+    // return () => clearInterval(interval)
   }, [images])
 
   const nextImageIndex = (currentImageIndex + 1) % images.length

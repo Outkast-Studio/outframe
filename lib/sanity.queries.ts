@@ -73,11 +73,7 @@ export const workSlugsQuery = groq`
 
 export const homepageQuery = groq`*[_type == 'homepageSettings'][0]{
   ...,
-  logoCloud[] {
-    asset,
-    alt,
-    "dimensions": asset->metadata.dimensions
-  },
+ 
   heroTestimonial->{
     ...,
     _type,
@@ -167,9 +163,9 @@ export interface HomepageSettings {
   testimonials: Testimonial[]
   heroTestimonial: Testimonial
   dayRate: number
-  flexPricing: number
-  partTimePricing: number
-  dedicatedPricing: number
+  flexPricing: string
+  partTimePricing: string
+  dedicatedPricing: string
 }
 
 export type SingleImage = {

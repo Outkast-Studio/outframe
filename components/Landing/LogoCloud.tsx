@@ -5,6 +5,7 @@ import { clsx } from 'clsx'
 import { motion, useAnimationControls } from 'framer-motion'
 import { useWindowSize } from 'hooks/useWindowSize'
 import { horizontalLoop } from 'utils'
+import DynamicSvg from 'components/UI/DynamicSvg'
 
 const LogoCloud = ({ images }) => {
   const { width } = useWindowSize()
@@ -39,10 +40,10 @@ const LogoCloud = ({ images }) => {
         animate={controls}
         className={clsx(
           'flex flex-wrap gap-x-[30px] gap-y-[64px] lg:gap-x-[96px] items-center justify-center',
-          'xl:justify-between xl:w-full  xl:flex-nowrap ',
+          'xl:justify-between xl:w-full  xl:flex-nowrap xl:gap-x-[unset]',
         )}
       >
-        {images.map((image, index) => (
+        {/* {images.map((image, index) => (
           <Image
             src={urlForImage(image.asset).format('png').url()}
             alt={image.alt}
@@ -60,6 +61,9 @@ const LogoCloud = ({ images }) => {
                   : image.dimensions.height * 0.75,
             }}
           />
+        ))} */}
+        {images.map((image, index) => (
+          <DynamicSvg key={index + 'logo-cloud'} svg={image} />
         ))}
       </motion.div>
     </section>

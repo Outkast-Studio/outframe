@@ -72,7 +72,7 @@ const CaseStudies = ({ caseStudies }: { caseStudies: any[] }) => {
       >
         <div
           className={clsx(
-            'justify-between monoMedium hidden text-[20px] leading-[24px] uppercase tracking-[-0.2px] font-medium',
+            'justify-between font-monoRegular hidden text-[20px] leading-[24px] uppercase tracking-[-0.2px]',
             'md:justify-start gap-x-[12px] md:flex md:h-fit',
           )}
         >
@@ -229,7 +229,7 @@ function CaseStudyCard({
         </div>
         <div
           className={clsx(
-            'lg:flex s lg:mt-[16px] lg:pb-[16px] lg:gap-x-[33px] lg:justify-between',
+            'lg:flex s lg:mt-[16px]  lg:gap-x-[33px] lg:justify-between',
           )}
         >
           <h3
@@ -307,12 +307,7 @@ function TestimonialCard({ name, role, content, image, index }: Testimonial) {
           )}
         >
           <span className={clsx('bg-background relative z-[2]')}>{name}</span>
-          <span
-            className={clsx(
-              'text-tertiaryText relative z-[1] translate-x-[-100%] delay-[0.5s] duration-[0.35s] transition-transform ease-[cubic-bezier(0.34, 0, 0.36, 1)]',
-              isInView && '!translate-x-0',
-            )}
-          >
+          <span className={clsx('text-tertiaryText relative z-[1] ')}>
             {role}
           </span>
         </div>
