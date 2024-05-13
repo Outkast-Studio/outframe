@@ -73,7 +73,7 @@ export const workSlugsQuery = groq`
 
 export const homepageQuery = groq`*[_type == 'homepageSettings'][0]{
   ...,
- 
+
   heroTestimonial->{
     ...,
     _type,
@@ -163,9 +163,21 @@ export interface HomepageSettings {
   testimonials: Testimonial[]
   heroTestimonial: Testimonial
   dayRate: number
-  flexPricing: string
-  partTimePricing: string
-  dedicatedPricing: string
+  flexPricing: {
+    USD: string
+    EUR: string
+    GBP: string
+  }
+  partTimePricing: {
+    USD: string
+    EUR: string
+    GBP: string
+  }
+  dedicatedPricing: {
+    USD: string
+    EUR: string
+    GBP: string
+  }
 }
 
 export type SingleImage = {

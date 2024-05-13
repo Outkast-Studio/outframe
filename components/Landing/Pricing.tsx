@@ -6,6 +6,7 @@ import SectionHeading from 'components/UI/SectionHeading'
 import Button from '../UI/Button'
 
 const Pricing = ({ settings }: { settings: HomepageSettings }) => {
+  const [country, setCountry] = useState('US')
   const formatCurrency = (number: number) => {
     return new Intl.NumberFormat('en-US', {
       style: 'currency',
@@ -14,26 +15,16 @@ const Pricing = ({ settings }: { settings: HomepageSettings }) => {
     }).format(number)
   }
 
-  const [region, setRegion] = useState('')
-
   useEffect(() => {
     async function fetchUserLocation() {
       try {
         const response = await fetch('/api/pricing')
         const data = await response.json()
-        return data.country
+        setCountry(data.country)
       } catch (error) {
         console.error(error)
       }
-      // Adjust according to the data structure returned by your API
     }
-
-    // async function determinePricingByRegion() {
-    //   const userRegion = await fetchUserLocation()
-    //   console.log(userRegion)
-    //   setRegion(userRegion)
-    // }
-
     fetchUserLocation()
   }, [])
 
@@ -42,19 +33,25 @@ const Pricing = ({ settings }: { settings: HomepageSettings }) => {
       title: 'Flex',
       daysPerWeek: '1 day / week',
       description: 'Flexible plan for shorter projects, or just to start',
-      price: settings.flexPricing,
+      USD: settings.flexPricing.USD,
+      EUR: settings.flexPricing.EUR,
+      GBP: settings.flexPricing.GBP,
     },
     {
       title: 'Part-time',
       daysPerWeek: '2 days / week',
       description: 'Flexible plan for shorter projects, or just to start',
-      price: settings.partTimePricing,
+      USD: settings.partTimePricing.USD,
+      EUR: settings.partTimePricing.EUR,
+      GBP: settings.partTimePricing.GBP,
     },
     {
       title: 'Dedicated',
       daysPerWeek: '3 days / week',
       description: 'Flexible plan for shorter projects, or just to start',
-      price: settings.dedicatedPricing,
+      USD: settings.dedicatedPricing.USD,
+      EUR: settings.dedicatedPricing.EUR,
+      GBP: settings.dedicatedPricing.GBP,
     },
   ]
   return (
@@ -111,7 +108,7 @@ const Pricing = ({ settings }: { settings: HomepageSettings }) => {
           )}
         >
           {pricing.map((item, index) => (
-            <PricingCard key={index} {...item} />
+            <PricingCard key={index} {...item} country={country} />
           ))}
         </div>
         <div
@@ -208,12 +205,18 @@ function PricingCard({
   title,
   daysPerWeek,
   description,
-  price,
+  USD,
+  EUR,
+  GBP,
+  country,
 }: {
   title: string
   daysPerWeek: string
   description: string
-  price: string
+  USD: string
+  EUR: string
+  GBP: string
+  country: string
 }) {
   return (
     <article
@@ -252,7 +255,7 @@ function PricingCard({
           </h6>
         </div>
         <h6 className={clsx('text-[18px] leading-[27px]', 'lg:hidden')}>
-          {price}
+          {country === 'US' ? EUR : country === 'EUR' ? EUR : GBP}
         </h6>
       </div>
       <Image
@@ -291,7 +294,7 @@ function PricingCard({
           'xl:text-[32px] xl:leading-[48px]',
         )}
       >
-        {price}
+        {country === 'US' ? USD : country === 'EUR' ? EUR : GBP}
       </h6>
       <Image
         src={'/icons/dashed.svg'}
