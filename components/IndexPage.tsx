@@ -31,6 +31,7 @@ export default function Post({
   const router = useRouter()
   const searchParams = useSearchParams()
   const scroll = searchParams.get('scroll')
+
   const lenis = useLenis()
   const setIsHoveringHeroImage = useThemeStore(
     (state) => state.setIsHoveringHeroImage,

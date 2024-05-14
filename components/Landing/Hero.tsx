@@ -100,9 +100,9 @@ const Hero = ({ images, testimonial }: Props) => {
   return (
     <section
       className={clsx(
-        'pt-[250px] px-gutter geist',
+        'pt-[183px] px-gutter geist',
         'lg:pt-[180px]',
-        'xl:pt-[30vh]',
+        'xl:pt-[35vh]',
       )}
     >
       <div

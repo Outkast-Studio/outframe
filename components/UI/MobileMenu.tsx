@@ -68,6 +68,7 @@ const MobileMenu = ({ menuItems, socials, handleHomepageLink }) => {
                   }}
                   onClick={() => {
                     setMenuOpen(false)
+
                     setTimeout(() => {
                       handleHomepageLink(item.link)
                     }, 500)

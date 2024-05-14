@@ -1,47 +1,53 @@
 import React, { useState, useEffect } from 'react'
-import { ImageAsset } from 'sanity'
 import Image from 'next/image'
 import { motion, AnimatePresence } from 'framer-motion'
 import { urlForImage } from 'lib/sanity.image'
 import { clsx } from 'clsx'
-type Props = {
-  images: ImageAsset[]
-}
-const HeroImage = ({ images }: Props) => {
+
+const ImageRotator = ({ images, duration = 3000 }) => {
   const [currentImageIndex, setCurrentImageIndex] = useState(0)
-  const [nextImageIndex, setNextImageIndex] = useState(1)
 
   useEffect(() => {
-    // const interval = setInterval(() => {
-    //   setCurrentImageIndex((prevIndex) => (prevIndex + 1) % images.length)
-    //   setNextImageIndex((prevIndex) => (prevIndex + 1) % images.length)
-    // }, 4000)
-    // return () => clearInterval(interval)
-  }, [])
+    const interval = setInterval(() => {
+      setCurrentImageIndex((prevIndex) => (prevIndex + 1) % images.length)
+    }, duration)
+
+    return () => clearInterval(interval)
+  }, [images.length, duration])
 
   return (
-    <div style={{ position: 'relative' }}>
-      <AnimatePresence initial={false} mode="wait">
-        <motion.div
-          key={currentImageIndex}
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          exit={{ opacity: 0 }}
-          transition={{ duration: 0.35 }}
-        >
-          {images[currentImageIndex] && images[currentImageIndex].asset && (
+    <div className="relative w-full h-fit">
+      <Image
+        src={urlForImage(images[0]).url()}
+        width={1920}
+        height={1920}
+        className="opacity-0"
+        alt={`Image 1`}
+      />
+      <AnimatePresence mode="wait">
+        {images.map((image, index) => (
+          <motion.div
+            key={image}
+            initial={{ opacity: 0 }}
+            animate={
+              index == currentImageIndex ? { opacity: 1 } : { opacity: 0 }
+            }
+            transition={{ duration: 0.5 }}
+            className="absolute w-full h-full top-0"
+          >
             <Image
-              src={urlForImage(images[currentImageIndex]).url()}
-              alt={String(images[currentImageIndex].alt)}
-              width={1200}
-              height={1200}
-              className={clsx('object-cover')}
+              src={urlForImage(image).url()}
+              alt={`Image ${index + 1}`}
+              width={1920}
+              height={1920}
+              objectFit="cover"
+              priority={index === currentImageIndex}
             />
-          )}
-        </motion.div>
+          </motion.div>
+        ))}
       </AnimatePresence>
     </div>
   )
 }
 
-export default HeroImage
+export default ImageRotator
