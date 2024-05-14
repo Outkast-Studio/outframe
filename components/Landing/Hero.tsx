@@ -215,7 +215,7 @@ const Hero = ({ images, testimonial }: Props) => {
         >
           <p
             className={clsx(
-              'geist text-[16px] leading-[24px] text-secondaryText mt-[28px]',
+              'geist text-[16px] leading-[28.5px] text-secondaryText mt-[28px]',
               'md:mt-[0px]',
             )}
           >

@@ -302,7 +302,7 @@ function TestimonialCard({ name, role, content, image, index }: Testimonial) {
         />
         <div
           className={clsx(
-            'text-[12px] leading-[14.4px] flex gap-x-[6px] items-center',
+            'text-[12px] leading-[14.4px] flex gap-x-[6px] items-center font-sansRegular',
             'xl:text-[14px] xl:leading-[16.8px]',
           )}
         >

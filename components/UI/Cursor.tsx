@@ -35,7 +35,7 @@ const Cursor = () => {
     <>
       <div
         className={clsx(
-          'message text-white ease-[cubic-bezier(0.34, 0, 0.36, 1)] whitespace-nowrap z-[5] hidden origin-center',
+          'message text-white font-monoRegular ease-[cubic-bezier(0.34, 0, 0.36, 1)] whitespace-nowrap z-[5] hidden origin-center',
           'lg:flex lg:gap-x-[4px] bg-[#76777D] lg:px-[16px] lg:py-[10px] lg:rounded-[2px]',
           isHoveringCaseStudy && 'isHovering',
         )}
@@ -62,7 +62,7 @@ const Cursor = () => {
       </div>
       <div
         className={clsx(
-          'message text-white ease-[cubic-bezier(0.34, 0, 0.36, 1)] whitespace-nowrap z-[5] hidden origin-center',
+          'message text-white font-monoRegular ease-[cubic-bezier(0.34, 0, 0.36, 1)] whitespace-nowrap z-[5] hidden origin-center',
           'lg:flex lg:gap-x-[4px] bg-[#76777D] lg:px-[16px] lg:py-[10px] lg:rounded-[2px]',
           isHoveringHeroImage && 'isHovering',
         )}
@@ -89,7 +89,7 @@ const Cursor = () => {
       </div>
       <div
         className={clsx(
-          'message text-white ease-[cubic-bezier(0.34, 0, 0.36, 1)] whitespace-nowrap z-[5] hidden origin-center',
+          'message font-monoRegular text-white ease-[cubic-bezier(0.34, 0, 0.36, 1)] whitespace-nowrap z-[5] hidden origin-center',
           'lg:flex lg:gap-x-[4px] bg-[#76777D] lg:px-[16px] lg:py-[10px] lg:rounded-[2px]',
           isHoveringBlog && 'isHovering',
         )}
