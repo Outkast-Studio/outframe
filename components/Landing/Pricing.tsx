@@ -30,25 +30,26 @@ const Pricing = ({ settings }: { settings: HomepageSettings }) => {
 
   const pricing = [
     {
-      title: 'Flex',
-      daysPerWeek: '1 day / week',
-      description: 'Flexible plan for shorter projects, or just to start',
+      title: 'Part-time',
+      daysPerWeek: '2 days / week',
+      description: 'Best to design most projects in a reasonable timeframe.',
       USD: settings.flexPricing.USD,
       EUR: settings.flexPricing.EUR,
       GBP: settings.flexPricing.GBP,
     },
     {
-      title: 'Part-time',
-      daysPerWeek: '2 days / week',
-      description: 'Flexible plan for shorter projects, or just to start',
+      title: 'Dedicated',
+      daysPerWeek: '3 days / week',
+      description: 'Best for bigger projects or tighter deadlines.',
       USD: settings.partTimePricing.USD,
       EUR: settings.partTimePricing.EUR,
       GBP: settings.partTimePricing.GBP,
     },
     {
-      title: 'Dedicated',
-      daysPerWeek: '3 days / week',
-      description: 'Flexible plan for shorter projects, or just to start',
+      title: 'Custom',
+      daysPerWeek: 'More days or fixed price',
+      description:
+        'Most suitable for big projects or if you prefer fixed price.',
       USD: settings.dedicatedPricing.USD,
       EUR: settings.dedicatedPricing.EUR,
       GBP: settings.dedicatedPricing.GBP,

@@ -1,8 +1,6 @@
 @font-face {
   font-family: 'Geist-Medium';
-  src:
-    url('/fonts/Geist-Medium.woff2') format('woff2'),
-    url('/fonts/Geist-Medium.woff') format('woff');
+  src: url('/fonts/Geist-Medium.otf');
   font-weight: normal;
   font-style: 500;
   font-display: swap;
@@ -10,7 +8,7 @@
 
 @font-face {
   font-family: 'Geist';
-  src: url('/fonts/Geist-Regular.woff2') format('woff2');
+  src: url('/fonts/Geist-Light.otf');
   /* url('/fonts/Geiest-Regular.woff') format('woff'); */
   font-weight: 100 800;
 

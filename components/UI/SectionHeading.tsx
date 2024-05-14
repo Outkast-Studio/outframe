@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react'
 import { useInView } from 'react-intersection-observer'
 import FlickerText from './FlickerText'
+import { clsx } from 'clsx'
 
 type Props = { text: string; hover?: boolean }
 
@@ -19,7 +20,7 @@ const SectionHeading = ({ text, hover }: Props) => {
   }, [inView])
 
   return (
-    <div ref={ref}>
+    <div ref={ref} className={clsx('font-monoRegular')}>
       <FlickerText
         title={text}
         animationDelay={0.5}

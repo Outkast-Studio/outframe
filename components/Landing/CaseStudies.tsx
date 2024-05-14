@@ -234,7 +234,7 @@ function CaseStudyCard({
         >
           <h3
             className={clsx(
-              'mt-[16px] medium-body text-[18px] leading-[27px] text-mainText mb-[16px] font-sansMedium',
+              'mt-[16px] medium-body text-[18px] leading-[27px] text-mainText mb-[16px] font-sansRegular',
               'lg:my-0 lg:leading-[25.2px] lg:max-w-[464px]',
             )}
           >

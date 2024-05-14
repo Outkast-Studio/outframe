@@ -90,7 +90,7 @@ export default defineType({
 
     defineField({
       name: 'flexPricing',
-      title: 'Flex Pricing',
+      title: 'Part-time Pricing',
       type: 'object',
       fields: [
         defineField({
@@ -119,7 +119,7 @@ export default defineType({
 
     defineField({
       name: 'partTimePricing',
-      title: 'Part-time Pricing',
+      title: 'Dedicated Pricing',
       type: 'object',
       fields: [
         defineField({
@@ -147,7 +147,7 @@ export default defineType({
     }),
     defineField({
       name: 'dedicatedPricing',
-      title: 'Dedicated Pricing',
+      title: 'Custom',
       type: 'object',
       fields: [
         defineField({
