@@ -259,7 +259,7 @@ function ProcessDesktopItem({
       <div
         style={{ width: processWidth ? processWidth : '100%' }}
         className={clsx(
-          'w-full h-full absolute opacity-0 contentOverlay overflow-hidden',
+          'w-full h-full absolute opacity-0 contentOverlay overflow-hidden bg-background',
         )}
       >
         <div

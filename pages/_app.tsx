@@ -59,7 +59,9 @@ export default function App({
   }, [router.pathname])
 
   return (
-    <div className={clsx('bg-background')}>
+    <div
+      className={clsx('bg-background relative min-h-[100vh] overflow-hidden')}
+    >
       {router.pathname !== '/studio' && <Header />}
       {draftMode ? (
         <PreviewProvider token={token}>

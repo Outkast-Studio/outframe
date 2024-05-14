@@ -107,9 +107,7 @@ function ServiceItem({
   return (
     <Accordion.Item
       value={name}
-      className={clsx(
-        'border-b-[1px] border-t-dividers accordionItem bg-background',
-      )}
+      className={clsx('border-b-[1px] border-t-dividers accordionItem ')}
     >
       <Accordion.Trigger className={clsx('w-full relative accordionButton ')}>
         <div
@@ -144,7 +142,7 @@ function ServiceItem({
         </div>
       </Accordion.Trigger>
       <Accordion.Content
-        className={clsx('AccordionContent px-[16px]', 'md:px-0')}
+        className={clsx('AccordionContent px-[16px] ', 'md:px-0')}
       >
         <p
           className={clsx('my-[20px] text-[16px] leading-[24px] max-w-[800px]')}
