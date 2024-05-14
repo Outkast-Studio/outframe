@@ -40,7 +40,7 @@ export default function Page(props: PageProps) {
         <div className={clsx('pt-[191px]', 'lg:grid lg:grid-cols-12  ')}>
           <h1
             className={clsx(
-              ' uppercase text-[36px] leading-[43.2px] tracking-[-0.2px] font-monoMedium text-mainText',
+              ' uppercase text-[36px] leading-[43.2px] tracking-[-0.2px] monoMedium text-mainText',
               'lg:text-[76px] lg:leading-[91.2px] lg:col-span-4',
             )}
           >
@@ -48,7 +48,7 @@ export default function Page(props: PageProps) {
           </h1>
           <p
             className={clsx(
-              'text-[16px] leading-[24px] text-secondaryText font-sansRegular mt-[32px]',
+              'text-[16px] leading-[24px] text-secondaryText geist mt-[32px]',
               'lg:mt-[0px] lg:text-[20px] lg:leading-[30px] lg:max-w-[560px] lg:col-start-8 lg:col-end-13',
             )}
           >
@@ -155,14 +155,14 @@ export function BlogCard({
         />
         <div
           className={clsx(
-            'flex gap-x-[30px] leading-[27px] text-[18px] mt-[12px] font-sansMedium justify-between',
+            'flex gap-x-[30px] leading-[27px] text-[18px] mt-[12px] geistMedium justify-between',
             'lg:mt-[16px] lg:text-[20px] lg:leading-[26px]',
           )}
         >
           <h6 className={clsx('lg:max-w-[404px]')}>{post.title}</h6>
           <span
             className={clsx(
-              'whitespace-nowrap font-monoRegular text-accent text-[14px] leading-[25px] tracking-[-0.2px]',
+              'whitespace-nowrap mono text-accent text-[14px] leading-[25px] tracking-[-0.2px]',
               'lg:text-[16px] leading-[24px]',
             )}
           >
@@ -171,7 +171,7 @@ export function BlogCard({
         </div>
         <p
           className={clsx(
-            'text-secondaryText font-sansRegular text-[16px] leading-[24px] mt-[12px]',
+            'text-secondaryText geist text-[16px] leading-[24px] mt-[12px]',
             'lg:mt-[16px] lg:text-[16px] leading-[26px]',
           )}
         >

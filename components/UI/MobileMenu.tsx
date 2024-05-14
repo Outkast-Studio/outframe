@@ -49,7 +49,7 @@ const MobileMenu = ({ menuItems, socials, handleHomepageLink }) => {
               <li
                 key={index}
                 className={clsx(
-                  'text-[18px] leading-[21.6px] tracking-[-0.2px] font-monoMedium text-mainText uppercase overflow-hidden',
+                  'text-[18px] leading-[21.6px] tracking-[-0.2px] monoMedium text-mainText uppercase overflow-hidden',
                 )}
               >
                 {!item.isHomePage ? (

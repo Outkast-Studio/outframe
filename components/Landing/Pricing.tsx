@@ -83,7 +83,7 @@ const Pricing = ({ settings }: { settings: HomepageSettings }) => {
         >
           <p
             className={clsx(
-              'hidden text-[18px] leading-[25.2px] font-sansRegular',
+              'hidden text-[18px] leading-[25.2px] geist',
               'lg:block xl:text-[20px] xl:leading-[30px] xl:max-w-[680px]',
             )}
           >
@@ -125,7 +125,7 @@ const Pricing = ({ settings }: { settings: HomepageSettings }) => {
           >
             <h6
               className={clsx(
-                'font-sansMedium text-[18px] leading-[27px] mb-[12px]',
+                'geistMedium text-[18px] leading-[27px] mb-[12px]',
                 'lg:mb-[2px]',
                 'xl:text-[20px] xl:leading-[28px]',
               )}
@@ -134,7 +134,7 @@ const Pricing = ({ settings }: { settings: HomepageSettings }) => {
             </h6>
             <p
               className={clsx(
-                'text-[16px] leading-[24px] font-sansRegular text-secondaryText',
+                'text-[16px] leading-[24px] geist text-secondaryText',
                 'lg:text-[14px] lg:leading-[16.8px]',
                 'xl:text-[16px] xl:leading-[24px]',
               )}
@@ -144,7 +144,7 @@ const Pricing = ({ settings }: { settings: HomepageSettings }) => {
           </div>
           {/* <button
             className={clsx(
-              'border-dividers hidden border rounded-[4px] px-[18px] py-[12px] text-[14px] leading-[16.8px] font-monoMedium',
+              'border-dividers hidden border rounded-[4px] px-[18px] py-[12px] text-[14px] leading-[16.8px] monoMedium',
               'lg:block lg:h-fit',
             )}
           >
@@ -159,7 +159,7 @@ const Pricing = ({ settings }: { settings: HomepageSettings }) => {
               text={'Contact Us'}
               cb={() => {}}
               className={clsx(
-                'border-dividers hidden border rounded-[4px] px-[18px] py-[12px] text-[14px] leading-[16.8px] font-monoMedium ',
+                'border-dividers hidden border rounded-[4px] px-[18px] py-[12px] text-[14px] leading-[16.8px] monoMedium ',
                 'lg:flex lg:h-fit',
               )}
             />
@@ -173,7 +173,7 @@ const Pricing = ({ settings }: { settings: HomepageSettings }) => {
         >
           <p
             className={clsx(
-              'text-[16px] leading-[24px] font-sansRegular text-secondaryText',
+              'text-[16px] leading-[24px] geist text-secondaryText',
               'lg:text-[14px] lg:leading-[16.8px]',
             )}
           >
@@ -188,7 +188,7 @@ const Pricing = ({ settings }: { settings: HomepageSettings }) => {
             target="_blank"
             rel={'noreferrer'}
             className={clsx(
-              'border-dividers border rounded-[4px] px-[18px] py-[12px] mt-[24px] text-[14px] leading-[16.8px] font-monoMedium block w-fit',
+              'border-dividers border rounded-[4px] px-[18px] py-[12px] mt-[24px] text-[14px] leading-[16.8px] monoMedium block w-fit',
               'lg:hidden',
             )}
           >
@@ -228,7 +228,7 @@ function PricingCard({
     >
       <div
         className={clsx(
-          'flex justify-between items-center font-sansMedium  p-[24px]',
+          'flex justify-between items-center geistMedium  p-[24px]',
           'lg:p-[32px] lg:pb-0',
         )}
       >
@@ -249,7 +249,7 @@ function PricingCard({
           </h6>
           <h6
             className={clsx(
-              'font-monoRegular text-[12px] leading-[14.4px] h-fit tracking-[-0.2px] px-[10px] pt-[4px] pb-[3px] bg-[#EBE7E3] rounded-full uppercase',
+              'mono text-[12px] leading-[14.4px] h-fit tracking-[-0.2px] px-[10px] pt-[4px] pb-[3px] bg-[#EBE7E3] rounded-full uppercase',
             )}
           >
             {daysPerWeek}
@@ -274,14 +274,14 @@ function PricingCard({
       >
         <p
           className={clsx(
-            'text-secondaryText text-[16px] leading-[24px] font-sansRegular',
+            'text-secondaryText text-[16px] leading-[24px] geist',
           )}
         >
           {description}
         </p>
         <button
           className={clsx(
-            'text-[14px] whitespace-nowrap leading-[16.8px] tracking-[-0.2px] bg-accent font-monoRegular text-white px-[16px] py-[12px] rounded-[4px] h-fit',
+            'text-[14px] whitespace-nowrap leading-[16.8px] tracking-[-0.2px] bg-accent mono text-white px-[16px] py-[12px] rounded-[4px] h-fit',
             'lg:hidden ',
           )}
         >
@@ -290,7 +290,7 @@ function PricingCard({
       </div>
       <h6
         className={clsx(
-          'hidden text-[28px] leading-[42px] tracking-[-0.4px] px-[32px] font-sansRegular mb-[24px]',
+          'hidden text-[28px] leading-[42px] tracking-[-0.4px] px-[32px] geist mb-[24px]',
           'lg:block ',
           'xl:text-[32px] xl:leading-[48px]',
         )}
@@ -306,7 +306,7 @@ function PricingCard({
       />
       {/* <button
         className={clsx(
-          'text-[12px] whitespace-nowrap hidden leading-[14.4px] tracking-[-0.2px] bg-accent font-monoMedium text-[#F7F7F7] px-[16px] py-[12px] rounded-[4px] h-fit mt-[32px] ml-[32px]',
+          'text-[12px] whitespace-nowrap hidden leading-[14.4px] tracking-[-0.2px] bg-accent monoMedium text-[#F7F7F7] px-[16px] py-[12px] rounded-[4px] h-fit mt-[32px] ml-[32px]',
           'lg:block ',
           'xl:text-[14px] xl:leading-[16.8px]',
         )}
@@ -324,7 +324,7 @@ function PricingCard({
           cb={() => {}}
           accent
           className={clsx(
-            'text-[12px] whitespace-nowrap hidden leading-[14.4px] tracking-[-0.2px] bg-accent font-monoMedium text-[#F7F7F7] px-[16px] py-[12px] rounded-[4px] h-fit mt-[32px] ml-[32px]',
+            'text-[12px] whitespace-nowrap hidden leading-[14.4px] tracking-[-0.2px] bg-accent monoMedium text-[#F7F7F7] px-[16px] py-[12px] rounded-[4px] h-fit mt-[32px] ml-[32px]',
             'lg:flex',
             'xl:text-[14px] xl:leading-[16.8px]',
           )}

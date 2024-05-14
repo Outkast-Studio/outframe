@@ -231,7 +231,7 @@ const Header = () => {
             >
               <ul
                 className={clsx(
-                  'flex gap-x-[32px] uppercase text-[12px] leading-[14.4px] font-monoRegular text-[#998F8C]',
+                  'flex gap-x-[32px] uppercase text-[12px] leading-[14.4px] mono text-[#998F8C]',
                   'lg:text-[14px] lg:leading-[16.8px]',
                 )}
               >
@@ -294,7 +294,7 @@ const Header = () => {
           </span>
           <span
             className={clsx(
-              'inline-block text-[14px] leading-[16.8px] font-monoMedium uppercase',
+              'inline-block text-[14px] leading-[16.8px] monoMedium uppercase',
               'h-[15px] overflow-hidden',
             )}
           >
@@ -322,7 +322,7 @@ const Header = () => {
               variants={closeButtonVariants}
               key={'recent-work-title'}
               className={clsx(
-                'hidden text-secondaryText font-monoMedium text-[14px] leading-[19.6px] self-center justify-self-center h-fit absolute left-[50%] top-[72px] translate-x-[-50%] z-[101]',
+                'hidden text-secondaryText monoMedium text-[14px] leading-[19.6px] self-center justify-self-center h-fit absolute left-[50%] top-[72px] translate-x-[-50%] z-[101]',
                 'lg:block ',
               )}
             >
@@ -341,7 +341,7 @@ const Header = () => {
                 variants={closeButtonVariants}
                 key={'close-button'}
                 className={clsx(
-                  'font-monoRegular text-[14px] leading-[17px] hidden col-span-4 gap-x-[8px] items-center border-[1px] border-[#D9D5D3] text absolute right-[64px] top-[57px] text-mainText px-[20px] py-[15px] rounded-[4px] z-[101] transition-colors duration-[0.3s]',
+                  'mono text-[14px] leading-[17px] hidden col-span-4 gap-x-[8px] items-center border-[1px] border-[#D9D5D3] text absolute right-[64px] top-[57px] text-mainText px-[20px] py-[15px] rounded-[4px] z-[101] transition-colors duration-[0.3s]',
                   'lg:flex lg:col-start-8 lg:col-end-13 justify-self-end hover:border-mainText',
                 )}
               >

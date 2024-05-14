@@ -50,11 +50,7 @@ function ScrollingText({ coords, title }) {
   }
 
   return (
-    <div
-      className={clsx(
-        'text-[#cbcaca] font-sansRegular flex gap-x-[6px] text-[8px]',
-      )}
-    >
+    <div className={clsx('text-[#cbcaca] geist flex gap-x-[6px] text-[8px]')}>
       <span>•</span>
       <div className={clsx('flex gap-x-[4px]')}>
         <p className={clsx('flex')}>

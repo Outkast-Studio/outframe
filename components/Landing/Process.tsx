@@ -148,7 +148,7 @@ export function ProcessItem({
           <div className={clsx('flex justify-between')}>
             <h6
               className={clsx(
-                'bg-[#EBE7E3] w-fit uppercase text-accent px-[10px] h-[22px] flex items-center rounded-full text-[12px] leading-[14.4px] tracking-[-0.2px] font-monoRegular',
+                'bg-[#EBE7E3] w-fit uppercase text-accent px-[10px] h-[22px] flex items-center rounded-full text-[12px] leading-[14.4px] tracking-[-0.2px] mono',
               )}
             >
               <span>STEP {index + 1}</span>
@@ -160,14 +160,14 @@ export function ProcessItem({
           </div>
           <h6
             className={clsx(
-              'font-sansMedium text-[18px] leading-[27px] text-maintext mt-[24px]',
+              'geistMedium text-[18px] leading-[27px] text-maintext mt-[24px]',
             )}
           >
             {name}
           </h6>
           <p
             className={clsx(
-              'text-secondaryText text-[16px] leading-[24px] font-sansRegular mt-[12px]',
+              'text-secondaryText text-[16px] leading-[24px] geist mt-[12px]',
             )}
           >
             {description}
@@ -192,7 +192,7 @@ export function ProcessItem({
         >
           <h6
             className={clsx(
-              'text-[16px] leading-[24px] font-sansMedium text-mainText content transition-opacity duration-300',
+              'text-[16px] leading-[24px] geistMedium text-mainText content transition-opacity duration-300',
               'lg:text-[18px] lg:leading-[27px]',
             )}
           >
@@ -270,7 +270,7 @@ function ProcessDesktopItem({
           <div className={clsx('flex justify-between')}>
             <h6
               className={clsx(
-                'font-monoRegular text-[12px] leading-[14.4px] bg-[#EBE7E3] rounded-full w-fit px-[10px] py-[4px] h-fit text-accent',
+                'mono text-[12px] leading-[14.4px] bg-[#EBE7E3] rounded-full w-fit px-[10px] py-[4px] h-fit text-accent',
               )}
             >
               STEP {index + 1}
@@ -302,7 +302,7 @@ function ProcessDesktopItem({
       <Accordion.Trigger
         ref={triggerRef}
         className={clsx(
-          'h-[408px] flex processTrigger justify-between relative font-sansMedium flex-col items-center pr-[32px] pl-[32px] accordionButton py-[16px]',
+          'h-[408px] flex processTrigger justify-between relative geistMedium flex-col items-center pr-[32px] pl-[32px] accordionButton py-[16px]',
           'lg:mx-auto',
         )}
       >
@@ -351,7 +351,7 @@ function ProcessDesktopItem({
             <div className={clsx('flex justify-between opacity-0')}>
               <h6
                 className={clsx(
-                  'font-monoRegular text-[12px] leading-[14.4px] bg-[#EBE7E3] rounded-full w-fit px-[10px] py-[4px] h-fit text-accent',
+                  'mono text-[12px] leading-[14.4px] bg-[#EBE7E3] rounded-full w-fit px-[10px] py-[4px] h-fit text-accent',
                 )}
               >
                 STEP {index + 1}

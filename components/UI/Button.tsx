@@ -17,7 +17,7 @@ const Button = ({ text, cb, accent, className, footer }: Props) => {
         cb()
       }}
       className={clsx(
-        'rounded-[4px] font-monoRegular px-[18px] py-[12px] text-[14px] leading-[16.8px] tracking-[-0.2px] hoverButton flex items-center',
+        'rounded-[4px] mono px-[18px] py-[12px] text-[14px] leading-[16.8px] tracking-[-0.2px] hoverButton flex items-center',
         accent
           ? 'bg-accent text-background'
           : 'bg-background text-mainText border-[1px] border-dividers',

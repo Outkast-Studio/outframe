@@ -122,7 +122,7 @@ function ServiceItem({
         >
           <h6
             className={clsx(
-              'text-[16px] leading-[24px] font-sansMedium text-mainText  transition-opacity duration-300',
+              'text-[16px] leading-[24px] geistMedium text-mainText  transition-opacity duration-300',
               'md:text-[18px] md:leading-[27px]',
               'md:text-[20px] md:leading-[28px]',
             )}

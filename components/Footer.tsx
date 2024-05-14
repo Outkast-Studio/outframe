@@ -41,7 +41,7 @@ const Footer = () => {
           </h6>
           <p
             className={clsx(
-              'text-[16px] font-sansRegular text-dividers leading-[24px] mb-[32px]',
+              'text-[16px] geist text-dividers leading-[24px] mb-[32px]',
               'md:max-w-[470px] lg:text-[18px] lg:leading-[25.2px] text-[#D4D2CD] lg:mb-[42px]',
               'xl:text-[20px] xl:leading-[30px] xl:max-w-[560px]',
             )}
@@ -59,7 +59,7 @@ const Footer = () => {
           >
             {/* <button
               className={clsx(
-                'text-[14px] leading-[16.8px] whitespace-nowrap tracking-[-0.2px] bg-accent font-monoMedium text-[#F7F7F7] px-[18px] py-[12px] rounded-[4px] h-fit',
+                'text-[14px] leading-[16.8px] whitespace-nowrap tracking-[-0.2px] bg-accent monoMedium text-[#F7F7F7] px-[18px] py-[12px] rounded-[4px] h-fit',
                 'lg:text-[12px] lg:leading-[14.4px]',
                 'xl:text-[14px] xl:leading-[16.8px]',
               )}
@@ -71,14 +71,14 @@ const Footer = () => {
               cb={() => {}}
               accent
               className={clsx(
-                'text-[14px] leading-[16.8px] whitespace-nowrap tracking-[-0.2px] bg-[#000] border- font-monoMedium text-[#F7F7F7] px-[18px] py-[12px] rounded-[4px] h-fit !border-[#3B3633]',
+                'text-[14px] leading-[16.8px] whitespace-nowrap tracking-[-0.2px] bg-[#000] border- monoMedium text-[#F7F7F7] px-[18px] py-[12px] rounded-[4px] h-fit !border-[#3B3633]',
                 'lg:text-[12px] lg:leading-[14.4px]',
                 'xl:text-[14px] xl:leading-[16.8px]',
               )}
             />
             {/* <button
               className={clsx(
-                'text-[14px] leading-[16.8px] whitespace-nowrap tracking-[-0.2px] bg-none border- font-monoMedium text-[#F7F7F7] px-[18px] py-[12px] rounded-[4px] h-fit border-[#3B3633] border-[1px]',
+                'text-[14px] leading-[16.8px] whitespace-nowrap tracking-[-0.2px] bg-none border- monoMedium text-[#F7F7F7] px-[18px] py-[12px] rounded-[4px] h-fit border-[#3B3633] border-[1px]',
                 'lg:text-[12px] lg:leading-[14.4px]',
                 'xl:text-[14px] xl:leading-[16.8px]',
               )}
@@ -90,7 +90,7 @@ const Footer = () => {
               cb={() => {}}
               footer
               className={clsx(
-                'text-[14px] leading-[16.8px] whitespace-nowrap tracking-[-0.2px] bg-[#000] border- font-monoMedium text-[#F7F7F7] px-[18px] py-[12px] rounded-[4px] h-fit !border-[#3B3633]',
+                'text-[14px] leading-[16.8px] whitespace-nowrap tracking-[-0.2px] bg-[#000] border- monoMedium text-[#F7F7F7] px-[18px] py-[12px] rounded-[4px] h-fit !border-[#3B3633]',
                 'lg:text-[12px] lg:leading-[14.4px]',
                 'xl:text-[14px] xl:leading-[16.8px]',
               )}
@@ -107,7 +107,7 @@ const Footer = () => {
                 key={index}
                 href={social.url}
                 className={clsx(
-                  'text-[14px] leading-[16.8px] text-[#979590] font-sansRegular flex gap-x-[4px]',
+                  'text-[14px] leading-[16.8px] text-[#979590] geist flex gap-x-[4px]',
                 )}
               >
                 <span>{social.name}</span>
@@ -177,7 +177,7 @@ const Footer = () => {
                 key={index}
                 href={social.url}
                 className={clsx(
-                  'text-[14px] leading-[16.8px] text-[white] opacity-[0.65] font-sansRegular flex gap-x-[4px] transition-opacity duration-200',
+                  'text-[14px] leading-[16.8px] text-[white] opacity-[0.65] geist flex gap-x-[4px] transition-opacity duration-200',
                   'hover:opacity-100',
                 )}
               >

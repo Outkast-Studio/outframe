@@ -41,7 +41,7 @@ export default function Post({ work }: { work: Work }) {
           href={'/'}
           scroll={false}
           className={clsx(
-            'flex mt-[16px] items-center gap-x-[12px] py-[12px] px-[18px] border-dividers rounded-[4px] border-[1px] font-monoMedium w-fit backContainer hover:border-mainText tranisiton-[border-color] duration-300',
+            'flex mt-[16px] items-center gap-x-[12px] py-[12px] px-[18px] border-dividers rounded-[4px] border-[1px] monoMedium w-fit backContainer hover:border-mainText tranisiton-[border-color] duration-300',
             'lg:mt-[175px]',
           )}
         >
@@ -78,7 +78,7 @@ export default function Post({ work }: { work: Work }) {
           <div className={clsx('xl:col-span-6')}>
             <h1
               className={clsx(
-                'font-monoMedium uppercase text-[36px] leading-[43.2px] mb-[15px]',
+                'monoMedium uppercase text-[36px] leading-[43.2px] mb-[15px]',
                 'lg:text-[44px] lg:leading-[58.34px]  lg:tracking-[-0.4px] lg:mb-[32px]',
               )}
             >
@@ -128,7 +128,7 @@ export default function Post({ work }: { work: Work }) {
           </div>
           <p
             className={clsx(
-              'mt-[53px] text-secondaryText text-[16px] leading-[24px] font-sansRegular',
+              'mt-[53px] text-secondaryText text-[16px] leading-[24px] geist',
               'lg:mt-[0px]',
 
               'xl:col-start-8 lg:col-end-13 xl:max-w-[560px]',
@@ -165,7 +165,7 @@ export default function Post({ work }: { work: Work }) {
         >
           <h6
             className={clsx(
-              'text-[18px] leading-[21.6px] tracking-[-0.2px] font-monoMedium uppercase mb-[32px]',
+              'text-[18px] leading-[21.6px] tracking-[-0.2px] monoMedium uppercase mb-[32px]',
               'lg:col-span-5 lg:normal-case lg:text-[24px] lg:leading-[33.6px] ',
             )}
           >
@@ -203,7 +203,7 @@ export default function Post({ work }: { work: Work }) {
               <div className={clsx('lg:flex lg:pt-[16px] lg:justify-between')}>
                 <h6
                   className={clsx(
-                    'text-[18px] font-sansMedium leading-[27px] my-[16px]',
+                    'text-[18px] geistMedium leading-[27px] my-[16px]',
                     'lg:my-[0px] lg:text-[20px] lg:leading-[28px] lg:max-w-[464px]',
                   )}
                 >
@@ -211,7 +211,7 @@ export default function Post({ work }: { work: Work }) {
                 </h6>
                 <div
                   className={clsx(
-                    'flex font-sansRegular text-[14px] leading-[16.8px] text-secondaryText',
+                    'flex geist text-[14px] leading-[16.8px] text-secondaryText',
                     'lg:text-[16px] lg:leading-[24px] lg:flex-col lg:items-end',
                   )}
                 >

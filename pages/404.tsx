@@ -7,7 +7,7 @@ export default function FourOhFour() {
       <main
         className={clsx('w-screen h-[100svh] flex items-center justify-center')}
       >
-        <div className={clsx('font-monoMedium text-[22px] pb-[30svh]')}>
+        <div className={clsx('monoMedium text-[22px] pb-[30svh]')}>
           <h1>404 – Page Not Found</h1>
         </div>
       </main>

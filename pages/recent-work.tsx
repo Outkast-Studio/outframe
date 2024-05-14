@@ -53,7 +53,7 @@ export default function Page(props: PageProps) {
           >
             <h1
               className={clsx(
-                ' uppercase text-[36px] leading-[43.2px] tracking-[-0.2px] font-monoMedium text-mainText',
+                ' uppercase text-[36px] leading-[43.2px] tracking-[-0.2px] monoMedium text-mainText',
                 'lg:text-[76px] lg:leading-[91.2px] lg:col-span-4',
               )}
             >
@@ -62,7 +62,7 @@ export default function Page(props: PageProps) {
             </h1>
             <p
               className={clsx(
-                'text-[16px] leading-[24px] text-secondaryText font-sansRegular mt-[32px]',
+                'text-[16px] leading-[24px] text-secondaryText geist mt-[32px]',
                 'lg:mt-[0px] lg:text-[20px] lg:leading-[30px] lg:max-w-[560px] lg:col-start-8 lg:col-end-13',
               )}
             >
@@ -98,14 +98,14 @@ export default function Page(props: PageProps) {
                     >
                       <h6
                         className={clsx(
-                          'text-[16px] leading-[24px] text-secondaryText font-sansRegular',
+                          'text-[16px] leading-[24px] text-secondaryText geist',
                         )}
                       >
                         {work.title}
                       </h6>
                       <span
                         className={clsx(
-                          'text-accent font-monoRegular text-[14px] leading-[25.2px] tracking-[-0.2px]',
+                          'text-accent mono text-[14px] leading-[25.2px] tracking-[-0.2px]',
                         )}
                       >
                         {work.year}

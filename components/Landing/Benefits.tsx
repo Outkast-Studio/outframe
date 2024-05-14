@@ -86,14 +86,14 @@ const Benefits = () => {
               >
                 <h6
                   className={clsx(
-                    'text-accent font-monoRegular text-[16px] leading-[24px]',
+                    'text-accent mono text-[16px] leading-[24px]',
                   )}
                 >
                   0{index + 1}
                 </h6>
                 <h6
                   className={clsx(
-                    'leading-[27px] text-[18px] font-sansMedium',
+                    'leading-[27px] text-[18px] geistMedium',
                     'lg:text-[20px] lg:leading-[28px]',
                   )}
                 >

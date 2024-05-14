@@ -96,14 +96,14 @@ const HorizontalScroll = ({ recentWork }: { recentWork: RecentWork[] }) => {
                 >
                   <h6
                     className={clsx(
-                      'text-[16px] leading-[24px] text-secondaryText font-sansRegular',
+                      'text-[16px] leading-[24px] text-secondaryText geist',
                     )}
                   >
                     {work.title}
                   </h6>
                   <span
                     className={clsx(
-                      'text-accent font-monoRegular text-[14px] leading-[25.2px] tracking-[-0.2px]',
+                      'text-accent mono text-[14px] leading-[25.2px] tracking-[-0.2px]',
                     )}
                   >
                     {work.year}

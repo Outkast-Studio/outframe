@@ -137,7 +137,7 @@ const BlogPage = ({ post }: { post: Post }) => {
             >
               <h6
                 className={clsx(
-                  'text-[24px] leading-[33.6px] font-monoMedium mb-[32px]',
+                  'text-[24px] leading-[33.6px] monoMedium mb-[32px]',
                 )}
               >
                 Table of Content
@@ -147,7 +147,7 @@ const BlogPage = ({ post }: { post: Post }) => {
                   <li
                     key={toc.text}
                     className={clsx(
-                      'font-sansMedium text-[18px] leading-[27px] list-none text-secondaryText transition-colors duration-500',
+                      'geistMedium text-[18px] leading-[27px] list-none text-secondaryText transition-colors duration-500',
                       activeId === getIdFromText(toc.text) && '!text-accent',
                     )}
                   >
@@ -179,7 +179,7 @@ const BlogPage = ({ post }: { post: Post }) => {
           >
             <h1
               className={clsx(
-                'text-[36px] leading-[43.2px] font-monoMedium uppercase tracking-[-0.2px]',
+                'text-[36px] leading-[43.2px] monoMedium uppercase tracking-[-0.2px]',
                 'lg:border-b-dividers  lg:border-b-[1px] lg:pb-[32px]',
                 'xl:text-[76px] xl:leading-[91.2px] xl:tracking-[-0.4px]',
               )}
@@ -208,7 +208,7 @@ const BlogPage = ({ post }: { post: Post }) => {
 
                 <h6
                   className={clsx(
-                    'text-[14px] font-sansRegular leading-[16.8px]',
+                    'text-[14px] geist leading-[16.8px]',
                     'lg:text-[16px] lg:leading-[24px]',
                   )}
                 >
@@ -218,14 +218,14 @@ const BlogPage = ({ post }: { post: Post }) => {
               <div className={clsx('flex gap-x-[8px] h-fit')}>
                 <span
                   className={clsx(
-                    'text-[12px] leading-[14.4px] tracking-[-0.2px] bg-[#EBE7E3] px-[10px] py-[4px] font-monoRegular rounded-full uppercase',
+                    'text-[12px] leading-[14.4px] tracking-[-0.2px] bg-[#EBE7E3] px-[10px] py-[4px] mono rounded-full uppercase',
                   )}
                 >
                   {formattedDate(post.date && post.date)}
                 </span>
                 <span
                   className={clsx(
-                    'text-[12px] leading-[14.4px] tracking-[-0.2px] text-background px-[10px] py-[4px] font-monoRegular rounded-full uppercase bg-accent',
+                    'text-[12px] leading-[14.4px] tracking-[-0.2px] text-background px-[10px] py-[4px] mono rounded-full uppercase bg-accent',
                   )}
                 >
                   {post.readTime && post.readTime} min read
@@ -272,7 +272,7 @@ const BlogPage = ({ post }: { post: Post }) => {
                 >
                   <h6
                     className={clsx(
-                      'text-[14px] leading-[16.8px] font-monoMedium text-mainText  teracking-[-0.2px]',
+                      'text-[14px] leading-[16.8px] monoMedium text-mainText  teracking-[-0.2px]',
                     )}
                   >
                     Table of content
@@ -299,7 +299,7 @@ const BlogPage = ({ post }: { post: Post }) => {
                       <li
                         key={toc.text}
                         className={clsx(
-                          'font-sansMedium text-[16px] leading-[24px] list-none text-secondaryText transition-colors duration-500',
+                          'geistMedium text-[16px] leading-[24px] list-none text-secondaryText transition-colors duration-500',
                         )}
                       >
                         <button
@@ -332,7 +332,7 @@ const BlogPage = ({ post }: { post: Post }) => {
         <div className={clsx('mt-[108px]', 'lg:mt-[140px]')}>
           <h6
             className={clsx(
-              'text-[18px] leading-[21.6px] tracking-[-0.2px] font-monoMedium mb-[24px] px-gutter',
+              'text-[18px] leading-[21.6px] tracking-[-0.2px] monoMedium mb-[24px] px-gutter',
               'lg:mb-[32px] text-[24px] leading-[33.6px]',
             )}
           >

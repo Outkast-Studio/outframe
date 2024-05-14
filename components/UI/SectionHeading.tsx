@@ -20,7 +20,7 @@ const SectionHeading = ({ text, hover }: Props) => {
   }, [inView])
 
   return (
-    <div ref={ref} className={clsx('font-monoRegular')}>
+    <div ref={ref} className={clsx('mono')}>
       <FlickerText
         title={text}
         animationDelay={0.5}

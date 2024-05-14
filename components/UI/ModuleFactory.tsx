@@ -69,7 +69,7 @@ export const TextBlockComponent = ({ textBlock }: { textBlock: TextBlock }) => {
     >
       <h6
         className={clsx(
-          'text-[18px] leading-[21.6px] tracking-[-0.2px] uppercase font-monoMedium mb-[32px]',
+          'text-[18px] leading-[21.6px] tracking-[-0.2px] uppercase monoMedium mb-[32px]',
           'lg:text-[24px] lg:leading-[33.6px] lg:normal-case lg:col-span-5',
         )}
       >
@@ -77,7 +77,7 @@ export const TextBlockComponent = ({ textBlock }: { textBlock: TextBlock }) => {
       </h6>
       <div
         className={clsx(
-          'text-secondaryText text-[16px] leading-[24px] font-sansRegular',
+          'text-secondaryText text-[16px] leading-[24px] geist',
           'lg:text-[20px] lg:leading-[30px] lg:col-start-7 lg:col-span-6',
         )}
       >
@@ -94,7 +94,7 @@ function TestimonialBlock({ testimonialBlock }) {
   return (
     <article
       className={clsx(
-        'mb-[88px] max-w-[560px] font-sansRegular',
+        'mb-[88px] max-w-[560px] geist',
         'lg:max-w-[731px] lg:flex lg:flex-col lg:items-center lg:justify-center lg:mx-auto lg:mb-[133px]',
       )}
     >
