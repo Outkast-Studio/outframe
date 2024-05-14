@@ -9,25 +9,25 @@ type Props = {
 }
 const HeroImage = ({ images }: Props) => {
   const [currentImageIndex, setCurrentImageIndex] = useState(0)
+  const [nextImageIndex, setNextImageIndex] = useState(1)
 
   useEffect(() => {
     // const interval = setInterval(() => {
     //   setCurrentImageIndex((prevIndex) => (prevIndex + 1) % images.length)
+    //   setNextImageIndex((prevIndex) => (prevIndex + 1) % images.length)
     // }, 4000)
     // return () => clearInterval(interval)
-  }, [images])
+  }, [])
 
-  const nextImageIndex = (currentImageIndex + 1) % images.length
   return (
     <div style={{ position: 'relative' }}>
-      <AnimatePresence initial={false}>
+      <AnimatePresence initial={false} mode="wait">
         <motion.div
           key={currentImageIndex}
-          initial={{ opacity: 1 }}
-          animate={{ opacity: 0 }}
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
           exit={{ opacity: 0 }}
           transition={{ duration: 0.35 }}
-          style={{ position: 'absolute', width: '100%', height: '100%' }}
         >
           {images[currentImageIndex] && images[currentImageIndex].asset && (
             <Image
@@ -36,25 +36,6 @@ const HeroImage = ({ images }: Props) => {
               width={1200}
               height={1200}
               className={clsx('object-cover')}
-            />
-          )}
-        </motion.div>
-
-        <motion.div
-          key={nextImageIndex}
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          exit={{ opacity: 1 }}
-          transition={{ duration: 0.35 }}
-          //   style={{ position: 'absolute', width: '100%', height: '100%' }}
-        >
-          {images[nextImageIndex] && images[nextImageIndex].asset && (
-            <Image
-              src={urlForImage(images[nextImageIndex]).url()}
-              alt={String(images[nextImageIndex].alt)}
-              width={1200}
-              height={1200}
-              className={clsx('object-cover ')}
             />
           )}
         </motion.div>

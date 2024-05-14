@@ -73,9 +73,10 @@ const Logo = () => {
         fill="none"
         xmlns="http://www.w3.org/2000/svg"
         className={clsx(
-          'flex-shrink-0 bg-[#000000] relative z-[10] ',
+          'flex-shrink-0 bg-[#000000] relative z-[10] w-[24px]',
           'transition-transform duration-[0.5s] ease-in-out-expo',
           hideLogoText && '!rotate-[-270deg]',
+          'lg:w-[28px]',
         )}
       >
         <path
@@ -91,8 +92,9 @@ const Logo = () => {
         fill="none"
         xmlns="http://www.w3.org/2000/svg"
         className={clsx(
-          'translate-x-[5px] transition-transform duration-[0.35s] ease-out-expo',
+          'translate-x-[5px] transition-transform duration-[0.35s] ease-out-expo w-[85px]',
           hideLogoText && '!translate-x-[-105px]',
+          'lg:w-[101px]',
         )}
       >
         <path

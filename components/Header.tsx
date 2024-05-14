@@ -202,12 +202,11 @@ const Header = () => {
 
   return (
     <>
-      {' '}
-      <div className={clsx('md:h-[40px] bg-transparent')}></div>
       <header
         className={clsx(
-          'flex px-gutter mix-blend-difference pt-[24px] pb-[16px] justify-between sticky top-0 left-0 w-full items-center z-[100] bg-transparent',
+          'flex px-gutter mix-blend-difference pt-[12px] pb-[16px] justify-between fixed top-[12px] left-0 w-full items-center z-[100] bg-transparent',
           'md:mt-[0px] pb-[20px]',
+          'lg:top-[40px] lg:pt-[24px]',
           'xl:grid grid-cols-12 xl:gap-x-columnGap',
         )}
       >

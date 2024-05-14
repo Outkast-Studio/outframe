@@ -41,7 +41,9 @@ const MobileMenu = ({ menuItems, socials, handleHomepageLink }) => {
       )}
     >
       <div
-        className={clsx('h-[calc(100svh-129px)] flex flex-col justify-between')}
+        className={clsx(
+          'h-[calc(100svh-129px)] flex flex-col justify-between bg-background',
+        )}
       >
         <nav>
           <ul className={clsx('flex flex-col gap-y-[32px]')}>
