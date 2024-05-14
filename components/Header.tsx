@@ -341,7 +341,7 @@ const Header = () => {
                 variants={closeButtonVariants}
                 key={'close-button'}
                 className={clsx(
-                  'mono text-[14px] leading-[17px] hidden col-span-4 gap-x-[8px] items-center border-[1px] border-[#D9D5D3] text absolute right-[64px] top-[57px] text-mainText px-[20px] py-[15px] rounded-[4px] z-[101] transition-colors duration-[0.3s]',
+                  'monoMedium text-[14px] leading-[17px] hidden col-span-4 gap-x-[8px] items-center border-[1px] border-[#D9D5D3] text absolute right-[64px] top-[57px] text-mainText px-[20px] py-[15px] rounded-[4px] z-[101] transition-colors duration-[0.3s]',
                   'lg:flex lg:col-start-8 lg:col-end-13 justify-self-end hover:border-mainText',
                 )}
               >
