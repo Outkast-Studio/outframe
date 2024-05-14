@@ -275,6 +275,7 @@ function PricingCard({
         <p
           className={clsx(
             'text-secondaryText text-[16px] leading-[24px] geist',
+            'xl:h-[48px]',
           )}
         >
           {description}
