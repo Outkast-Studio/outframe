@@ -318,14 +318,14 @@ function ProcessDesktopItem({
         ></div>
         <h6
           className={clsx(
-            'text-[18px] whitespace-nowrap verticalText  transition-opacity duration-300 triggerLabel',
+            'text-[18px] whitespace-nowrap verticalText  transition-opacity duration-300 triggerLabel pr-[24px]',
             'lg:text-[18px] lg:leading-[27px]',
           )}
         >
           {name}
         </h6>
 
-        <div className={clsx('w-[20px] h-[20px] relative')}>
+        <div className={clsx('w-[20px] h-[20px] relative ml-[24px]')}>
           <span
             className={clsx(
               'inline-block w-full h-[1px] bg-secondaryText absolute origin-center top-[50%] left-[50%] transform -translate-x-1/2 -translate-y-1/2 ',
