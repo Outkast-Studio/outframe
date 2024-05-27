@@ -12,6 +12,7 @@ import { useThemeStore } from 'stores/themeStore'
 import { gsap } from 'gsap'
 import { ScrollTrigger } from 'gsap/dist/ScrollTrigger'
 import { Observer } from 'gsap/dist/Observer'
+import { useTheme } from 'styled-components'
 
 gsap.registerPlugin(ScrollTrigger, Observer)
 export interface SharedPageProps {
@@ -51,17 +52,17 @@ export default function App({
   const { draftMode, token } = pageProps
   const router = useRouter()
   const introVisible = useThemeStore((state) => state.introVisible)
+  const setIsHoveringBlog = useThemeStore((state) => state.setIsHoveringBlog)
   useEffect(() => {
     if (router.pathname !== '/' && introVisible) {
       useThemeStore.getState().setIntroVisible(false)
     }
+    setIsHoveringBlog(false)
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [router.pathname])
 
   return (
-    <div
-      className={clsx('bg-background relative min-h-[100vh] overflow-hidden')}
-    >
+    <div className={clsx('bg-background relative min-h-[100vh]')}>
       {router.pathname !== '/studio' && <Header />}
       {draftMode ? (
         <PreviewProvider token={token}>

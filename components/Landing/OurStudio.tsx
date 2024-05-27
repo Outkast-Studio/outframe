@@ -23,14 +23,14 @@ const OurStudio = () => {
         )}
       >
         <Image
-          src={'/images/vytas.png'}
+          src={'/images/AvatarNew.png'}
           alt={'Portrait of the founder of Outframe, Vytas'}
           width={960}
           height={960}
           className={clsx(
             'hidden',
             'md:block object-cover w-[50%]',
-            'lg:w-full lg:col-span-4',
+            'lg:w-full lg:col-span-4 lg:max-w-[700px]',
             'xl:col-span-4',
           )}
         />

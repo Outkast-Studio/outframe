@@ -41,6 +41,16 @@ const Intro = () => {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [lenis])
 
+  useEffect(() => {
+    window.scrollTo(0, 0)
+    if (!lenis) return
+    if (introVisible) {
+      lenis.stop()
+    } else {
+      lenis.start()
+    }
+  }, [introVisible, lenis])
+
   return introVisible ? (
     <div
       className={clsx(

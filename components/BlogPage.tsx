@@ -11,6 +11,8 @@ import { useLenis } from '@studio-freight/react-lenis'
 import { BlogCard } from '../pages/blog'
 import Cursor from './UI/Cursor'
 import { useThemeStore } from 'stores/themeStore'
+import { gsap } from 'gsap'
+import { ScrollTrigger } from 'gsap/dist/ScrollTrigger'
 
 const BlogPage = ({ post }: { post: Post }) => {
   const formattedDate = (date: string) =>
@@ -29,6 +31,8 @@ const BlogPage = ({ post }: { post: Post }) => {
       .toLowerCase()
       .replaceAll(/\s/g, '')
       .replace(/[\u200B-\u200D\uFEFF]/g, '')
+      .replace(/[0-9]/g, '')
+      .replace(/[^\w\s]/g, '')
   }
 
   const setIsHoveringBlog = useThemeStore((state) => state.setIsHoveringBlog)
@@ -81,24 +85,31 @@ const BlogPage = ({ post }: { post: Post }) => {
       threshold: 1.0,
     })
 
-    headings.forEach((heading) => {
-      const text = heading.textContent?.toLowerCase().replace(/\s/g, '')
-      const re = new RegExp('\u2028|\u2029')
-      const newText = text.replace(/[\u200B-\u200D\uFEFF]/g, '')
+    headings
+      .filter((heading) => heading.textContent !== '')
+      .forEach((heading) => {
+        const text = heading.textContent?.toLowerCase().replace(/\s/g, '')
+        const re = new RegExp('\u2028|\u2029')
+        const newText = text
+          .replace(/[\u200B-\u200D\uFEFF0-9]/g, '')
+          .replace(/[0-9]/g, '')
+          .replace(/[^\w\s]/g, '')
 
-      const matchingToc = toc.find(
-        (item) =>
-          item.text
-            .toLowerCase()
-            .replaceAll(/\s/g, '')
-            .replace(/[\u200B-\u200D\uFEFF]/g, '') === newText,
-      )
+        const matchingToc = toc.find(
+          (item) =>
+            item.text
+              .toLowerCase()
+              .replaceAll(/\s/g, '')
+              .replace(/[\u200B-\u200D\uFEFF]/g, '')
+              .replace(/[0-9]/g, '')
+              .replace(/[^\w\s]/g, '') === newText,
+        )
 
-      if (matchingToc) {
-        heading.id = newText
-      }
-      observer.observe(heading)
-    })
+        if (matchingToc) {
+          heading.id = newText
+        }
+        observer.observe(heading)
+      })
     return () => {
       headings.forEach((heading) => observer.unobserve(heading))
     }
@@ -114,7 +125,7 @@ const BlogPage = ({ post }: { post: Post }) => {
       <Cursor />
       <main
         className={clsx(
-          'px-gutter mt-[191px] text-mainText relative z-[2]',
+          'px-gutter mt-[191px] text-mainText relative z-[2] antialiased',
           'lg:flex lg:gap-x-[64px] xl:mt-[256px]',
         )}
       >
@@ -132,23 +143,16 @@ const BlogPage = ({ post }: { post: Post }) => {
           {toc && toc.length > 0 && (
             <div
               className={clsx(
-                'mt-[174px] w-fit pt-[24px] pr-[32px] border-t-dividers border-t-[1px] sticky top-[191px]',
+                'mt-[174px] w-fit pt-[24px] pr-[32px] border-t-dividers sticky top-[191px]',
               )}
             >
-              <h6
-                className={clsx(
-                  'text-[24px] leading-[33.6px] monoMedium mb-[32px]',
-                )}
-              >
-                Table of Content
-              </h6>
               <ul className={clsx('flex flex-col gap-y-[16px]')}>
                 {toc.map((toc, index) => (
                   <li
                     key={toc.text}
                     className={clsx(
-                      'geistMedium text-[18px] leading-[27px] list-none text-secondaryText transition-colors duration-500',
-                      activeId === getIdFromText(toc.text) && '!text-accent',
+                      'geist text-[18px] leading-[27px] list-none text-secondaryText transition-colors duration-500',
+                      activeId === getIdFromText(toc.text) && '!text-black',
                     )}
                   >
                     <button
@@ -192,8 +196,8 @@ const BlogPage = ({ post }: { post: Post }) => {
                 'lg:justify-start lg:gap-x-[35px] lg:border-b-[0px] lg:pb-[0px]',
               )}
             >
-              <div className={clsx('flex gap-x-[12px] items-center')}>
-                {post.author && (
+              {post.author && (
+                <div className={clsx('flex gap-x-[12px] items-center')}>
                   <Image
                     src={urlForImage(post.author.picture).url()}
                     alt={post.author.name}
@@ -204,17 +208,17 @@ const BlogPage = ({ post }: { post: Post }) => {
                       'lg:w-[28px] lg:h-[28px]',
                     )}
                   />
-                )}
 
-                <h6
-                  className={clsx(
-                    'text-[14px] geist leading-[16.8px]',
-                    'lg:text-[16px] lg:leading-[24px]',
-                  )}
-                >
-                  {post.author && post.author.name && post.author.name}
-                </h6>
-              </div>
+                  <h6
+                    className={clsx(
+                      'text-[14px] geist leading-[16.8px]',
+                      'lg:text-[16px] lg:leading-[24px]',
+                    )}
+                  >
+                    {post.author && post.author.name && post.author.name}
+                  </h6>
+                </div>
+              )}
               <div className={clsx('flex gap-x-[8px] h-fit')}>
                 <span
                   className={clsx(
@@ -235,8 +239,8 @@ const BlogPage = ({ post }: { post: Post }) => {
           </div>
           <p
             className={clsx(
-              'text-secondaryText mt-[16px]',
-              'lg:text-[24px] lg:leading-[36px] lg:tracking-[-0.2px] lg:mt-[32px] lg:max-w-[75%]',
+              'text-secondaryText mt-[16px] giest',
+              'lg:text-[20px] lg:leading-[36px] lg:tracking-[-0.2px] lg:mt-[32px] lg:max-w-[75%]',
             )}
           >
             {post.subtitle && post.subtitle}

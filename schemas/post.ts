@@ -95,7 +95,7 @@ export default defineType({
       name: 'author',
       title: 'Author',
       type: 'reference',
-      to: [{ type: authorType.name }],
+      to: [{ type: 'author' }],
     }),
     defineField({
       name: 'content',

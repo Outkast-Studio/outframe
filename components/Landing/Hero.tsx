@@ -217,6 +217,7 @@ const Hero = ({ images, testimonial }: Props) => {
             className={clsx(
               'geist text-[16px] leading-[28.5px] text-secondaryText mt-[28px]',
               'md:mt-[0px]',
+              'lg:text-[19px] lg:leading-[28.5px] lg:tracking-[-0.1px]',
             )}
           >
             <span className={clsx('text-mainText')}>Outframe</span> is an
@@ -224,7 +225,13 @@ const Hero = ({ images, testimonial }: Props) => {
             partner for startups and B2B companies. Part of your team, all
             without the overheads of an agency.
           </p>
-          <div className={clsx('flex mt-[28px] gap-x-[16px]', 'md:mt-[19px]')}>
+          <div
+            className={clsx(
+              'flex mt-[28px] gap-x-[16px]',
+              'md:mt-[19px]',
+              'lg:mt-[32px]',
+            )}
+          >
             <Button
               text={'View plans'}
               cb={() =>

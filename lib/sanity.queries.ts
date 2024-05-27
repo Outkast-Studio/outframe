@@ -11,7 +11,6 @@ const postFields = groq`
   coverImage,
   "slug": slug.current,
   "author": author->{name, picture},
-
 `
 
 export const settingsQuery = groq`*[_type == "settings"][0]`
@@ -46,7 +45,7 @@ export const postBySlugQuery = groq`
   suggestedArticles[]->{
     ...,
   },
-  ${postFields}
+  "author": author->{name, picture},
 }
 `
 

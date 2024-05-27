@@ -39,10 +39,10 @@ export function Layout({
         exit="exit"
         className={clsx(
           'overflow-hidden w-full ',
-          // router.asPath.includes('/blog') && 'lg:!overflow-x-visible',
+          router.asPath.includes('/blog') && 'lg:!overflow-visible',
         )}
       >
-        {router.pathname !== '/recent-work' && <Background />}
+        {router.pathname !== '/recent-work' && <Background isBlog={router.pathname.includes("/blog/")}/>}
 
         <CustomHead {...seo} />
         {children}

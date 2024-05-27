@@ -77,7 +77,7 @@ export const TextBlockComponent = ({ textBlock }: { textBlock: TextBlock }) => {
       </h6>
       <div
         className={clsx(
-          'text-secondaryText text-[16px] leading-[24px] geist',
+          'text-secondaryText text-[16px] leading-[24px] geist portableCaseStudy',
           'lg:text-[20px] lg:leading-[30px] lg:col-start-7 lg:col-span-6',
         )}
       >

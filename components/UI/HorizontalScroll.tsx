@@ -50,11 +50,11 @@ const HorizontalScroll = ({ recentWork }: { recentWork: RecentWork[] }) => {
     <div
       ref={container}
       className={clsx(
-        'container h-[calc(100vh-113px)] items-center justify-center hidden',
+        'container h-[80vh] mt-[15vh] items-center justify-center hidden',
         'lg:flex',
       )}
     >
-      <section ref={sliderRef} className={clsx('flex')}>
+      <section ref={sliderRef} className={clsx('flex h-full')}>
         {recentWork.length > 0 &&
           [...recentWork, ...recentWork].map((work, index) => {
             if (!work || !work.title || !work.year || !work.image) {
@@ -75,7 +75,7 @@ const HorizontalScroll = ({ recentWork }: { recentWork: RecentWork[] }) => {
                 }}
               >
                 <div className={clsx('relative')}>
-                  <div className="absolute bg-dividers w-full h-full top-0 left-0 z-[1]"></div>
+                  {/* <div className="absolute bg-dividers w-full h-full top-0 left-0 z-[1]"></div> */}
                   <Image
                     src={urlForImage(work.image).url()}
                     alt={String(work.image.alt)}

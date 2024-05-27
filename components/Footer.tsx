@@ -5,8 +5,8 @@ import Button from './UI/Button'
 
 const Footer = () => {
   const socials = [
-    { name: 'Twitter', url: 'https://twitter.com/creativetim' },
-    { name: 'LinkedIn', url: 'https://www.facebook.com/creativetim' },
+    { name: 'Twitter', url: 'https://twitter.com/outframeco' },
+    { name: 'LinkedIn', url: '#' },
     { name: 'Dribbble', url: 'https://dribbble.com/creativetim' },
   ]
   return (

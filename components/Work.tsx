@@ -36,7 +36,9 @@ export default function Post({ work }: { work: Work }) {
   return (
     <>
       <Cursor />
-      <main className={clsx('px-gutter text-mainText relative z-[2]')}>
+      <main
+        className={clsx('px-gutter text-mainText relative z-[2] antialiased ')}
+      >
         <Link
           href={'/'}
           scroll={false}
@@ -130,6 +132,7 @@ export default function Post({ work }: { work: Work }) {
             className={clsx(
               'mt-[53px] text-secondaryText text-[16px] leading-[24px] geist',
               'lg:mt-[0px]',
+              'lg:text-[19px] lg:leading-[28.5px] lg:tracking-[-0.1px]',
 
               'xl:col-start-8 lg:col-end-13 xl:max-w-[560px]',
             )}
@@ -192,7 +195,7 @@ export default function Post({ work }: { work: Work }) {
                   height={1080}
                   alt={String(work.nextProject.thumbnailImage.alt)}
                   className={clsx(
-                    'ease-[cubic-bezier(0.34, 0, 0.36, 1)] scale-1 duration-[0.3s] transition-[transform, opacity] opacity-0',
+                    'ease-[cubic-bezier(0.34, 0, 0.36, 1)] scale-1 duration-[0.3s] transition-[transform, opacity]',
                     isVisible && 'scale-[1.04]',
                   )}
                   onLoadingComplete={(image) =>

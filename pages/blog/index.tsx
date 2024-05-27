@@ -13,6 +13,7 @@ import Link from 'next/link'
 import Footer from 'components/Footer'
 import Cursor from 'components/UI/Cursor'
 import { useThemeStore } from 'stores/themeStore'
+import { useEffect } from 'react'
 
 interface PageProps extends SharedPageProps {
   posts: Post[]
@@ -32,6 +33,9 @@ export default function Page(props: PageProps) {
     image: '',
     keywords: [],
   }
+  useEffect(() => {
+    window.scrollTo(0, 0)
+  }, [])
 
   return (
     <Layout seo={seo}>
@@ -62,7 +66,7 @@ export default function Page(props: PageProps) {
           className={clsx(
             'mt-[64px] flex flex-col gap-y-[88px]',
             'md:flex-row md:flex-wrap md:gap-[40px]',
-            'lg:mt-[196px]',
+            'lg:mt-[196px] lg:grid lg:grid-cols-3',
             'xl:gap-[80px]',
           )}
         >
@@ -134,17 +138,15 @@ export function BlogCard({
       key={post._id}
       className={clsx(
         'md:w-[calc(50%-20px)]',
-
-        'lg:w-[calc(33%-24px)]',
-        'xl:w-[calc(33%-50px)]',
+        'lg:w-full lg:h-full lg:block',
         isIndividualBlog && 'md:w-full lg:w-[33%] xl:w-[33%]',
       )}
     >
       <article
         key={post._id}
         className={clsx(
-          'pb-[12px] border-b-[1px] border-b-dividers',
-          'lg:pb-[16px]',
+          'pb-[12px] border-b-[1px] border-b-dividers h-full',
+          'lg:pb-[0px]',
         )}
       >
         <Image
@@ -152,31 +154,37 @@ export function BlogCard({
           alt={String(post.coverImage.alt)}
           width={1200}
           height={1200}
-        />
-        <div
           className={clsx(
-            'flex gap-x-[30px] leading-[27px] text-[18px] mt-[12px] geistMedium justify-between',
-            'lg:mt-[16px] lg:text-[20px] lg:leading-[26px]',
+            'lg:h-[20vw]  opacity-0 transition-opacity duration-300',
           )}
-        >
-          <h6 className={clsx('lg:max-w-[404px]')}>{post.title}</h6>
-          <span
+          onLoadingComplete={(image) => image.classList.remove('opacity-0')}
+        />
+        <div>
+          <div
             className={clsx(
-              'whitespace-nowrap mono text-accent text-[14px] leading-[25px] tracking-[-0.2px]',
-              'lg:text-[16px] leading-[24px]',
+              'flex gap-x-[30px] leading-[27px] text-[18px] mt-[12px] geistMedium justify-between',
+              'lg:mt-[16px] lg:text-[20px] lg:leading-[26px]',
             )}
           >
-            {formattedDate(post.date)}
-          </span>
+            <h6 className={clsx('lg:max-w-[404px]')}>{post.title}</h6>
+            <span
+              className={clsx(
+                'whitespace-nowrap mono text-accent text-[14px] leading-[25px] tracking-[-0.2px]',
+                'lg:text-[16px] leading-[24px]',
+              )}
+            >
+              {formattedDate(post.date)}
+            </span>
+          </div>
+          <p
+            className={clsx(
+              'text-secondaryText geist text-[16px] leading-[24px] mt-[12px]',
+              'lg:mt-[16px] lg:text-[16px] leading-[26px] lg:pb-[16px]',
+            )}
+          >
+            {post.cardSubtitle}
+          </p>
         </div>
-        <p
-          className={clsx(
-            'text-secondaryText geist text-[16px] leading-[24px] mt-[12px]',
-            'lg:mt-[16px] lg:text-[16px] leading-[26px]',
-          )}
-        >
-          {post.cardSubtitle}
-        </p>
       </article>
     </Link>
   )

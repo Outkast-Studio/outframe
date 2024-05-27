@@ -38,20 +38,7 @@ const Header = () => {
       isHomePage: true,
       width: 101,
     },
-    // {
-    //   // title: useScrambleText({ title: 'About', animationDelay: 4200 }),
-    //   title: (
-    //     <FlickerText
-    //       title="About"
-    //       animationDelay={width > 1024 ? 1 : 0}
-    //       play={router.pathname == '/' ? !introVisible : true}
-    //       hover={true}
-    //     />
-    //   ),
-    //   link: '#about',
-    //   isHomePage: true,
-    //   width: 45,
-    // },
+
     {
       // title: useScrambleText({ title: 'Services', animationDelay: 4500 }),
       title: (
@@ -225,12 +212,12 @@ const Header = () => {
               className={clsx(
                 'hidden',
                 'md:block',
-                'xl:col-start-9 xl:col-end-13',
+                'xl:col-start-9 xl:col-end-13  mix-blend-difference',
               )}
             >
               <ul
                 className={clsx(
-                  'flex gap-x-[32px] uppercase text-[12px] leading-[14.4px] mono text-[#998F8C]',
+                  'flex gap-x-[32px] uppercase text-[12px] leading-[14.4px] mono text-[#fff]',
                   'lg:text-[14px] lg:leading-[16.8px]',
                 )}
               >

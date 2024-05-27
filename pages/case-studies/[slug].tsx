@@ -50,7 +50,7 @@ export const getStaticProps: GetStaticProps<PageProps, Query> = async (ctx) => {
   const seo = {
     title: work.metaTitle ? work.metaTitle : `Outframe | ${work.title}`,
     description: work.metaDescription || '',
-    image: work.ogImage ? urlForImage(work.ogImage).url() : '',
+    image: '',
     keywords: work.metaKeywords || [],
   }
 
