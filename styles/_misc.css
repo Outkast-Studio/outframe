@@ -165,6 +165,7 @@ html {
 .portableCaseStudy li {
   list-style-type: disc;
   margin-left: 20px;
+  font-family: 'Geist', sans-serif;
 }
 
 .portableText h3 {
@@ -175,15 +176,16 @@ html {
   margin-bottom: 12px;
 }
 
+.portableText a {
+  text-decoration: underline;
+}
 @media (min-width: 1024px) {
   .portableText p,
-  .portableText ul {
+  .portableText li {
     font-size: 20px;
     line-height: 36px;
   }
-  .portableText li {
-    font-family: Geist-Medium;
-  }
+
   .portableText h3 {
     font-size: 20px;
     line-height: 28px;
