@@ -256,7 +256,7 @@ function PricingCard({
           </h6>
         </div>
         <h6 className={clsx('text-[18px] leading-[27px]', 'lg:hidden')}>
-          {country === 'US' ? EUR : country === 'EUR' ? EUR : GBP}
+          {country === 'US' ? EUR : country === 'Europe' ? EUR : GBP}
         </h6>
       </div>
       <Image
@@ -296,7 +296,7 @@ function PricingCard({
           'xl:text-[32px] xl:leading-[48px]',
         )}
       >
-        {country === 'US' ? USD : country === 'EUR' ? EUR : GBP}
+        {country === 'US' ? USD : country === 'Europe' ? EUR : GBP}
       </h6>
       <Image
         src={'/icons/dashed.svg'}
