@@ -112,7 +112,7 @@ function ServiceItem({
       <Accordion.Trigger className={clsx('w-full relative accordionButton ')}>
         <div
           className={clsx(
-            'pb-[16px] pt-[28px] px-[16px] flex justify-between items-center w-full',
+            'pb-[16px] pt-[28px] flex justify-between items-center w-full',
             'md:pt-[24px] md:pb-[17px] md:px-0',
             'lg:pb-[21px]',
             index === 0 && 'md:pt-[0px]',
@@ -141,9 +141,7 @@ function ServiceItem({
           </div>
         </div>
       </Accordion.Trigger>
-      <Accordion.Content
-        className={clsx('AccordionContent px-[16px] ', 'md:px-0')}
-      >
+      <Accordion.Content className={clsx('AccordionContent ', 'md:px-0')}>
         <p
           className={clsx('my-[20px] text-[16px] leading-[24px] max-w-[800px]')}
         >

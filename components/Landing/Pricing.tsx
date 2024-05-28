@@ -53,7 +53,7 @@ const Pricing = ({ settings }: { settings: HomepageSettings }) => {
     },
     {
       title: settings.dedicatedPricing.title,
-      daysPerWeek: 'More days or fixed price',
+      daysPerWeek: 'More or fixed price',
       description:
         'Most suitable for big projects or if you prefer fixed price.',
       USD: settings.dedicatedPricing.USD,
@@ -292,14 +292,20 @@ function PricingCard({
         >
           {description}
         </p>
-        <button
-          className={clsx(
-            'text-[14px] whitespace-nowrap leading-[16.8px] tracking-[-0.2px] bg-accent mono text-white px-[16px] py-[12px] rounded-[4px] h-fit',
-            'lg:hidden ',
-          )}
+        <a
+          href={'https://cal.com/outframe/intro'}
+          target="_blank"
+          rel={'noreferrer'}
         >
-          Book a Call
-        </button>
+          <button
+            className={clsx(
+              'text-[14px] whitespace-nowrap leading-[16.8px] tracking-[-0.2px] bg-accent mono text-white px-[16px] py-[12px] rounded-[4px] h-fit',
+              'lg:hidden ',
+            )}
+          >
+            Book a Call
+          </button>
+        </a>
       </div>
       <h6
         className={clsx(

@@ -23,7 +23,7 @@ const Button = ({ text, cb, accent, className, footer }: Props) => {
           : 'bg-background text-mainText border-[1px] border-dividers',
         footer && 'bg-black',
         className,
-        'hover:opacity-80 transition-opacity duration-300 ease-in-out',
+        'hover:opacity-90 transition-opacity duration-300 ease-in-out',
       )}
     >
       <span

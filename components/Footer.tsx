@@ -117,6 +117,7 @@ const Footer = ({ settings }: { settings: GlobalSettings }) => {
                   alt={'arrow icon'}
                   width={12}
                   height={12}
+                  className="opacity-[0.6]"
                 />
               </a>
             ))}

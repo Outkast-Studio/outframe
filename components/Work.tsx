@@ -43,7 +43,7 @@ export default function Post({ work }: { work: Work }) {
           href={'/'}
           scroll={false}
           className={clsx(
-            'flex mt-[16px] items-center gap-x-[12px] py-[12px] px-[18px] border-dividers rounded-[4px] border-[1px] monoMedium w-fit backContainer hover:border-mainText tranisiton-[border-color] duration-300',
+            'flex mt-[78px] items-center gap-x-[12px] py-[12px] px-[18px] border-divider bg-background rounded-[4px] border-[1px] monoMedium w-fit backContainer hover:border-mainText tranisiton-[border-color] duration-300',
             'lg:mt-[175px]',
           )}
         >

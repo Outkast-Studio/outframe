@@ -174,7 +174,9 @@ export function ProcessItem({
           </p>
         </div>
       </Accordion.Content>
-      <Accordion.Trigger className={clsx('w-full relative accordionButton ')}>
+      <Accordion.Trigger
+        className={clsx('w-full relative accordionButton pr-[24px] ')}
+      >
         <div
           className={clsx(
             'absolute w-[1px] bg-dividers h-full left-0 top-0 transition-opacity duration-300 opacity-0 sides',
@@ -187,7 +189,7 @@ export function ProcessItem({
         ></div>
         <div
           className={clsx(
-            'pb-[16px] pt-[28px] px-[24px] flex justify-between items-center w-full',
+            'pb-[16px] pt-[28px] flex justify-between items-center w-full',
           )}
         >
           <h6
