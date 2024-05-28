@@ -6,6 +6,7 @@ import { definePlugin, type DocumentDefinition } from 'sanity'
 import { type StructureResolver } from 'sanity/desk'
 import homepageSettings from 'schemas/homepageSettings'
 import recentWorkSettings from 'schemas/settings/recentWorkSettings'
+import globalSettings from 'schemas/globalSettings'
 import { Iframe } from 'sanity-plugin-iframe-pane'
 import { iframeOptions } from 'plugins/previewPane'
 
@@ -47,6 +48,7 @@ export const settingsStructure = (
       'recentWork',
       'media.tag',
       'author',
+      'globalSettings',
     ]
 
     // The `Settings` root list item
@@ -81,6 +83,18 @@ export const settingsStructure = (
           ]),
       )
 
+    const globalSettingsListItem = S.listItem()
+      .title(globalSettings.title)
+      .icon(globalSettings.icon)
+      .child(
+        S.editor()
+          .title(globalSettings.title)
+          .id(globalSettings.name)
+          .schemaType(globalSettings.name)
+          .documentId(globalSettings.name)
+          .views([S.view.form()]),
+      )
+
     // The default root list items (except custom ones)
     const defaultListItems = S.documentTypeListItems().filter(
       (listItem) => !individualTypes.includes(listItem.getId()),
@@ -88,6 +102,7 @@ export const settingsStructure = (
     return S.list()
       .title('Content')
       .items([
+        globalSettingsListItem,
         homepageSettingsListItem,
         recentWorkSettingsListItem,
         S.divider(),

@@ -11,13 +11,15 @@ import { useThemeStore } from 'stores/themeStore'
 import { useLenis } from '@studio-freight/react-lenis'
 import HeroImage from 'components/UI/HeroImage'
 import Button from 'components/UI/Button'
+import homepageSettings from 'schemas/homepageSettings'
 
 type Props = {
   images: ImageAsset[]
   testimonial: Testimonial
+  title: string
 }
 
-const Hero = ({ images, testimonial }: Props) => {
+const Hero = ({ images, testimonial, title }: Props) => {
   const [position, setPosition] = useState({ x: 0, y: 0 })
   const [isVisible, setIsVisible] = useState(false)
   const trackingDivRef = useRef<HTMLDivElement>(null)
@@ -122,90 +124,23 @@ const Hero = ({ images, testimonial }: Props) => {
             'xl:text-[76px] xl:leading-[91.2px] xl:col-span-7 xl:w-full xl:tracking-[-0.4px]',
           )}
         >
-          <span
-            className={clsx(
-              'overflow-y-hidden inline-block h-[33px]',
-              'lg:h-[45px]',
-              ' xl:h-[70px]',
-            )}
-          >
-            <motion.span
-              variants={h1ChildrenVariants}
-              className={clsx('inline-block')}
+          {title.split(' ').map((word, index) => (
+            <span
+              key={'hero-title' + index}
+              className={clsx(
+                'overflow-y-hidden inline-block h-[33px]',
+                'lg:h-[45px]',
+                ' xl:h-[70px]',
+              )}
             >
-              product&nbsp;
-            </motion.span>
-          </span>
-          <span
-            className={clsx(
-              'overflow-hidden inline-block h-[33px]',
-              'lg:h-[45px]',
-              ' xl:h-[70px]',
-            )}
-          >
-            <motion.span
-              variants={h1ChildrenVariants}
-              className={clsx('inline-block')}
-            >
-              Design&nbsp;
-            </motion.span>
-          </span>
-          <span
-            className={clsx(
-              'overflow-hidden inline-block h-[33px]',
-              'lg:h-[45px]',
-              ' xl:h-[70px]',
-            )}
-          >
-            <motion.span
-              variants={h1ChildrenVariants}
-              className={clsx('inline-block')}
-            >
-              Patner&nbsp;
-            </motion.span>
-          </span>
-          <span
-            className={clsx(
-              'overflow-hidden inline-block h-[33px]',
-              'lg:h-[45px]',
-              ' xl:h-[70px]',
-            )}
-          >
-            <motion.span
-              variants={h1ChildrenVariants}
-              className={clsx('inline-block')}
-            >
-              For&nbsp;
-            </motion.span>
-          </span>
-          <span
-            className={clsx(
-              'overflow-hidden inline-block h-[33px]',
-              'lg:h-[45px]',
-              ' xl:h-[70px]',
-            )}
-          >
-            <motion.span
-              variants={h1ChildrenVariants}
-              className={clsx('inline-block')}
-            >
-              SAAS,&nbsp;
-            </motion.span>
-          </span>
-          <span
-            className={clsx(
-              'overflow-hidden inline-block h-[33px]',
-              'lg:h-[45px]',
-              ' xl:h-[70px]',
-            )}
-          >
-            <motion.span
-              variants={h1ChildrenVariants}
-              className={clsx('inline-block')}
-            >
-              ON-Demand
-            </motion.span>
-          </span>
+              <motion.span
+                variants={h1ChildrenVariants}
+                className={clsx('inline-block')}
+              >
+                {word}&nbsp;
+              </motion.span>
+            </span>
+          ))}
         </motion.h1>
         <motion.div
           variants={fadeInVariants}

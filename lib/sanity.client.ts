@@ -18,6 +18,7 @@ import {
   homepageQuery,
   settingsQuery,
   allPostQuery,
+  globalSettingsQuery,
   recentWorkQuery,
   recentWorkSettingsQuery,
 } from 'lib/sanity.queries'
@@ -102,4 +103,8 @@ export async function getHomepageSettings(client: SanityClient) {
 
 export async function getAllRecentWork(client: SanityClient) {
   return (await client.fetch(recentWorkSettingsQuery)) || []
+}
+
+export async function getGlobalSettings(client: SanityClient) {
+  return (await client.fetch(globalSettingsQuery)) || {}
 }

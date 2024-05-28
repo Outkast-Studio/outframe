@@ -231,7 +231,6 @@ export default function Post({ work }: { work: Work }) {
           )}
         </section>
       </main>
-      <Footer />
     </>
   )
 }

@@ -4,8 +4,15 @@ import {
   getClient,
   getWorkBySlug,
   getSettings,
+  getGlobalSettings,
 } from 'lib/sanity.client'
-import { Post, Settings, Work, workBySlugQuery } from 'lib/sanity.queries'
+import {
+  Post,
+  Settings,
+  Work,
+  workBySlugQuery,
+  GlobalSettings,
+} from 'lib/sanity.queries'
 import { GetStaticProps } from 'next'
 import type { SharedPageProps, Seo } from 'pages/_app'
 import WorkPage from 'components/Work'
@@ -13,11 +20,13 @@ import { QueryParams } from 'next-sanity'
 import { useLiveQuery } from 'next-sanity/preview'
 import { Layout } from 'components/layouts/Layout'
 import { urlForImage } from 'lib/sanity.image'
+import Footer from 'components/Footer'
 interface PageProps extends SharedPageProps {
   work: Work
   settings?: Settings
   params: QueryParams
   seo: Seo
+  globalSettings: GlobalSettings
 }
 
 interface Query {
@@ -30,6 +39,7 @@ export default function ProjectSlugRoute(props: PageProps) {
   return (
     <Layout seo={props.seo}>
       <WorkPage work={data} />
+      <Footer settings={props.globalSettings} />
     </Layout>
   )
 }
@@ -42,9 +52,10 @@ export const getStaticProps: GetStaticProps<PageProps, Query> = async (ctx) => {
   //Anything that's pulled from the CMS that needs to be on every page should use the settings
   //Function
 
-  const [settings, work] = await Promise.all([
+  const [settings, work, globalSettings] = await Promise.all([
     getSettings(client),
     getWorkBySlug(client, params.slug),
+    getGlobalSettings(client),
   ])
 
   const seo = {
@@ -63,6 +74,7 @@ export const getStaticProps: GetStaticProps<PageProps, Query> = async (ctx) => {
   return {
     props: {
       work,
+      globalSettings,
       params,
       settings,
       draftMode,

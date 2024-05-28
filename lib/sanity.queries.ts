@@ -14,6 +14,9 @@ const postFields = groq`
 `
 
 export const settingsQuery = groq`*[_type == "settings"][0]`
+export const globalSettingsQuery = groq`*[_type == "globalSettings"][0]{
+  ...,
+}`
 
 export const indexQuery = groq`
 *[_type == "post"] | order(date desc, _updatedAt desc) {
@@ -156,23 +159,31 @@ export interface Post {
 export type HomepageCaseStudies = (Work | Testimonial)[]
 
 export interface HomepageSettings {
+  heroTitle: string
   logoCloud: ImageAsset[]
   heroCarousel: ImageAsset[]
   caseStudies: HomepageCaseStudies
   testimonials: Testimonial[]
   heroTestimonial: Testimonial
-  dayRate: number
+  dayRate: {
+    USD: string
+    EUR: string
+    GBP: string
+  }
   flexPricing: {
+    title: string
     USD: string
     EUR: string
     GBP: string
   }
   partTimePricing: {
+    title: string
     USD: string
     EUR: string
     GBP: string
   }
   dedicatedPricing: {
+    title: string
     USD: string
     EUR: string
     GBP: string
@@ -230,4 +241,8 @@ export interface Testimonial {
   content: PortableTextBlock
   image: ImageAsset
   _type: string
+}
+
+export interface GlobalSettings {
+  footerTitle: string
 }

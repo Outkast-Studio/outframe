@@ -4,6 +4,7 @@ import {
   getClient,
   getSettings,
   getHomepageSettings,
+  getGlobalSettings,
 } from 'lib/sanity.client'
 import {
   Post,
@@ -12,6 +13,7 @@ import {
   allWorkQuery,
   HomepageSettings,
   homepageQuery,
+  GlobalSettings,
 } from 'lib/sanity.queries'
 import { GetStaticProps } from 'next'
 import { draftMode } from 'next/headers'
@@ -25,6 +27,7 @@ interface PageProps extends SharedPageProps {
   params: QueryParams
   homepageSettings: HomepageSettings
   seo: Seo
+  globalSettings: GlobalSettings
 }
 
 interface Query {
@@ -39,9 +42,14 @@ export default function Page(props: PageProps) {
   )
   const { work, draftMode } = props
 
+  console.log(props.globalSettings)
   return (
     <Layout seo={props.seo}>
-      <IndexPage work={data} homepageSettings={homepageSettings} />
+      <IndexPage
+        work={data}
+        homepageSettings={homepageSettings}
+        globalSettings={props.globalSettings}
+      />
     </Layout>
   )
 }
@@ -51,6 +59,7 @@ export const getStaticProps: GetStaticProps<PageProps, Query> = async (ctx) => {
   const client = getClient(draftMode ? { token: readToken } : undefined)
   const work = await getAllWork(client)
   const homepageSettings = await getHomepageSettings(client)
+  const globalSettings = await getGlobalSettings(client)
   const seo = {
     title: 'Outframe – Product Design Studio',
     description:
@@ -62,6 +71,7 @@ export const getStaticProps: GetStaticProps<PageProps, Query> = async (ctx) => {
   return {
     props: {
       work,
+      globalSettings,
       homepageSettings,
       params,
       draftMode,

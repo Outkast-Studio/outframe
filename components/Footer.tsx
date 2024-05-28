@@ -2,8 +2,9 @@ import React from 'react'
 import { clsx } from 'clsx'
 import Image from 'next/image'
 import Button from './UI/Button'
+import { GlobalSettings } from 'lib/sanity.queries'
 
-const Footer = () => {
+const Footer = ({ settings }: { settings: GlobalSettings }) => {
   const socials = [
     { name: 'Twitter', url: 'https://twitter.com/outframeco' },
     { name: 'LinkedIn', url: '#' },
@@ -37,7 +38,7 @@ const Footer = () => {
               'xl:text-[60px] xl:leading-[79.56px] xl:max-w-[800px]',
             )}
           >
-            Let&apos;s Build an Amazing product, Together
+            {settings.footerTitle}
           </h6>
           <p
             className={clsx(

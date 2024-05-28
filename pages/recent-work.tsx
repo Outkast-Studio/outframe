@@ -1,6 +1,14 @@
 import { readToken } from 'lib/sanity.api'
-import { getAllRecentWork, getClient } from 'lib/sanity.client'
-import { RecentWorkSettings, recentWorkSettingsQuery } from 'lib/sanity.queries'
+import {
+  getAllRecentWork,
+  getClient,
+  getGlobalSettings,
+} from 'lib/sanity.client'
+import {
+  RecentWorkSettings,
+  recentWorkSettingsQuery,
+  GlobalSettings,
+} from 'lib/sanity.queries'
 import { GetStaticProps } from 'next'
 import { QueryParams, SanityDocument } from 'next-sanity'
 import type { SharedPageProps } from 'pages/_app'
@@ -17,6 +25,7 @@ import { useSearchParams } from 'next/navigation'
 interface PageProps extends SharedPageProps {
   recentWork: RecentWorkSettings
   params: QueryParams
+  globalSettings: GlobalSettings
 }
 
 interface Query {
@@ -117,7 +126,7 @@ export default function Page(props: PageProps) {
           </section>
         </main>
         <div className={clsx('lg:hidden')}>
-          <Footer />
+          <Footer settings={props.globalSettings} />
         </div>
         <HorizontalScroll recentWork={data.recentWork} />
       </Layout>
@@ -128,13 +137,14 @@ export default function Page(props: PageProps) {
 export const getStaticProps: GetStaticProps<PageProps, Query> = async (ctx) => {
   const { draftMode = false, params = {} } = ctx
   const client = getClient(draftMode ? { token: readToken } : undefined)
-
+  const globalSettings = await getGlobalSettings(client)
   const recentWork = await getAllRecentWork(client)
 
   return {
     props: {
       recentWork,
       params,
+      globalSettings,
       draftMode,
       token: draftMode ? readToken : '',
     },

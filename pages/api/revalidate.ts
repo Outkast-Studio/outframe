@@ -119,6 +119,8 @@ async function queryStaleRoutes(
       return ['/recent-work']
     case 'testimonial':
       return ['/']
+    case 'footerSettings':
+      return await queryAllRoutes(client)
     case 'caseStudy':
       return await queryStaleWorkRoutes(client, body._id)
     default:
@@ -131,9 +133,17 @@ async function _queryAllRoutes(client: SanityClient): Promise<string[]> {
 }
 
 async function queryAllRoutes(client: SanityClient): Promise<StaleRoute[]> {
-  const slugs = await _queryAllRoutes(client)
-
-  return ['/', ...slugs.map((slug) => `/blog/${slug}` as StaleRoute)]
+  const postSlugs = await _queryAllRoutes(client)
+  const caseStudySlugs = await client.fetch(
+    groq`*[_type == "caseStudy"].slug.current`,
+  )
+  return [
+    '/',
+    ...postSlugs.map((slug) => `/blog/${slug}` as StaleRoute),
+    ...caseStudySlugs.map((slug) => `/case-studies/${slug}` as StaleRoute),
+    '/blog',
+    '/recent-work',
+  ]
 }
 
 async function mergeWithMoreStories(

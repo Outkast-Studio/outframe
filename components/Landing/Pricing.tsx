@@ -28,9 +28,15 @@ const Pricing = ({ settings }: { settings: HomepageSettings }) => {
     fetchUserLocation()
   }, [])
 
+  const dayRate = {
+    USD: settings.dayRate.USD,
+    EUR: settings.dayRate.EUR,
+    GBP: settings.dayRate.GBP,
+  }
+
   const pricing = [
     {
-      title: 'Part-time',
+      title: settings.flexPricing.title,
       daysPerWeek: '2 days / week',
       description: 'Best to design most projects in a reasonable timeframe.',
       USD: settings.flexPricing.USD,
@@ -38,7 +44,7 @@ const Pricing = ({ settings }: { settings: HomepageSettings }) => {
       GBP: settings.flexPricing.GBP,
     },
     {
-      title: 'Dedicated',
+      title: settings.partTimePricing.title,
       daysPerWeek: '3 days / week',
       description: 'Best for bigger projects or tighter deadlines.',
       USD: settings.partTimePricing.USD,
@@ -46,7 +52,7 @@ const Pricing = ({ settings }: { settings: HomepageSettings }) => {
       GBP: settings.partTimePricing.GBP,
     },
     {
-      title: 'Custom',
+      title: settings.dedicatedPricing.title,
       daysPerWeek: 'More days or fixed price',
       description:
         'Most suitable for big projects or if you prefer fixed price.',
@@ -97,7 +103,13 @@ const Pricing = ({ settings }: { settings: HomepageSettings }) => {
               'xl:text-[16px] xl:leading-[24px]',
             )}
           >
-            All plans have a rate of ${settings.dayRate}/day.
+            All plans have a rate of{' '}
+            {country === 'US'
+              ? dayRate.USD
+              : country === 'Europe'
+                ? dayRate.EUR
+                : dayRate.GBP}
+            /day.
           </p>
         </div>
 
@@ -256,7 +268,7 @@ function PricingCard({
           </h6>
         </div>
         <h6 className={clsx('text-[18px] leading-[27px]', 'lg:hidden')}>
-          {country === 'US' ? EUR : country === 'Europe' ? EUR : GBP}
+          {country === 'US' ? USD : country === 'Europe' ? EUR : GBP}
         </h6>
       </div>
       <Image

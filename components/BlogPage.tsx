@@ -361,7 +361,6 @@ const BlogPage = ({ post }: { post: Post }) => {
           </div>
         </div>
       )}
-      <Footer />
     </>
   )
 }

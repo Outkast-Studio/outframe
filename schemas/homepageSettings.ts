@@ -27,7 +27,13 @@ export default defineType({
         },
       ],
     }),
-
+    defineField({
+      name: 'heroTitle',
+      title: 'Hero Title',
+      type: 'string',
+      description: 'The title for the hero section',
+      validation: (Rule: any) => Rule.required(),
+    }),
     defineField({
       name: 'heroTestimonial',
       title: 'Hero Testimonial',
@@ -82,22 +88,49 @@ export default defineType({
     defineField({
       name: 'dayRate',
       title: 'Day Rate',
-      type: 'number',
-      description:
-        'The day rate for the service. Powers the "All plans have a rate of $XXX/day" text. ',
-      validation: (Rule: any) => Rule.required(),
-    }),
-
-    defineField({
-      name: 'flexPricing',
-      title: 'Part-time Pricing',
       type: 'object',
       fields: [
         defineField({
           name: 'USD',
+          title: 'Day rate in USD',
+          type: 'string',
+          description: 'The day rate in USD. Example $640',
+          validation: (Rule: any) => Rule.required(),
+        }),
+        defineField({
+          name: 'EUR',
+          title: 'Day rate in EUR',
+          type: 'string',
+          description: 'The  day rate in EUR. Example €640',
+          validation: (Rule: any) => Rule.required(),
+        }),
+        defineField({
+          name: 'GBP',
+          title: 'Day rate in GBP',
+          type: 'string',
+          description: 'The day rate in GBP. Example £640',
+          validation: (Rule: any) => Rule.required(),
+        }),
+      ],
+    }),
+
+    defineField({
+      name: 'flexPricing',
+      title: '1st Pricing Block',
+      type: 'object',
+      fields: [
+        defineField({
+          name: 'title',
+          title: 'Title',
+          type: 'string',
+          description: 'The title for the block',
+          validation: (Rule: any) => Rule.required(),
+        }),
+        defineField({
+          name: 'USD',
           title: 'Price in USD',
           type: 'string',
-          description: 'The price in USD. Exampel $5,200/m',
+          description: 'The price in USD. Example $5,200/m',
           validation: (Rule: any) => Rule.required(),
         }),
         defineField({
@@ -111,7 +144,7 @@ export default defineType({
           name: 'GBP',
           title: 'Price in GBP',
           type: 'string',
-          description: 'The price in USD. Exampel £5,200/m',
+          description: 'The price in USD. Example £5,200/m',
           validation: (Rule: any) => Rule.required(),
         }),
       ],
@@ -119,14 +152,21 @@ export default defineType({
 
     defineField({
       name: 'partTimePricing',
-      title: 'Dedicated Pricing',
+      title: '2nd Pricing Block',
       type: 'object',
       fields: [
+        defineField({
+          name: 'title',
+          title: 'Title',
+          type: 'string',
+          description: 'The title for the block',
+          validation: (Rule: any) => Rule.required(),
+        }),
         defineField({
           name: 'USD',
           title: 'Price in USD',
           type: 'string',
-          description: 'The price in USD. Exampel $5,200/m',
+          description: 'The price in USD. Example $5,200/m',
           validation: (Rule: any) => Rule.required(),
         }),
         defineField({
@@ -140,21 +180,28 @@ export default defineType({
           name: 'GBP',
           title: 'Price in GBP',
           type: 'string',
-          description: 'The price in GBP. Exampel £5,200/m',
+          description: 'The price in GBP. Example £5,200/m',
           validation: (Rule: any) => Rule.required(),
         }),
       ],
     }),
     defineField({
       name: 'dedicatedPricing',
-      title: 'Custom',
+      title: '3rd Pricing Block',
       type: 'object',
       fields: [
+        defineField({
+          name: 'title',
+          title: 'Title',
+          type: 'string',
+          description: 'The title for the block',
+          validation: (Rule: any) => Rule.required(),
+        }),
         defineField({
           name: 'USD',
           title: 'Price in USD',
           type: 'string',
-          description: 'The price in USD. Exampel $5,200/m',
+          description: 'The price in USD. Example $5,200/m',
           validation: (Rule: any) => Rule.required(),
         }),
         defineField({
@@ -168,7 +215,7 @@ export default defineType({
           name: 'GBP',
           title: 'Price in GBP',
           type: 'string',
-          description: 'The price in GBP. Exampel £5,200/m',
+          description: 'The price in GBP. Example £5,200/m',
           validation: (Rule: any) => Rule.required(),
         }),
       ],

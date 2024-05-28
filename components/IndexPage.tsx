@@ -1,4 +1,4 @@
-import { HomepageSettings, Work } from 'lib/sanity.queries'
+import { HomepageSettings, Work, GlobalSettings } from 'lib/sanity.queries'
 import Link from 'next/link'
 import { useLenis } from '@studio-freight/react-lenis'
 import { useEffect } from 'react'
@@ -24,9 +24,11 @@ import Background from './UI/Background'
 export default function Post({
   work,
   homepageSettings,
+  globalSettings,
 }: {
   work: Work[]
   homepageSettings: HomepageSettings
+  globalSettings: GlobalSettings
 }) {
   const router = useRouter()
   const searchParams = useSearchParams()
@@ -62,6 +64,7 @@ export default function Post({
         <Hero
           images={homepageSettings.heroCarousel}
           testimonial={homepageSettings.heroTestimonial}
+          title={homepageSettings.heroTitle}
         />
         <LogoCloud images={homepageSettings.logoCloud} />
         <CaseStudies caseStudies={homepageSettings.caseStudies} />
@@ -71,7 +74,7 @@ export default function Post({
         <Process />
         <Services />
         <Pricing settings={homepageSettings} />
-        <Footer />
+        <Footer settings={globalSettings} />
       </main>
     </div>
   )

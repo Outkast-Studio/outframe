@@ -1,6 +1,10 @@
 import { readToken } from 'lib/sanity.api'
-import { getAllBlogPosts, getClient } from 'lib/sanity.client'
-import { Post, allPostQuery } from 'lib/sanity.queries'
+import {
+  getAllBlogPosts,
+  getClient,
+  getGlobalSettings,
+} from 'lib/sanity.client'
+import { Post, allPostQuery, GlobalSettings } from 'lib/sanity.queries'
 import { GetStaticProps } from 'next'
 import { QueryParams, SanityDocument } from 'next-sanity'
 import type { SharedPageProps } from 'pages/_app'
@@ -18,6 +22,7 @@ import { useEffect } from 'react'
 interface PageProps extends SharedPageProps {
   posts: Post[]
   params: QueryParams
+  globalSettings: GlobalSettings
 }
 
 interface Query {
@@ -75,7 +80,7 @@ export default function Page(props: PageProps) {
           ))}
         </section>
       </main>
-      <Footer />
+      <Footer settings={props.globalSettings} />
     </Layout>
   )
 }
@@ -84,10 +89,12 @@ export const getStaticProps: GetStaticProps<PageProps, Query> = async (ctx) => {
   const { draftMode = false, params = {} } = ctx
   const client = getClient(draftMode ? { token: readToken } : undefined)
   const posts = await getAllBlogPosts(client)
+  const globalSettings = await getGlobalSettings(client)
 
   return {
     props: {
       posts,
+      globalSettings,
       params,
       draftMode,
       token: draftMode ? readToken : '',
