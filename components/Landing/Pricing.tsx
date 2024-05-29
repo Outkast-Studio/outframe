@@ -261,7 +261,7 @@ function PricingCard({
           </h6>
           <h6
             className={clsx(
-              'mono text-[12px] leading-[14.4px] h-fit tracking-[-0.2px] px-[10px] pt-[4px] pb-[3px] bg-[#EBE7E3] rounded-full uppercase',
+              'mono text-[14px] leading-[14.4px] h-fit tracking-[-0.2px] px-[10px] pt-[4px] pb-[3px] bg-[#EBE7E3] rounded-full uppercase',
             )}
           >
             {daysPerWeek}
@@ -325,7 +325,7 @@ function PricingCard({
       />
       {/* <button
         className={clsx(
-          'text-[12px] whitespace-nowrap hidden leading-[14.4px] tracking-[-0.2px] bg-accent monoMedium text-[#F7F7F7] px-[16px] py-[12px] rounded-[4px] h-fit mt-[32px] ml-[32px]',
+          'text-[14px] whitespace-nowrap hidden leading-[14.4px] tracking-[-0.2px] bg-accent monoMedium text-[#F7F7F7] px-[16px] py-[12px] rounded-[4px] h-fit mt-[32px] ml-[32px]',
           'lg:block ',
           'xl:text-[14px] xl:leading-[16.8px]',
         )}
@@ -343,7 +343,7 @@ function PricingCard({
           cb={() => {}}
           accent
           className={clsx(
-            'text-[12px] whitespace-nowrap hidden leading-[14.4px] tracking-[-0.2px] bg-accent monoMedium text-[#F7F7F7] px-[16px] py-[12px] rounded-[4px] h-fit mt-[32px] ml-[32px]',
+            'text-[14px] whitespace-nowrap hidden leading-[14.4px] tracking-[-0.2px] bg-accent monoMedium text-[#F7F7F7] px-[16px] py-[12px] rounded-[4px] h-fit mt-[32px] ml-[32px]',
             'lg:flex',
             'xl:text-[14px] xl:leading-[16.8px]',
           )}

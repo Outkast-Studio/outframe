@@ -52,7 +52,7 @@ const Services = () => {
     <section
       id={'services'}
       className={clsx(
-        'mt-[128px] mx-gutter geist text-mainTextborder-t-dividers border-t-[1px] ',
+        'pt-[128px] mx-gutter geist text-mainTextborder-t-dividers border-t-[1px] ',
         'md:flex',
         'lg:grid lg:grid-cols-12 lg:gap-x-columnGap',
       )}

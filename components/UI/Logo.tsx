@@ -73,10 +73,10 @@ const Logo = () => {
         fill="none"
         xmlns="http://www.w3.org/2000/svg"
         className={clsx(
-          'flex-shrink-0 bg-[#000000] relative z-[10] w-[24px]',
+          'flex-shrink-0  relative z-[10] w-[24px]',
           'transition-transform duration-[0.5s] ease-in-out-expo',
           hideLogoText && '!rotate-[-270deg]',
-          'lg:w-[28px]',
+          'lg:w-[28px] lg:bg-black',
         )}
       >
         <path

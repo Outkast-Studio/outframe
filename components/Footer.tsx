@@ -61,7 +61,7 @@ const Footer = ({ settings }: { settings: GlobalSettings }) => {
             {/* <button
               className={clsx(
                 'text-[14px] leading-[16.8px] whitespace-nowrap tracking-[-0.2px] bg-accent monoMedium text-[#F7F7F7] px-[18px] py-[12px] rounded-[4px] h-fit',
-                'lg:text-[12px] lg:leading-[14.4px]',
+                'lg:text-[14px] lg:leading-[14.4px]',
                 'xl:text-[14px] xl:leading-[16.8px]',
               )}
             >
@@ -73,14 +73,14 @@ const Footer = ({ settings }: { settings: GlobalSettings }) => {
               accent
               className={clsx(
                 'text-[14px] leading-[16.8px] whitespace-nowrap tracking-[-0.2px] bg-[#000] border- monoMedium text-[#F7F7F7] px-[18px] py-[12px] rounded-[4px] h-fit !border-[#3B3633]',
-                'lg:text-[12px] lg:leading-[14.4px]',
+                'lg:text-[14px] lg:leading-[14.4px]',
                 'xl:text-[14px] xl:leading-[16.8px]',
               )}
             />
             {/* <button
               className={clsx(
                 'text-[14px] leading-[16.8px] whitespace-nowrap tracking-[-0.2px] bg-none border- monoMedium text-[#F7F7F7] px-[18px] py-[12px] rounded-[4px] h-fit border-[#3B3633] border-[1px]',
-                'lg:text-[12px] lg:leading-[14.4px]',
+                'lg:text-[14px] lg:leading-[14.4px]',
                 'xl:text-[14px] xl:leading-[16.8px]',
               )}
             >
@@ -92,7 +92,7 @@ const Footer = ({ settings }: { settings: GlobalSettings }) => {
               footer
               className={clsx(
                 'text-[14px] leading-[16.8px] whitespace-nowrap tracking-[-0.2px] bg-[#000] border- monoMedium text-[#F7F7F7] px-[18px] py-[12px] rounded-[4px] h-fit !border-[#3B3633]',
-                'lg:text-[12px] lg:leading-[14.4px]',
+                'lg:text-[14px] lg:leading-[14.4px]',
                 'xl:text-[14px] xl:leading-[16.8px]',
               )}
             />
