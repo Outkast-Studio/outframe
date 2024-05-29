@@ -168,6 +168,7 @@ const Hero = ({ images, testimonial, title }: Props) => {
             )}
           >
             <Button
+              isHero
               text={'View plans'}
               cb={() =>
                 lenis.scrollTo('#pricing', {

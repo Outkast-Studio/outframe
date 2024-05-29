@@ -24,6 +24,8 @@ const FlickerText = ({ title, animationDelay, play, hover }: Props) => {
   useEffect(() => {
     if (play) {
       setVisible(true)
+    } else {
+      setVisible(false)
     }
   }, [play])
 
@@ -37,7 +39,7 @@ const FlickerText = ({ title, animationDelay, play, hover }: Props) => {
             animationDelay: `${letter.delay * 0.07}s`,
           }}
           className={clsx(
-            'animateFlicker',
+            'animateFlicker opacity-0',
             visible && 'opacity-100',
             hover && 'hoverInteraction',
           )}

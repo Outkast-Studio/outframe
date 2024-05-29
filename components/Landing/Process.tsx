@@ -4,6 +4,7 @@ import * as Accordion from '@radix-ui/react-accordion'
 import { useWindowSize } from 'hooks/useWindowSize'
 import { useThemeStore } from 'stores/themeStore'
 import Image from 'next/image'
+import FlickerText from 'components/UI/FlickerText'
 import SectionHeading from 'components/UI/SectionHeading'
 const Process = () => {
   const processItems = [
@@ -175,7 +176,9 @@ export function ProcessItem({
         </div>
       </Accordion.Content>
       <Accordion.Trigger
-        className={clsx('w-full relative accordionButton pr-[24px] ')}
+        className={clsx(
+          'w-full relative accordionButton pr-[24px] hoverParent',
+        )}
       >
         <div
           className={clsx(
@@ -304,8 +307,10 @@ function ProcessDesktopItem({
       <Accordion.Trigger
         ref={triggerRef}
         className={clsx(
-          'h-[408px] flex processTrigger justify-between relative geistMedium flex-col items-center pr-[32px] pl-[32px] accordionButton py-[16px]',
+          'h-[408px] flex processTrigger hoverParent justify-between relative geistMedium flex-col items-center  accordionButton py-[16px]',
           'lg:mx-auto',
+          'ml:px-[16px]',
+          'xxl:px-[32px]',
         )}
       >
         <div
@@ -324,10 +329,11 @@ function ProcessDesktopItem({
             'lg:text-[18px] lg:leading-[27px]',
           )}
         >
-          {name}
+          {/* {name} */}
+          <FlickerText title={name} play={true} animationDelay={0} hover />
         </h6>
 
-        <div className={clsx('w-[20px] h-[20px] relative ml-[24px]')}>
+        <div className={clsx('w-[20px] h-[20px] relative ml-[24px] itemIcon')}>
           <span
             className={clsx(
               'inline-block w-full h-[1px] bg-secondaryText absolute origin-center top-[50%] left-[50%] transform -translate-x-1/2 -translate-y-1/2 ',

@@ -2,7 +2,7 @@ import React, { useState, useEffect, use } from 'react'
 import { clsx } from 'clsx'
 import Image from 'next/image'
 import { useThemeStore } from 'stores/themeStore'
-
+import FlickerText from './FlickerText'
 const Cursor = () => {
   const isHoveringCaseStudy = useThemeStore(
     (state) => state.isHoveringCaseStudy,
@@ -35,8 +35,8 @@ const Cursor = () => {
     <>
       <div
         className={clsx(
-          'message text-white mono ease-[cubic-bezier(0.34, 0, 0.36, 1)] whitespace-nowrap z-[5] hidden origin-center',
-          'lg:flex lg:gap-x-[4px] bg-[#76777D] lg:px-[16px] lg:py-[10px] lg:rounded-[2px]',
+          'message text-white mono ease-[cubic-bezier(0.34, 0, 0.36, 1)] whitespace-nowrap z-[5] hidden origin-center mix-blend-exclusion',
+          'lg:flex lg:gap-x-[4px]  lg:px-[16px] lg:py-[10px] lg:rounded-[2px]',
           isHoveringCaseStudy && 'isHovering',
         )}
         style={{
@@ -49,9 +49,15 @@ const Cursor = () => {
           transition: 'scale 0.35s',
         }}
       >
-        <span className={clsx('bg-[#76777D] relative z-[2] arrowTransition')}>
-          Open
+        <span className={clsx('relative z-[2] arrowTransition uppercase')}>
+          {/* Open */}
+          <FlickerText
+            title="Open"
+            animationDelay={0}
+            play={isHoveringCaseStudy}
+          />
         </span>
+
         <Image
           src={'/icons/recentWorkArrowWhite.svg'}
           width={12}
@@ -62,8 +68,8 @@ const Cursor = () => {
       </div>
       <div
         className={clsx(
-          'message text-white mono ease-[cubic-bezier(0.34, 0, 0.36, 1)] whitespace-nowrap z-[5] hidden origin-center',
-          'lg:flex lg:gap-x-[4px] bg-[#76777D] lg:px-[16px] lg:py-[10px] lg:rounded-[2px]',
+          'message text-white mono ease-[cubic-bezier(0.34, 0, 0.36, 1)] whitespace-nowrap z-[5] hidden origin-center mix-blend-exclusion',
+          'lg:flex lg:gap-x-[4px]  lg:px-[16px] lg:py-[10px] lg:rounded-[2px]',
           isHoveringHeroImage && 'isHovering',
         )}
         style={{
@@ -76,8 +82,13 @@ const Cursor = () => {
           transition: 'scale 0.35s',
         }}
       >
-        <span className={clsx('bg-[#76777D] relative z-[2] arrowTransition')}>
-          Recent Work
+        <span className={clsx('relative z-[2] arrowTransition uppercase')}>
+          {/* Recent Work */}
+          <FlickerText
+            title="Recent work"
+            animationDelay={0}
+            play={isHoveringHeroImage}
+          />
         </span>
         <Image
           src={'/icons/recentWorkArrowWhite.svg'}
@@ -89,8 +100,8 @@ const Cursor = () => {
       </div>
       <div
         className={clsx(
-          'message mono text-white ease-[cubic-bezier(0.34, 0, 0.36, 1)] whitespace-nowrap z-[5] hidden origin-center',
-          'lg:flex lg:gap-x-[4px] bg-[#76777D] lg:px-[16px] lg:py-[10px] lg:rounded-[2px]',
+          'message mono text-white ease-[cubic-bezier(0.34, 0, 0.36, 1)] whitespace-nowrap z-[5] hidden origin-center mix-blend-exclusion',
+          'lg:flex lg:gap-x-[4px]  lg:px-[16px] lg:py-[10px] lg:rounded-[2px]',
           isHoveringBlog && 'isHovering',
         )}
         style={{
@@ -103,8 +114,9 @@ const Cursor = () => {
           transition: 'scale 0.35s',
         }}
       >
-        <span className={clsx('bg-[#76777D]  relative z-[2] arrowTransition')}>
-          Read
+        <span className={clsx('relative z-[2] arrowTransition uppercase')}>
+          {/* Read */}
+          <FlickerText title="Read" animationDelay={0} play={isHoveringBlog} />
         </span>
         <Image
           src={'/icons/recentWorkArrowWhite.svg'}

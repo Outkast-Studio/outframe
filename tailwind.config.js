@@ -39,6 +39,7 @@ module.exports = {
         lg: '1024px',
         ml: '1350px',
         xl: '1600px',
+        xxl: '1920px',
       },
       fontFamily: {
         monoRegular: ['Semi-Mono', 'monospace'],

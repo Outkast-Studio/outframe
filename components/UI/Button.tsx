@@ -8,35 +8,37 @@ type Props = {
   accent?: boolean
   className?: string
   footer?: boolean
+  isHero?: boolean
 }
 
-const Button = ({ text, cb, accent, className, footer }: Props) => {
+const Button = ({ text, cb, accent, className, footer, isHero }: Props) => {
   return (
     <button
       onClick={() => {
         cb()
       }}
       className={clsx(
-        'rounded-[4px] monoMedium px-[18px] py-[12px] text-[14px] leading-[16.8px] tracking-[-0.2px] hoverButton flex items-center',
+        'rounded-[4px] monoMedium px-[18px] py-[12px] text-[14px] leading-[16.8px] tracking-[-0.2px] hoverButton flex items-center transition-colors duration-[0.35s] ease-in',
         accent
-          ? 'bg-accent text-background'
+          ? 'bg-accent text-background hover:bg-[#EE4300]'
           : 'bg-background text-mainText border-[1px] border-dividers',
         footer && 'bg-black',
         className,
-        'hover:opacity-90 transition-opacity duration-300 ease-in-out',
+        // 'hover:opacity-90 transition-opacity duration-300 ease-in-out',
       )}
     >
       <span
         className={clsx(
           ' relative z-[2] inline-block translate-x-[6px] hoverButtonText buttonTransiton',
-          accent ? 'bg-accent' : 'bg-background',
+          accent
+            ? 'bg-accent hoverTextAccent'
+            : 'bg-background hoverTextStandard',
           footer && 'bg-black text-[#F7F7F7]',
         )}
       >
         {text}
       </span>
-
-      {accent || footer ? (
+      {(accent || footer) && (
         <Image
           src={'/icons/recentWorkArrowWhite.svg'}
           width={12}
@@ -44,9 +46,24 @@ const Button = ({ text, cb, accent, className, footer }: Props) => {
           alt={'arrow'}
           className={clsx(
             'relative z-[1] translate-x-[-10px] buttonTransiton hoverArrowButton',
+            isHero && 'hidden',
           )}
         />
-      ) : (
+      )}
+
+      {isHero && (
+        <Image
+          src={'/icons/downArrowOutframe.svg'}
+          width={10}
+          height={10}
+          alt={'arrow'}
+          className={clsx(
+            'relative z-[1] translate-x-[-10px] buttonTransiton hoverArrowButton',
+          )}
+        />
+      )}
+
+      {!isHero && !accent && !footer && (
         <Image
           src={'/icons/recentWorkArrow.svg'}
           width={10}

@@ -2,6 +2,7 @@ import React from 'react'
 import { clsx } from 'clsx'
 import * as Accordion from '@radix-ui/react-accordion'
 import SectionHeading from 'components/UI/SectionHeading'
+import FlickerText from 'components/UI/FlickerText'
 const Services = () => {
   const services = [
     {
@@ -109,7 +110,9 @@ function ServiceItem({
       value={name}
       className={clsx('border-b-[1px] border-t-dividers accordionItem ')}
     >
-      <Accordion.Trigger className={clsx('w-full relative accordionButton ')}>
+      <Accordion.Trigger
+        className={clsx('w-full relative accordionButton hoverParent')}
+      >
         <div
           className={clsx(
             'pb-[16px] pt-[28px] flex justify-between items-center w-full',
@@ -125,7 +128,8 @@ function ServiceItem({
               'md:text-[20px] md:leading-[28px]',
             )}
           >
-            {name}
+            {/* {name} */}
+            <FlickerText title={name} animationDelay={0} play={true} hover />
           </h6>
           <div className={clsx('w-[20px] h-[20px] relative')}>
             <span
