@@ -162,8 +162,8 @@ export default function Post({ work }: { work: Work }) {
         </section>
         <section
           className={clsx(
-            'mt-[40px] border-t-[1px] border-dividers pt-[20px]',
-            'lg:grid lg:grid-cols-12  lg:pt-[40px]',
+            'mt-[120px] border-t-[1px] border-dividers pt-[20px]',
+            'lg:grid lg:grid-cols-12  lg:pt-[40px] lg:mt-[178px]',
           )}
         >
           <h6

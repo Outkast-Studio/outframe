@@ -6,9 +6,9 @@ import { GlobalSettings } from 'lib/sanity.queries'
 
 const Footer = ({ settings }: { settings: GlobalSettings }) => {
   const socials = [
-    { name: 'Twitter', url: 'https://twitter.com/outframeco' },
-    { name: 'LinkedIn', url: '#' },
-    { name: 'Dribbble', url: 'https://dribbble.com/creativetim' },
+    { name: 'Twitter', url: 'https://twitter.com/VytasBu' },
+    { name: 'LinkedIn', url: 'https://www.linkedin.com/in/vytasbu/' },
+    { name: 'Dribbble', url: 'https://dribbble.com/outframe' },
   ]
   return (
     <footer
@@ -58,44 +58,34 @@ const Footer = ({ settings }: { settings: GlobalSettings }) => {
               'xl:mb-[92px]',
             )}
           >
-            {/* <button
-              className={clsx(
-                'text-[14px] leading-[16.8px] whitespace-nowrap tracking-[-0.2px] bg-accent monoMedium text-[#F7F7F7] px-[18px] py-[12px] rounded-[4px] h-fit',
-                'lg:text-[14px] lg:leading-[14.4px]',
-                'xl:text-[14px] xl:leading-[16.8px]',
-              )}
+            <a
+              href={'https://cal.com/outframe/intro'}
+              target="_blank"
+              rel={'noreferrer'}
             >
-              Book a Call
-            </button> */}
-            <Button
-              text={'Book a Call'}
-              cb={() => {}}
-              accent
-              className={clsx(
-                'text-[14px] leading-[16.8px] whitespace-nowrap tracking-[-0.2px] bg-[#000] border- monoMedium text-[#F7F7F7] px-[18px] py-[12px] rounded-[4px] h-fit !border-[#3B3633]',
-                'lg:text-[14px] lg:leading-[14.4px]',
-                'xl:text-[14px] xl:leading-[16.8px]',
-              )}
-            />
-            {/* <button
-              className={clsx(
-                'text-[14px] leading-[16.8px] whitespace-nowrap tracking-[-0.2px] bg-none border- monoMedium text-[#F7F7F7] px-[18px] py-[12px] rounded-[4px] h-fit border-[#3B3633] border-[1px]',
-                'lg:text-[14px] lg:leading-[14.4px]',
-                'xl:text-[14px] xl:leading-[16.8px]',
-              )}
-            >
-              Contact Us
-            </button> */}
-            <Button
-              text={'Contact Us'}
-              cb={() => {}}
-              footer
-              className={clsx(
-                'text-[14px] leading-[16.8px] whitespace-nowrap tracking-[-0.2px] bg-[#000] border- monoMedium text-[#F7F7F7] px-[18px] py-[12px] rounded-[4px] h-fit !border-[#3B3633]',
-                'lg:text-[14px] lg:leading-[14.4px]',
-                'xl:text-[14px] xl:leading-[16.8px]',
-              )}
-            />
+              <Button
+                text={'Book a Call'}
+                cb={() => {}}
+                accent
+                className={clsx(
+                  'text-[14px] leading-[16.8px] whitespace-nowrap tracking-[-0.2px] bg-[#000] border- monoMedium text-[#F7F7F7] px-[18px] py-[12px] rounded-[4px] h-fit !border-[#3B3633]',
+                  'lg:text-[14px] lg:leading-[14.4px]',
+                  'xl:text-[14px] xl:leading-[16.8px]',
+                )}
+              />
+            </a>
+            <a href={'mailto:vytas@outframe.co'}>
+              <Button
+                text={'Contact Us'}
+                cb={() => {}}
+                footer
+                className={clsx(
+                  'text-[14px] leading-[16.8px] whitespace-nowrap tracking-[-0.2px] bg-[#000] border- monoMedium text-[#F7F7F7] px-[18px] py-[12px] rounded-[4px] h-fit !border-[#3B3633]',
+                  'lg:text-[14px] lg:leading-[14.4px]',
+                  'xl:text-[14px] xl:leading-[16.8px]',
+                )}
+              />
+            </a>
           </div>
           <div
             className={clsx(
@@ -107,6 +97,8 @@ const Footer = ({ settings }: { settings: GlobalSettings }) => {
               <a
                 key={index}
                 href={social.url}
+                target="_blank"
+                rel="noreferrer"
                 className={clsx(
                   'text-[14px] leading-[16.8px] text-[#979590] geist flex gap-x-[4px]',
                 )}
@@ -178,6 +170,8 @@ const Footer = ({ settings }: { settings: GlobalSettings }) => {
               <a
                 key={index}
                 href={social.url}
+                target="_blank"
+                rel="noreferrer"
                 className={clsx(
                   'text-[14px] leading-[16.8px] text-[white] opacity-[0.65] geist flex gap-x-[4px] transition-opacity duration-200',
                   'hover:opacity-100',

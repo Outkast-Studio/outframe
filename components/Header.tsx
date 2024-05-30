@@ -98,9 +98,9 @@ const Header = () => {
   ]
 
   const socials = [
-    { name: 'Twitter', url: 'https://twitter.com/creativetim' },
-    { name: 'LinkedIn', url: 'https://www.facebook.com/creativetim' },
-    { name: 'Dribbble', url: 'https://dribbble.com/creativetim' },
+    { name: 'Twitter', url: 'https://twitter.com/VytasBu' },
+    { name: 'LinkedIn', url: 'https://www.linkedin.com/in/vytasbu/' },
+    { name: 'Dribbble', url: 'https://dribbble.com/outframe' },
   ]
 
   const menuButtonVariants = {
