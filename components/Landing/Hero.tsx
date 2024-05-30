@@ -12,6 +12,7 @@ import { useLenis } from '@studio-freight/react-lenis'
 import HeroImage from 'components/UI/HeroImage'
 import Button from 'components/UI/Button'
 import homepageSettings from 'schemas/homepageSettings'
+import { useWindowSize } from 'hooks/useWindowSize'
 
 type Props = {
   images: ImageAsset[]
@@ -30,7 +31,7 @@ const Hero = ({ images, testimonial, title }: Props) => {
   const setIsHoveringHeroImage = useThemeStore(
     (state) => state.setIsHoveringHeroImage,
   )
-
+  const { width } = useWindowSize()
   const lenis = useLenis()
   const h1Variants = {
     initial: {},
@@ -57,7 +58,7 @@ const Hero = ({ images, testimonial, title }: Props) => {
 
   const h1ChildrenVariants = {
     initial: {
-      y: 60,
+      y: '4.4vw',
     },
     animate: {
       y: 0,
@@ -68,6 +69,18 @@ const Hero = ({ images, testimonial, title }: Props) => {
     },
   }
 
+  const h1ChildrenVariantsMobile = {
+    initial: {
+      y: 60,
+    },
+    animate: {
+      y: 0,
+      transition: {
+        duration: 0.35,
+        ease: [0.22, 0.61, 0.36, 1],
+      },
+    },
+  }
   const imageVariants = {
     initial: {
       clipPath: 'inset(100% 0 0 0)',
@@ -134,8 +147,14 @@ const Hero = ({ images, testimonial, title }: Props) => {
               )}
             >
               <motion.span
+                variants={h1ChildrenVariantsMobile}
+                className={clsx('inline-block', 'lg:hidden')}
+              >
+                {word}&nbsp;
+              </motion.span>
+              <motion.span
                 variants={h1ChildrenVariants}
-                className={clsx('inline-block')}
+                className={clsx('hidden', 'lg:inline-block')}
               >
                 {word}&nbsp;
               </motion.span>
