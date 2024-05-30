@@ -38,6 +38,7 @@ const Pricing = ({ settings }: { settings: HomepageSettings }) => {
     {
       title: settings.flexPricing.title,
       daysPerWeek: '2 days / week',
+      daysPerWeekMobile: '2 days / week',
       description: 'Best to design most projects in a reasonable timeframe.',
       USD: settings.flexPricing.USD,
       EUR: settings.flexPricing.EUR,
@@ -46,6 +47,7 @@ const Pricing = ({ settings }: { settings: HomepageSettings }) => {
     {
       title: settings.partTimePricing.title,
       daysPerWeek: '3 days / week',
+      daysPerWeekMobile: '3 days / week',
       description: 'Best for bigger projects or tighter deadlines.',
       USD: settings.partTimePricing.USD,
       EUR: settings.partTimePricing.EUR,
@@ -54,6 +56,7 @@ const Pricing = ({ settings }: { settings: HomepageSettings }) => {
     {
       title: settings.dedicatedPricing.title,
       daysPerWeek: 'More or fixed price',
+      daysPerWeekMobile: 'Fixed price',
       description:
         'Most suitable for big projects or if you prefer fixed price.',
       USD: settings.dedicatedPricing.USD,
@@ -217,6 +220,7 @@ export default Pricing
 function PricingCard({
   title,
   daysPerWeek,
+  daysPerWeekMobile,
   description,
   USD,
   EUR,
@@ -225,6 +229,7 @@ function PricingCard({
 }: {
   title: string
   daysPerWeek: string
+  daysPerWeekMobile: string
   description: string
   USD: string
   EUR: string
@@ -261,10 +266,19 @@ function PricingCard({
           </h6>
           <h6
             className={clsx(
-              'mono text-[14px] leading-[14.4px] h-fit tracking-[-0.2px] px-[10px] pt-[4px] pb-[3px] bg-[#EBE7E3] rounded-full uppercase',
+              'mono hidden text-[12px] leading-[14.4px] h-fit tracking-[-0.2px] px-[10px] pt-[4px] pb-[3px] bg-[#EBE7E3] rounded-full uppercase',
+              'lg:block',
             )}
           >
             {daysPerWeek}
+          </h6>
+          <h6
+            className={clsx(
+              'mono text-[12px] leading-[14.4px] h-fit tracking-[-0.2px] px-[10px] pt-[4px] pb-[3px] bg-[#EBE7E3] rounded-full uppercase',
+              'lg:hidden',
+            )}
+          >
+            {daysPerWeekMobile}
           </h6>
         </div>
         <h6 className={clsx('text-[18px] leading-[27px]', 'lg:hidden')}>

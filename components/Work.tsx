@@ -98,7 +98,7 @@ export default function Post({ work }: { work: Work }) {
                   <div
                     key={`role-${role}`}
                     className={clsx(
-                      'py-[4px] px-[10px] font-semiMono uppercase text text-[14px] leading-[14.4px] tracking-[-0.2px] bg-[#EBE7E3] rounded-full whitespace-nowrap',
+                      'py-[4px] px-[10px] font-semiMono uppercase text text-[12px] leading-[14.4px] tracking-[-0.2px] bg-[#EBE7E3] rounded-full whitespace-nowrap',
                     )}
                   >
                     {role}

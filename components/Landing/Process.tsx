@@ -149,7 +149,7 @@ export function ProcessItem({
           <div className={clsx('flex justify-between')}>
             <h6
               className={clsx(
-                'bg-[#EBE7E3] w-fit uppercase text-accent px-[10px] h-[22px] flex items-center rounded-full text-[14px] leading-[14.4px] tracking-[-0.2px] mono',
+                'bg-[#EBE7E3] w-fit uppercase text-accent px-[10px] h-[22px] flex items-center rounded-full text-[12px] leading-[14.4px] tracking-[-0.2px] mono',
               )}
             >
               <span>STEP {index + 1}</span>
@@ -275,7 +275,7 @@ function ProcessDesktopItem({
           <div className={clsx('flex justify-between')}>
             <h6
               className={clsx(
-                'mono text-[14px] leading-[14.4px] bg-[#EBE7E3] rounded-full w-fit px-[10px] py-[4px] h-fit text-accent',
+                'mono text-[12px] leading-[14.4px] bg-[#EBE7E3] rounded-full w-fit px-[10px] py-[4px] h-fit text-accent',
               )}
             >
               STEP {index + 1}
@@ -292,7 +292,7 @@ function ProcessDesktopItem({
           >
             <h6
               className={clsx(
-                'text-sansMedium text-[19px] leading-[26.6px] tracking-[-0.1px] text-mainText mb-[24px]',
+                'geistMedium text-[19px] leading-[26.6px] tracking-[-0.1px] text-mainText mb-[24px]',
               )}
             >
               {name}

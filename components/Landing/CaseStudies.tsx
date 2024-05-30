@@ -41,7 +41,7 @@ const CaseStudies = ({ caseStudies }: { caseStudies: any[] }) => {
           'lg:justify-start gap-x-[12px] md:hidden',
         )}
       >
-        <h2 className={clsx('')}>
+        <h2 className={clsx('text-mainText')}>
           <SectionHeading text={'Case Studies'} />
         </h2>
         <span className={clsx('hidden text-tertiaryText', 'lg:block')}>/</span>
@@ -76,7 +76,7 @@ const CaseStudies = ({ caseStudies }: { caseStudies: any[] }) => {
             'md:justify-start gap-x-[12px] md:flex md:h-fit',
           )}
         >
-          <h2 className={clsx('')}>
+          <h2 className={clsx('text-mainText')}>
             <SectionHeading text={'Case Studies'} />
           </h2>
           <span className={clsx('hidden text-tertiaryText', 'md:block')}>

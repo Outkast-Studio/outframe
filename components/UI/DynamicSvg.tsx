@@ -1,5 +1,6 @@
 import React, { use, useEffect, useState } from 'react'
 import DOMPurify from 'dompurify'
+import { clsx } from 'clsx'
 
 type Props = {
   svg: string
@@ -13,7 +14,12 @@ const DynamicSvg = ({ svg }: Props) => {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
 
-  return <div dangerouslySetInnerHTML={{ __html: svgContent }} />
+  return (
+    <div
+      className={clsx('svgContainer')}
+      dangerouslySetInnerHTML={{ __html: svgContent }}
+    />
+  )
 }
 
 export default DynamicSvg

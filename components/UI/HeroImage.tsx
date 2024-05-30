@@ -6,6 +6,7 @@ import { clsx } from 'clsx'
 
 const ImageRotator = ({ images, duration = 3000 }) => {
   const [currentImageIndex, setCurrentImageIndex] = useState(0)
+  const [isVisible, setIsVisible] = useState(false)
 
   useEffect(() => {
     const interval = setInterval(() => {
@@ -15,8 +16,27 @@ const ImageRotator = ({ images, duration = 3000 }) => {
     return () => clearInterval(interval)
   }, [images.length, duration])
 
+  const handleMouseEnter = () => {
+    setIsVisible(true)
+  }
+
+  const handleMouseLeave = () => {
+    setIsVisible(false)
+  }
+
   return (
-    <div className="relative w-full h-fit">
+    <div
+      className="relative w-full h-fit"
+      onMouseEnter={handleMouseEnter}
+      onMouseLeave={handleMouseLeave}
+    >
+      <div
+        className={clsx(
+          'absolute z-[2] bg-black opacity-[0] w-full h-full transition-opacity duration-[0.3s]',
+          isVisible && '!opacity-[0.15]',
+        )}
+      ></div>
+
       <Image
         src={urlForImage(images[0]).url()}
         width={1920}

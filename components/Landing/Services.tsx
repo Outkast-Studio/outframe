@@ -53,13 +53,13 @@ const Services = () => {
       id={'services'}
       className={clsx(
         'pt-[128px] mx-gutter geist text-mainTextborder-t-dividers border-t-[1px] ',
-        'md:flex',
+        'md:flex md:pt-[0px] md:mt-[128px]',
         'lg:grid lg:grid-cols-12 lg:gap-x-columnGap',
       )}
     >
       <h6
         className={clsx(
-          'w-full pt-[20px]  monoMedium tracking-[-0.2px] uppercase text-[20px] leading-[24px]',
+          'w-full pt-[20px]  monoMedium tracking-[-0.2px] uppercase text-[20px] leading-[24px] text-mainText',
           'md:pt-[40px]',
           'lg:col-span-4',
           'xl:text-[24px] xl:leading-[33.6px]',

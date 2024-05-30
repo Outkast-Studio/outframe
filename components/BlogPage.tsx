@@ -222,14 +222,14 @@ const BlogPage = ({ post }: { post: Post }) => {
               <div className={clsx('flex gap-x-[8px] h-fit')}>
                 <span
                   className={clsx(
-                    'text-[14px] leading-[14.4px] tracking-[-0.2px] bg-[#EBE7E3] px-[10px] py-[4px] mono rounded-full uppercase',
+                    'text-[12px] leading-[14.4px] tracking-[-0.2px] bg-[#EBE7E3] px-[10px] py-[4px] mono rounded-full uppercase',
                   )}
                 >
                   {formattedDate(post.date && post.date)}
                 </span>
                 <span
                   className={clsx(
-                    'text-[14px] leading-[14.4px] tracking-[-0.2px] text-background px-[10px] py-[4px] mono rounded-full uppercase bg-accent',
+                    'text-[12px] leading-[14.4px] tracking-[-0.2px] text-background px-[10px] py-[4px] mono rounded-full uppercase bg-accent',
                   )}
                 >
                   {post.readTime && post.readTime} min read

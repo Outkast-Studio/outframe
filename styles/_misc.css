@@ -260,3 +260,23 @@ body {
 .hoverButton:hover .hoverTextAccent {
   background: #ee4300;
 }
+
+.svgContainer svg {
+  width: 100%;
+}
+
+.svgContainer {
+  width: 27%;
+  /* width: 30%; */
+}
+
+@media (min-width: 768px) {
+  .svgContainer svg {
+    width: unset;
+  }
+
+  .svgContainer {
+    width: unset;
+    /* width: 30%; */
+  }
+}

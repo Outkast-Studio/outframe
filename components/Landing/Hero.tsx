@@ -103,7 +103,7 @@ const Hero = ({ images, testimonial, title }: Props) => {
     <section
       className={clsx(
         'pt-[183px] px-gutter geist',
-        'lg:pt-[180px]',
+        'lg:pt-[35vh]',
         'xl:pt-[35vh]',
       )}
     >
@@ -120,8 +120,8 @@ const Hero = ({ images, testimonial, title }: Props) => {
           className={clsx(
             'text-[36px] leading-[43.2px] uppercase tracking-[-0.2px] monoMedium',
             'md:w-[120%]',
-            'lg:text-[45px] lg:leading-[45px]',
-            'xl:text-[76px] xl:leading-[91.2px] xl:col-span-7 xl:w-full xl:tracking-[-0.4px]',
+            'lg:text-[3.4vw] lg:leading-[3.4vw]',
+            'xl:text-[4.4vw] xl:leading-[4.4vw] xl:col-span-7 xl:w-full xl:tracking-[-4px]',
           )}
         >
           {title.split(' ').map((word, index) => (
@@ -129,8 +129,8 @@ const Hero = ({ images, testimonial, title }: Props) => {
               key={'hero-title' + index}
               className={clsx(
                 'overflow-y-hidden inline-block h-[33px]',
-                'lg:h-[45px]',
-                ' xl:h-[70px]',
+                'lg:h-[3.4vw]',
+                ' xl:h-[4.4vw]',
               )}
             >
               <motion.span

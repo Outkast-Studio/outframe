@@ -217,7 +217,7 @@ const Header = () => {
             >
               <ul
                 className={clsx(
-                  'flex gap-x-[32px] uppercase text-[14px] leading-[14.4px] mono text-[#fff]',
+                  'flex gap-x-[32px] uppercase text-[14px] leading-[14.4px] monoMedium text-[#fff]',
                   'lg:text-[14px] lg:leading-[16.8px]',
                 )}
               >
