@@ -11,6 +11,7 @@ import FlickerText from 'components/UI/FlickerText'
 import { useWindowSize } from 'hooks/useWindowSize'
 import MobileMenu from './UI/MobileMenu'
 import { useSearchParams } from 'next/navigation'
+import useScrollTop from 'hooks/useScrollTop'
 
 const Header = () => {
   const menuOpen = useThemeStore((state) => state.menuOpen)
@@ -22,6 +23,7 @@ const Header = () => {
   const [isRecentWork, setIsRecentWork] = useState(false)
   const searchParams = useSearchParams()
   const prev = searchParams.get('recent-work')
+  const scrollTop = useScrollTop()
 
   const menuItems = [
     {
@@ -217,8 +219,9 @@ const Header = () => {
             >
               <ul
                 className={clsx(
-                  'flex gap-x-[32px] uppercase text-[14px] leading-[14.4px] monoMedium text-[#fff]',
+                  'flex gap-x-[32px] uppercase text-[14px] leading-[14.4px] monoMedium transition-colors duration-300',
                   'lg:text-[14px] lg:leading-[16.8px]',
+                  scrollTop ? 'text-[#fff]' : 'text-[#615D5C]',
                 )}
               >
                 {menuItems.map((item, index) => (

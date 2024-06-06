@@ -37,20 +37,19 @@ const Cursor = () => {
         className={clsx(
           'message text-white mono ease-[cubic-bezier(0.34, 0, 0.36, 1)] whitespace-nowrap z-[5] hidden origin-center mix-blend-exclusion',
           'lg:flex lg:gap-x-[4px]  lg:px-[16px] lg:py-[10px] lg:rounded-[2px] text-[24px]',
-          isHoveringCaseStudy && 'isHovering',
+          isHoveringCaseStudy && 'isHovering ',
         )}
         style={{
           position: 'fixed',
           pointerEvents: 'none',
           userSelect: 'none',
-          top: position.y + 15,
-          left: position.x + 15,
+          top: position.y - 25,
+          left: position.x - 35,
           scale: 0,
           transition: 'scale 0.35s',
         }}
       >
-        <span className={clsx('relative z-[2] arrowTransition uppercase')}>
-          {/* Open */}
+        {/* <span className={clsx('relative z-[2] arrowTransition uppercase')}>
           <FlickerText
             title="Open"
             animationDelay={0}
@@ -64,7 +63,15 @@ const Cursor = () => {
           height={12}
           alt={'arrow'}
           className={clsx('relative z-[1]  arrowTransition')}
-        />
+        /> */}
+        <div className={clsx('bg-[#fff] p-[10px] rounded-[2.22px]')}>
+          <Image
+            src={'/icons/plus-large.svg'}
+            width={20}
+            height={20}
+            alt={'plusIcon'}
+          />
+        </div>
       </div>
       <div
         className={clsx(
@@ -76,27 +83,20 @@ const Cursor = () => {
           position: 'fixed',
           pointerEvents: 'none',
           userSelect: 'none',
-          top: position.y + 15,
-          left: position.x + 15,
+          top: position.y - 25,
+          left: position.x - 35,
           scale: 0,
           transition: 'scale 0.35s',
         }}
       >
-        <span className={clsx('relative z-[2] arrowTransition uppercase')}>
-          {/* Recent Work */}
-          <FlickerText
-            title="Recent work"
-            animationDelay={0}
-            play={isHoveringHeroImage}
+        <div className={clsx('bg-[#fff] p-[10px] rounded-[2.22px]')}>
+          <Image
+            src={'/icons/arrow-right.svg'}
+            width={20}
+            height={20}
+            alt={'plusIcon'}
           />
-        </span>
-        <Image
-          src={'/icons/recentWorkArrowWhite.svg'}
-          width={12}
-          height={12}
-          alt={'arrow'}
-          className={clsx('relative z-[1]  arrowTransition')}
-        />
+        </div>
       </div>
       <div
         className={clsx(
@@ -108,23 +108,20 @@ const Cursor = () => {
           position: 'fixed',
           pointerEvents: 'none',
           userSelect: 'none',
-          top: position.y + 15,
-          left: position.x + 15,
+          top: position.y - 25,
+          left: position.x - 35,
           scale: 0,
           transition: 'scale 0.35s',
         }}
       >
-        <span className={clsx('relative z-[2] arrowTransition uppercase')}>
-          {/* Read */}
-          <FlickerText title="Read" animationDelay={0} play={isHoveringBlog} />
-        </span>
-        <Image
-          src={'/icons/recentWorkArrowWhite.svg'}
-          width={12}
-          height={12}
-          alt={'arrow'}
-          className={clsx('relative z-[1] arrowTransition')}
-        />
+        <div className={clsx('bg-[#fff] p-[10px] rounded-[2.22px]')}>
+          <Image
+            src={'/icons/plus-large.svg'}
+            width={20}
+            height={20}
+            alt={'plusIcon'}
+          />
+        </div>
       </div>
     </>
   )

@@ -60,11 +60,18 @@ export default function App({
     setIsHoveringBlog(false)
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [router.pathname])
+  const isHoveringBlog = useThemeStore((state) => state.isHoveringBlog)
+  const isHoveringHeroImage = useThemeStore(
+    (state) => state.isHoveringHeroImage,
+  )
+  const isHoveringCaseStudy = useThemeStore(
+    (state) => state.isHoveringCaseStudy,
+  )
 
   return (
     <div
       className={clsx(
-        'bg-background relative min-h-[100vh]',
+        'bg-background relative min-h-[100vh] ',
         !router.pathname.includes('/blog/') && 'overflow-hidden',
       )}
     >

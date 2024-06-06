@@ -117,7 +117,7 @@ const Hero = ({ images, testimonial, title }: Props) => {
       className={clsx(
         'pt-[183px] px-gutter geist',
         'lg:pt-[35vh]',
-        'xl:pt-[35vh]',
+        'xl:pt-[40vh]',
       )}
     >
       <div
@@ -131,13 +131,14 @@ const Hero = ({ images, testimonial, title }: Props) => {
           initial="initial"
           animate={introVisible ? 'initial' : 'animate'}
           className={clsx(
-            'text-[36px] leading-[43.2px] uppercase tracking-[-0.2px] monoMedium',
+            'text-[36px] leading-[43.2px] uppercase tracking-[-0.2px] monoMedium text-mainText',
             'md:w-[120%]',
             'lg:text-[3.4vw] lg:leading-[3.4vw]',
-            'xl:text-[4.4vw] xl:leading-[4.4vw] xl:col-span-7 xl:w-full xl:tracking-[-4px]',
+            'xl:text-[4.4vw] xl:leading-[5vw] xl:col-span-7 xl:w-full xl:tracking-[-4px] ',
           )}
         >
-          {title.split(' ').map((word, index) => (
+          {title}
+          {/* {title.split(' ').map((word, index) => (
             <span
               key={'hero-title' + index}
               className={clsx(
@@ -159,13 +160,16 @@ const Hero = ({ images, testimonial, title }: Props) => {
                 {word}&nbsp;
               </motion.span>
             </span>
-          ))}
+          ))} */}
         </motion.h1>
         <motion.div
           variants={fadeInVariants}
           initial="initial"
           animate={introVisible ? 'initial' : 'animate'}
-          className={clsx('md:w-full', 'xl:col-start-9 col-end-[12]')}
+          className={clsx(
+            'md:w-full',
+            'xl:col-start-9 col-end-13 lg:max-w-[560px] ',
+          )}
         >
           <p
             className={clsx(
@@ -215,7 +219,7 @@ const Hero = ({ images, testimonial, title }: Props) => {
       <div
         className={clsx(
           'lg:flex gap-x-[56px] md:mt-[102px] items-end justify-between w-full',
-          'xl:grid xl:grid-cols-12 xl:gap-x-columnGap xl:mt-[108px]',
+          'xl:grid xl:grid-cols-12 xl:gap-x-columnGap xl:mt-[81px]',
         )}
       >
         <motion.div
@@ -243,14 +247,14 @@ const Hero = ({ images, testimonial, title }: Props) => {
           animate={introVisible ? 'initial' : 'animate'}
           className={clsx(
             'mt-[76px] flex flex-col gap-y-[16px] w-full',
-            'lg:mt-[0px] lg:w-full',
-            'xl:col-start-9 xl:col-end-[12]',
+            'lg:mt-[0px] lg:w-full lg:max-w-[560px]',
+            'xl:col-start-9 xl:col-end-[13]',
           )}
         >
           <div
             className={clsx(
               'text-[16px] leading-[24px] text-center text-secondaryText',
-              'lg:text-left lg:text-[14px] lg:leading-[21px]',
+              'lg:text-left lg:text-[16px] lg:leading-[24px]',
             )}
           >
             {testimonialText !== '' && <PortableText value={testimonialText} />}
@@ -273,6 +277,7 @@ const Hero = ({ images, testimonial, title }: Props) => {
             <div
               className={clsx(
                 'flex gap-x-[6px] text-[14px] leading-[16.8px] text-mainText',
+                'lg:text-[16px] lg:leading-[24px]',
               )}
             >
               <span className={clsx('bg-background relative z-[2]')}>

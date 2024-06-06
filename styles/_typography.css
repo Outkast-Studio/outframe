@@ -46,6 +46,7 @@
   font-family: 'Semi-Mono-Medium', monospace;
   font-weight: 500;
   -webkit-font-smoothing: antialiased;
+  font-feature-settings: 'ss07', 'ss09', 'ss11';
 }
 
 .geist {

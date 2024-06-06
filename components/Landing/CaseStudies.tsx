@@ -200,12 +200,12 @@ function CaseStudyCard({
       <article
         className={clsx(
           'geist',
-          index == 1 && 'md:mt-[-32px] lg:mt-[-256px]',
-          index == 4 && 'md:mt-[-32px] lg:mt-[-256px]',
+          index == 1 && 'md:mt-[-32px] lg:mt-[-147px]',
+          index == 4 && 'md:mt-[-32px] lg:mt-[-147 px]',
         )}
       >
         <div
-          className={clsx('relative overflow-hidden')}
+          className={clsx('relative overflow-hidden', 'hover:cursor-none')}
           onMouseEnter={handleMouseEnter}
           onMouseLeave={handleMouseLeave}
         >
@@ -222,7 +222,7 @@ function CaseStudyCard({
             width={1920}
             height={1920}
             className={clsx(
-              'ease-[cubic-bezier(0.34, 0, 0.36, 1)] scale-1 duration-[0.3s] transition-transform',
+              'ease-[cubic-bezier(0.34, 0, 0.36, 1)] scale-1 duration-[0.3s] transition-transform rounded-[4px]',
               isVisible && 'scale-[1.04]',
             )}
           />
@@ -235,7 +235,7 @@ function CaseStudyCard({
           <h3
             className={clsx(
               'mt-[16px] geistMedium text-[18px] leading-[27px] text-mainText mb-[16px] ',
-              'lg:my-0 lg:leading-[25.2px] lg:max-w-[464px]',
+              'lg:my-0 lg:leading-[25.2px] lg:max-w-[464px] lg:text-[19px]',
             )}
           >
             {title}
@@ -244,7 +244,7 @@ function CaseStudyCard({
           <h6
             className={clsx(
               'border-b-[1px] border-b-dividers  pb-[16px] text-[14px] bodyCopy text-secondaryText',
-              'lg:border-b-[0px] lg:pb-[0px] lg:text-[16px] lg:leading-[24px] lg:flex lg:flex-col lg:items-end',
+              'lg:border-b-[0px] lg:pb-[0px] lg:text-[14px] lg:leading-[16px] lg:flex lg:flex-col lg:items-end',
             )}
           >
             <span className="whitespace-nowrap">{caseStudyType} → </span>

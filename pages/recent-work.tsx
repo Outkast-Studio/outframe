@@ -99,6 +99,7 @@ export default function Page(props: PageProps) {
                       alt={String(work.image.alt)}
                       width={1200}
                       height={1200}
+                      className={clsx('rounded-[4px]')}
                     />
                     <div
                       className={clsx(

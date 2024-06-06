@@ -26,7 +26,7 @@ const ImageRotator = ({ images, duration = 3000 }) => {
 
   return (
     <div
-      className="relative w-full h-fit"
+      className="relative w-full h-fit hover:cursor-none"
       onMouseEnter={handleMouseEnter}
       onMouseLeave={handleMouseLeave}
     >
@@ -41,7 +41,7 @@ const ImageRotator = ({ images, duration = 3000 }) => {
         src={urlForImage(images[0]).url()}
         width={1920}
         height={1920}
-        className="opacity-0"
+        className="opacity-0 rounded-[4px]"
         alt={`Image 1`}
       />
       <AnimatePresence mode="wait">
@@ -62,6 +62,7 @@ const ImageRotator = ({ images, duration = 3000 }) => {
               height={1920}
               objectFit="cover"
               priority={index === currentImageIndex}
+              className={clsx('rounded-[4px]')}
             />
           </motion.div>
         ))}

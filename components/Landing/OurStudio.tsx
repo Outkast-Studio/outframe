@@ -62,7 +62,7 @@ const OurStudio = () => {
               >
                 <h6
                   className={clsx(
-                    'monoMedium text-[18px] leading-[21.6px] tracking-[-0.2px] ',
+                    'mono text-[18px] leading-[21.6px] tracking-[-0.2px] ',
                     'md:text-[40px] md:leading-[52px] md:trakcing-[-0.4px] md:mono',
                     'lg:text-[44px] lg:leading-[57.2px]',
                   )}
@@ -85,7 +85,7 @@ const OurStudio = () => {
               >
                 <h6
                   className={clsx(
-                    'monoMedium text-[18px] leading-[21.6px] tracking-[-0.2px] ',
+                    'mono text-[18px] leading-[21.6px] tracking-[-0.2px] ',
                     'md:text-[40px] md:leading-[52px] md:trakcing-[-0.4px]  md:mono',
                     'lg:text-[44px] lg:leading-[57.2px]',
                   )}

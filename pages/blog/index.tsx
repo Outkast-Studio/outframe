@@ -152,7 +152,7 @@ export function BlogCard({
       <article
         key={post._id}
         className={clsx(
-          'pb-[12px] border-b-[1px] border-b-dividers h-full',
+          'pb-[12px] border-b-[1px] border-b-dividers h-full hover:cursor-none',
           'lg:pb-[0px]',
         )}
       >
