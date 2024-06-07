@@ -35,6 +35,14 @@ export default defineType({
       validation: (Rule: any) => Rule.required(),
     }),
     defineField({
+      name: 'heroParagraph',
+      title: 'Hero Paragraph',
+      type: 'blockContent',
+      description: 'The paragraph for the hero section',
+      validation: (Rule: any) => Rule.required(),
+    }),
+
+    defineField({
       name: 'heroTestimonial',
       title: 'Hero Testimonial',
       type: 'reference',

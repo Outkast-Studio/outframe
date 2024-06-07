@@ -165,6 +165,7 @@ export interface HomepageSettings {
   caseStudies: HomepageCaseStudies
   testimonials: Testimonial[]
   heroTestimonial: Testimonial
+  heroParagraph: PortableTextBlock
   dayRate: {
     USD: string
     EUR: string

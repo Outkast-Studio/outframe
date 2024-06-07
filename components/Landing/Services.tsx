@@ -52,7 +52,7 @@ const Services = () => {
     <section
       id={'services'}
       className={clsx(
-        'pt-[128px] mx-gutter geist text-mainTextborder-t-dividers border-t-[1px] ',
+        'mt-[128px] mx-gutter geist text-mainText border-t-dividers border-t-[1px] ',
         'md:flex md:pt-[0px] md:mt-[128px]',
         'lg:grid lg:grid-cols-12 lg:gap-x-columnGap',
       )}
@@ -108,7 +108,7 @@ function ServiceItem({
   return (
     <Accordion.Item
       value={name}
-      className={clsx('border-b-[1px] border-t-dividers accordionItem ')}
+      className={clsx('border-b-[1px] border-b-dividers accordionItem ')}
     >
       <Accordion.Trigger
         className={clsx('w-full relative accordionButton hoverParent')}

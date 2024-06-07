@@ -65,6 +65,7 @@ export default function Post({
           images={homepageSettings.heroCarousel}
           testimonial={homepageSettings.heroTestimonial}
           title={homepageSettings.heroTitle}
+          paragraph={homepageSettings.heroParagraph}
         />
         <LogoCloud images={homepageSettings.logoCloud} />
         <CaseStudies caseStudies={homepageSettings.caseStudies} />

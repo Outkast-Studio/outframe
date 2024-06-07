@@ -13,6 +13,7 @@ import FlickerText from 'components/UI/FlickerText'
 import { useInView } from 'react-intersection-observer'
 import SectionHeading from 'components/UI/SectionHeading'
 import Background from 'components/UI/Background'
+import PixelatedImage from 'components/UI/PixelatedImage'
 
 const CaseStudies = ({ caseStudies }: { caseStudies: any[] }) => {
   const { ref, inView } = useInView({
@@ -216,7 +217,7 @@ function CaseStudyCard({
             )}
           ></div>
 
-          <Image
+          {/* <Image
             src={urlForImage(thumbnail.asset).url()}
             alt={String(thumbnail.alt)}
             width={1920}
@@ -225,6 +226,10 @@ function CaseStudyCard({
               'ease-[cubic-bezier(0.34, 0, 0.36, 1)] scale-1 duration-[0.3s] transition-transform rounded-[4px]',
               isVisible && 'scale-[1.04]',
             )}
+          /> */}
+          <PixelatedImage
+            src={urlForImage(thumbnail.asset).url()}
+            src10={urlForImage(thumbnail.asset).width(1000).url()}
           />
         </div>
         <div

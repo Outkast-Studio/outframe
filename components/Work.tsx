@@ -20,6 +20,7 @@ export default function Post({ work }: { work: Work }) {
 
   useEffect(() => {
     setIsHoveringCaseStudy(false)
+    console.log('running')
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
 
@@ -34,7 +35,7 @@ export default function Post({ work }: { work: Work }) {
   }
 
   return (
-    <>
+    <div key={work._id}>
       <Cursor />
       <main
         className={clsx('px-gutter text-mainText relative z-[2] antialiased ')}
@@ -176,9 +177,8 @@ export default function Post({ work }: { work: Work }) {
           </h6>
           {work.nextProject && (
             <Link
-              scroll={false}
               href={work.nextProject.slug.current}
-              className={clsx('lg:col-span-6 lg:col-start-7')}
+              className={clsx('lg:col-span-6 lg:col-start-7 cursor-none')}
               onMouseEnter={handleMouseEnter}
               onMouseLeave={handleMouseLeave}
             >
@@ -231,6 +231,6 @@ export default function Post({ work }: { work: Work }) {
           )}
         </section>
       </main>
-    </>
+    </div>
   )
 }

@@ -280,3 +280,16 @@ body {
     /* width: 30%; */
   }
 }
+
+.fixSafariIsTrashIssue {
+  -webkit-backface-visibility: visible;
+}
+
+.heroText strong {
+  font-weight: 400;
+  color: #292626;
+}
+
+.pixelImage {
+  image-rendering: pixelated;
+}

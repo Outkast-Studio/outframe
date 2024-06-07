@@ -12,6 +12,9 @@ const Cursor = () => {
   )
 
   const isHoveringBlog = useThemeStore((state) => state.isHoveringBlog)
+  const setIsHoveringCaseStudy = useThemeStore(
+    (state) => state.setIsHoveringCaseStudy,
+  )
 
   const [isVisible, setIsVisible] = useState(false)
   const [position, setPosition] = useState({ x: 0, y: 0 })
@@ -29,6 +32,11 @@ const Cursor = () => {
     return () => {
       document.removeEventListener('mousemove', handleMouseMove)
     }
+  }, [])
+
+  useEffect(() => {
+    setIsHoveringCaseStudy(false)
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
 
   return (
@@ -66,7 +74,7 @@ const Cursor = () => {
         /> */}
         <div className={clsx('bg-[#fff] p-[10px] rounded-[2.22px]')}>
           <Image
-            src={'/icons/plus-large.svg'}
+            src={'/icons/arrow-right.svg'}
             width={20}
             height={20}
             alt={'plusIcon'}
@@ -91,7 +99,7 @@ const Cursor = () => {
       >
         <div className={clsx('bg-[#fff] p-[10px] rounded-[2.22px]')}>
           <Image
-            src={'/icons/arrow-right.svg'}
+            src={'/icons/plus-large.svg'}
             width={20}
             height={20}
             alt={'plusIcon'}
@@ -116,7 +124,7 @@ const Cursor = () => {
       >
         <div className={clsx('bg-[#fff] p-[10px] rounded-[2.22px]')}>
           <Image
-            src={'/icons/plus-large.svg'}
+            src={'/icons/arrow-right.svg'}
             width={20}
             height={20}
             alt={'plusIcon'}

@@ -193,7 +193,7 @@ const Header = () => {
     <>
       <header
         className={clsx(
-          'flex px-gutter mix-blend-difference pt-[12px] pb-[16px] justify-between fixed top-[12px] left-0 w-full items-center z-[100] bg-transparent',
+          'flex px-gutter mix-blend-difference pt-[12px] pb-[16px] justify-between fixed top-[12px] left-0 w-full items-center z-[100] bg-transparent fixSafariIsTrashIssue',
           'md:mt-[0px] pb-[20px]',
           'lg:top-[40px] lg:pt-[24px]',
           'xl:grid grid-cols-12 xl:gap-x-columnGap',
@@ -214,14 +214,14 @@ const Header = () => {
               className={clsx(
                 'hidden',
                 'md:block',
-                'xl:col-start-9 xl:col-end-13  mix-blend-difference',
+                'xl:col-start-9 xl:col-end-13  ',
               )}
             >
               <ul
                 className={clsx(
                   'flex gap-x-[32px] uppercase text-[14px] leading-[14.4px] monoMedium transition-colors duration-300',
                   'lg:text-[14px] lg:leading-[16.8px]',
-                  scrollTop ? 'text-[#fff]' : 'text-[#615D5C]',
+                  scrollTop ? 'text-[#fff]' : 'text-[#9ea2a3]',
                 )}
               >
                 {menuItems.map((item, index) => (

@@ -4,7 +4,6 @@ import Image from 'next/image'
 import Link from 'next/link'
 import { ImageAsset } from 'sanity'
 import { urlForImage } from 'lib/sanity.image'
-import { PortableText } from '@portabletext/react'
 import { Testimonial } from 'lib/sanity.queries'
 import { motion } from 'framer-motion'
 import { useThemeStore } from 'stores/themeStore'
@@ -13,14 +12,18 @@ import HeroImage from 'components/UI/HeroImage'
 import Button from 'components/UI/Button'
 import homepageSettings from 'schemas/homepageSettings'
 import { useWindowSize } from 'hooks/useWindowSize'
+import type { PortableTextBlock } from '@portabletext/types'
+import { PortableText } from '@portabletext/react'
+import { myPortableTextComponents } from 'pages/_app'
 
 type Props = {
   images: ImageAsset[]
   testimonial: Testimonial
   title: string
+  paragraph: PortableTextBlock
 }
 
-const Hero = ({ images, testimonial, title }: Props) => {
+const Hero = ({ images, testimonial, title, paragraph }: Props) => {
   const [position, setPosition] = useState({ x: 0, y: 0 })
   const [isVisible, setIsVisible] = useState(false)
   const trackingDivRef = useRef<HTMLDivElement>(null)
@@ -171,18 +174,22 @@ const Hero = ({ images, testimonial, title }: Props) => {
             'xl:col-start-9 col-end-13 lg:max-w-[560px] ',
           )}
         >
-          <p
+          <div
             className={clsx(
-              'geist text-[16px] leading-[28.5px] text-secondaryText mt-[28px]',
+              'geist text-[16px] leading-[28.5px] text-secondaryText mt-[28px] heroText',
               'md:mt-[0px]',
               'lg:text-[19px] lg:leading-[28.5px] lg:tracking-[-0.1px]',
             )}
           >
-            <span className={clsx('text-mainText')}>Outframe</span> is an
+            {/* <span className={clsx('text-mainText')}>Outframe</span> is an
             independent studio practice of Vytas Bu, and the perfect design
             partner for startups and B2B companies. Part of your team, all
-            without the overheads of an agency.
-          </p>
+            without the overheads of an agency. */}
+            <PortableText
+              value={paragraph}
+              components={myPortableTextComponents}
+            />
+          </div>
           <div
             className={clsx(
               'flex mt-[28px] gap-x-[16px]',
@@ -224,7 +231,7 @@ const Hero = ({ images, testimonial, title }: Props) => {
       >
         <motion.div
           ref={trackingDivRef}
-          variants={imageVariants}
+          // variants={imageVariants}
           onMouseEnter={handleMouseEnter}
           onMouseLeave={handleMouseLeave}
           initial="initial"
