@@ -6,7 +6,7 @@ import { useRouter } from 'next/router'
 
 const Logo = () => {
   const { scrollY } = useScroll()
-  const [hideLogoText, setHideLogoText] = useState(true)
+  const [hideLogoText, setHideLogoText] = useState(false)
   const introVisible = useThemeStore((state) => state.introVisible)
   const [atTop, setAtTop] = useState(true)
 

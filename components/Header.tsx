@@ -30,7 +30,7 @@ const Header = () => {
       title: (
         <FlickerText
           title="Case Studies"
-          animationDelay={width > 1024 ? 1 : 0}
+          animationDelay={0}
           play={router.pathname == '/' ? !introVisible : true}
           hover={true}
         />
@@ -46,7 +46,7 @@ const Header = () => {
       title: (
         <FlickerText
           title="Services"
-          animationDelay={width > 1024 ? 1 : 0}
+          animationDelay={0}
           play={router.pathname == '/' ? !introVisible : true}
           hover={true}
         />
@@ -60,7 +60,7 @@ const Header = () => {
       title: (
         <FlickerText
           title="Pricing"
-          animationDelay={width > 1024 ? 1 : 0}
+          animationDelay={0}
           play={router.pathname == '/' ? !introVisible : true}
           hover={true}
         />
@@ -74,7 +74,7 @@ const Header = () => {
       title: (
         <FlickerText
           title="Recent Work"
-          animationDelay={width > 1024 ? 1 : 0}
+          animationDelay={0}
           play={router.pathname == '/' ? !introVisible : true}
           hover={true}
         />
@@ -88,7 +88,7 @@ const Header = () => {
       title: (
         <FlickerText
           title="Blog"
-          animationDelay={width > 1024 ? 1 : 0}
+          animationDelay={0}
           play={router.pathname == '/' ? !introVisible : true}
           hover={true}
         />

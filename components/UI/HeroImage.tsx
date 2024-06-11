@@ -3,18 +3,22 @@ import Image from 'next/image'
 import { motion, AnimatePresence } from 'framer-motion'
 import { urlForImage } from 'lib/sanity.image'
 import { clsx } from 'clsx'
+import PixelatedImage from './PixelDelay'
 
 const ImageRotator = ({ images, duration = 3000 }) => {
   const [currentImageIndex, setCurrentImageIndex] = useState(0)
   const [isVisible, setIsVisible] = useState(false)
+  const [paused, setPaused] = useState(true)
+  const [playPixel, setPlayPixel] = useState(false)
 
   useEffect(() => {
+    if (paused) return
     const interval = setInterval(() => {
       setCurrentImageIndex((prevIndex) => (prevIndex + 1) % images.length)
     }, duration)
 
     return () => clearInterval(interval)
-  }, [images.length, duration])
+  }, [images.length, duration, paused])
 
   const handleMouseEnter = () => {
     setIsVisible(true)
@@ -23,6 +27,11 @@ const ImageRotator = ({ images, duration = 3000 }) => {
   const handleMouseLeave = () => {
     setIsVisible(false)
   }
+  useEffect(() => {
+    setTimeout(() => {
+      setPlayPixel(true)
+    }, 4500)
+  }, [])
 
   return (
     <div
@@ -36,14 +45,22 @@ const ImageRotator = ({ images, duration = 3000 }) => {
           isVisible && '!opacity-[0.15]',
         )}
       ></div>
-
+      {/* 
       <Image
         src={urlForImage(images[0]).url()}
         width={1920}
         height={1920}
         className="opacity-0 rounded-[4px]"
         alt={`Image 1`}
+      /> */}
+
+      <PixelatedImage
+        src={urlForImage(images[0]).url()}
+        src10={urlForImage(images[0]).width(100).url()}
+        play={playPixel}
+        classNames="relative z-[10]"
       />
+
       <AnimatePresence mode="wait">
         {images.map((image, index) => (
           <motion.div

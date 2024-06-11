@@ -37,12 +37,11 @@ const Hero = ({ images, testimonial, title, paragraph }: Props) => {
   const { width } = useWindowSize()
   const lenis = useLenis()
   const h1Variants = {
-    initial: {},
+    initial: {
+      opacity: 0,
+    },
     animate: {
-      transition: {
-        staggerChildren: 0.07,
-        delayChildren: 0.35,
-      },
+      opacity: 1,
     },
   }
 
@@ -52,10 +51,6 @@ const Hero = ({ images, testimonial, title, paragraph }: Props) => {
     },
     animate: {
       opacity: 1,
-      transition: {
-        delay: 1,
-        duration: 0.2,
-      },
     },
   }
 

@@ -229,7 +229,7 @@ function CaseStudyCard({
           /> */}
           <PixelatedImage
             src={urlForImage(thumbnail.asset).url()}
-            src10={urlForImage(thumbnail.asset).width(1000).url()}
+            src10={urlForImage(thumbnail.asset).width(100).url()}
           />
         </div>
         <div

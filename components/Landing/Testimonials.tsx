@@ -5,6 +5,7 @@ import Image from 'next/image'
 import { myPortableTextComponents } from 'pages/_app'
 import { urlForImage } from 'lib/sanity.image'
 import SectionHeading from 'components/UI/SectionHeading'
+import PixelatedImage from 'components/UI/PixelatedImage'
 
 type Props = {
   testimonials: Testimonial[]
@@ -93,6 +94,12 @@ function TestimonialCard({
           'lg:items-center',
         )}
       >
+        {/* <div className={clsx('w-[36px] h-[36px]')}>
+          <PixelatedImage
+            src={urlForImage(testimonial.image).url()}
+            src10={urlForImage(testimonial.image).width(10).url()}
+          />
+        </div> */}
         <Image
           src={urlForImage(testimonial.image).url()}
           alt={String(testimonial.image.alt)}

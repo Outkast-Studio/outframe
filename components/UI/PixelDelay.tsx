@@ -9,14 +9,11 @@ const PixelatedImage = ({
   threshold = 0.75,
   delay = 0,
   classNames = '',
+  play,
 }) => {
   const [dimension, setDimension] = useState({ width: 0, height: 0 })
   const [showImage, setShowImage] = useState(false)
   const canvas = useRef(null)
-  const { ref, inView } = useInView({
-    threshold,
-    triggerOnce: true,
-  })
 
   const drawImage = (image) => {
     if (canvas.current === null) return
@@ -61,7 +58,7 @@ const PixelatedImage = ({
 
   useEffect(() => {
     //Render the image when the component is inView and the small image is loaded
-    if (inView && canvas.current && dimension.width > 0) {
+    if (play && canvas.current && dimension.width > 0) {
       //@ts-ignore
       const image = new Image()
       image.onload = () => {
@@ -73,12 +70,11 @@ const PixelatedImage = ({
       image.src = src
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [inView, dimension, src])
+  }, [play, dimension, src])
 
   return (
     <div className={clsx('relative w-full', classNames)}>
       <NextImage
-        ref={ref}
         src={src10}
         width={30}
         height={30}
