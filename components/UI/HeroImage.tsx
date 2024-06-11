@@ -31,6 +31,9 @@ const ImageRotator = ({ images, duration = 3000 }) => {
     setTimeout(() => {
       setPlayPixel(true)
     }, 4500)
+    setTimeout(() => {
+      setPaused(false)
+    }, 5000)
   }, [])
 
   return (
@@ -58,7 +61,7 @@ const ImageRotator = ({ images, duration = 3000 }) => {
         src={urlForImage(images[0]).url()}
         src10={urlForImage(images[0]).width(100).url()}
         play={playPixel}
-        classNames="relative z-[10]"
+        classNames={clsx('relative z-[10]', !paused && 'opacity-0')}
       />
 
       <AnimatePresence mode="wait">
