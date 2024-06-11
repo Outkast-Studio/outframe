@@ -54,7 +54,7 @@ const Intro = () => {
   return introVisible ? (
     <div
       className={clsx(
-        'fixed top-0 left-0 bg-background w-screen h-screen flex items-center justify-center z-[999] pointer-events-none',
+        'fixed top-0 left-0 bg-background w-screen h-screen flex items-center justify-center z-[20] pointer-events-none relative',
       )}
     >
       <Lottie options={defaultOptions} height={400} width={400} />

@@ -38,7 +38,7 @@ export function Layout({
         animate="animate"
         exit="exit"
         className={clsx(
-          'overflow-hidden w-full',
+          'overflow-hidden w-full relative z-[1]',
           router.asPath.includes('/blog') && 'lg:!overflow-visible',
         )}
       >

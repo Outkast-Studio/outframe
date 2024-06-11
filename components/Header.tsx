@@ -21,10 +21,11 @@ const Header = () => {
   const introVisible = useThemeStore((state) => state.introVisible)
   const { width } = useWindowSize()
   const [isRecentWork, setIsRecentWork] = useState(false)
+  const [mounted, setMounted] = useState(false)
   const searchParams = useSearchParams()
   const prev = searchParams.get('recent-work')
   const scrollTop = useScrollTop()
-
+  const ref = useRef(null)
   const menuItems = [
     {
       title: (
@@ -153,6 +154,11 @@ const Header = () => {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [router.pathname, width])
 
+  useEffect(() => {
+    setTimeout(() => {
+      setMounted(true)
+    }, 5000)
+  }, [])
   const navMenuVariants = {
     initial: {
       opacity: 0,
@@ -189,16 +195,26 @@ const Header = () => {
     },
   }
 
+  useEffect(() => {
+    if (!introVisible) {
+      setTimeout(() => {
+        ref.current.style.position = 'fixed'
+      }, 1000)
+    }
+  }, [introVisible])
+
   return (
     <>
       <header
+        ref={ref}
         className={clsx(
-          'flex px-gutter mix-blend-difference pt-[12px] pb-[16px] justify-between fixed top-[12px] left-0 w-full items-center z-[100] bg-transparent fixSafariIsTrashIssue',
+          'flex px-gutter mix-blend-difference absolute pt-[12px] pb-[16px] justify-between top-[12px] left-0 w-full items-center z-[100] header will-change-[mix-blend-mode] ',
           'md:mt-[0px] pb-[20px]',
           'lg:top-[40px] lg:pt-[24px]',
           'xl:grid grid-cols-12 xl:gap-x-columnGap',
         )}
       >
+        {' '}
         <Link href="/" scroll={false}>
           <Logo />
         </Link>

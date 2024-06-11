@@ -13,6 +13,10 @@ html::-webkit-scrollbar {
 html {
   scrollbar-width: none;
 }
+html,
+body {
+  background-color: #f7f7f7 !important;
+}
 /* For Firefox */
 :root {
   background: #f7f7f7 !important;
