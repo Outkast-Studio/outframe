@@ -18,7 +18,7 @@ import { clsx } from 'clsx'
 import Image from 'next/image'
 import { urlForImage } from 'lib/sanity.image'
 import Link from 'next/link'
-import Footer from 'components/Footer'
+import Footer from 'components/FooterNew'
 import HorizontalScroll from 'components/UI/HorizontalScroll'
 import { useSearchParams } from 'next/navigation'
 

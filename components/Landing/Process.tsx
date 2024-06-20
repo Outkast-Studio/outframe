@@ -137,6 +137,8 @@ export function ProcessItem({
       value={name}
       className={clsx(
         'border-t-[1px] border-t-dividers accordionItem',
+        index == 0 && 'topAccordion border-t-[#0000]',
+
         // index == 0 && 'border-b-[1px] border-b-dividers',
       )}
     >

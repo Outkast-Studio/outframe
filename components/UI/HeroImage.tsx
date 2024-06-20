@@ -4,6 +4,7 @@ import { motion, AnimatePresence } from 'framer-motion'
 import { urlForImage } from 'lib/sanity.image'
 import { clsx } from 'clsx'
 import PixelatedImage from './PixelDelay'
+import { useThemeStore } from 'stores/themeStore'
 
 const ImageRotator = ({ images, duration = 3000 }) => {
   const [currentImageIndex, setCurrentImageIndex] = useState(0)
@@ -23,18 +24,19 @@ const ImageRotator = ({ images, duration = 3000 }) => {
   const handleMouseEnter = () => {
     setIsVisible(true)
   }
-
   const handleMouseLeave = () => {
     setIsVisible(false)
   }
+  const introVisible = useThemeStore((state) => state.introVisible)
   useEffect(() => {
-    setTimeout(() => {
-      setPlayPixel(true)
-    }, 4500)
+    if (introVisible) return
     setTimeout(() => {
       setPaused(false)
-    }, 5000)
-  }, [])
+    }, 1500)
+    setTimeout(() => {
+      setPlayPixel(true)
+    }, 200)
+  }, [introVisible])
 
   return (
     <div

@@ -5,6 +5,11 @@
   animation: slideUp 600ms cubic-bezier(0.62, 0.05, 0.01, 0.99);
 }
 
+.accordionItem[data-state='open'].topAccordion {
+  border-top-color: #d9d5d3 !important;
+}
+
+.accordion
 /* Hide all scrollbars */
 html::-webkit-scrollbar {
   display: none;

@@ -20,7 +20,7 @@ import { QueryParams } from 'next-sanity'
 import { useLiveQuery } from 'next-sanity/preview'
 import { Layout } from 'components/layouts/Layout'
 import { urlForImage } from 'lib/sanity.image'
-import Footer from 'components/Footer'
+import Footer from 'components/FooterNew'
 interface PageProps extends SharedPageProps {
   work: Work
   settings?: Settings

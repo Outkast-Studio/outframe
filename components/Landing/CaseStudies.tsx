@@ -234,7 +234,7 @@ function CaseStudyCard({
         </div>
         <div
           className={clsx(
-            'lg:flex s lg:mt-[16px]  lg:gap-x-[33px] lg:justify-between',
+            'lg:flex s lg:mt-[16px]  lg:gap-x-[33px] lg:justify-between lg:items-center',
           )}
         >
           <h3
