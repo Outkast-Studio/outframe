@@ -138,7 +138,8 @@ export function BlogCard({
 
   return (
     <Link
-      scroll={false}
+      scroll={true}
+      onClick={() => setIsHoveringBlog(false)}
       onMouseEnter={handleMouseEnter}
       onMouseLeave={handleMouseLeave}
       href={`/blog/${post.slug.current}`}

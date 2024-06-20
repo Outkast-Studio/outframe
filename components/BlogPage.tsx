@@ -38,6 +38,9 @@ const BlogPage = ({ post }: { post: Post }) => {
   const setIsHoveringBlog = useThemeStore((state) => state.setIsHoveringBlog)
 
   useEffect(() => {
+    window.scrollTo(0, 0)
+  }, [])
+  useEffect(() => {
     setIsHoveringBlog(false)
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
