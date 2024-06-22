@@ -46,7 +46,14 @@ export default function Page(props: PageProps) {
     <Layout seo={seo}>
       <Cursor />
       <main className={clsx('px-gutter  text-mainText relative z-[2]')}>
-        <div className={clsx('pt-[191px]', 'lg:grid lg:grid-cols-12  ')}>
+        <div
+          className={clsx(
+            'lg:grid lg:grid-cols-12',
+            'pt-[183px]',
+            'lg:pt-[35vh]',
+            'xl:pt-[40vh]',
+          )}
+        >
           <h1
             className={clsx(
               ' uppercase text-[36px] leading-[43.2px] tracking-[-0.2px] monoMedium text-mainText',

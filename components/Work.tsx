@@ -38,14 +38,20 @@ export default function Post({ work }: { work: Work }) {
     <div key={work._id}>
       <Cursor />
       <main
-        className={clsx('px-gutter text-mainText relative z-[2] antialiased ')}
+        className={clsx(
+          'px-gutter text-mainText relative z-[2] antialiased',
+          'lg:max-w-[1800px] lg:mx-auto',
+          'pt-[183px]',
+          'lg:pt-[35vh]',
+          'xl:pt-[40vh]',
+        )}
       >
         <Link
           href={'/'}
           scroll={false}
           className={clsx(
-            'flex mt-[78px] items-center gap-x-[12px] py-[12px] px-[18px] border-divider bg-background rounded-[4px] border-[1px] monoMedium w-fit backContainer hover:border-mainText tranisiton-[border-color] duration-300',
-            'lg:mt-[175px]',
+            'flex items-center gap-x-[12px] py-[12px] px-[18px] border-divider bg-background rounded-[4px] border-[1px] monoMedium w-fit backContainer hover:border-mainText tranisiton-[border-color] duration-300',
+            'lg:h-[42px]',
           )}
         >
           <span className={clsx('w-[12px] overflow-hidden')}>
@@ -69,7 +75,7 @@ export default function Post({ work }: { work: Work }) {
             </span>
           </span>
 
-          <span>Back</span>
+          <span className={clsx('text-[14px]')}>Back</span>
         </Link>
         <div
           className={clsx(

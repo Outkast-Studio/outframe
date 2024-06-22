@@ -128,11 +128,14 @@ const BlogPage = ({ post }: { post: Post }) => {
       <Cursor />
       <main
         className={clsx(
-          'px-gutter mt-[191px] text-mainText relative z-[2] antialiased',
-          'lg:flex lg:gap-x-[64px] xl:mt-[256px]',
+          'px-gutter text-mainText relative z-[2] antialiased',
+          'lg:grid lg:grid-cols-12 lg:gap-x-[64px]',
+          'pt-[183px]',
+          'lg:pt-[35vh]',
+          'xl:pt-[40vh]',
         )}
       >
-        <div className={clsx('hidden', 'lg:block w-full')}>
+        <div className={clsx('hidden', 'lg:block w-full lg:col-span-5')}>
           {post.coverImage && (
             <Image
               src={urlForImage(post.coverImage).url()}
@@ -180,7 +183,7 @@ const BlogPage = ({ post }: { post: Post }) => {
             </div>
           )}
         </div>
-        <div className={clsx('w-full')}>
+        <div className={clsx('w-full', 'lg:col-span-7')}>
           <div
             className={clsx('flex flex-col gap-[32px]', 'lg:flex-col-reverse ')}
           >

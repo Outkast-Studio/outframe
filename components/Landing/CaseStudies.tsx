@@ -227,10 +227,17 @@ function CaseStudyCard({
               isVisible && 'scale-[1.04]',
             )}
           /> */}
-          <PixelatedImage
-            src={urlForImage(thumbnail.asset).url()}
-            src10={urlForImage(thumbnail.asset).width(100).url()}
-          />
+          <div
+            className={clsx(
+              'ease-[cubic-bezier(0.34, 0, 0.36, 1)] scale-1 duration-[0.3s] transition-transform ',
+              isVisible && 'scale-[1.04]',
+            )}
+          >
+            <PixelatedImage
+              src={urlForImage(thumbnail.asset).url()}
+              src10={urlForImage(thumbnail.asset).width(100).url()}
+            />
+          </div>
         </div>
         <div
           className={clsx(

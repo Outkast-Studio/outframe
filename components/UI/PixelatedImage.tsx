@@ -6,7 +6,7 @@ import { clsx } from 'clsx'
 const PixelatedImage = ({
   src,
   src10,
-  threshold = 0.75,
+  threshold = 0.3,
   delay = 0,
   classNames = '',
 }) => {
