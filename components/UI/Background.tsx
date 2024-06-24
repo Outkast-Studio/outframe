@@ -110,7 +110,12 @@ function BackgroundComponent({ isBlog }: { isBlog: boolean }) {
           <div className={clsx('absolute top-[10%] left-[25.5%]')}>
             <ScrollingText coords="3°19′N 262°31′S" title="Toronto, Canada" />
           </div>
-          <div className={clsx('absolute top-[70%] right-[15%]')}>
+          <div
+            className={clsx(
+              'absolute top-[70%] right-[15%] hidden',
+              'lg:block',
+            )}
+          >
             <ScrollingText
               coords="2°59′S 104°45′E S"
               title="Palembang, Indonesia"

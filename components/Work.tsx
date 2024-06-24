@@ -41,7 +41,6 @@ export default function Post({ work }: { work: Work }) {
         className={clsx(
           'px-gutter text-mainText relative z-[2] antialiased',
           'lg:max-w-[1800px] lg:mx-auto',
-          'pt-[183px]',
           'lg:pt-[35vh]',
           'xl:pt-[40vh]',
         )}
@@ -50,7 +49,7 @@ export default function Post({ work }: { work: Work }) {
           href={'/'}
           scroll={false}
           className={clsx(
-            'flex items-center gap-x-[12px] py-[12px] px-[18px] border-divider bg-background rounded-[4px] border-[1px] monoMedium w-fit backContainer hover:border-mainText tranisiton-[border-color] duration-300',
+            'flex items-center mt-[78px] gap-x-[12px] py-[12px] px-[18px] border-divider bg-background rounded-[4px] border-[1px] monoMedium w-fit backContainer hover:border-mainText tranisiton-[border-color] duration-300',
             'lg:h-[42px]',
           )}
         >
