@@ -192,7 +192,7 @@ function CaseStudyCard({
     <Link
       scroll={false}
       ref={ref}
-      href={`/case-studies/${slug}`}
+      href={`/work/${slug}`}
       className={clsx(
         index == 3 &&
           'md:col-span-2 md:w-[calc(50%-42.5px)] md:justify-self-end md:mt-[162px] lg:w-[calc(50%-114px)] lg:mt-[153px]',

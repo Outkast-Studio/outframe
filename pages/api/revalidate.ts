@@ -69,7 +69,7 @@ export default async function revalidate(
 type StaleRoute =
   | '/'
   | `/blog/${string}`
-  | `/case-studies/${string}`
+  | `/work/${string}`
   | '/recent-work'
   | '/blog'
 
@@ -100,7 +100,7 @@ async function queryStaleRoutes(
     if (!exists) {
       let staleRoutes: StaleRoute[] = ['/']
       if ((body.slug as any)?.current) {
-        staleRoutes.push(`/case-studies/${(body.slug as any).current}`)
+        staleRoutes.push(`/work/${(body.slug as any).current}`)
       }
       return staleRoutes
     }
@@ -140,7 +140,7 @@ async function queryAllRoutes(client: SanityClient): Promise<StaleRoute[]> {
   return [
     '/',
     ...postSlugs.map((slug) => `/blog/${slug}` as StaleRoute),
-    ...caseStudySlugs.map((slug) => `/case-studies/${slug}` as StaleRoute),
+    ...caseStudySlugs.map((slug) => `/work/${slug}` as StaleRoute),
     '/blog',
     '/recent-work',
   ]
@@ -205,5 +205,5 @@ async function queryStaleWorkRoutes(
 
   slugs = await mergeWithMoreStories(client, slugs)
 
-  return ['/', ...slugs.map((slug) => `/case-studies/${slug}`)]
+  return ['/', ...slugs.map((slug) => `/work/${slug}`)]
 }

@@ -25,7 +25,7 @@ export const iframeOptions = {
             : new Error('Missing slug')
         case 'caseStudy':
           return (document as any)?.slug?.current
-            ? `/case-studies/${(document as any).slug.current}`
+            ? `/work/${(document as any).slug.current}`
             : new Error('Missing slug')
         case 'homepageSettings':
           return '/'
