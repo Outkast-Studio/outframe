@@ -19,6 +19,7 @@ import Image from 'next/image'
 import { urlForImage } from 'lib/sanity.image'
 import Link from 'next/link'
 import Footer from 'components/FooterNew'
+import MuxVideo from 'components/UI/MuxVideo'
 import HorizontalScroll from 'components/UI/HorizontalScroll'
 import { useSearchParams } from 'next/navigation'
 
@@ -37,6 +38,7 @@ export default function Page(props: PageProps) {
     props.recentWork,
     recentWorkSettingsQuery,
   )
+  console.log(data)
 
   const seo = {
     title: 'Outframe | Recent Work',
@@ -94,13 +96,22 @@ export default function Page(props: PageProps) {
                 }
                 return (
                   <article key={work.title + index}>
-                    <Image
-                      src={urlForImage(work.image).url()}
-                      alt={String(work.image.alt)}
-                      width={1200}
-                      height={1200}
-                      className={clsx('rounded-[4px]')}
-                    />
+                    {work.video ? (
+                      <MuxVideo
+                        playbackId={work.video.asset.playbackId}
+                        assetId={work.video.asset.assetId}
+                        maskSize="2px"
+                      />
+                    ) : (
+                      <Image
+                        src={urlForImage(work.image).url()}
+                        alt={String(work.image.alt)}
+                        width={1200}
+                        height={1200}
+                        className={clsx('rounded-[4px]')}
+                      />
+                    )}
+
                     <div
                       className={clsx(
                         'flex mt-[8px] items-center justify-between',

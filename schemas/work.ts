@@ -78,6 +78,9 @@ export default defineType({
         {
           type: 'testimonialBlock',
         },
+        {
+          type: 'videoBlock',
+        },
       ],
     }),
     defineField({
@@ -293,6 +296,25 @@ export const textBlock = defineType({
     },
   },
 })
+
+export const videoBlock = {
+  name: 'videoBlock',
+  title: 'Video Block',
+  type: 'object',
+  fields: [
+    defineField({
+      name: 'video',
+      title: 'Video',
+      type: 'mux.video',
+    }),
+  ],
+  preview: {
+    select: {},
+    prepare(selection) {
+      return { title: `Video Block` }
+    },
+  },
+}
 
 export const testimonialBlock = defineType({
   name: 'testimonialBlock',

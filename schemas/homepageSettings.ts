@@ -6,6 +6,12 @@ export default defineType({
   title: 'Homepage Settings',
   icon: HomeIcon,
   type: 'document',
+  groups: [
+    {
+      name: 'popup',
+      title: 'Popup',
+    },
+  ],
   fields: [
     defineField({
       name: 'heroCarousel',
@@ -135,6 +141,21 @@ export default defineType({
           validation: (Rule: any) => Rule.required(),
         }),
         defineField({
+          name: 'subTitle',
+          title: 'Sub Title',
+          type: 'text',
+          rows: 2,
+          description: 'The subtitle for the block',
+          validation: (Rule: any) => Rule.required(),
+        }),
+        defineField({
+          name: 'badge',
+          title: 'Badge',
+          type: 'string',
+          description: 'The subtitle for the block',
+          validation: (Rule: any) => Rule.required(),
+        }),
+        defineField({
           name: 'USD',
           title: 'Price in USD',
           type: 'string',
@@ -168,6 +189,21 @@ export default defineType({
           title: 'Title',
           type: 'string',
           description: 'The title for the block',
+          validation: (Rule: any) => Rule.required(),
+        }),
+        defineField({
+          name: 'subTitle',
+          title: 'Sub Title',
+          type: 'text',
+          rows: 2,
+          description: 'The subtitle for the block',
+          validation: (Rule: any) => Rule.required(),
+        }),
+        defineField({
+          name: 'badge',
+          title: 'Badge',
+          type: 'string',
+          description: 'The subtitle for the block',
           validation: (Rule: any) => Rule.required(),
         }),
         defineField({
@@ -206,6 +242,21 @@ export default defineType({
           validation: (Rule: any) => Rule.required(),
         }),
         defineField({
+          name: 'subTitle',
+          title: 'Sub Title',
+          type: 'text',
+          rows: 2,
+          description: 'The subtitle for the block',
+          validation: (Rule: any) => Rule.required(),
+        }),
+        defineField({
+          name: 'badge',
+          title: 'Badge',
+          type: 'string',
+          description: 'The subtitle for the block',
+          validation: (Rule: any) => Rule.required(),
+        }),
+        defineField({
           name: 'USD',
           title: 'Price in USD',
           type: 'string',
@@ -227,6 +278,13 @@ export default defineType({
           validation: (Rule: any) => Rule.required(),
         }),
       ],
+    }),
+    defineField({
+      name: 'popup',
+      title: 'Popup',
+      type: 'popup',
+      group: 'popup',
+      validation: (Rule: any) => Rule.required(),
     }),
     // defineField({
     //   name: 'dedicatedPricing',

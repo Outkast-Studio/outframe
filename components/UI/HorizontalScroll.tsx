@@ -7,6 +7,7 @@ import { useLenis } from '@studio-freight/react-lenis'
 import { gsap } from 'gsap'
 import { horizontalLoop } from 'utils'
 import { Observer } from 'gsap/dist/Observer'
+import MuxVideo from './MuxVideo'
 
 const HorizontalScroll = ({ recentWork }: { recentWork: RecentWork[] }) => {
   const sliderRef = useRef(null)
@@ -74,21 +75,45 @@ const HorizontalScroll = ({ recentWork }: { recentWork: RecentWork[] }) => {
                         : 'end',
                 }}
               >
-                <div className={clsx('relative')}>
-                  {/* <div className="absolute bg-dividers w-full h-full top-0 left-0 z-[1]"></div> */}
-                  <Image
-                    src={urlForImage(work.image).url()}
-                    alt={String(work.image.alt)}
-                    width={1920}
-                    height={1920}
-                    className={clsx(
-                      'relative z-[2] opacity-0 transition-opacity duration-300 w-full object-cover',
-                    )}
-                    onLoadingComplete={(image) =>
-                      image.classList.remove('opacity-0')
-                    }
-                  />
-                </div>
+                {work.video ? (
+                  <div className={clsx('relative')}>
+                    {/* <div className="absolute bg-dividers w-full h-full top-0 left-0 z-[1]"></div> */}
+                    {/* <Image
+                      src={urlForImage(work.image).url()}
+                      alt={String(work.image.alt)}
+                      width={1920}
+                      height={1920}
+                      className={clsx(
+                        'relative z-[2] opacity-0 transition-opacity duration-300 w-full object-cover',
+                      )}
+                      onLoadingComplete={(image) =>
+                        image.classList.remove('opacity-0')
+                      }
+                    /> */}
+                    <MuxVideo
+                      playbackId={work.video.asset.playbackId}
+                      assetId={work.video.asset.assetId}
+                      maskSize="2px"
+                    />
+                  </div>
+                ) : (
+                  <div className={clsx('relative')}>
+                    {/* <div className="absolute bg-dividers w-full h-full top-0 left-0 z-[1]"></div> */}
+                    <Image
+                      src={urlForImage(work.image).url()}
+                      alt={String(work.image.alt)}
+                      width={1920}
+                      height={1920}
+                      className={clsx(
+                        'relative z-[2] opacity-0 transition-opacity duration-300 w-full object-cover',
+                      )}
+                      onLoadingComplete={(image) =>
+                        image.classList.remove('opacity-0')
+                      }
+                    />
+                  </div>
+                )}
+
                 <div
                   className={clsx(
                     'flex mt-[8px] items-start justify-between gap-x-[16px]',

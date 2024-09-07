@@ -23,6 +23,7 @@ import workType from 'schemas/work'
 import { schema } from 'schemas'
 import { media } from 'sanity-plugin-media'
 import { inlineSvgInput } from '@focus-reactive/sanity-plugin-inline-svg-input'
+import { muxInput } from 'sanity-plugin-mux-input'
 
 const title =
   process.env.NEXT_PUBLIC_SANITY_PROJECT_TITLE || 'Next.js Blog with Sanity.io'
@@ -41,6 +42,7 @@ export default defineConfig({
       defaultDocumentNode: previewDocumentNode(),
     }),
     media(),
+    muxInput(),
     // presentationTool({
     //   locate,
     //   previewUrl: {

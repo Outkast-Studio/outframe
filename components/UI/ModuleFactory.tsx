@@ -5,6 +5,7 @@ import { urlForImage } from 'lib/sanity.image'
 import { clsx } from 'clsx'
 import { PortableText } from '@portabletext/react'
 import { myPortableTextComponents } from 'pages/_app'
+import MuxVideo from './MuxVideo'
 
 export const SingleImageComponent = ({ image }) => {
   return (
@@ -138,6 +139,18 @@ function TestimonialBlock({ testimonialBlock }) {
   )
 }
 
+function VideoBlock({ videoBlock }) {
+  return (
+    <div className={clsx('w-full mb-[80px]')}>
+      <MuxVideo
+        playbackId={videoBlock.video.asset.playbackId}
+        assetId={videoBlock.video.asset.assetId}
+        maskSize="8px"
+      />
+    </div>
+  )
+}
+
 export const ModuleFactory = ({ module }) => {
   switch (module._type) {
     case 'singleImage':
@@ -153,6 +166,9 @@ export const ModuleFactory = ({ module }) => {
       return <TextBlockComponent textBlock={module} />
     case 'testimonialBlock':
       return <TestimonialBlock testimonialBlock={module} />
+
+    case 'videoBlock':
+      return <VideoBlock videoBlock={module} />
     default:
       return null
   }

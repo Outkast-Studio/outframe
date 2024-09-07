@@ -3,19 +3,28 @@ import clsx from 'clsx'
 import Image from 'next/image'
 
 type Props = {
-  cb: () => void
+  cb?: () => void
   text: string
   accent?: boolean
   className?: string
   footer?: boolean
   isHero?: boolean
+  isHeroSub?: boolean
 }
 
-const Button = ({ text, cb, accent, className, footer, isHero }: Props) => {
+const Button = ({
+  text,
+  cb,
+  accent,
+  className,
+  footer,
+  isHero,
+  isHeroSub,
+}: Props) => {
   return (
     <button
       onClick={() => {
-        cb()
+        cb && cb()
       }}
       className={clsx(
         'rounded-[4px] monoMedium px-[18px] py-[12px] text-[14px] leading-[16.8px] tracking-[-0.2px] hoverButton flex items-center transition-colors duration-[0.35s] ease-in',
@@ -38,7 +47,18 @@ const Button = ({ text, cb, accent, className, footer, isHero }: Props) => {
       >
         {text}
       </span>
-      {(accent || footer) && (
+      {isHeroSub && (
+        <Image
+          src={'/icons/downArrowOutframeDark.svg'}
+          width={10}
+          height={10}
+          alt={'arrow'}
+          className={clsx(
+            'relative z-[1] translate-x-[-10px] buttonTransiton hoverArrowButton',
+          )}
+        />
+      )}
+      {((accent && !isHero) || footer) && (
         <Image
           src={'/icons/recentWorkArrowWhite.svg'}
           width={12}
@@ -51,9 +71,9 @@ const Button = ({ text, cb, accent, className, footer, isHero }: Props) => {
         />
       )}
 
-      {isHero && (
+      {isHero && accent && (
         <Image
-          src={'/icons/downArrowOutframe.svg'}
+          src={'/icons/recentWorkArrowWhite.svg'}
           width={10}
           height={10}
           alt={'arrow'}

@@ -1,3 +1,11 @@
+mux-player {
+  /* Hide all controls at once */
+  --controls: none;
+  overflow: hidden;
+  background-color: white;
+  overflow: hidden;
+}
+
 .AccordionContent[data-state='open'] {
   animation: slideDown 600ms cubic-bezier(0.62, 0.05, 0.01, 0.99);
 }

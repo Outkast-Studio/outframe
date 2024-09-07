@@ -15,6 +15,7 @@ import Services from './Landing/Services'
 import Pricing from './Landing/Pricing'
 import Footer from './FooterNew'
 import Intro from './Landing/Intro'
+import Overlay from './Landing/Overlay'
 import { useThemeStore } from 'stores/themeStore'
 import { useRouter } from 'next/router'
 import Cursor from './UI/Cursor'
@@ -59,6 +60,7 @@ export default function Post({
   return (
     <div className={clsx('overflow-x-hidden w-full')}>
       <main className={clsx('relative z-[2] overflow-x-hidden')}>
+        <Overlay settings={homepageSettings.popup} />
         <Cursor />
         <Intro />
         <Hero
@@ -68,6 +70,7 @@ export default function Post({
           paragraph={homepageSettings.heroParagraph}
         />
         <LogoCloud images={homepageSettings.logoCloud} />
+
         <CaseStudies caseStudies={homepageSettings.caseStudies} />
         <OurStudio />
         <Benefits />

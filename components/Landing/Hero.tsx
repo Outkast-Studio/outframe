@@ -1,4 +1,4 @@
-import React, { useState, useRef } from 'react'
+import React, { useState, useRef, useEffect } from 'react'
 import { clsx } from 'clsx'
 import Image from 'next/image'
 import Link from 'next/link'
@@ -15,7 +15,7 @@ import { useWindowSize } from 'hooks/useWindowSize'
 import type { PortableTextBlock } from '@portabletext/types'
 import { PortableText } from '@portabletext/react'
 import { myPortableTextComponents } from 'pages/_app'
-
+import { getCalApi } from '@calcom/embed-react'
 type Props = {
   images: ImageAsset[]
   testimonial: Testimonial
@@ -34,6 +34,17 @@ const Hero = ({ images, testimonial, title, paragraph }: Props) => {
   const setIsHoveringHeroImage = useThemeStore(
     (state) => state.setIsHoveringHeroImage,
   )
+  useEffect(() => {
+    ;(async function () {
+      const cal = await getCalApi()
+      cal('ui', {
+        theme: 'dark',
+        styles: {
+          branding: { brandColor: '#000000' },
+        },
+      })
+    })()
+  }, [])
   const { width } = useWindowSize()
   const lenis = useLenis()
   const h1Variants = {
@@ -173,7 +184,7 @@ const Hero = ({ images, testimonial, title, paragraph }: Props) => {
             className={clsx(
               'geist text-[16px] leading-[28.5px] text-secondaryText mt-[28px] heroText',
               'md:mt-[0px]',
-              'lg:text-[19px] lg:leading-[28.5px] lg:tracking-[-0.1px]',
+              'lg:text-[19px] lg:leading-[28.5px] lg:tracking-[-0.1px] lg:mt-[7px]',
             )}
           >
             {/* <span className={clsx('text-mainText')}>Outframe</span> is an
@@ -192,11 +203,31 @@ const Hero = ({ images, testimonial, title, paragraph }: Props) => {
               'lg:mt-[32px]',
             )}
           >
+            <div data-cal-link="outframe">
+              <Button
+                isHero
+                text={'Request Free Audit'}
+                // cb={() =>
+                //   lenis.scrollTo('#pricing', {
+                //     duration: 1.2,
+                //     offset: -69,
+                //     easing: (x) => {
+                //       return x < 0.5
+                //         ? 4 * x * x * x
+                //         : 1 - Math.pow(-2 * x + 2, 3) / 2
+                //     },
+                //   })
+                // }
+                accent
+              />
+            </div>
+
             <Button
+              isHeroSub
               isHero
-              text={'View plans'}
+              text={'See Case Studies'}
               cb={() =>
-                lenis.scrollTo('#pricing', {
+                lenis.scrollTo('#case-studies', {
                   duration: 1.2,
                   offset: -69,
                   easing: (x) => {
@@ -206,15 +237,7 @@ const Hero = ({ images, testimonial, title, paragraph }: Props) => {
                   },
                 })
               }
-              accent
             />
-            <a
-              href={'https://cal.com/outframe/intro'}
-              target="_blank"
-              rel={'noreferrer'}
-            >
-              <Button text={'Book a call'} cb={() => {}} />
-            </a>
           </div>
         </motion.div>
       </div>

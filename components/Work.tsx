@@ -15,6 +15,7 @@ export default function Post({ work }: { work: Work }) {
   const setIsHoveringCaseStudy = useThemeStore(
     (state) => state.setIsHoveringCaseStudy,
   )
+  console.log(work)
 
   const [isVisible, setIsVisible] = useState(false)
 

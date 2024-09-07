@@ -23,7 +23,6 @@ export default defineType({
       name: 'image',
       title: 'Image',
       type: 'image',
-      validation: (rule) => rule.required(),
       fields: [
         {
           name: 'alt',
@@ -31,10 +30,14 @@ export default defineType({
           title: 'Alternative Text',
           description:
             "Describe what's in the image for screen readers and search engines.",
-          validation: (Rule: any) => Rule.required(),
         },
       ],
       options: { hotspot: true },
+    }),
+    defineField({
+      name: 'video',
+      title: 'Video',
+      type: 'mux.video',
     }),
     defineField({
       name: 'columns',

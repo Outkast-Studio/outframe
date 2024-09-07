@@ -55,6 +55,18 @@ export const postBySlugQuery = groq`
 export const workBySlugQuery = groq` 
 *[_type == "caseStudy" && slug.current == $slug][0]{
   ...,
+  modules[]{
+    ...,
+    _type == 'videoBlock'=>{
+      video{
+        asset->{
+          playbackId,
+          assetId,
+          filename,
+        }
+      }
+    }
+  },
   nextProject->{
     ...,
   }
@@ -101,15 +113,47 @@ export const homepageQuery = groq`*[_type == 'homepageSettings'][0]{
   }
 }
 `
+export interface PopupType {
+  _id: string
+  _createdAt: string
+  title: string
+  description: string
+  image: {
+    asset: {
+      _ref: string
+      _type: 'reference'
+    }
+    alt?: string
+  }
+  cta: string
+  link: string
+  timer: number
+}
 
 export const recentWorkQuery = groq`
-*[_type == "recentWork"] | order(date desc, _updatedAt desc)
+*[_type == "recentWork"] | order(date desc, _updatedAt desc){
+...,
+  video {
+    asset-> {
+      playbackId,
+      assetId,
+      filename,
+    }
+  }
+}
 `
 
 export const recentWorkSettingsQuery = groq`
 *[_type == 'recentWorkSettings'][0]{
   recentWork[]->{
   ...,
+  video {
+    asset-> {
+      playbackId,
+      assetId,
+      filename,
+    }
+  }
   }
 }
 `
@@ -120,6 +164,13 @@ export interface RecentWork {
   columns?: number
   year?: number
   alignment?: number
+  video?: {
+    asset: {
+      playbackId: string
+      assetId: string
+      filename: string
+    }
+  }
 }
 
 export interface RecentWorkSettings {
@@ -157,6 +208,21 @@ export interface Post {
 }
 
 export type HomepageCaseStudies = (Work | Testimonial)[]
+export interface PopupType {
+  _id: string
+  _createdAt: string
+  title: string
+  image: {
+    asset: {
+      _ref: string
+      _type: 'reference'
+    }
+    alt?: string
+  }
+  cta: string
+  link: string
+  timer: number
+}
 
 export interface HomepageSettings {
   heroTitle: string
@@ -173,22 +239,29 @@ export interface HomepageSettings {
   }
   flexPricing: {
     title: string
+    subTitle: string
+    badge: string
     USD: string
     EUR: string
     GBP: string
   }
   partTimePricing: {
     title: string
+    subTitle: string
+    badge: string
     USD: string
     EUR: string
     GBP: string
   }
   dedicatedPricing: {
     title: string
+    subTitle: string
+    badge: string
     USD: string
     EUR: string
     GBP: string
   }
+  popup: PopupType
 }
 
 export type SingleImage = {
@@ -205,7 +278,17 @@ export type TextBlock = {
   title: string
 }
 
-type Module = SingleImage | TwoColumnImage | TextBlock
+export type VideoBlock = {
+  video: {
+    asset: {
+      playbackId: string
+      assetId: string
+      filename: string
+    }
+  }
+}
+
+type Module = SingleImage | TwoColumnImage | TextBlock | VideoBlock
 export interface Work {
   _id: string
   title?: string

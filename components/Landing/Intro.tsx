@@ -24,7 +24,6 @@ const Intro = () => {
 
   useEffect(() => {
     const introHasRun = sessionStorage.getItem('introHasRun')
-
     if (lenis) {
       // // lenis.stop()
       setTimeout(() => {
