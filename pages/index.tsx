@@ -42,7 +42,7 @@ export default function Page(props: PageProps) {
   )
   const { work, draftMode } = props
 
-  console.log(props.globalSettings)
+  console.log('staging')
   return (
     <Layout seo={props.seo}>
       <IndexPage
