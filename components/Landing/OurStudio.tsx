@@ -13,7 +13,7 @@ const OurStudio = () => {
           'xl:text-[24px] xl:leading-[33.6px]',
         )}
       >
-        <SectionHeading text={'About'} />
+        <SectionHeading text={'Our Studio'} />
       </h6>
       <div
         className={clsx(
