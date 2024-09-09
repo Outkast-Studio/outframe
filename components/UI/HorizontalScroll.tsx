@@ -14,6 +14,7 @@ const HorizontalScroll = ({ recentWork }: { recentWork: RecentWork[] }) => {
   const container = useRef(null)
   const tlRef = useRef(null)
   const slowRef = useRef(null)
+  console.log(recentWork)
 
   useEffect(() => {
     const ctx = gsap.context(() => {
@@ -58,7 +59,7 @@ const HorizontalScroll = ({ recentWork }: { recentWork: RecentWork[] }) => {
       <section ref={sliderRef} className={clsx('flex h-full')}>
         {recentWork.length > 0 &&
           [...recentWork, ...recentWork].map((work, index) => {
-            if (!work || !work.title || !work.year || !work.image) {
+            if (!work || !work.title || !work.year) {
               return <></>
             }
             return (
@@ -93,7 +94,7 @@ const HorizontalScroll = ({ recentWork }: { recentWork: RecentWork[] }) => {
                     <MuxVideo
                       playbackId={work.video.asset.playbackId}
                       assetId={work.video.asset.assetId}
-                      maskSize="2px"
+                      maskSize="0px"
                     />
                   </div>
                 ) : (
