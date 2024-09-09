@@ -1,4 +1,4 @@
-import MuxPlayer from '@mux/mux-player-react/lazy'
+import MuxPlayer from '@mux/mux-player-react'
 import { MutableRefObject, useRef } from 'react'
 import { useInView } from 'hooks/useInView'
 import { clsx } from 'clsx'
@@ -41,7 +41,7 @@ const MuxVideo = ({ playbackId, assetId, maskSize }: Props) => {
         muted={true}
         streamType="on-demand"
         // style={{
-        //   aspectRatio: 6 / 4,
+        //   borderRadius: '6px',
         //   // overflow: 'hidden',
         // }}
         paused={!canPlay}

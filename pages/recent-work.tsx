@@ -100,7 +100,7 @@ export default function Page(props: PageProps) {
                       <MuxVideo
                         playbackId={work.video.asset.playbackId}
                         assetId={work.video.asset.assetId}
-                        maskSize="2px"
+                        maskSize="0px"
                       />
                     ) : (
                       <Image
