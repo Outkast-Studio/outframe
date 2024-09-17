@@ -45,7 +45,7 @@ const MuxVideo = ({ playbackId, assetId, maskSize }: Props) => {
         //   // overflow: 'hidden',
         // }}
         paused={!canPlay}
-        className={''}
+        className={'rounded-[6px]'}
         //   onCanPlay={() => setCanPlay(true)}
       />
 

@@ -346,10 +346,12 @@ function PricingCard({
         Book a Call
       </button> */}
 
-      <a
-        href={'https://cal.com/outframe/intro'}
-        target="_blank"
-        rel={'noreferrer'}
+      <div
+        data-cal-link="outframe/intro"
+        tabIndex={0}
+        // href={'https://cal.com/outframe/intro'}
+        // target="_blank"
+        // rel={'noreferrer'}
       >
         <Button
           text={'Book a Call'}
@@ -361,7 +363,7 @@ function PricingCard({
             'xl:text-[14px] xl:leading-[16.8px]',
           )}
         />
-      </a>
+      </div>
     </article>
   )
 }

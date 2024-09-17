@@ -203,7 +203,7 @@ const Hero = ({ images, testimonial, title, paragraph }: Props) => {
               'lg:mt-[32px]',
             )}
           >
-            <div data-cal-link="outframe">
+            <div data-cal-link="outframe/intro" tabIndex={0}>
               <Button
                 isHero
                 text={'Request Free Audit'}

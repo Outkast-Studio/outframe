@@ -38,7 +38,7 @@ const Button = ({
     >
       <span
         className={clsx(
-          ' relative z-[2] inline-block translate-x-[6px] hoverButtonText buttonTransiton',
+          'relative z-[2] inline-block translate-x-[6px] hoverButtonText buttonTransiton',
           accent
             ? 'bg-accent hoverTextAccent'
             : 'bg-background hoverTextStandard',
@@ -54,7 +54,8 @@ const Button = ({
           height={10}
           alt={'arrow'}
           className={clsx(
-            'relative z-[1] translate-x-[-10px] buttonTransiton hoverArrowButton',
+            'hidden',
+            'lg:block relative z-[1] translate-x-[-10px] buttonTransiton hoverArrowButton',
           )}
         />
       )}
@@ -65,7 +66,8 @@ const Button = ({
           height={12}
           alt={'arrow'}
           className={clsx(
-            'relative z-[1] translate-x-[-10px] buttonTransiton hoverArrowButton',
+            'hidden',
+            'lg:block relative z-[1] translate-x-[-10px] buttonTransiton hoverArrowButton',
             isHero && 'hidden',
           )}
         />
@@ -78,7 +80,8 @@ const Button = ({
           height={10}
           alt={'arrow'}
           className={clsx(
-            'relative z-[1] translate-x-[-10px] buttonTransiton hoverArrowButton',
+            'hidden',
+            'lg:block relative z-[1] translate-x-[-10px] buttonTransiton hoverArrowButton',
           )}
         />
       )}
@@ -90,7 +93,8 @@ const Button = ({
           height={10}
           alt={'arrow'}
           className={clsx(
-            'relative z-[1] translate-x-[-10px] buttonTransiton hoverArrowButton',
+            'hidden',
+            'lg:block relative z-[1] translate-x-[-10px] buttonTransiton hoverArrowButton',
           )}
         />
       )}
