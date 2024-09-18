@@ -91,7 +91,7 @@ export default function Page(props: PageProps) {
           >
             {data.recentWork.length > 0 &&
               data.recentWork.map((work, index) => {
-                if (!work || !work.title || !work.year || !work.image) {
+                if (!work || !work.title || !work.year) {
                   return <></>
                 }
                 return (

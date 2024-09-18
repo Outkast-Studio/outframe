@@ -145,7 +145,7 @@ function VideoBlock({ videoBlock }) {
       <MuxVideo
         playbackId={videoBlock.video.asset.playbackId}
         assetId={videoBlock.video.asset.assetId}
-        maskSize="8px"
+        maskSize="0px"
       />
     </div>
   )
