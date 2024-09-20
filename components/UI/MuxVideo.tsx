@@ -41,7 +41,7 @@ const MuxVideo = ({ playbackId, assetId, maskSize }: Props) => {
         muted={true}
         streamType="on-demand"
         paused={!canPlay}
-        className="w-full h-full scale-[1.01]"
+        className="w-full h-full scale-[1.04]"
         // className={'lg:rounded-[6px] object-cover'}
         //   onCanPlay={() => setCanPlay(true)}
       />
