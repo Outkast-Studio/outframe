@@ -24,49 +24,27 @@ const MuxVideo = ({ playbackId, assetId, maskSize }: Props) => {
 
   return (
     <div
-      className={clsx('relative')}
+      className={clsx('relative w-full h-full overflow-hidden')}
       ref={containerRef as MutableRefObject<any>}
     >
       <MuxPlayer
         ref={playerRef}
         thumbnailTime={0}
         playbackId={playbackId}
-        metadata={{
-          video_id: assetId,
-          video_title: '',
-          viewer_user_id: 'user-id-bc-789',
-        }}
+        // metadata={{
+        //   video_id: assetId,
+        //   video_title: '',
+        //   viewer_user_id: 'user-id-bc-789',
+        // }}
         loop={true}
         autoPlay={true}
         muted={true}
         streamType="on-demand"
-        // style={{
-        //   borderRadius: '6px',
-        //   // overflow: 'hidden',
-        // }}
         paused={!canPlay}
-        className={'lg:rounded-[6px]'}
+        className="w-full h-full scale-[1.01]"
+        // className={'lg:rounded-[6px] object-cover'}
         //   onCanPlay={() => setCanPlay(true)}
       />
-
-      <div className="absolute inset-0 pointer-events-none rounded-[6px] overflow-hidden">
-        <div
-          className="absolute top-0 left-0 right-0 bg-background"
-          style={{ height: maskSize }}
-        />
-        <div
-          className="absolute bottom-0 left-0 right-0 bg-background"
-          style={{ height: maskSize }}
-        />
-        <div
-          className="absolute top-0 left-0 bottom-0 bg-background"
-          style={{ width: maskSize }}
-        />
-        <div
-          className="absolute top-0 right-0 bottom-0 bg-background"
-          style={{ width: maskSize }}
-        />
-      </div>
     </div>
   )
 }

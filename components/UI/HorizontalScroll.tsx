@@ -77,26 +77,11 @@ const HorizontalScroll = ({ recentWork }: { recentWork: RecentWork[] }) => {
                 }}
               >
                 {work.video ? (
-                  <div className={clsx('relative')}>
-                    {/* <div className="absolute bg-dividers w-full h-full top-0 left-0 z-[1]"></div> */}
-                    {/* <Image
-                      src={urlForImage(work.image).url()}
-                      alt={String(work.image.alt)}
-                      width={1920}
-                      height={1920}
-                      className={clsx(
-                        'relative z-[2] opacity-0 transition-opacity duration-300 w-full object-cover',
-                      )}
-                      onLoadingComplete={(image) =>
-                        image.classList.remove('opacity-0')
-                      }
-                    /> */}
-                    <MuxVideo
-                      playbackId={work.video.asset.playbackId}
-                      assetId={work.video.asset.assetId}
-                      maskSize="0px"
-                    />
-                  </div>
+                  <MuxVideo
+                    playbackId={work.video.asset.playbackId}
+                    assetId={work.video.asset.assetId}
+                    maskSize="0px"
+                  />
                 ) : (
                   <div className={clsx('relative')}>
                     {/* <div className="absolute bg-dividers w-full h-full top-0 left-0 z-[1]"></div> */}
