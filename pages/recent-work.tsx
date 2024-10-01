@@ -97,11 +97,13 @@ export default function Page(props: PageProps) {
                 return (
                   <article key={work.title + index}>
                     {work.video ? (
-                      <MuxVideo
-                        playbackId={work.video.asset.playbackId}
-                        assetId={work.video.asset.assetId}
-                        maskSize="0px"
-                      />
+                      <div className={clsx('h-[60vw]')}>
+                        <MuxVideo
+                          playbackId={work.video.asset.playbackId}
+                          assetId={work.video.asset.assetId}
+                          maskSize="0px"
+                        />
+                      </div>
                     ) : (
                       <Image
                         src={urlForImage(work.image).url()}

@@ -21,7 +21,7 @@ const MuxVideo = ({ playbackId, assetId, maskSize }: Props) => {
       setCanPlay(false)
     }
   }, [isInView])
-
+  const cleanPlaybackId = decodeURIComponent(playbackId).replace(/[^\w-]/g, '')
   return (
     <div
       className={clsx('relative w-full h-full overflow-hidden')}
@@ -30,20 +30,13 @@ const MuxVideo = ({ playbackId, assetId, maskSize }: Props) => {
       <MuxPlayer
         ref={playerRef}
         thumbnailTime={0}
-        playbackId={playbackId}
-        // metadata={{
-        //   video_id: assetId,
-        //   video_title: '',
-        //   viewer_user_id: 'user-id-bc-789',
-        // }}
+        playbackId={cleanPlaybackId}
         loop={true}
         autoPlay={true}
         muted={true}
         streamType="on-demand"
         paused={!canPlay}
-        className="w-full h-full scale-[1.04]"
-        // className={'lg:rounded-[6px] object-cover'}
-        //   onCanPlay={() => setCanPlay(true)}
+        className="!w-full !h-full object-cover scale-[1.04] "
       />
     </div>
   )
