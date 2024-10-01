@@ -28,7 +28,6 @@ interface Query {
 
 export default function ProjectSlugRoute(props: PageProps) {
   const [data] = useLiveQuery<Post>(props.post, postBySlugQuery, props.params)
-  console.log(props.globalSettings)
   return (
     <Layout seo={props.seo}>
       <BlogPage post={data} />

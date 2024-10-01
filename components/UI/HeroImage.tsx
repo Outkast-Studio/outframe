@@ -50,14 +50,6 @@ const ImageRotator = ({ images, duration = 3000 }) => {
           isVisible && '!opacity-[0.15]',
         )}
       ></div>
-      {/* 
-      <Image
-        src={urlForImage(images[0]).url()}
-        width={1920}
-        height={1920}
-        className="opacity-0 rounded-[4px]"
-        alt={`Image 1`}
-      /> */}
 
       <PixelatedImage
         src={urlForImage(images[0]).url()}
@@ -66,10 +58,10 @@ const ImageRotator = ({ images, duration = 3000 }) => {
         classNames={clsx('relative z-[10]', !paused && 'opacity-0')}
       />
 
-      <AnimatePresence mode="wait">
+      <AnimatePresence>
         {images.map((image, index) => (
           <motion.div
-            key={image}
+            key={'hero-image-' + index}
             initial={{ opacity: 0 }}
             animate={
               index == currentImageIndex ? { opacity: 1 } : { opacity: 0 }

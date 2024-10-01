@@ -14,8 +14,6 @@ const HorizontalScroll = ({ recentWork }: { recentWork: RecentWork[] }) => {
   const container = useRef(null)
   const tlRef = useRef(null)
   const slowRef = useRef(null)
-  console.log(recentWork)
-
   useEffect(() => {
     const ctx = gsap.context(() => {
       const slider = sliderRef.current

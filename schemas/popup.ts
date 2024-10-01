@@ -6,6 +6,12 @@ export const popup = {
   type: 'object',
   fields: [
     {
+      name: 'isActive',
+      title: 'Is Active',
+      type: 'boolean',
+      validation: (Rule) => Rule.required(),
+    },
+    {
       name: 'title',
       title: 'Title',
       type: 'string',
@@ -56,5 +62,3 @@ export const popup = {
     },
   ],
 }
-
-// TypeScript Type

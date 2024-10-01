@@ -116,6 +116,7 @@ export const homepageQuery = groq`*[_type == 'homepageSettings'][0]{
 export interface PopupType {
   _id: string
   _createdAt: string
+  isActive: boolean
   title: string
   description: string
   image: {

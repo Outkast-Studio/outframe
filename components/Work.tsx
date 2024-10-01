@@ -15,13 +15,9 @@ export default function Post({ work }: { work: Work }) {
   const setIsHoveringCaseStudy = useThemeStore(
     (state) => state.setIsHoveringCaseStudy,
   )
-  console.log(work)
-
   const [isVisible, setIsVisible] = useState(false)
-
   useEffect(() => {
     setIsHoveringCaseStudy(false)
-    console.log('running')
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
 

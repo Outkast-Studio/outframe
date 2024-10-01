@@ -60,7 +60,10 @@ export default function Post({
   return (
     <div className={clsx('overflow-x-hidden w-full')}>
       <main className={clsx('relative z-[2] overflow-x-hidden')}>
-        <Overlay settings={homepageSettings.popup} />
+        {homepageSettings.popup.isActive && (
+          <Overlay settings={homepageSettings.popup} />
+        )}
+
         <Cursor />
         <Intro />
         <Hero

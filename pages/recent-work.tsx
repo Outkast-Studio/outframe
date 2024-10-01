@@ -38,8 +38,6 @@ export default function Page(props: PageProps) {
     props.recentWork,
     recentWorkSettingsQuery,
   )
-  console.log(data)
-
   const seo = {
     title: 'Outframe | Recent Work',
     description: '',
