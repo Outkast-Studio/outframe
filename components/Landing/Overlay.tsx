@@ -8,16 +8,6 @@ import { urlForImage } from 'lib/sanity.image'
 
 const Overlay = ({ settings }: { settings: PopupType }) => {
   const [isVisible, setIsVisible] = useState(false)
-  // const settings = {
-  //   title: 'Your Free Guide to a Winning SaaS Design',
-  //   description:
-  //     'Grab our detailed 80+ page book "How to Design a SaaS Without a Designer". Discover the tools and tips you need to (re)design an interface on a low budget and under tight deadlines.',
-  //   cta: 'Download FREE Book',
-  //   link: '#',
-  //   image: '#',
-  //   timer: 5,
-  // }
-
   useEffect(() => {
     const hasSeenPopup = localStorage.getItem('seenPopup')
     const lastSeenTitle = localStorage.getItem('lastSeenPopupTitle')

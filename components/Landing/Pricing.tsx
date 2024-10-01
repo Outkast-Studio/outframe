@@ -336,23 +336,8 @@ function PricingCard({
         height={1}
         className={clsx('hidden', 'lg:block')}
       />
-      {/* <button
-        className={clsx(
-          'text-[14px] whitespace-nowrap hidden leading-[14.4px] tracking-[-0.2px] bg-accent monoMedium text-[#F7F7F7] px-[16px] py-[12px] rounded-[4px] h-fit mt-[32px] ml-[32px]',
-          'lg:block ',
-          'xl:text-[14px] xl:leading-[16.8px]',
-        )}
-      >
-        Book a Call
-      </button> */}
 
-      <div
-        data-cal-link="outframe/intro"
-        tabIndex={0}
-        // href={'https://cal.com/outframe/intro'}
-        // target="_blank"
-        // rel={'noreferrer'}
-      >
+      <div data-cal-link="outframe/intro" tabIndex={0}>
         <Button
           text={'Book a Call'}
           cb={() => {}}
