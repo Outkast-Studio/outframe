@@ -69,18 +69,19 @@ export async function getServerSideProps({ res }) {
     .filter(({ slug = '' }) => slug)
     .map((post) => {
       return {
-        url: `/posts/${post.slug.current}`,
+        url: `/blog/${post.slug}`,
         priority: 0.5,
         lastmod: new Date(post._updatedAt),
       }
     })
+  console.log(posts)
 
   const [work = []] = await Promise.all([getAllWork(client)])
   const workUrls: SitemapLocation[] = work
     .filter(({ slug = '' }) => slug)
     .map((post) => {
       return {
-        url: `/work/${post.slug}`,
+        url: `/work/${post.slug.current}`,
         priority: 0.5,
         lastmod: new Date(post._updatedAt),
       }
