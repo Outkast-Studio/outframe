@@ -135,43 +135,66 @@ const Hero = ({ images, testimonial, title, paragraph }: Props) => {
           'xl:grid xl:grid-cols-12 xl:gap-x-columnGap',
         )}
       >
-        <motion.h1
-          variants={h1Variants}
-          initial="initial"
-          animate={introVisible ? 'initial' : 'animate'}
-          className={clsx(
-            'text-[36px] leading-[43.2px] uppercase tracking-[-0.2px] monoMedium text-mainText',
-            'md:w-[120%]',
-            'lg:text-[3.4vw] lg:leading-[3.4vw]',
-            'xl:text-[4.4vw] xl:leading-[5vw] xl:col-span-7 xl:w-full xl:tracking-[-4px] ',
-          )}
-        >
-          {title}
-          {/* {title.split(' ').map((word, index) => (
-            <span
-              key={'hero-title' + index}
-              className={clsx(
-                'overflow-y-hidden inline-block h-[33px]',
-                'lg:h-[3.4vw]',
-                ' xl:h-[4.4vw]',
-              )}
-            >
-              <motion.span
-                variants={h1ChildrenVariantsMobile}
-                className={clsx('inline-block', 'lg:hidden')}
-              >
-                {word}&nbsp;
-              </motion.span>
-              <motion.span
-                variants={h1ChildrenVariants}
-                className={clsx('hidden', 'lg:inline-block')}
-              >
-                {word}&nbsp;
-              </motion.span>
-            </span>
-          ))} */}
-        </motion.h1>
-        <motion.div
+        <div className={clsx('col-span-7')}>
+          <motion.h1
+            variants={h1Variants}
+            initial="initial"
+            animate={introVisible ? 'initial' : 'animate'}
+            className={clsx(
+              'text-[32px] leading-[48px] geist portableHero text-secondaryText tracking-[-0.64px] ',
+            )}
+          >
+            <PortableText
+              value={paragraph}
+              components={myPortableTextComponents}
+            />
+          </motion.h1>
+
+          <div
+            className={clsx(
+              'flex mt-[28px] gap-x-[16px]',
+              'md:mt-[19px]',
+              'lg:mt-[40px]',
+            )}
+          >
+            <div data-cal-link="outframe/intro" tabIndex={0}>
+              <Button
+                isHero
+                text={'Request free audit'}
+                // cb={() =>
+                //   lenis.scrollTo('#pricing', {
+                //     duration: 1.2,
+                //     offset: -69,
+                //     easing: (x) => {
+                //       return x < 0.5
+                //         ? 4 * x * x * x
+                //         : 1 - Math.pow(-2 * x + 2, 3) / 2
+                //     },
+                //   })
+                // }
+                accent
+              />
+            </div>
+
+            <Button
+              isHeroSub
+              isHero
+              text={'Case Studies'}
+              cb={() =>
+                lenis.scrollTo('#case-studies', {
+                  duration: 1.2,
+                  offset: -69,
+                  easing: (x) => {
+                    return x < 0.5
+                      ? 4 * x * x * x
+                      : 1 - Math.pow(-2 * x + 2, 3) / 2
+                  },
+                })
+              }
+            />
+          </div>
+        </div>
+        {/* <motion.div
           variants={fadeInVariants}
           initial="initial"
           animate={introVisible ? 'initial' : 'animate'}
@@ -187,10 +210,6 @@ const Hero = ({ images, testimonial, title, paragraph }: Props) => {
               'lg:text-[19px] lg:leading-[28.5px] lg:tracking-[-0.1px] lg:mt-[7px]',
             )}
           >
-            {/* <span className={clsx('text-mainText')}>Outframe</span> is an
-            independent studio practice of Vytas Bu, and the perfect design
-            partner for startups and B2B companies. Part of your team, all
-            without the overheads of an agency. */}
             <PortableText
               value={paragraph}
               components={myPortableTextComponents}
@@ -239,12 +258,12 @@ const Hero = ({ images, testimonial, title, paragraph }: Props) => {
               }
             />
           </div>
-        </motion.div>
+        </motion.div> */}
       </div>
       <div
         className={clsx(
           'lg:flex gap-x-[56px] md:mt-[102px] items-end justify-between w-full',
-          'xl:grid xl:grid-cols-12 xl:gap-x-columnGap xl:mt-[81px]',
+          'xl:grid xl:grid-cols-12 xl:gap-x-columnGap xl:mt-[134px]',
         )}
       >
         <motion.div

@@ -12,7 +12,7 @@ module.exports = {
         mainText: '#292626',
         secondaryText: '#615D5C',
         tertiaryText: '#7D7A79',
-        accent: '#FF4800',
+        accent: '#000',
         background: '#F7F7F7',
         dividers: '#D9D5D3',
       },

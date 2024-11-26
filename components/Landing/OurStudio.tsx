@@ -2,8 +2,10 @@ import React from 'react'
 import { clsx } from 'clsx'
 import Image from 'next/image'
 import SectionHeading from 'components/UI/SectionHeading'
+import { PortableText } from '@portabletext/react'
+import { PortableTextBlock } from '@portabletext/types'
 
-const OurStudio = () => {
+const OurStudio = ({ data }: { data: PortableTextBlock }) => {
   return (
     <section className={clsx('mt-[118px] px-gutter geist text-mainText')}>
       <h6
@@ -47,7 +49,7 @@ const OurStudio = () => {
               'md:mt-[0px]',
             )}
           >
-            <div
+            {/* <div
               className={clsx(
                 'flex flex-col gap-y-[32px] min-w-[100px]',
                 'md:flex-row md:gap-x-[64px] md:pb-[32px]  md:border-b-[1px] md:border-b-dividers md:w-full',
@@ -100,7 +102,7 @@ const OurStudio = () => {
                   Raised
                 </span>
               </div>
-            </div>
+            </div> */}
             <Image
               src={'/images/vytas.png'}
               alt={'Portrait of the founder of Outframe, Vytas'}
@@ -109,13 +111,13 @@ const OurStudio = () => {
               className={clsx('w-[calc(100%-132px)]', 'md:hidden')}
             />
           </div>
-          <p
+          <div
             className={clsx(
               'mt-[32px] text-[16px] leading-[24px]',
               'lg:max-w-[718px] lg:text-[16px] lg:leading-[24px] lg:tracking-[-0.1px]',
             )}
           >
-            Hi there, I&apos;m Vytas, creator of Outframe.
+            {/* Hi there, I&apos;m Vytas, creator of Outframe.
             <br />
             <br /> I started this studio to tackle a widespread issue in the B2B
             sector: poor design and a shortage of specialised designers. <br />
@@ -128,8 +130,9 @@ const OurStudio = () => {
             craftsmanship for all. <br />
             <br /> Having experienced the startup rollercoaster multiple times,
             I bring more than just attractive design to the table. I also offer
-            practical advice on growth tactics, product strategy, and vision.
-          </p>
+            practical advice on growth tactics, product strategy, and vision. */}
+            <PortableText value={data} />
+          </div>
           <div className={clsx('flex gap-x-[12px] mt-[20px]', 'md:mt-[32px]')}>
             <Image
               src={'/images/vytasPortrait.jpeg'}
@@ -144,7 +147,12 @@ const OurStudio = () => {
               )}
             >
               <h6 className={clsx('text-mainText')}>Vytas Butke</h6>
-              <h6 className={clsx('text-tertiaryText')}>Founder, Outframe</h6>
+              <a href={'#'} className={clsx('text-tertiaryText')}>
+                /Twitter
+              </a>
+              <a href={'#'} className={clsx('text-tertiaryText')}>
+                /LinkedIn
+              </a>
             </div>
           </div>
         </div>

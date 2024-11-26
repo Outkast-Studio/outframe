@@ -29,7 +29,7 @@ const Button = ({
       className={clsx(
         'rounded-[4px] monoMedium px-[18px] py-[12px] text-[14px] leading-[16.8px] tracking-[-0.2px] hoverButton flex items-center transition-colors duration-[0.35s] ease-in',
         accent
-          ? 'bg-accent text-background hover:bg-[#EE4300]'
+          ? 'bg-black text-background'
           : 'bg-background text-mainText border-[1px] border-dividers',
         footer && 'bg-black',
         className,
@@ -40,7 +40,7 @@ const Button = ({
         className={clsx(
           'relative z-[2] inline-block translate-x-[6px] hoverButtonText buttonTransiton',
           accent
-            ? 'bg-accent hoverTextAccent'
+            ? 'bg-black hoverTextStandard'
             : 'bg-background hoverTextStandard',
           footer && 'bg-black text-[#F7F7F7]',
         )}

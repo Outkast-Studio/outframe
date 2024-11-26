@@ -312,3 +312,8 @@ body {
 .pixelImage {
   image-rendering: pixelated;
 }
+
+.portableHero strong {
+  font-weight: 400;
+  color: #2b2a29;
+}

@@ -68,6 +68,14 @@ export default defineType({
     }),
 
     defineField({
+      name: 'aboutSectionContent',
+      title: 'About Section Content',
+      type: 'blockContent',
+      description: 'Enter the content for the About section.',
+      validation: (Rule) => Rule.required(),
+    }),
+
+    defineField({
       name: 'caseStudies',
       title: 'Case Studies Grid',
       type: 'array',

@@ -73,9 +73,8 @@ export default function Post({
           paragraph={homepageSettings.heroParagraph}
         />
         <LogoCloud images={homepageSettings.logoCloud} />
-
+        <OurStudio data={homepageSettings.aboutSectionContent} />
         <CaseStudies caseStudies={homepageSettings.caseStudies} />
-        <OurStudio />
         <Benefits />
         <Testimoninals testimonials={homepageSettings.testimonials} />
         <Process />

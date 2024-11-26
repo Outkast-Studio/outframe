@@ -230,7 +230,7 @@ const Header = () => {
               className={clsx(
                 'hidden',
                 'md:block',
-                'xl:col-start-9 xl:col-end-13  ',
+                'xl:col-start-9 xl:col-end-13  xl:justify-self-end',
               )}
             >
               <ul

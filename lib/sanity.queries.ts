@@ -233,6 +233,7 @@ export interface HomepageSettings {
   testimonials: Testimonial[]
   heroTestimonial: Testimonial
   heroParagraph: PortableTextBlock
+  aboutSectionContent: PortableTextBlock
   dayRate: {
     USD: string
     EUR: string
