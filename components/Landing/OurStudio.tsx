@@ -12,6 +12,7 @@ const OurStudio = ({ data }: { data: PortableTextBlock }) => {
         className={clsx(
           'w-full pt-[20px] border-t-[1px] border-t-dividers monoMedium tracking-[-0.2px] uppercase text-[20px] leading-[24px]',
           'md:pt-[40px]',
+          'md:absolute',
           'xl:text-[24px] xl:leading-[33.6px]',
         )}
       >
@@ -20,7 +21,7 @@ const OurStudio = ({ data }: { data: PortableTextBlock }) => {
       <div
         className={clsx(
           'flex',
-          ' md:mt-[28px] items-start',
+          ' md:mt-[28px] items-start md:pt-[40px]',
           'lg:grid lg:grid-cols-12 lg:gap-x-columnGap lg:mt-[22px]',
           'xl:grid-cols-2 xl:gap-x-[228px]',
         )}
@@ -114,8 +115,9 @@ const OurStudio = ({ data }: { data: PortableTextBlock }) => {
           </div>
           <div
             className={clsx(
-              'mt-[32px] text-[16px] leading-[24px]',
-              'lg:max-w-[718px] lg:text-[16px] lg:leading-[24px] lg:tracking-[-0.1px]',
+              'mt-[32px] text-[16px] leading-[24px] font-sansMedium',
+              'md:mt-[0px]',
+              'lg:max-w-[718px] lg:text-[19px] lg:leading-[25.84px] lg:tracking-[-0.16px] lg:mt-[0px]',
             )}
           >
             {/* Hi there, I&apos;m Vytas, creator of Outframe.

@@ -125,8 +125,8 @@ const Hero = ({ images, testimonial, title, paragraph }: Props) => {
     <section
       className={clsx(
         'pt-[151px] px-gutter geist',
-        'lg:pt-[35vh]',
-        'xl:pt-[40vh]',
+        'lg:pt-[24vh]',
+        'xl:pt-[24vh]',
       )}
     >
       <div
