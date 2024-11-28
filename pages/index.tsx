@@ -22,6 +22,7 @@ import type { Seo, SharedPageProps } from 'pages/_app'
 import { useLiveQuery } from 'next-sanity/preview'
 import IndexPage from 'components/IndexPage'
 import { Layout } from 'components/layouts/Layout'
+import { useEffect } from 'react'
 interface PageProps extends SharedPageProps {
   work: Work[]
   params: QueryParams
@@ -41,7 +42,9 @@ export default function Page(props: PageProps) {
     homepageQuery,
   )
   const { work, draftMode } = props
-
+  useEffect(() => {
+    window.scrollTo(0, 0)
+  }, [])
   return (
     <Layout seo={props.seo}>
       <IndexPage

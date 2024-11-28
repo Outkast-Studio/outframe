@@ -148,10 +148,21 @@ const OurStudio = ({ data }: { data: PortableTextBlock }) => {
               )}
             >
               <h6 className={clsx('text-mainText')}>Vytas Butke</h6>
-              <a href={'#'} className={clsx('text-tertiaryText')}>
+              <a
+                href={'https://twitter.com/VytasBu'}
+                target={'_blank'}
+                className={clsx(
+                  'text-tertiaryText trasnsiton-colors duration-300 hover:text-mainText',
+                )}
+              >
                 /Twitter
               </a>
-              <a href={'#'} className={clsx('text-tertiaryText')}>
+              <a
+                href={'https://www.linkedin.com/in/vytasbu/'}
+                className={clsx(
+                  'text-tertiaryText trasnsiton-colors duration-300 hover:text-mainText',
+                )}
+              >
                 /LinkedIn
               </a>
             </div>

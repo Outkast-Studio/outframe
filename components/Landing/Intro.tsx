@@ -25,6 +25,10 @@ const Intro = () => {
   useEffect(() => {
     const introHasRun = sessionStorage.getItem('introHasRun')
     if (lenis) {
+      lenis.scrollTo(0, {
+        immediate: true,
+        force: true,
+      })
       // // lenis.stop()
       setTimeout(() => {
         setIntroVisible(false)
@@ -36,6 +40,10 @@ const Intro = () => {
         lenis.start()
         sessionStorage.setItem('introHasRun', 'true')
       }, '3900')
+    } else {
+      setTimeout(() => {
+        window.scrollTo(0, 0)
+      }, 200)
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [lenis])
