@@ -124,7 +124,7 @@ const Hero = ({ images, testimonial, title, paragraph }: Props) => {
   return (
     <section
       className={clsx(
-        'pt-[183px] px-gutter geist',
+        'pt-[151px] px-gutter geist',
         'lg:pt-[35vh]',
         'xl:pt-[40vh]',
       )}
@@ -141,7 +141,8 @@ const Hero = ({ images, testimonial, title, paragraph }: Props) => {
             initial="initial"
             animate={introVisible ? 'initial' : 'animate'}
             className={clsx(
-              'text-[32px] leading-[48px] geist portableHero text-secondaryText tracking-[-0.64px] ',
+              'text-[24px] leading-[36px] tracking-[-0.32px]',
+              'lg:text-[32px] lg:leading-[48px] geist portableHero text-secondaryText lg:tracking-[-0.64px] ',
             )}
           >
             <PortableText
@@ -152,7 +153,7 @@ const Hero = ({ images, testimonial, title, paragraph }: Props) => {
 
           <div
             className={clsx(
-              'flex mt-[28px] gap-x-[16px]',
+              'flex mt-[32px] gap-x-[16px]',
               'md:mt-[19px]',
               'lg:mt-[40px]',
             )}

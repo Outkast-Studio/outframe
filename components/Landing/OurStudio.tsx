@@ -22,6 +22,7 @@ const OurStudio = ({ data }: { data: PortableTextBlock }) => {
           'flex',
           ' md:mt-[28px] items-start',
           'lg:grid lg:grid-cols-12 lg:gap-x-columnGap lg:mt-[22px]',
+          'xl:grid-cols-2 xl:gap-x-[228px]',
         )}
       >
         <Image
@@ -33,14 +34,14 @@ const OurStudio = ({ data }: { data: PortableTextBlock }) => {
             'hidden',
             'md:block object-cover w-[50%]',
             'lg:w-full lg:col-span-4 lg:max-w-[700px]',
-            'xl:col-span-4',
+            'xl:col-span-1',
           )}
         />
         <div
           className={clsx(
             'md:w-full',
             'lg:col-start-5 lg:col-end-13',
-            'xl:col-start-6',
+            'xl:col-start-2 xl:col-end-3',
           )}
         >
           <div
